@@ -5,7 +5,7 @@
     <meta name="keywords" content="هيما تيك, روبلوكس, شروحات, سكربتات, هاكات">
     <meta property="og:image" content="https://media.discordapp.net/attachments/1135848559607021680/1286131920039579658/20240918_221032.jpg?ex=66eccb30&is=66eb79b0&hm=7b5976954e142b8700d8b28b810d6450e2569109ff455be3dda0b7e2453101f0&">
     <meta name="author" content="Hema_Tech1">
-    
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Scripts</title>
@@ -122,6 +122,7 @@
                     <div class="key-container">
                         <p id="script-${box.id}">${box.scriptText}</p>
                         <button onclick="copyScriptText('${box.id}')">نسخ السكربت</button>
+                        <button onclick="shareBox('${box.id}')">مشاركة</button> <!-- زر المشاركة -->
                     </div>
                     <div class="footer">
                         <a href="https://discord.com/invite/WT2c6f34rD">Discord</a>
@@ -149,6 +150,20 @@
                 });
         }
 
+        // دالة لنسخ رابط الموقع مع رقم المربع
+        function shareBox(id) {
+            const url = `${window.location.origin}${window.location.pathname}#${id}`;
+
+            navigator.clipboard.writeText(url)
+                .then(() => {
+                    alert(`تم نسخ الرابط: ${url}`);
+                })
+                .catch(err => {
+                    console.error('خطأ في نسخ الرابط: ', err);
+                    alert('فشل في نسخ الرابط. حاول مجدداً.');
+                });
+        }
+
         // الانتقال إلى المربع المحدد بناءً على الرقم في الرابط
         function scrollToBox() {
             const hash = window.location.hash.substring(1);
@@ -169,22 +184,3 @@
     </script>
 </body>
 </html>
-
-
-<!--Start of Tawk.to Script-->
-<script type="text/javascript">
-var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
-(function(){
-var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
-s1.async=true;
-s1.src='https://embed.tawk.to/660c1029a0c6737bd1276b66/default';
-s1.charset='UTF-8';
-s1.setAttribute('crossorigin','*');
-s0.parentNode.insertBefore(s1,s0);
-})();
-</script>
-<!--End of Tawk.to Script-->
-
-
-
-
