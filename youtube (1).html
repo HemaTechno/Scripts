@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YouTube Videos</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #10121b;
+            color: #ffffff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 0 0.5rem;
+        }
+        #boxContainer {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            width: 100%;
+            max-width: 360px;
+        }
+        .container {
+            background-color: #1a1c2d;
+            padding: 15px;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.6);
+            border: 1px solid #3a3b58;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .container:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.8);
+        }
+        .status h1 {
+            font-size: 18px;
+            margin-bottom: 8px;
+            color: #f1f1f1;
+        }
+        .status p {
+            font-size: 14px;
+            color: #d4d4d4;
+            margin-bottom: 15px;
+        }
+        .icon {
+            display: block;
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            border: 1px solid #ffffff;
+        }
+        .key-container {
+            background-color: #27293d;
+            padding: 10px;
+            border-radius: 8px;
+            border: 1px solid #4e4e50;
+            margin-bottom: 10px;
+        }
+        .key-container p {
+            font-size: 12px;
+            word-wrap: break-word;
+            color: #e1e1e1;
+        }
+        button {
+            background-color: #ff4757;
+            color: #ffffff;
+            border: none;
+            padding: 8px 12px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #e84118;
+        }
+        .footer {
+            margin-top: 15px;
+        }
+        .footer a {
+            color: #6ab04c;
+            text-decoration: none;
+            margin: 0 8px;
+            font-size: 12px;
+        }
+        .footer a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div id="boxContainer"></div>
+
+    <script>
+        // الدالة التي تضيف المربعات إلى الصفحة
+        function createBoxes(data) {
+            const boxContainer = document.getElementById('boxContainer');
+
+            data.forEach(box => {
+                const container = document.createElement('div');
+                container.classList.add('container');
+
+                container.innerHTML = `
+                    <div class="status">
+                        <a href="${box.youtubeLink}">
+                            <img src="${box.imageUrl}" class="icon">
+                        </a>
+                        <h1>${box.title}</h1>
+                        <p>${box.description}</p>
+                    </div>
+                    <div class="key-container">
+                        <p>${box.scriptText}</p>
+                        <button onclick="redirectToYouTube('${box.youtubeLink}')">اذهب إلى YouTube</button>
+                    </div>
+                    <div class="footer">
+                        <a href="https://discord.com/invite/WT2c6f34rD">Discord</a>
+                        <a href="${box.youtubeLink}">YouTube</a>
+                        <a href="https://t.me/hematech_1">Telegram</a>
+                    </div>
+                `;
+
+                boxContainer.appendChild(container);
+            });
+        }
+
+        // دالة لتحويل المستخدم إلى YouTube عند الضغط على الزر
+        function redirectToYouTube(link) {
+            window.location.href = link;
+        }
+
+        // تحميل البيانات من ملف JSON واستدعاء الدالة لإنشاء المربعات
+        fetch('data.json')
+            .then(response => response.json())
+            .then(data => createBoxes(data))
+            .catch(error => console.error('Error loading data:', error));
+    </script>
+</body>
+</html>
+
+
+
+<!--Start of Tawk.to Script-->
+<script type="text/javascript">
+var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+(function(){
+var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+s1.async=true;
+s1.src='https://embed.tawk.to/660c1029a0c6737bd1276b66/default';
+s1.charset='UTF-8';
+s1.setAttribute('crossorigin','*');
+s0.parentNode.insertBefore(s1,s0);
+})();
+</script>
+<!--End of Tawk.to Script-->
+
+
+
+
