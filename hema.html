@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>عداد الزوار</title>
+    <script>
+        window.onload = function () {
+            // التحقق من عدد الزيارات السابقة في LocalStorage
+            if (localStorage.getItem('visitCount')) {
+                localStorage.setItem('visitCount', parseInt(localStorage.getItem('visitCount')) + 1);
+            } else {
+                localStorage.setItem('visitCount', 1);
+            }
+
+            // عرض عدد الزيارات على الصفحة
+            document.getElementById('visitCount').innerText = localStorage.getItem('visitCount');
+        };
+    </script>
+</head>
+<body>
+    <h1>مرحبًا بك في موقعي</h1>
+    <p>عدد زياراتك لهذه الصفحة هو: <span id="visitCount"></span></p>
+</body>
+</html>
