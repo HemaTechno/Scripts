@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Download Scripts</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #10121b;
+            color: #ffffff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 0 0.5rem;
+        }
+        #boxContainer {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            width: 100%;
+            max-width: 360px;
+        }
+        .container {
+            background-color: #1a1c2d;
+            padding: 15px;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.6);
+            border: 1px solid #3a3b58;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .container:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.8);
+        }
+        .status h1 {
+            font-size: 18px;
+            margin-bottom: 8px;
+            color: #f1f1f1;
+        }
+        .status p {
+            font-size: 14px;
+            color: #d4d4d4;
+            margin-bottom: 15px;
+        }
+        .icon {
+            display: block;
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            border: 1px solid #ffffff;
+        }
+        .key-container {
+            background-color: #27293d;
+            padding: 10px;
+            border-radius: 8px;
+            border: 1px solid #4e4e50;
+            margin-bottom: 10px;
+        }
+        .key-container p {
+            font-size: 12px;
+            word-wrap: break-word;
+            color: #e1e1e1;
+        }
+        button {
+            background-color: #ff4757;
+            color: #ffffff;
+            border: none;
+            padding: 8px 12px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: background-color 0.3s;
+            margin: 5px 0;
+        }
+        button:hover {
+            background-color: #e84118;
+        }
+        .footer {
+            margin-top: 15px;
+        }
+        .footer a {
+            color: #6ab04c;
+            text-decoration: none;
+            margin: 0 8px;
+            font-size: 12px;
+        }
+        .footer a:hover {
+            text-decoration: underline;
+        }
+        .back-home {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #6ab04c;
+            padding: 10px;
+            border-radius: 8px;
+            text-decoration: none;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <div id="boxContainer"></div>
+
+    <a href="index.html" class="back-home">الرجوع للصفحة الرئيسية</a>
+
+    <script>
+        // الدالة التي تضيف المربعات إلى الصفحة
+        function createBoxes(data) {
+            const boxContainer = document.getElementById('boxContainer');
+
+            data.forEach(box => {
+                const container = document.createElement('div');
+                container.classList.add('container');
+                container.id = `box-${box.id}`;  // إضافة معرف فريد لكل مربع
+
+                container.innerHTML = `
+                    <div class="status">
+                        <a href="${box.youtubeLink}">
+                            <img src="${box.imageUrl}" class="icon">
+                        </a>
+                        <h1>${box.title}</h1>
+                        <p>${box.description}</p>
+                    </div>
+                    <div class="key-container">
+                        <button onclick="downloadFile('${box.androidUrl}')">Android</button>
+                        <button onclick="downloadFile('${box.iosUrl}')">iOS</button>
+                        <button onclick="downloadFile('${box.windowsUrl}')">Windows</button>
+                    </div>
+                    <div class="footer">
+                        <a href="https://discord.com/invite/WT2c6f34rD">Discord</a>
+                        <a href="${box.youtubeLink}">YouTube</a>
+                        <a href="https://t.me/hematech_1">Telegram</a>
+                    </div>
+                `;
+
+                boxContainer.appendChild(container);
+            });
+        }
+
+        // دالة لتحميل الملف عند الضغط على الزر
+        function downloadFile(url) {
+            window.location.href = url;
+        }
+
+        // تحميل البيانات من ملف JSON واستدعاء الدالة لإنشاء المربعات
+        fetch('file.json')
+            .then(response => response.json())
+            .then(data => {
+                createBoxes(data);
+            })
+            .catch(error => console.error('Error loading data:', error));
+    </script>
+</body>
+</html>
+
+
