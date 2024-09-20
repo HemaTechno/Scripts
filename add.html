@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Script</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            text-align: center;
+            padding: 50px;
+        }
+        input, textarea {
+            width: 300px;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #218838;
+        }
+    </style>
+</head>
+<body>
+    <h1>Add a New Script</h1>
+    <form id="addScriptForm">
+        <input type="text" id="title" placeholder="Title" required><br>
+        <textarea id="description" placeholder="Description" required></textarea><br>
+        <input type="text" id="imageUrl" placeholder="Image URL" required><br>
+        <input type="text" id="youtubeLink" placeholder="YouTube Link" required><br>
+        <textarea id="scriptText" placeholder="Script Text" required></textarea><br>
+        <button type="submit">Add Script</button>
+    </form>
+
+    <script>
+        document.getElementById('addScriptForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const scriptData = {
+                title: document.getElementById('title').value,
+                description: document.getElementById('description').value,
+                imageUrl: document.getElementById('imageUrl').value,
+                youtubeLink: document.getElementById('youtubeLink').value,
+                scriptText: document.getElementById('scriptText').value
+            };
+
+            fetch('http://localhost:3000/api/scripts', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(scriptData)
+            })
+            .then(response => response.json())
+            .then(data => {
+                alert('Script added successfully');
+                document.getElementById('addScriptForm').reset();
+            })
+            .catch(error => console.error('Error adding script:', error));
+        });
+    </script>
+</body>
+</html>
