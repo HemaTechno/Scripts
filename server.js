@@ -1,49 +1,35 @@
-// server.js
 const express = require('express');
-const mongoose = require('mongoose');
-const cors = require('cors');
-
+const fs = require('fs');
+const path = require('path');
 const app = express();
-app.use(cors());
-app.use(express.json()); // Parse JSON data
 
-// اتصال بقاعدة بيانات MongoDB
-mongoose.connect('mongodb+srv://Arabm:Arabm@cluster0.rakl4qh.mongodb.net/?retryWrites=true&w=majority', { useNewUrlParser: true, useUnifiedTopology: true })
-  .then(() => console.log('Connected to MongoDB'))
-  .catch(err => console.error('Could not connect to MongoDB', err));
+app.use(express.json());
+app.use(express.static('public'));
 
-// إنشاء نموذج بيانات (Schema) للمربعات
-const scriptSchema = new mongoose.Schema({
-  title: String,
-  description: String,
-  imageUrl: String,
-  youtubeLink: String,
-  scriptText: String
+// مسار لحفظ البيانات في script.json
+app.post('/save-script', (req, res) => {
+    const newScript = req.body;
+
+    // قراءة البيانات المخزنة مسبقاً
+    const filePath = path.join(__dirname, 'scrit.json');
+    let scripts = [];
+
+    if (fs.existsSync(filePath)) {
+        const data = fs.readFileSync(filePath);
+        scripts = JSON.parse(data);
+    }
+
+    // إضافة السكربت الجديد
+    scripts.push(newScript);
+
+    // كتابة البيانات المحدثة إلى الملف
+    fs.writeFileSync(filePath, JSON.stringify(scripts, null, 2));
+
+    res.json({ message: 'Script saved successfully!' });
 });
 
-const Script = mongoose.model('Script', scriptSchema);
-
-// API لاسترجاع البيانات
-app.get('/api/scripts', async (req, res) => {
-  const scripts = await Script.find();
-  res.send(scripts);
-});
-
-// API لإضافة بيانات جديدة
-app.post('/api/scripts', async (req, res) => {
-  const newScript = new Script({
-    title: req.body.title,
-    description: req.body.description,
-    imageUrl: req.body.imageUrl,
-    youtubeLink: req.body.youtubeLink,
-    scriptText: req.body.scriptText
-  });
-  
-  await newScript.save();
-  res.send(newScript);
-});
-
-const port = process.env.PORT || 3000;
-app.listen(port, () => {
-  console.log(`Server running on port ${port}`);
+// تشغيل السيرفر على المنفذ 3000
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+    console.log(`Server is running on port ${PORT}`);
 });
