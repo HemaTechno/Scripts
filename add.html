@@ -43,7 +43,7 @@
     </form>
 
     <script>
-        document.getElementById('addScriptForm').addEventListener('submit', function(e) {
+        document.getElementById('addScriptForm').addEventListener('submit', async function(e) {
             e.preventDefault();
             const scriptData = {
                 title: document.getElementById('title').value,
@@ -53,19 +53,26 @@
                 scriptText: document.getElementById('scriptText').value
             };
 
-            fetch('http://localhost:3000/api/scripts', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(scriptData)
-            })
-            .then(response => response.json())
-            .then(data => {
-                alert('Script added successfully');
-                document.getElementById('addScriptForm').reset();
-            })
-            .catch(error => console.error('Error adding script:', error));
+            try {
+                const response = await fetch('http://localhost:3000/api/scripts', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(scriptData)
+                });
+
+                if (response.ok) {
+                    const data = await response.json();
+                    alert('Script added successfully!');
+                    document.getElementById('addScriptForm').reset();
+                } else {
+                    const errorData = await response.json();
+                    alert(`Error: ${errorData.message || 'Failed to add script.'}`);
+                }
+            } catch (error) {
+                alert(`Network error: ${error.message}`);
+            }
         });
     </script>
 </body>
