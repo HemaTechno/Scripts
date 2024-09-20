@@ -11,7 +11,7 @@
     <style>
         body {
             font-family: 'Arial', sans-serif;
-            background-color: #1a1a1a;
+            background-color: #0d1117;
             color: #fff;
             margin: 0;
             padding: 0;
@@ -20,104 +20,85 @@
         }
 
         .header {
-            background-color: #4A90E2;
+            background-color: #161b22;
             padding: 20px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+            border-bottom: 2px solid #4A90E2;
         }
 
         .header h1 {
             margin: 0;
-            font-size: 28px;
-        }
-
-        .search-bar {
-            width: 300px;
-            margin: 0;
-            padding: 10px;
-            border-radius: 20px;
-            border: none;
+            font-size: 34px;
+            color: #4A90E2;
         }
 
         .section {
-            margin: 40px auto;
-            max-width: 600px;
-            background-color: #2c2c2c;
-            padding: 30px;
-            border-radius: 15px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            margin: 60px auto;
+            max-width: 800px;
+            background-color: #1a1f26;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
         }
 
         .section h2 {
-            font-size: 24px;
+            font-size: 28px;
             color: #eee;
-            margin-bottom: 40px;
+            margin-bottom: 50px;
         }
 
         .stage {
             display: inline-block;
-            width: 160px;
+            width: 180px;
             margin: 20px;
-            background-color: #333;
-            border-radius: 12px;
+            background-color: #21262d;
+            border-radius: 15px;
             padding: 20px;
-            transition: all 0.3s ease;
+            transition: all 0.4s ease;
             cursor: pointer;
             text-align: center;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
         }
 
         .stage:hover {
-            transform: translateY(-10px);
+            transform: translateY(-15px);
             background-color: #4A90E2;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
         }
 
         .stage img {
-            width: 120px;
-            height: 120px;
-            margin-bottom: 15px;
+            width: 130px;
+            height: 130px;
+            margin-bottom: 20px;
             border-radius: 50%;
-            border: 4px solid #555;
+            border: 5px solid #4A90E2;
+            transition: all 0.4s ease;
+        }
+
+        .stage:hover img {
+            transform: rotate(360deg);
         }
 
         .stage p {
             color: #fff;
-            font-size: 18px;
+            font-size: 20px;
             margin: 0;
         }
 
         .footer-links {
-            margin-top: 30px;
+            margin-top: 50px;
         }
 
         .footer-links a {
             color: #4A90E2;
-            margin: 0 20px;
+            margin: 0 30px;
             text-decoration: none;
-            font-size: 18px;
-            transition: color 0.2s;
+            font-size: 20px;
+            transition: color 0.3s;
         }
 
         .footer-links a:hover {
             color: #fff;
-        }
-
-        /* تنسيق النتائج */
-        #results {
-            margin-top: 20px;
-            color: #4A90E2;
-            font-size: 18px;
-            text-align: left;
-            padding: 0 20px;
-        }
-
-        .result-item {
-            background-color: #2c2c2c;
-            padding: 10px;
-            margin-bottom: 10px;
-            border-radius: 10px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
         }
     </style>
 </head>
@@ -125,67 +106,34 @@
 
     <div class="header">
         <h1>Hema_Tech1</h1>
-        <input type="text" class="search-bar" id="search" placeholder="ابحث هنا...">
     </div>
 
     <div class="section">
         <h2>مرحباً 👋 الرجاء اختيار القسم الذي تحتاجه من الاسفل ❤️</h2>
 
+        <!-- قسم شروحات يوتيوب -->
         <div class="stage" onclick="location.href='youtube.html';">
             <img src="https://media.discordapp.net/attachments/981018615316906005/1286126575498170468/20240919_025952.png" alt="شروحات يوتيوب">
             <p>شروحات يوتيوب</p>
         </div>
 
+        <!-- قسم سكربتات روبلوكس -->
         <div class="stage" onclick="location.href='scribt.html';">
             <img src="https://media.discordapp.net/attachments/981018615316906005/1286127452346646578/20240919_035022.png" alt="سكربتات روبلوكس">
             <p>سكربتات روبلوكس</p>
         </div>
 
+        <!-- قسم هاكات روبلوكس -->
         <div class="stage" onclick="location.href='hack.html';">
             <img src="https://media.discordapp.net/attachments/981018615316906005/1286127870573285478/20240919_035241.png" alt="هاكات روبلوكس">
             <p>هاكات روبلوكس</p>
         </div>
     </div>
 
-    <!-- منطقة عرض النتائج -->
-    <div id="results"></div>
-
     <div class="footer-links">
         <a href="https://hematech-script.netlify.app/contact.html" target="_blank">Contact</a>
         <a href="https://hematech-script.netlify.app/privacy.html" target="_blank">privacy policy</a>
     </div>
-
-    <script>
-        document.getElementById('search').addEventListener('keyup', function() {
-            let query = this.value.toLowerCase();
-            let resultsContainer = document.getElementById('results');
-            resultsContainer.innerHTML = ''; // تفريغ النتائج السابقة
-
-            fetch('files.json')
-                .then(response => response.json())
-                .then(filesData => {
-                    fetch('data.json')
-                        .then(response => response.json())
-                        .then(dataData => {
-                            let results = [...filesData, ...dataData].filter(item => 
-                                item.name.toLowerCase().includes(query)
-                            );
-
-                            // عرض النتائج
-                            if (results.length > 0) {
-                                results.forEach(result => {
-                                    let resultItem = document.createElement('div');
-                                    resultItem.className = 'result-item';
-                                    resultItem.innerText = result.name;
-                                    resultsContainer.appendChild(resultItem);
-                                });
-                            } else {
-                                resultsContainer.innerText = 'لا توجد نتائج مطابقة';
-                            }
-                        });
-                });
-        });
-    </script>
 
 </body>
 </html>
