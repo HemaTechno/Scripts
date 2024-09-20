@@ -93,6 +93,22 @@
             // تخزين السكربتات المحدثة
             localStorage.setItem('scripts', JSON.stringify(scripts));
 
+            // إرسال البيانات إلى السيرفر لحفظها في script.json
+            fetch('/save-script', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(scriptData)
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log('Success:', data);
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+            });
+
             // إعادة تعيين النموذج
             document.getElementById('addScriptForm').reset();
 
