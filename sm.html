@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scripts from MongoDB</title>
+    <style>
+        /* Your existing styles here */
+    </style>
+</head>
+<body>
+    <div id="boxContainer"></div>
+    <button id="backHome" onclick="goToHome()">الرجوع إلى الصفحة الرئيسية</button>
+
+    <script>
+        // جلب البيانات من MongoDB
+        fetch('http://localhost:3000/api/scripts')
+            .then(response => response.json())
+            .then(data => {
+                createBoxes(data); // عرض البيانات
+            })
+            .catch(error => console.error('Error loading data:', error));
+
+        // الدالة التي تضيف المربعات إلى الصفحة
+        function createBoxes(data) {
+            const boxContainer = document.getElementById('boxContainer');
+            data.forEach(box => {
+                const container = document.createElement('div');
+                container.classList.add('container');
+                container.id = `box-${box._id}`; // استخدم _id بدلاً من id
+
+                container.innerHTML = `
+                    <div class="status">
+                        <a href="${box.youtubeLink}">
+                            <img src="${box.imageUrl}" class="icon">
+                        </a>
+                        <h1>${box.title}</h1>
+                        <p>${box.description}</p>
+                    </div>
+                    <div class="key-container">
+                        <p id="script-${box._id}">${box.scriptText}</p>
+                        <button onclick="copyScriptText('${box._id}')">نسخ السكربت</button>
+                    </div>
+                    <div class="footer">
+                        <a href="https://discord.com/invite/WT2c6f34rD">Discord</a>
+                        <a href="${box.youtubeLink}">YouTube</a>
+                    </div>
+                `;
+                boxContainer.appendChild(container);
+            });
+        }
+
+        function goToHome() {
+            window.location.href = 'index.html'; // عدل الرابط إلى الصفحة الرئيسية
+        }
+    </script>
+</body>
+</html>
