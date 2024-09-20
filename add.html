@@ -42,9 +42,42 @@
         <button type="submit">Add Script</button>
     </form>
 
+    <h2>Stored Scripts:</h2>
+    <div id="storedScripts"></div>
+
     <script>
-        document.getElementById('addScriptForm').addEventListener('submit', async function(e) {
+        // عرض السكربتات المخزنة
+        function displayStoredScripts() {
+            const storedScripts = JSON.parse(localStorage.getItem('scripts')) || [];
+            const storedScriptsDiv = document.getElementById('storedScripts');
+            storedScriptsDiv.innerHTML = ''; // مسح المحتويات السابقة
+
+            storedScripts.forEach((script, index) => {
+                const scriptDiv = document.createElement('div');
+                scriptDiv.innerHTML = `
+                    <h3>${script.title}</h3>
+                    <p>${script.description}</p>
+                    <a href="${script.youtubeLink}">YouTube Link</a>
+                    <p>${script.scriptText}</p>
+                    <button onclick="deleteScript(${index})">Delete</button>
+                    <hr>
+                `;
+                storedScriptsDiv.appendChild(scriptDiv);
+            });
+        }
+
+        // حذف سكربت معين
+        function deleteScript(index) {
+            let scripts = JSON.parse(localStorage.getItem('scripts')) || [];
+            scripts.splice(index, 1);
+            localStorage.setItem('scripts', JSON.stringify(scripts));
+            displayStoredScripts(); // إعادة عرض السكربتات
+        }
+
+        // إضافة سكربت جديد
+        document.getElementById('addScriptForm').addEventListener('submit', function(e) {
             e.preventDefault();
+
             const scriptData = {
                 title: document.getElementById('title').value,
                 description: document.getElementById('description').value,
@@ -53,27 +86,24 @@
                 scriptText: document.getElementById('scriptText').value
             };
 
-            try {
-                const response = await fetch('http://localhost:3000/api/scripts', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify(scriptData)
-                });
+            // جلب السكربتات المخزنة في Local Storage
+            let scripts = JSON.parse(localStorage.getItem('scripts')) || [];
+            scripts.push(scriptData);
 
-                if (response.ok) {
-                    const data = await response.json();
-                    alert('Script added successfully!');
-                    document.getElementById('addScriptForm').reset();
-                } else {
-                    const errorData = await response.json();
-                    alert(`Error: ${errorData.message || 'Failed to add script.'}`);
-                }
-            } catch (error) {
-                alert(`Network error: ${error.message}`);
-            }
+            // تخزين السكربتات المحدثة
+            localStorage.setItem('scripts', JSON.stringify(scripts));
+
+            // إعادة تعيين النموذج
+            document.getElementById('addScriptForm').reset();
+
+            // إعادة عرض السكربتات المخزنة
+            displayStoredScripts();
+
+            alert('Script added successfully!');
         });
+
+        // عرض السكربتات المخزنة عند تحميل الصفحة
+        window.onload = displayStoredScripts;
     </script>
 </body>
 </html>
