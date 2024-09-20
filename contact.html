@@ -46,13 +46,19 @@
         button:hover {
             background-color: #555;
         }
+        .confirmation {
+            text-align: center;
+            color: green;
+            margin-top: 20px;
+            display: none;
+        }
     </style>
 </head>
 <body>
 
     <div class="container">
         <h2>اتصل بنا</h2>
-        <form action="#" method="post">
+        <form id="contactForm">
             <label for="name">الاسم الكامل:</label>
             <input type="text" id="name" name="name" placeholder="أدخل اسمك الكامل" required>
 
@@ -64,8 +70,22 @@
 
             <button type="submit">إرسال</button>
         </form>
+        <p class="confirmation" id="confirmationMessage">تم إرسال رسالتك بنجاح!</p>
     </div>
+
+    <script>
+        document.getElementById('contactForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // لمنع إعادة تحميل الصفحة
+
+            // عرض رسالة التأكيد
+            document.getElementById('confirmationMessage').style.display = 'block';
+
+            // مسح الحقول
+            document.getElementById('name').value = '';
+            document.getElementById('email').value = '';
+            document.getElementById('message').value = '';
+        });
+    </script>
 
 </body>
 </html>
-          
