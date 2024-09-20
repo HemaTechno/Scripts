@@ -8,7 +8,7 @@ app.use(cors());
 app.use(express.json()); // Parse JSON data
 
 // اتصال بقاعدة بيانات MongoDB
-mongoose.connect('mongodb://localhost:27017/scriptsDB', { useNewUrlParser: true, useUnifiedTopology: true })
+mongoose.connect('mongodb+srv://Arabm:Arabm@cluster0.rakl4qh.mongodb.net/?retryWrites=true&w=majority', { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => console.log('Connected to MongoDB'))
   .catch(err => console.error('Could not connect to MongoDB', err));
 
