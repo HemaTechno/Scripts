@@ -3,9 +3,40 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Scripts from MongoDB</title>
+    <title>Scripts from Local Storage</title>
     <style>
         /* Your existing styles here */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            padding: 20px;
+        }
+        .container {
+            background-color: #fff;
+            padding: 15px;
+            margin-bottom: 15px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .icon {
+            width: 100%;
+            height: auto;
+            margin-bottom: 10px;
+        }
+        button {
+            padding: 10px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #218838;
+        }
+        .footer a {
+            margin-right: 10px;
+        }
     </style>
 </head>
 <body>
@@ -13,21 +44,21 @@
     <button id="backHome" onclick="goToHome()">الرجوع إلى الصفحة الرئيسية</button>
 
     <script>
-        // جلب البيانات من MongoDB
-        fetch('http://localhost:3000/api/scripts')
-            .then(response => response.json())
-            .then(data => {
-                createBoxes(data); // عرض البيانات
-            })
-            .catch(error => console.error('Error loading data:', error));
+        // جلب البيانات من Local Storage
+        function getLocalStorageData() {
+            const data = localStorage.getItem('scripts'); // افترض أن البيانات مخزنة تحت المفتاح 'scripts'
+            return data ? JSON.parse(data) : [];
+        }
 
-        // الدالة التي تضيف المربعات إلى الصفحة
+        // دالة لعرض المربعات بناءً على البيانات المخزنة
         function createBoxes(data) {
             const boxContainer = document.getElementById('boxContainer');
+            boxContainer.innerHTML = ''; // تفريغ المحتوى الحالي
+
             data.forEach(box => {
                 const container = document.createElement('div');
                 container.classList.add('container');
-                container.id = `box-${box._id}`; // استخدم _id بدلاً من id
+                container.id = `box-${box.id}`; // استخدام معرف فريد لكل سكربت
 
                 container.innerHTML = `
                     <div class="status">
@@ -38,8 +69,8 @@
                         <p>${box.description}</p>
                     </div>
                     <div class="key-container">
-                        <p id="script-${box._id}">${box.scriptText}</p>
-                        <button onclick="copyScriptText('${box._id}')">نسخ السكربت</button>
+                        <p id="script-${box.id}">${box.scriptText}</p>
+                        <button onclick="copyScriptText('${box.id}')">نسخ السكربت</button>
                     </div>
                     <div class="footer">
                         <a href="https://discord.com/invite/WT2c6f34rD">Discord</a>
@@ -50,9 +81,31 @@
             });
         }
 
+        // دالة لنسخ نص السكربت إلى الحافظة
+        function copyScriptText(id) {
+            const scriptTextElement = document.getElementById(`script-${id}`);
+            const scriptText = scriptTextElement.textContent;
+
+            navigator.clipboard.writeText(scriptText)
+                .then(() => {
+                    alert('تم نسخ السكربت بنجاح');
+                })
+                .catch(err => {
+                    console.error('خطأ في نسخ السكربت: ', err);
+                    alert('فشل في نسخ السكربت. حاول مجدداً.');
+                });
+        }
+
+        // دالة الانتقال إلى الصفحة الرئيسية
         function goToHome() {
             window.location.href = 'index.html'; // عدل الرابط إلى الصفحة الرئيسية
         }
+
+        // استدعاء الدالة عند تحميل الصفحة
+        window.onload = function() {
+            const data = getLocalStorageData();
+            createBoxes(data);
+        };
     </script>
 </body>
 </html>
