@@ -58,6 +58,7 @@
             cursor: pointer;
             text-align: center;
             box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+            position: relative; /* لإمكانية وضع الصورة بشكل مطلق */
         }
 
         .stage:hover {
@@ -69,20 +70,19 @@
         .stage img {
             width: 130px;
             height: 130px;
-            margin-bottom: 20px;
+            margin-bottom: 10px;
             border-radius: 50%;
             border: 5px solid #4A90E2;
-            transition: all 0.4s ease;
-        }
-
-        .stage:hover img {
-            transform: rotate(360deg);
+            position: absolute; /* جعل الصورة مطلقة */
+            top: -40px; /* رفع الصورة فوق الصندوق */
+            left: 50%;
+            transform: translateX(-50%); /* توسيط الصورة */
         }
 
         .stage p {
             color: #fff;
             font-size: 20px;
-            margin: 0;
+            margin: 60px 0 0 0; /* تعديل المسافة لتكون مناسبة */
         }
 
         .footer-links {
