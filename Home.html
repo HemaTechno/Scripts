@@ -8,8 +8,8 @@
     <style>
         body {
             font-family: 'Arial', sans-serif;
-            background-color: #1a1a1a; /* خلفية داكنة */
-            color: #fff;
+            background-color: #121212; /* خلفية داكنة */
+            color: #E0E0E0; /* لون النص الفاتح */
             margin: 0;
             padding: 0;
             direction: rtl;
@@ -17,34 +17,35 @@
         }
 
         .header {
-            background-color: #4A90E2;
+            background: linear-gradient(90deg, #FF6F61, #D7263D); /* تدرج لوني للعنوان */
             padding: 20px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* ظل */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
         }
 
         .header h1 {
             margin: 0;
             font-size: 28px;
+            color: #fff;
         }
 
         .section {
             margin: 40px auto;
             max-width: 600px;
-            background-color: #2c2c2c; /* لون خلفية الصندوق */
+            background: #1E1E1E; /* خلفية الصندوق */
             padding: 30px;
             border-radius: 15px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
         }
 
         .section h2 {
             font-size: 24px;
-            color: #eee;
+            color: #FF6F61;
             margin-bottom: 40px;
         }
 
         .stage {
             display: inline-block;
-            width: 160px;
+            width: 180px;
             margin: 20px;
             background-color: #333;
             border-radius: 12px;
@@ -54,11 +55,12 @@
             text-align: center;
             color: #fff;
             font-size: 18px;
+            background: linear-gradient(45deg, #FF6F61, #D7263D); /* تدرج للأزرار */
         }
 
         .stage:hover {
             transform: translateY(-10px); /* تحريك الصندوق عند التمرير */
-            background-color: #4A90E2; /* لون عند التمرير */
+            background: #FF6F61; /* لون عند التمرير */
         }
 
         .footer-links {
@@ -66,7 +68,7 @@
         }
 
         .footer-links a {
-            color: #4A90E2;
+            color: #FF6F61;
             margin: 0 20px;
             text-decoration: none;
             font-size: 18px;
