@@ -1,11 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8337153050970662"
-
-
-    
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Download Scripts</title>
@@ -51,14 +46,6 @@
             color: #d4d4d4;
             margin-bottom: 15px;
         }
-        .icon {
-            display: block;
-            width: 100%;
-            height: auto;
-            border-radius: 8px;
-            margin-bottom: 15px;
-            border: 1px solid #ffffff;
-        }
         .key-container {
             background-color: #27293d;
             padding: 10px;
@@ -66,12 +53,7 @@
             border: 1px solid #4e4e50;
             margin-bottom: 10px;
         }
-        .key-container p {
-            font-size: 12px;
-            word-wrap: break-word;
-            color: #e1e1e1;
-        }
-        button {
+        .key-container button {
             background-color: #ff4757;
             color: #ffffff;
             border: none;
@@ -82,7 +64,7 @@
             transition: background-color 0.3s;
             margin: 5px 0;
         }
-        button:hover {
+        .key-container button:hover {
             background-color: #e84118;
         }
         .footer {
@@ -97,15 +79,23 @@
         .footer a:hover {
             text-decoration: underline;
         }
+        /* زر العودة للصفحة الرئيسية */
         .back-home {
             position: fixed;
             bottom: 20px;
-            right: 20px;
+            left: 20px;
             background-color: #6ab04c;
-            padding: 10px;
+            padding: 12px 20px;
             border-radius: 8px;
             text-decoration: none;
             color: #fff;
+            font-size: 14px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+            transition: background-color 0.3s, transform 0.3s;
+        }
+        .back-home:hover {
+            background-color: #4caf50;
+            transform: translateY(-3px);
         }
     </style>
 </head>
@@ -126,7 +116,6 @@
 
                 container.innerHTML = `
                     <div class="status">
-                        
                         <h1>${box.title}</h1>
                         <p>${box.description}</p>
                     </div>
@@ -161,5 +150,3 @@
     </script>
 </body>
 </html>
-
-
