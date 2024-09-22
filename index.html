@@ -1,100 +1,157 @@
 <!DOCTYPE html>
 <html lang="ar">
 <head>
-
+  
+  
 <script src="https://alwingulla.com/88/tag.min.js" data-zone="102579" async data-cfasync="false"></script>
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8337153050970662"
-     crossorigin="anonymous"></script>
+        crossorigin="anonymous"></script>
 
+    <!-- SEO and Meta Tags -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="أفضل موقع يقدم شروحات و سكربتات و هاكات روبلوكس.">
     <meta name="keywords" content="هيما تيك, روبلوكس, شروحات, سكربتات, هاكات">
     <meta property="og:image" content="https://media.discordapp.net/attachments/1135848559607021680/1286131920039579658/20240918_221032.jpg?ex=66eccb30&is=66eb79b0&hm=7b5976954e142b8700d8b28b810d6450e2569109ff455be3dda0b7e2453101f0&">
     <meta name="author" content="Hema_Tech1">
 
-    
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hema Tech</title>
+    <!-- Title -->
+    <title>Hema Tech - صور بدون مربعات</title>
 
+    <!-- Custom Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&family=Tajawal:wght@500;800&display=swap" rel="stylesheet">
+    
+    <!-- Stylesheet -->
     <style>
         body {
-            font-family: 'Arial', sans-serif;
-            background-color: #121212; /* خلفية داكنة */
-            color: #E0E0E0; /* لون النص الفاتح */
+            font-family: 'Tajawal', sans-serif;
+            background-color: #0D0D0D; /* خلفية داكنة */
+            color: #F0F0F0; /* لون نص فاتح */
             margin: 0;
             padding: 0;
             direction: rtl;
             text-align: center;
+            overflow-x: hidden;
+            position: relative;
         }
 
         .header {
-            background: linear-gradient(90deg, #FF6F61, #D7263D); /* تدرج لوني للعنوان */
-            padding: 20px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            background: linear-gradient(135deg, #FF512F, #DD2476); /* تدرج أفضل */
+            padding: 40px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
+            border-bottom: 4px solid #FF512F; /* خط سفلي */
+            position: relative;
         }
 
         .header h1 {
             margin: 0;
-            font-size: 28px;
-            color: #fff;
+            font-size: 36px;
+            font-weight: 800;
+            color: #FFF;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* تأثير الاسم المتحرك في جميع الاتجاهات */
+        .watermark {
+            position: absolute;
+            font-size: 80px;
+            font-weight: 800;
+            color: rgba(255, 255, 255, 0.08);
+            white-space: nowrap;
+            animation: move 15s infinite ease-in-out;
+            z-index: 1;
+        }
+
+        @keyframes move {
+            0% {
+                top: 0;
+                left: 0;
+            }
+            25% {
+                top: 0;
+                left: 80%;
+            }
+            50% {
+                top: 80%;
+                left: 80%;
+            }
+            75% {
+                top: 80%;
+                left: 0;
+            }
+            100% {
+                top: 0;
+                left: 0;
+            }
         }
 
         .section {
-            margin: 40px auto;
-            max-width: 600px;
-            background: #1E1E1E; /* خلفية الصندوق */
-            padding: 30px;
-            border-radius: 15px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+            margin: 60px auto;
+            max-width: 800px;
+            background: #1E1E1E;
+            padding: 50px;
+            border-radius: 20px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.7);
+            text-align: center;
         }
 
         .section h2 {
-            font-size: 24px;
-            color: #FF6F61;
-            margin-bottom: 40px;
+            font-size: 28px;
+            color: #FF512F;
+            margin-bottom: 50px;
+            font-weight: 700;
         }
 
-        .stage {
+        .image-wrapper {
             display: inline-block;
-            width: 180px;
-            margin: 20px;
-            background-color: #333;
-            border-radius: 12px;
-            padding: 20px;
-            transition: all 0.3s ease;
-            cursor: pointer;
+            margin: 30px;
             text-align: center;
-            color: #fff;
-            font-size: 18px;
-            background: linear-gradient(45deg, #FF6F61, #D7263D); /* تدرج للأزرار */
         }
 
-        .stage:hover {
-            transform: translateY(-10px); /* تحريك الصندوق عند التمرير */
-            background: #FF6F61; /* لون عند التمرير */
+        .image-wrapper img {
+            width: 180px; /* حجم الصورة */
+            height: 180px;
+            border-radius: 20px; /* حواف مستديرة */
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.4);
+            transition: transform 0.4s ease;
+            /* تم إزالة الإطار */
+        }
+
+        .image-wrapper img:hover {
+            transform: scale(1.05);
+            box-shadow: 0 12px 20px rgba(0, 0, 0, 0.6);
+        }
+
+        .image-wrapper p {
+            margin: 10px 0 0 0;
+            font-size: 18px;
+            color: #FFF;
         }
 
         .footer-links {
-            margin-top: 30px;
+            margin-top: 50px;
         }
 
         .footer-links a {
-            color: #FF6F61;
-            margin: 0 20px;
+            color: #FF512F;
+            margin: 0 25px;
             text-decoration: none;
-            font-size: 18px;
-            transition: color 0.2s;
+            font-size: 20px;
+            transition: color 0.2s ease;
         }
 
         .footer-links a:hover {
-            color: #fff; /* لون النص عند التمرير */
+            color: #FFF;
         }
 
-        /* أيقونات */
-        .icon {
-            font-size: 50px;
-            margin-bottom: 10px;
-            display: block;
+        /* محاذاة الصور في منتصف الإطار */
+        .image-container {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
         }
     </style>
 </head>
@@ -104,25 +161,31 @@
         <h1>Hema_Tech1</h1>
     </div>
 
+    <!-- إضافة الاسم المتحرك في جميع الاتجاهات -->
+    <div class="watermark">Hema_Tech1</div>
+
     <div class="section">
         <h2>مرحباً 👋 الرجاء اختيار القسم الذي تحتاجه من الأسفل ❤️</h2>
 
-        <!-- قسم شروحات يوتيوب -->
-        <div class="stage" onclick="location.href='youtube.html';">
-            <span class="icon">🎥</span> <!-- أيقونة بسيطة للفيديو -->
-            <p>شروحات يوتيوب</p>
-        </div>
+        <!-- محاذاة الصور في وسط الإطار -->
+        <div class="image-container">
+            <!-- صورة شروحات يوتيوب -->
+            <div class="image-wrapper" onclick="location.href='youtube.html';">
+                <img src="https://i.ibb.co/LJ6g5fV/youtube-6616310-1280.png" alt="YouTube Icon"> <!-- صورة لقسم يوتيوب -->
+                <p>شروحات يوتيوب</p>
+            </div>
 
-        <!-- قسم سكربتات روبلوكس -->
-        <div class="stage" onclick="location.href='scribt.html';">
-            <span class="icon">💻</span> <!-- أيقونة بسيطة للسكربتات -->
-            <p>سكربتات روبلوكس</p>
-        </div>
+            <!-- صورة سكربتات روبلوكس -->
+            <div class="image-wrapper" onclick="location.href='scribt.html';">
+                <img src="https://i.ibb.co/gyCmyW5/857be566305bd92dbcffcdd494542c744f887cc5.png" alt="Scripting Icon"> <!-- صورة لقسم السكربتات -->
+                <p>سكربتات روبلوكس</p>
+            </div>
 
-        <!-- قسم هاكات روبلوكس -->
-        <div class="stage" onclick="location.href='hack.html';">
-            <img src="https://i.ibb.co/PhqzTMf/20240922-151445.png" alt="Hack Icon" style="width:50px;height:50px;"> <!-- إضافة صورة -->
-   <p>هاكات روبلوكس</p>
+            <!-- صورة هاكات روبلوكس -->
+            <div class="image-wrapper" onclick="location.href='hack.html';">
+                <img src="https://i.ibb.co/88Lkd0w/Png-1.png" alt="Hack Icon"> <!-- صورة لقسم الهاكات -->
+                <p>هاكات روبلوكس</p>
+            </div>
         </div>
     </div>
 
