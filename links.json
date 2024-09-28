@@ -1,0 +1,28 @@
+{
+  "Tesuo": {
+    "title": "TesuoHub",
+    "description": "Complete the actions and unlock the link.",
+    "image": "https://i.ibb.co/wcKvRXV/20240927-172625.jpg",
+    "steps": [
+      {
+        "title": "Subscribe & Turn Notifications On",
+        "type": "youtube",
+        "videoId": "RwVUK1v6Mt8",
+        "status": false
+      },
+      {
+        "title": "Like & Comment",
+        "type": "youtube",
+        "videoId": "RwVUK1v6Mt8",
+        "status": false
+      },
+      {
+        "title": "Join Channel Telegram",
+        "type": "link",
+        "url": "https://t.me/hscripts",
+        "status": false
+      }
+    ],
+    "finalLink": "https://h-scripts.site/scripts#9"
+  }
+}
