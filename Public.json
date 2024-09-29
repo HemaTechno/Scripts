@@ -1,5 +1,12 @@
 [
  {
+    "id": "19",
+    "title": "👍سكربت تغير اسماء الناس👍",
+    "description": "كل الحقوق لــ تيم هيما تيك",
+    "youtubeLink": "https://youtube.com/@hema_tech1?si=9l9NuXEKaowNK-hq",
+    "scriptText": "loadstring(game:HttpGet\"https://raw.githubusercontent.com/Basicallyy/Basicallyy/main/MinGamingV4.lua\")()"
+ },
+ {
     "id": "18",
     "title": "👍سكربت pear cat 👍",
     "description": "كل الحقوق لــ تيم هيما تيك",
