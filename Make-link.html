@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>نموذج إدخال بيانات AnDepZaiHub</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #1a1e27;
+            color: #fff;
+            padding: 20px;
+            text-align: right;
+            direction: rtl;
+        }
+        form {
+            background-color: #2c3140;
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.4);
+            max-width: 500px;
+            margin: auto;
+        }
+        label {
+            margin-bottom: 10px;
+            display: block;
+        }
+        input, textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: none;
+            border-radius: 5px;
+            background-color: #3b404a;
+            color: #fff;
+        }
+        button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            width: 100%;
+            margin-bottom: 20px;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        pre {
+            background-color: #f1f1f1;
+            color: #000;
+            padding: 10px;
+            border-radius: 5px;
+            white-space: pre-wrap; 
+            word-wrap: break-word; 
+            margin-top: 20px;
+        }
+        #copyButton {
+            background-color: #28a745;
+        }
+        #copyButton:hover {
+            background-color: #218838;
+        }
+    </style>
+</head>
+<body>
+
+    <form id="hubForm">
+        <label for="title">العنوان:</label>
+        <input type="text" id="title" required>
+
+        <label for="description">الوصف:</label>
+        <textarea id="description" rows="4" required></textarea>
+
+        <label for="image">رابط الصورة:</label>
+        <input type="url" id="image" required>
+
+        <label for="step1Title">عنوان الخطوة 1:</label>
+        <input type="text" id="step1Title" required>
+
+        <label for="step1Type">نوع الخطوة 1 (youtube أو link):</label>
+        <input type="text" id="step1Type" required>
+
+        <label for="step1VideoId">معرّف الفيديو أو الرابط للخطوة 1:</label>
+        <input type="text" id="step1VideoId" required>
+
+        <label for="step2Title">عنوان الخطوة 2:</label>
+        <input type="text" id="step2Title" required>
+
+        <label for="step2Type">نوع الخطوة 2 (youtube أو link):</label>
+        <input type="text" id="step2Type" required>
+
+        <label for="step2VideoId">معرّف الفيديو أو الرابط للخطوة 2:</label>
+        <input type="text" id="step2VideoId" required>
+
+        <label for="step3Title">عنوان الخطوة 3:</label>
+        <input type="text" id="step3Title" required>
+
+        <label for="step3Type">نوع الخطوة 3 (youtube أو link):</label>
+        <input type="text" id="step3Type" required>
+
+        <label for="step3Url">الرابط للخطوة 3:</label>
+        <input type="url" id="step3Url" required>
+
+        <label for="finalLink">الرابط النهائي:</label>
+        <input type="url" id="finalLink" required>
+
+        <button type="submit">إنشاء JSON</button>
+    </form>
+
+    <pre id="jsonOutput"></pre>
+
+    <button id="copyButton" style="display:none;">نسخ JSON</button>
+
+    <script>
+        document.getElementById('hubForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            const title = document.getElementById('title').value;
+            const description = document.getElementById('description').value;
+            const image = document.getElementById('image').value;
+
+            const step1Title = document.getElementById('step1Title').value;
+            const step1Type = document.getElementById('step1Type').value;
+            const step1VideoId = document.getElementById('step1VideoId').value;
+
+            const step2Title = document.getElementById('step2Title').value;
+            const step2Type = document.getElementById('step2Type').value;
+            const step2VideoId = document.getElementById('step2VideoId').value;
+
+            const step3Title = document.getElementById('step3Title').value;
+            const step3Type = document.getElementById('step3Type').value;
+            const step3Url = document.getElementById('step3Url').value;
+
+            const finalLink = document.getElementById('finalLink').value;
+
+            const jsonData = {
+                [title]: {
+                    "title": title,
+                    "description": description,
+                    "image": image,
+                    "steps": [
+                        {
+                            "title": step1Title,
+                            "type": step1Type,
+                            "videoId": step1VideoId,
+                            "status": false
+                        },
+                        {
+                            "title": step2Title,
+                            "type": step2Type,
+                            "videoId": step2VideoId,
+                            "status": false
+                        },
+                        {
+                            "title": step3Title,
+                            "type": step3Type,
+                            "url": step3Url,
+                            "status": false
+                        }
+                    ],
+                    "finalLink": finalLink
+                }
+            };
+
+            document.getElementById('jsonOutput').textContent = JSON.stringify(jsonData, null, 4);
+            document.getElementById('copyButton').style.display = 'block';
+        });
+
+        // Function to copy JSON text to clipboard
+        document.getElementById('copyButton').addEventListener('click', function() {
+            const jsonOutput = document.getElementById('jsonOutput').textContent;
+            navigator.clipboard.writeText(jsonOutput).then(function() {
+                alert('تم نسخ JSON بنجاح!');
+            }, function(err) {
+                alert('فشل في نسخ JSON: ' + err);
+            });
+        });
+    </script>
+
+</body>
+</html>
