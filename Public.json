@@ -1,4 +1,11 @@
 [
+ {
+    "id": "18",
+    "title": "👍سكربت pear cat 👍",
+    "description": "كل الحقوق لــ تيم هيما تيك",
+    "youtubeLink": "https://youtube.com/@hema_tech1?si=9l9NuXEKaowNK-hq",
+    "scriptText": "loadstring(game:HttpGet(\"https://raw.githubusercontent.com/Rafanchik123/script/refs/heads/main/blox%20bananav2\"))()"
+ },
   {
     "id": "17",
     "title": "👍سكربت Rivals👍",
