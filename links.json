@@ -1,8 +1,8 @@
 {
-  "Tesuo": {
-    "title": "TesuoHub",
+  "AnDepZaiHub": {
+    "title": "AnDepZaiHub",
     "description": "Complete the actions and unlock the link.",
-    "image": "https://i.ibb.co/wcKvRXV/20240927-172625.jpg",
+    "image": "https://iili.io/dZiU6Ab.png",
     "steps": [
       {
         "title": "Subscribe & Turn Notifications On",
@@ -17,12 +17,12 @@
         "status": false
       },
       {
-        "title": "Join Channel Telegram",
+        "title": "Read article",
         "type": "link",
-        "url": "https://t.me/hscripts",
+        "url": "https://noohapou.com/4/8165892",
         "status": false
       }
     ],
-    "finalLink": "https://h-scripts.site/scripts#9"
+    "finalLink": "https://h-scripts.site/scripts"
   }
 }
