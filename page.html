@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="عرض تفاصيل السكربتات والفيديوهات.">
+    <title>تفاصيل السكربت</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #1a1e27;
+            color: #fff;
+            text-align: right;
+            padding: 20px;
+            direction: rtl;
+        }
+        .video-container {
+            background-color: #2c3140;
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.4);
+            margin-bottom: 20px;
+        }
+        iframe {
+            width: 100%;
+            height: 400px; /* يمكنك تغيير الارتفاع حسب الحاجة */
+            border: none;
+            border-radius: 8px;
+        }
+        .script-container {
+            background-color: #2c3140;
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.4);
+        }
+        pre {
+            white-space: pre-wrap; 
+            word-wrap: break-word; 
+            background-color: #f1f1f1;
+            color: #000;
+            padding: 10px;
+            border-radius: 5px;
+        }
+        button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            margin-top: 10px;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .author-container {
+            display: flex;
+            align-items: center;
+            margin-top: 10px;
+        }
+        .author-image {
+            border-radius: 50%;
+            width: 40px; /* عرض الصورة */
+            height: 40px; /* ارتفاع الصورة */
+            margin-left: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="video-container">
+        <h1 id="videoTitle">عرض الفيديو</h1>
+        <p id="videoDescription"></p>
+        <div class="author-container">
+            <img id="authorImage" class="author-image" src="" alt="صورة المؤلف">
+            <span id="authorName"></span>
+        </div>
+        <iframe id="videoPlayer" src="" allowfullscreen></iframe>
+    </div>
+
+    <div class="script-container">
+        <h2>كود السكربت</h2>
+        <pre id="scriptContent"></pre>
+        <button onclick="copyScript()">نسخ الكود</button>
+    </div>
+
+    <script>
+        // استرجاع معلمة id من عنوان URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const id = urlParams.get('id');
+
+        // تحميل بيانات السكربتات
+        fetch('Script.json')
+            .then(response => response.json())
+            .then(data => {
+                const scriptData = data.find(item => item.id === id);
+                if (scriptData) {
+                    // إعداد عنوان الفيديو والوصف
+                    document.getElementById('videoTitle').textContent = scriptData.title;
+                    document.getElementById('videoDescription').textContent = scriptData.description;
+
+                    // إعداد معلومات المؤلف
+                    document.getElementById('authorImage').src = scriptData.authorImage;
+                    document.getElementById('authorName').textContent = scriptData.author;
+
+                    // إعداد الفيديو
+                    const videoPlayer = document.getElementById('videoPlayer');
+                    videoPlayer.src = `https://www.youtube.com/embed/${scriptData.videoUrl.split('/').pop()}`;
+
+                    // إعداد كود السكربت
+                    const scriptContent = document.getElementById('scriptContent');
+                    scriptContent.textContent = scriptData.script;
+                } else {
+                    alert('السكربت غير موجود.');
+                }
+            })
+            .catch(error => console.error('Error loading data:', error));
+
+        // وظيفة لنسخ كود السكربت
+        function copyScript() {
+            const scriptContent = document.getElementById('scriptContent');
+            navigator.clipboard.writeText(scriptContent.textContent)
+                .then(() => {
+                    alert('تم نسخ الكود إلى الحافظة!');
+                })
+                .catch(err => {
+                    console.error('فشل في نسخ الكود:', err);
+                });
+        }
+    </script>
+
+</body>
+</html>
