@@ -9,7 +9,7 @@
     "author": "Hema Tech ",
     "authorImage": "https://i.ibb.co/FVr4b2z/20240926-203252.jpg",
     "videoUrl": "https://youtu.be/4S0MfHFy1fg",
-    "script": "getgenv().Setting = {\n    [\"WhiteScreen\"] = false,\n    [\"TimeReset\"] = 4.5,\n    [\"ModFarm\"] = {\n        [\"StopItemLegendary\"] = true,\n        [\"SummonKillDarkbeard\"] = true\n    }\n}\nloadstring(game:HttpGet(\"https://raw.githubusercontent.com/Slimexiuem/MenuSlime/main/Farmchestv2\"))()"
+    "script": "loadstring(game:HttpGet(\"https://raw.githubusercontent.com/HemaTech1/Hema-Script/refs/heads/main/Auto\"))()"
     },
     {
     "id": "7",
@@ -20,7 +20,7 @@
     "imageUrl": "https://iili.io/dZiU6Ab.png",
     "author": "Hema Tech ",
     "authorImage": "https://i.ibb.co/FVr4b2z/20240926-203252.jpg",
-    "videoUrl": "https://youtu.be/4S0MfHFy1fg",
+    "videoUrl": "https://youtu.be/RQDyiy1PL8E",
     "script": "loadstring(game:HttpGet(\"https://raw.githubusercontent.com/AnDepZaiHub/AnDepZaiHubBeta/main/AnDepZaiHubBeta.lua\"))() "
     },
         {
