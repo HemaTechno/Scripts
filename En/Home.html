@@ -58,7 +58,7 @@
                 body: JSON.stringify({
                     message: 'Update data.json',
                     content: btoa(JSON.stringify(data)),
-                    sha: sha // استخدام الـ SHA الخاص بالملف
+                    sha: `6c96cc287a36031715c5b4b708e471ad667cd456` // استخدام الـ SHA الخاص بالملف
                 })
             }).then(response => response.json())
               .then(data => {
