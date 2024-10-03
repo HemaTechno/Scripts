@@ -1,5 +1,17 @@
 [
     {
+    "id": "Brookhaven2",
+    "title": "Rochips",
+    "description": "Understanding Lua: Lua is the primary language used for scripting in Roblox. It’s relatively easy to learn, especially for beginners, due to its simplicity and flexibility.",
+    "category": "Brookhaven",
+    "date": "2024-10-03",
+    "imageUrl": "https://i.ibb.co/nP1VZvh/20241003-131523.png",
+    "author": "Hema Tech ",
+    "authorImage": "https://i.ibb.co/FVr4b2z/20240926-203252.jpg",
+    "videoUrl": "https://youtu.be/b_DtRl4eD1I",
+    "script": "loadstring(game:HttpGet(\"https://rawscripts.net/raw/Universal-Script-rochips-universal-18294\"))()"
+    },
+    {
     "id": "Auto Chast",
     "title": "Auto Chast",
     "description": "Understanding Lua: Lua is the primary language used for scripting in Roblox. It’s relatively easy to learn, especially for beginners, due to its simplicity and flexibility.\n\n",
