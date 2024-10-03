@@ -1,1 +1,72 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>لوحة التحكم</title>
+</head>
+<body>
+    <h2>لوحة التحكم</h2>
+    <form id="controlPanelForm">
+        <label for="title">العنوان:</label>
+        <input type="text" id="title" name="title"><br><br>
+        
+        <label for="description">الوصف:</label>
+        <textarea id="description" name="description"></textarea><br><br>
 
+        <label for="imageUrl">رابط الصورة:</label>
+        <input type="text" id="imageUrl" name="imageUrl"><br><br>
+
+        <label for="youtubeLink">رابط يوتيوب:</label>
+        <input type="text" id="youtubeLink" name="youtubeLink"><br><br>
+
+        <label for="scriptText">نص السكربت:</label>
+        <textarea id="scriptText" name="scriptText"></textarea><br><br>
+
+        <button type="button" onclick="saveData()">حفظ البيانات</button>
+    </form>
+
+    <script>
+        async function saveData() {
+            const data = {
+                title: document.getElementById('title').value,
+                description: document.getElementById('description').value,
+                imageUrl: document.getElementById('imageUrl').value,
+                youtubeLink: document.getElementById('youtubeLink').value,
+                scriptText: document.getElementById('scriptText').value,
+            };
+
+            const token = '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'; // تأكد من إضافة التوكن الخاص بك هنا.
+
+            // Fetch current SHA of the file
+            const getFileResponse = await fetch('https://api.github.com/repos/HemaTechno/Scripts/contents/data.json', {
+                headers: {
+                    'Authorization': `Bearer ${token}`,
+                }
+            });
+
+            const fileData = await getFileResponse.json();
+            const sha = fileData.sha; // الـ SHA الخاص بالملف الحالي
+
+            // تحديث الملف
+            fetch('https://api.github.com/repos/HemaTechno/Scripts/contents/data.json', {
+                method: 'PUT',
+                headers: {
+                    'Authorization': `Bearer ${token}`,
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    message: 'Update data.json',
+                    content: btoa(JSON.stringify(data)),
+                    sha: sha // استخدام الـ SHA الخاص بالملف
+                })
+            }).then(response => response.json())
+              .then(data => {
+                  console.log('File updated:', data);
+              }).catch(error => {
+                  console.error('Error:', error);
+              });
+        }
+    </script>
+</body>
+</html>
