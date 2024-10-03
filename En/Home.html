@@ -74,24 +74,7 @@
 
     <div class="message" id="message"></div>
 
-    <script src="https://www.gstatic.com/firebasejs/9.1.3/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/9.1.3/firebase-firestore.js"></script>
     <script>
-        // إعداد Firebase
-        const firebaseConfig = {
-            apiKey: "AIzaSyDN6hj_5iKkC76RWGXax4f5DQOj8E4syTQ",
-            authDomain: "hema-fcf76.firebaseapp.com",
-            projectId: "hema-fcf76",
-            storageBucket: "hema-fcf76.appspot.com",
-            messagingSenderId: "76044728790",
-            appId: "1:76044728790:web:776cd44b329beee03ccc77",
-            measurementId: "G-MB5N3JM8M8"
-        };
-
-        // تهيئة Firebase
-        const app = firebase.initializeApp(firebaseConfig);
-        const db = firebase.firestore();
-
         function saveData() {
             const data = {
                 title: document.getElementById('title').value,
@@ -101,19 +84,23 @@
                 scriptText: document.getElementById('scriptText').value,
             };
 
-            // إضافة البيانات إلى Firestore
-            db.collection('data').add(data)
-            .then(() => {
-                // عرض رسالة نجاح
-                document.getElementById('message').innerText = 'تم حفظ البيانات بنجاح!';
+            fetch('http://localhost:3000/save-data', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(data)
+            })
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('message').innerText = data.message;
                 document.getElementById('message').style.color = 'green';
                 document.getElementById('controlPanelForm').reset(); // إعادة تعيين النموذج
             })
-            .catch((error) => {
-                // عرض رسالة خطأ
+            .catch(error => {
                 document.getElementById('message').innerText = 'حدث خطأ في حفظ البيانات: ' + error.message;
                 document.getElementById('message').style.color = 'red';
-                console.error('Error saving data: ', error); // عرض الخطأ في وحدة التحكم
+                console.error('Error saving data: ', error);
             });
         }
     </script>
