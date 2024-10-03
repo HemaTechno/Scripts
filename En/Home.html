@@ -45,7 +45,11 @@
             const data = await response.json();
             const content = JSON.parse(atob(data.content)); // فك تشفير المحتوى
             console.log('Fetched data:', content);
-            // يمكنك هنا استخدام البيانات المحفوظة
+        }
+
+        // دالة لتشفير النص
+        function toBase64(str) {
+            return btoa(unescape(encodeURIComponent(str)));
         }
 
         async function saveData() {
@@ -66,7 +70,7 @@
                     },
                     body: JSON.stringify({
                         message: 'Update data.json',
-                        content: btoa(JSON.stringify(data)),
+                        content: toBase64(JSON.stringify(data)), // استخدام الدالة المعدلة هنا
                         sha: '6c96cc287a36031715c5b4b708e471ad667cd456' // استخدم SHA الحالي
                     })
                 });
