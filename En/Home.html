@@ -49,6 +49,10 @@
                     // Append new data to the existing data
                     content.push(data);
 
+                    // Use TextEncoder to encode the content
+                    const encodedContent = new TextEncoder().encode(JSON.stringify(content));
+                    const base64Content = btoa(String.fromCharCode(...encodedContent));
+
                     // Update the file on GitHub
                     fetch('https://api.github.com/repos/HemaTechno/Scripts/contents/data.json', {
                         method: 'PUT',
@@ -58,7 +62,7 @@
                         },
                         body: JSON.stringify({
                             message: 'Update data.json',
-                            content: btoa(JSON.stringify(content)),
+                            content: base64Content,
                             sha: '6c96cc287a36031715c5b4b708e471ad667cd456' // استخدم الـ SHA الخاص بك هنا
                         })
                     }).then(response => {
