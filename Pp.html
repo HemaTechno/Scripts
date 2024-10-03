@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>لوحة التحكم</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            padding: 20px;
+        }
+        h2 {
+            text-align: center;
+        }
+        form {
+            background: white;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+            margin: 0 auto;
+        }
+        label {
+            display: block;
+            margin-bottom: 8px;
+        }
+        input, textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        button {
+            background: #28a745;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+        }
+        button:hover {
+            background: #218838;
+        }
+        .message {
+            margin-top: 20px;
+            text-align: center;
+            font-size: 1.2em;
+        }
+    </style>
+</head>
+<body>
+    <h2>لوحة التحكم</h2>
+    <form id="controlPanelForm">
+        <label for="title">العنوان:</label>
+        <input type="text" id="title" name="title" required>
+
+        <label for="description">الوصف:</label>
+        <textarea id="description" name="description" required></textarea>
+
+        <label for="imageUrl">رابط الصورة:</label>
+        <input type="text" id="imageUrl" name="imageUrl" required>
+
+        <label for="youtubeLink">رابط يوتيوب:</label>
+        <input type="text" id="youtubeLink" name="youtubeLink" required>
+
+        <label for="scriptText">نص السكربت:</label>
+        <textarea id="scriptText" name="scriptText" required></textarea>
+
+        <button type="button" onclick="saveData()">حفظ البيانات</button>
+    </form>
+
+    <div class="message" id="message"></div>
+
+    <script>
+        async function saveData() {
+            const data = {
+                title: document.getElementById('title').value,
+                description: document.getElementById('description').value,
+                imageUrl: document.getElementById('imageUrl').value,
+                youtubeLink: document.getElementById('youtubeLink').value,
+                scriptText: document.getElementById('scriptText').value,
+            };
+
+            const sha = await getCurrentSHA(); // الحصول على SHA الحالي
+            const response = await fetch('https://api.github.com/repos/HemaTechno/Scripts/contents/data.json', {
+                method: 'PUT',
+                headers: {
+                    'Authorization': 'token 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',
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    message: 'Update data.json',
+                    content: btoa(JSON.stringify(data)), // تحويل البيانات إلى قاعدة64
+                    sha: sha // استخدام SHA الحالي
+                })
+            });
+
+            const result = await response.json();
+            if (response.ok) {
+                document.getElementById('message').innerText = 'تم حفظ البيانات بنجاح!';
+                document.getElementById('message').style.color = 'green';
+                document.getElementById('controlPanelForm').reset();
+            } else {
+                document.getElementById('message').innerText = 'حدث خطأ في حفظ البيانات: ' + result.message;
+                document.getElementById('message').style.color = 'red';
+            }
+        }
+
+        async function getCurrentSHA() {
+            const response = await fetch('https://api.github.com/repos/HemaTechno/Scripts/contents/data.json', {
+                headers: {
+                    'Authorization': 'token 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',
+                }
+            });
+            const data = await response.json();
+            return data.sha; // إرجاع SHA الحالي
+        }
+    </script>
+</body>
+</html>
