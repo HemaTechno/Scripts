@@ -27,66 +27,68 @@
     </form>
 
     <script>
-        const repo = "HemaTechno/Scripts";
-        const filePath = "data.json";
-        const token = "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"; // استبدل هذا بالتوكن الخاص بك
-
-        async function getSHA() {
-            const response = await fetch(`https://api.github.com/repos/${repo}/contents/${filePath}`, {
+        async function fetchData() {
+            const response = await fetch('https://api.github.com/repos/HemaTechno/Scripts/contents/data.json', {
+                method: 'GET',
                 headers: {
-                    'Authorization': `token ${token}`,
-                    'Accept': 'application/vnd.github.v3.raw'
+                    'Authorization': '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' // استبدل هذا بالتوكن الخاص بك
                 }
             });
-            if (response.ok) {
-                const data = await response.json();
-                return data.sha; // إعادة SHA الحالي
-            } else {
-                const errorData = await response.json();
-                throw new Error(`خطأ في جلب البيانات: ${errorData.message}`);
+
+            if (!response.ok) {
+                const errorMessage = await response.json();
+                console.error('Error fetching data:', errorMessage);
+                alert('حدث خطأ في جلب البيانات: ' + errorMessage.message);
+                return;
             }
+
+            const data = await response.json();
+            const content = JSON.parse(atob(data.content)); // فك تشفير المحتوى
+            console.log('Fetched data:', content);
+            // يمكنك هنا استخدام البيانات المحفوظة
         }
 
         async function saveData() {
+            const data = {
+                title: document.getElementById('title').value,
+                description: document.getElementById('description').value,
+                imageUrl: document.getElementById('imageUrl').value,
+                youtubeLink: document.getElementById('youtubeLink').value,
+                scriptText: document.getElementById('scriptText').value,
+            };
+
             try {
-                const sha = await getSHA(); // الحصول على SHA الحالي
-
-                const data = {
-                    title: document.getElementById('title').value,
-                    description: document.getElementById('description').value,
-                    imageUrl: document.getElementById('imageUrl').value,
-                    youtubeLink: document.getElementById('youtubeLink').value,
-                    scriptText: document.getElementById('scriptText').value,
-                };
-
-                const base64Content = btoa(JSON.stringify(data)); // تحويل المحتوى إلى Base64
-
-                const response = await fetch(`https://api.github.com/repos/${repo}/contents/${filePath}`, {
+                const response = await fetch('https://api.github.com/repos/HemaTechno/Scripts/contents/data.json', {
                     method: 'PUT',
                     headers: {
-                        'Authorization': `token ${token}`,
+                        'Authorization': 'token YOUR_TOKEN_HERE', // استبدل هذا بالتوكن الخاص بك
                         'Content-Type': 'application/json',
                     },
                     body: JSON.stringify({
                         message: 'Update data.json',
-                        content: base64Content,
-                        sha: sha // استخدام SHA الحالي
+                        content: btoa(JSON.stringify(data)),
+                        sha: '6c96cc287a36031715c5b4b708e471ad667cd456' // استخدم SHA الحالي
                     })
                 });
 
-                if (response.ok) {
-                    const result = await response.json();
-                    console.log('تم تحديث الملف بنجاح:', result);
-                    alert('تم حفظ البيانات بنجاح!');
-                } else {
-                    const errorData = await response.json();
-                    throw new Error(`حدث خطأ في تحديث الملف: ${errorData.message}`);
+                if (!response.ok) {
+                    const errorMessage = await response.json();
+                    console.error('Error updating file:', errorMessage);
+                    alert('حدث خطأ في تحديث الملف: ' + errorMessage.message);
+                    return;
                 }
+
+                const result = await response.json();
+                console.log('File updated:', result);
+                alert('تم تحديث البيانات بنجاح!');
             } catch (error) {
-                console.error('خطأ:', error);
+                console.error('Fetch error:', error);
                 alert('حدث خطأ: ' + error.message);
             }
         }
+
+        // استدعاء الدالة لجلب البيانات عند تحميل الصفحة
+        fetchData();
     </script>
 </body>
 </html>
