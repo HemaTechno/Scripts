@@ -51,32 +51,30 @@
     ],
     "finalLink": "https://h-scripts.site/scripts"
   },
-  {
-    "Brookhaven": {
-        "title": "افضل سكربت ماب البيوت ",
-        "description": "افضل سكربت لحد الان لماب بيوت",
-        "image": "https://i.postimg.cc/Mn0KWMPY/20241003-131523.png",
-        "steps": [
-            {
-                "title": "Subscribe",
-                "type": "YouTube",
-                "videoId": "https://youtu.be/b_DtRl4eD1I",
-                "status": false
-            },
-            {
-                "title": "Like & Comment ",
-                "type": "YouTube ",
-                "videoId": "https://youtu.be/b_DtRl4eD1I",
-                "status": false
-            },
-            {
-                "title": "Read Article ",
-                "type": "Link",
-                "url": "https://noohapou.com/4/8165892",
-                "status": false
-            }
-        ],
-        "finalLink": "https://h-scripts.site/scripts"
-    }
-}
+  "Brookhaven": {
+    "title": "افضل سكربت ماب البيوت",
+    "description": "افضل سكربت لحد الان لماب بيوت",
+    "image": "https://i.postimg.cc/Mn0KWMPY/20241003-131523.png",
+    "steps": [
+      {
+        "title": "Subscribe",
+        "type": "youtube",
+        "videoId": "b_DtRl4eD1I",
+        "status": false
+      },
+      {
+        "title": "Like & Comment",
+        "type": "youtube",
+        "videoId": "b_DtRl4eD1I",
+        "status": false
+      },
+      {
+        "title": "Read Article",
+        "type": "link",
+        "url": "https://noohapou.com/4/8165892",
+        "status": false
+      }
+    ],
+    "finalLink": "https://h-scripts.site/scripts"
+  }
 }
