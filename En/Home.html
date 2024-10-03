@@ -9,19 +9,19 @@
     <h2>لوحة التحكم</h2>
     <form id="controlPanelForm">
         <label for="title">العنوان:</label>
-        <input type="text" id="title" name="title" required><br><br>
+        <input type="text" id="title" name="title"><br><br>
         
         <label for="description">الوصف:</label>
-        <textarea id="description" name="description" required></textarea><br><br>
+        <textarea id="description" name="description"></textarea><br><br>
 
         <label for="imageUrl">رابط الصورة:</label>
-        <input type="text" id="imageUrl" name="imageUrl" required><br><br>
+        <input type="text" id="imageUrl" name="imageUrl"><br><br>
 
         <label for="youtubeLink">رابط يوتيوب:</label>
-        <input type="text" id="youtubeLink" name="youtubeLink" required><br><br>
+        <input type="text" id="youtubeLink" name="youtubeLink"><br><br>
 
         <label for="scriptText">نص السكربت:</label>
-        <textarea id="scriptText" name="scriptText" required></textarea><br><br>
+        <textarea id="scriptText" name="scriptText"></textarea><br><br>
 
         <button type="button" onclick="saveData()">حفظ البيانات</button>
     </form>
@@ -36,52 +36,32 @@
                 scriptText: document.getElementById('scriptText').value,
             };
 
-            // Retrieve existing data from data.json
-            fetch('https://api.github.com/repos/HemaTechno/Scripts/contents/data.json')
-                .then(response => {
-                    if (!response.ok) {
-                        throw new Error('خطأ في جلب البيانات: ' + response.statusText);
-                    }
-                    return response.json();
+            console.log('البيانات التي ستتم إضافتها:', JSON.stringify(data));
+
+            fetch('https://api.github.com/repos/HemaTechno/Scripts/contents/data.json', {
+                method: 'PUT',
+                headers: {
+                    'Authorization': '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',
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    message: 'Update data.json',
+                    content: btoa(JSON.stringify(data)), // تأكد من أن البيانات مشفرة بشكل صحيح
+                    sha: '6c96cc287a36031715c5b4b708e471ad667cd456'
                 })
-                .then(fileData => {
-                    const content = JSON.parse(atob(fileData.content));
-                    // Append new data to the existing data
-                    content.push(data);
-
-                    // Use TextEncoder to encode the content
-                    const encodedContent = new TextEncoder().encode(JSON.stringify(content));
-                    const base64Content = btoa(String.fromCharCode(...encodedContent));
-
-                    // Update the file on GitHub
-                    fetch('https://api.github.com/repos/HemaTechno/Scripts/contents/data.json', {
-                        method: 'PUT',
-                        headers: {
-                            'Authorization': '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',
-                            'Content-Type': 'application/json',
-                        },
-                        body: JSON.stringify({
-                            message: 'Update data.json',
-                            content: base64Content,
-                            sha: fileData.sha // استخدم SHA المأخوذ من ملف data.json
-                        })
-                    }).then(response => {
-                        if (!response.ok) {
-                            throw new Error('خطأ في تحديث الملف: ' + response.statusText);
-                        }
-                        return response.json();
-                    }).then(data => {
-                        console.log('تم تحديث الملف بنجاح:', data);
-                        alert('تم حفظ البيانات بنجاح!');
-                    }).catch(error => {
-                        alert('حدث خطأ: ' + error.message);
-                        console.error('Error:', error);
+            }).then(response => {
+                if (!response.ok) {
+                    return response.json().then(errorData => {
+                        throw new Error(`خطأ في تحديث الملف: ${errorData.message}`);
                     });
-                })
-                .catch(error => {
-                    alert('حدث خطأ في جلب data.json: ' + error.message);
-                    console.error('Error fetching data.json:', error);
-                });
+                }
+                return response.json();
+            }).then(data => {
+                console.log('تم تحديث الملف بنجاح:', data);
+            }).catch(error => {
+                alert('حدث خطأ: ' + error.message);
+                console.error('Error:', error);
+            });
         }
     </script>
 </body>
