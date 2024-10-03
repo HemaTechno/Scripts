@@ -37,22 +37,23 @@
             };
 
             try {
-                // جلب ملف data.json للحصول على SHA
                 const response = await fetch('https://api.github.com/repos/HemaTechno/Scripts/contents/data.json', {
                     headers: {
                         'Authorization': 'token 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',
                     }
                 });
 
+                console.log('Response status:', response.status); // طباعة حالة الاستجابة
+                console.log('Response status text:', response.statusText); // طباعة نص الحالة
+                
                 if (!response.ok) throw new Error('فشل في جلب البيانات');
 
                 const fileData = await response.json();
                 const sha = fileData.sha;
 
-                // تحديث البيانات
                 const updatedData = {
                     message: 'Update data.json',
-                    content: btoa(unescape(encodeURIComponent(JSON.stringify(data)))), // استخدم هذا لضمان تحويل النص بشكل صحيح
+                    content: btoa(unescape(encodeURIComponent(JSON.stringify(data)))), // تحويل البيانات
                     sha: sha
                 };
 
