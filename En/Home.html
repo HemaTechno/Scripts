@@ -87,7 +87,7 @@
             appId: "1:76044728790:web:776cd44b329beee03ccc77",
             measurementId: "G-MB5N3JM8M8"
         };
-        
+
         // تهيئة Firebase
         const app = firebase.initializeApp(firebaseConfig);
         const db = firebase.firestore();
@@ -101,15 +101,19 @@
                 scriptText: document.getElementById('scriptText').value,
             };
 
+            // إضافة البيانات إلى Firestore
             db.collection('data').add(data)
             .then(() => {
+                // عرض رسالة نجاح
                 document.getElementById('message').innerText = 'تم حفظ البيانات بنجاح!';
                 document.getElementById('message').style.color = 'green';
-                document.getElementById('controlPanelForm').reset();
+                document.getElementById('controlPanelForm').reset(); // إعادة تعيين النموذج
             })
             .catch((error) => {
+                // عرض رسالة خطأ
                 document.getElementById('message').innerText = 'حدث خطأ في حفظ البيانات: ' + error.message;
                 document.getElementById('message').style.color = 'red';
+                console.error('Error saving data: ', error); // عرض الخطأ في وحدة التحكم
             });
         }
     </script>
