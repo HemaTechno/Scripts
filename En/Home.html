@@ -27,7 +27,7 @@
     </form>
 
     <script>
-        async function saveData() {
+        function saveData() {
             const data = {
                 title: document.getElementById('title').value,
                 description: document.getElementById('description').value,
@@ -36,36 +36,33 @@
                 scriptText: document.getElementById('scriptText').value,
             };
 
-            const token = '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'; // تأكد من إضافة التوكن الخاص بك هنا.
+            // Retrieve existing data from data.json
+            fetch('https://api.github.com/repos/HemaTechno/Scripts/contents/data.json')
+                .then(response => response.json())
+                .then(fileData => {
+                    const content = JSON.parse(atob(fileData.content));
+                    // Append new data to the existing data
+                    content.push(data);
 
-            // Fetch current SHA of the file
-            const getFileResponse = await fetch('https://api.github.com/repos/HemaTechno/Scripts/contents/data.json', {
-                headers: {
-                    'Authorization': `Bearer ${token}`,
-                }
-            });
-
-            const fileData = await getFileResponse.json();
-            const sha = fileData.sha; // الـ SHA الخاص بالملف الحالي
-
-            // تحديث الملف
-            fetch('https://api.github.com/repos/HemaTechno/Scripts/contents/data.json', {
-                method: 'PUT',
-                headers: {
-                    'Authorization': `Bearer ${token}`,
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({
-                    message: 'Update data.json',
-                    content: btoa(JSON.stringify(data)),
-                    sha: `6c96cc287a36031715c5b4b708e471ad667cd456` // استخدام الـ SHA الخاص بالملف
-                })
-            }).then(response => response.json())
-              .then(data => {
-                  console.log('File updated:', data);
-              }).catch(error => {
-                  console.error('Error:', error);
-              });
+                    // Update the file on GitHub
+                    fetch('https://api.github.com/repos/HemaTechno/Scripts/contents/data.json', {
+                        method: 'PUT',
+                        headers: {
+                            'Authorization': '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',
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify({
+                            message: 'Update data.json',
+                            content: btoa(JSON.stringify(content)),
+                            sha: '6c96cc287a36031715c5b4b708e471ad667cd456' // استخدم الـ SHA الخاص بك هنا
+                        })
+                    }).then(response => response.json())
+                      .then(data => {
+                          console.log('File updated:', data);
+                      }).catch(error => {
+                          console.error('Error:', error);
+                      });
+                });
         }
     </script>
 </body>
