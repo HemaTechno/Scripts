@@ -4,30 +4,87 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>لوحة التحكم</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            padding: 20px;
+        }
+        h2 {
+            text-align: center;
+        }
+        form {
+            background: white;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+            margin: 0 auto;
+        }
+        label {
+            display: block;
+            margin-bottom: 8px;
+        }
+        input, textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        button {
+            background: #28a745;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+        }
+        button:hover {
+            background: #218838;
+        }
+    </style>
 </head>
 <body>
     <h2>لوحة التحكم</h2>
     <form id="controlPanelForm">
         <label for="title">العنوان:</label>
-        <input type="text" id="title" name="title"><br><br>
-        
+        <input type="text" id="title" name="title" required>
+
         <label for="description">الوصف:</label>
-        <textarea id="description" name="description"></textarea><br><br>
+        <textarea id="description" name="description" required></textarea>
 
         <label for="imageUrl">رابط الصورة:</label>
-        <input type="text" id="imageUrl" name="imageUrl"><br><br>
+        <input type="text" id="imageUrl" name="imageUrl" required>
 
         <label for="youtubeLink">رابط يوتيوب:</label>
-        <input type="text" id="youtubeLink" name="youtubeLink"><br><br>
+        <input type="text" id="youtubeLink" name="youtubeLink" required>
 
         <label for="scriptText">نص السكربت:</label>
-        <textarea id="scriptText" name="scriptText"></textarea><br><br>
+        <textarea id="scriptText" name="scriptText" required></textarea>
 
         <button type="button" onclick="saveData()">حفظ البيانات</button>
     </form>
 
+    <script src="https://www.gstatic.com/firebasejs/9.1.3/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.1.3/firebase-firestore.js"></script>
     <script>
-        async function saveData() {
+        // إعداد Firebase
+        const firebaseConfig = {
+            apiKey: "AIzaSyDN6hj_5iKkC76RWGXax4f5DQOj8E4syTQ",
+            authDomain: "hema-fcf76.firebaseapp.com",
+            projectId: "hema-fcf76",
+            storageBucket: "hema-fcf76.appspot.com",
+            messagingSenderId: "76044728790",
+            appId: "1:76044728790:web:776cd44b329beee03ccc77",
+            measurementId: "G-MB5N3JM8M8"
+        };
+        // تهيئة Firebase
+        const app = firebase.initializeApp(firebaseConfig);
+        const db = firebase.firestore();
+
+        function saveData() {
             const data = {
                 title: document.getElementById('title').value,
                 description: document.getElementById('description').value,
@@ -36,44 +93,14 @@
                 scriptText: document.getElementById('scriptText').value,
             };
 
-            try {
-                const response = await fetch('https://api.github.com/repos/HemaTechno/Scripts/contents/data.json', {
-                    headers: {
-                        'Authorization': 'token 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',
-                    }
-                });
-
-                console.log('Response status:', response.status); // طباعة حالة الاستجابة
-                console.log('Response status text:', response.statusText); // طباعة نص الحالة
-                
-                if (!response.ok) throw new Error('فشل في جلب البيانات');
-
-                const fileData = await response.json();
-                const sha = fileData.sha;
-
-                const updatedData = {
-                    message: 'Update data.json',
-                    content: btoa(unescape(encodeURIComponent(JSON.stringify(data)))), // تحويل البيانات
-                    sha: sha
-                };
-
-                const updateResponse = await fetch('https://api.github.com/repos/HemaTechno/Scripts/contents/data.json', {
-                    method: 'PUT',
-                    headers: {
-                        'Authorization': 'token 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',
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify(updatedData)
-                });
-
-                if (!updateResponse.ok) throw new Error('فشل في تحديث البيانات');
-
-                const result = await updateResponse.json();
-                console.log('تم تحديث الملف:', result);
-            } catch (error) {
-                console.error('حدث خطأ:', error);
-                alert('حدث خطأ: ' + error.message);
-            }
+            db.collection('data').add(data)
+            .then(() => {
+                alert('تم حفظ البيانات بنجاح!');
+                document.getElementById('controlPanelForm').reset();
+            })
+            .catch((error) => {
+                console.error('خطأ في حفظ البيانات: ', error);
+            });
         }
     </script>
 </body>
