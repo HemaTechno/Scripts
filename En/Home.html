@@ -63,7 +63,7 @@
                         body: JSON.stringify({
                             message: 'Update data.json',
                             content: base64Content,
-                            sha: '6c96cc287a36031715c5b4b708e471ad667cd456' // استخدم الـ SHA الخاص بك هنا
+                            sha: fileData.sha // استخدم SHA المأخوذ من ملف data.json
                         })
                     }).then(response => {
                         if (!response.ok) {
