@@ -9,19 +9,19 @@
     <h2>لوحة التحكم</h2>
     <form id="controlPanelForm">
         <label for="title">العنوان:</label>
-        <input type="text" id="title" name="title" required><br><br>
+        <input type="text" id="title" name="title"><br><br>
         
         <label for="description">الوصف:</label>
-        <textarea id="description" name="description" required></textarea><br><br>
+        <textarea id="description" name="description"></textarea><br><br>
 
         <label for="imageUrl">رابط الصورة:</label>
-        <input type="text" id="imageUrl" name="imageUrl" required><br><br>
+        <input type="text" id="imageUrl" name="imageUrl"><br><br>
 
         <label for="youtubeLink">رابط يوتيوب:</label>
-        <input type="text" id="youtubeLink" name="youtubeLink" required><br><br>
+        <input type="text" id="youtubeLink" name="youtubeLink"><br><br>
 
         <label for="scriptText">نص السكربت:</label>
-        <textarea id="scriptText" name="scriptText" required></textarea><br><br>
+        <textarea id="scriptText" name="scriptText"></textarea><br><br>
 
         <button type="button" onclick="saveData()">حفظ البيانات</button>
     </form>
@@ -42,7 +42,8 @@
                 const data = await response.json();
                 return data.sha; // إعادة SHA الحالي
             } else {
-                throw new Error("خطأ في جلب البيانات");
+                const errorData = await response.json();
+                throw new Error(`خطأ في جلب البيانات: ${errorData.message}`);
             }
         }
 
@@ -78,7 +79,8 @@
                     console.log('تم تحديث الملف بنجاح:', result);
                     alert('تم حفظ البيانات بنجاح!');
                 } else {
-                    throw new Error('حدث خطأ في تحديث الملف');
+                    const errorData = await response.json();
+                    throw new Error(`حدث خطأ في تحديث الملف: ${errorData.message}`);
                 }
             } catch (error) {
                 console.error('خطأ:', error);
