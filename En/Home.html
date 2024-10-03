@@ -9,19 +9,19 @@
     <h2>لوحة التحكم</h2>
     <form id="controlPanelForm">
         <label for="title">العنوان:</label>
-        <input type="text" id="title" name="title"><br><br>
+        <input type="text" id="title" name="title" required><br><br>
         
         <label for="description">الوصف:</label>
-        <textarea id="description" name="description"></textarea><br><br>
+        <textarea id="description" name="description" required></textarea><br><br>
 
         <label for="imageUrl">رابط الصورة:</label>
-        <input type="text" id="imageUrl" name="imageUrl"><br><br>
+        <input type="text" id="imageUrl" name="imageUrl" required><br><br>
 
         <label for="youtubeLink">رابط يوتيوب:</label>
-        <input type="text" id="youtubeLink" name="youtubeLink"><br><br>
+        <input type="text" id="youtubeLink" name="youtubeLink" required><br><br>
 
         <label for="scriptText">نص السكربت:</label>
-        <textarea id="scriptText" name="scriptText"></textarea><br><br>
+        <textarea id="scriptText" name="scriptText" required></textarea><br><br>
 
         <button type="button" onclick="saveData()">حفظ البيانات</button>
     </form>
@@ -38,7 +38,12 @@
 
             // Retrieve existing data from data.json
             fetch('https://api.github.com/repos/HemaTechno/Scripts/contents/data.json')
-                .then(response => response.json())
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('خطأ في جلب البيانات: ' + response.statusText);
+                    }
+                    return response.json();
+                })
                 .then(fileData => {
                     const content = JSON.parse(atob(fileData.content));
                     // Append new data to the existing data
@@ -56,12 +61,22 @@
                             content: btoa(JSON.stringify(content)),
                             sha: '6c96cc287a36031715c5b4b708e471ad667cd456' // استخدم الـ SHA الخاص بك هنا
                         })
-                    }).then(response => response.json())
-                      .then(data => {
-                          console.log('File updated:', data);
-                      }).catch(error => {
-                          console.error('Error:', error);
-                      });
+                    }).then(response => {
+                        if (!response.ok) {
+                            throw new Error('خطأ في تحديث الملف: ' + response.statusText);
+                        }
+                        return response.json();
+                    }).then(data => {
+                        console.log('تم تحديث الملف بنجاح:', data);
+                        alert('تم حفظ البيانات بنجاح!');
+                    }).catch(error => {
+                        alert('حدث خطأ: ' + error.message);
+                        console.error('Error:', error);
+                    });
+                })
+                .catch(error => {
+                    alert('حدث خطأ في جلب data.json: ' + error.message);
+                    console.error('Error fetching data.json:', error);
                 });
         }
     </script>
