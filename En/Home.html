@@ -27,23 +27,6 @@
             flex-direction: column;
         }
 
-        /* تعديل مكان الاسم والصورة */
-        .logo-name {
-            position: absolute;
-            top: 10px;
-            left: 10px;
-            display: flex;
-            align-items: center;
-        }
-        .logo-name img {
-            height: 40px; /* تعديل حجم الشعار */
-            margin-left: 10px; /* للمسافة بين الشعار والاسم */
-        }
-        .logo-name h1 {
-            font-size: 1.2em; /* تصغير حجم الخط */
-            margin-right: 10px; /* للمسافة بين الاسم والشعار */
-        }
-
         /* القائمة الجانبية */
         .sidebar {
             height: 100%; 
@@ -66,6 +49,8 @@
             display: block;
             text-align: center; /* مركز الأزرار */
             transition: 0.3s;
+            border: 2px solid rgba(255, 255, 255, 0.5); /* إطار أبيض شفاف */
+            border-radius: 5px; /* زوايا دائرية للإطار */
             margin: 10px auto; /* مسافة بين الأزرار */
             width: 80%; /* تحديد عرض الأزرار */
         }
@@ -106,11 +91,9 @@
         }
 
         .box h2 {
-            font-size: 1.5em; /* حجم النص لعناوين "Crazy Script" و "Information" */
-            color: #948DFF; /* اللون المطلوب */
+            font-size: 1.2em; /* تصغير حجم الخط */
+            color: #ffffff;
             margin-bottom: 10px;
-            text-align: center; /* لتوسيع النص إلى المنتصف */
-            font-weight: bold; /* نص عريض */
         }
 
         .box ul {
@@ -119,16 +102,9 @@
         }
 
         .box ul li {
-            font-size: 0.9em; /* حجم النص العادي */
+            font-size: 1em; /* تصغير حجم النص */
             line-height: 1.6;
             margin-bottom: 10px;
-            color: #ffffff; /* لون النص العادي */
-        }
-
-        /* قسم الإعلانات */
-        .ad-container {
-            text-align: center; /* مركز الإعلان */
-            margin: 20px 0; /* مسافة فوق وتحت الإعلان */
         }
 
         /* أزرار الشبكات الاجتماعية */
@@ -177,19 +153,13 @@
 </head>
 <body>
 
-    <!-- الاسم والصورة في الجهة العلوية اليسرى -->
-    <div class="logo-name">
-        <img src="https://i.ibb.co/g6TR4PZ/download-8.png" alt="Logo"> <!-- مسار الصورة -->
-        <h1>H-Scripts</h1>
-    </div>
-
     <!-- القائمة الجانبية -->
     <div id="mySidebar" class="sidebar">
         <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
-        <a href="Public-Scripts.html">سكربتات</a>
-        <a href="Scripts.html">يوتيوب</a>
-        <a href="Hack.html">هاكات</a>
-        <a href="privacy.html">الخصوصية</a>
+        <a href="Public-Scripts.html">scripts</a>
+        <a href="Scripts.html">YouTube Scripts</a>
+        <a href="Hack.html">Exploits</a>
+        <a href="privacy.html">Privacy</a>
     </div>
 
     <span class="menu-btn" onclick="openNav()">&#9776;</span>
@@ -197,48 +167,44 @@
     <!-- محتوى الصفحة -->
     <div class="container">
         <div class="box">
-            <h2>Crazy Script</h2>
+            <h2 style="color: #948DFF;">Crazy Script</h2>
             <ul>
                 <li>Welcome to my website my scripts good luck.</li>
                 <li>We have made everything easy for you. You will find scripts and hacks in one place. </li>
             </ul>
         </div>
 
-        <!-- قسم الإعلانات الأول -->
-        <div class="ad-container">
-            <script type="text/javascript">
-                atOptions = {
-                    'key' : 'f2f1c0dd694672cbb78d5cbbf7fd578c',
-                    'format' : 'iframe',
-                    'height' : 250,
-                    'width' : 300,
-                    'params' : {}
-                };
-            </script>
-            <script type="text/javascript" src="//dreadfullyemulateconservation.com/f2f1c0dd694672cbb78d5cbbf7fd578c/invoke.js"></script>
-        </div>
+        <!-- كود الإعلان بعد Crazy Script -->
+        <script type="text/javascript">
+            atOptions = {
+                'key': 'f2f1c0dd694672cbb78d5cbbf7fd578c',
+                'format': 'iframe',
+                'height': 250,
+                'width': 300,
+                'params': {}
+            };
+        </script>
+        <script type="text/javascript" src="//dreadfullyemulateconservation.com/f2f1c0dd694672cbb78d5cbbf7fd578c/invoke.js"></script>
 
         <div class="box">
-            <h2>Information</h2>
+            <h2 style="color: #948DFF;">Information</h2>
             <ul>
                 <li>Developer Ibrahim Mansour</li>
                 <li> Partner: Hema_tech1 | crazy_Script1</li>
             </ul>
         </div>
 
-        <!-- قسم الإعلانات الثاني -->
-        <div class="ad-container">
-            <script type="text/javascript">
-                atOptions = {
-                    'key' : 'e93041472135d57f36ad9f7c440637bd',
-                    'format' : 'iframe',
-                    'height' : 90,
-                    'width' : 728,
-                    'params' : {}
-                };
-            </script>
-            <script type="text/javascript" src="//dreadfullyemulateconservation.com/e93041472135d57f36ad9f7c440637bd/invoke.js"></script>
-        </div>
+        <!-- كود الإعلان بعد Information -->
+        <script type="text/javascript">
+            atOptions = {
+                'key': 'e93041472135d57f36ad9f7c440637bd',
+                'format': 'iframe',
+                'height': 90,
+                'width': 728,
+                'params': {}
+            };
+        </script>
+        <script type="text/javascript" src="//dreadfullyemulateconservation.com/e93041472135d57f36ad9f7c440637bd/invoke.js"></script>
 
         <!-- أزرار الشبكات الاجتماعية -->
         <div class="social-buttons">
