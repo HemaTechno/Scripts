@@ -1,13 +1,6 @@
 <!DOCTYPE html>
 <html lang="ar">
 <head>
-    <script type="text/javascript" async src="https://platform.foremedia.net/code/55067/analytics"></script>
-    <meta name="monetag" content="98399970e4ba3713e4fb0406cb9b3922">
-    <meta property="og:title" content="H-Scripts" />
-    <meta property="og:description" content="افضل موقع يساعدك في اي شي بخصوص هاكات و سكربتات روبلوكس" />
-    <meta property="og:image" content="https://media.discordapp.net/attachments/1210197000306434069/1289012963142926417/20240926_203252.jpg?ex=66f7465f&is=66f5f4df&hm=feb5df21452b3dea3e62fd625a180d8f7a64eb497db830fc882f054e1d53af3c&" />
-    <meta property="og:url" content="https://h-scripts.site" />
-    <meta property="og:type" content="website" />
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>H-SCRIPTS</title>
@@ -34,11 +27,11 @@
             flex-direction: column;
         }
         .header {
-            background-color: #252b39;
-            padding: 10px;
+            position: absolute;
+            top: 20px;
+            left: 20px;
             display: flex;
             align-items: center;
-            justify-content: flex-start;
         }
         .header img {
             height: 40px; /* تعديل حجم الشعار */
@@ -83,12 +76,12 @@
         /* القائمة الجانبية */
         .sidebar {
             height: 100%;
-            width: 250px;
+            width: 100%; /* غطاء كامل للشاشة */
             position: fixed;
             z-index: 1;
             top: 0;
             right: 0;
-            background-color: rgba(0, 0, 0, 0.05); /* خلفية شفافة */
+            background-color: rgba(0, 0, 0, 1); /* خلفية سوداء غير شفافة */
             overflow-x: hidden;
             padding-top: 60px;
             transition: 0.5s;
@@ -163,7 +156,7 @@
     <script>
         function openNav() {
             document.getElementById("mySidebar").style.display = "block"; // عرض القائمة الجانبية
-            document.getElementById("mySidebar").style.width = "250px"; // تحديد عرض القائمة الجانبية
+            document.getElementById("mySidebar").style.width = "100%"; // تغطية كاملة للشاشة
         }
 
         function closeNav() {
