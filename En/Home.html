@@ -2,15 +2,12 @@
 <html lang="ar">
 <head>
     <script type="text/javascript" async src="https://platform.foremedia.net/code/55067/analytics"></script>
-
     <meta name="monetag" content="98399970e4ba3713e4fb0406cb9b3922">
-    
     <meta property="og:title" content="H-Scripts" />
     <meta property="og:description" content="افضل موقع يساعدك في اي شي بخصوص هاكات و سكربتات روبلوكس" />
     <meta property="og:image" content="https://media.discordapp.net/attachments/1210197000306434069/1289012963142926417/20240926_203252.jpg?ex=66f7465f&is=66f5f4df&hm=feb5df21452b3dea3e62fd625a180d8f7a64eb497db830fc882f054e1d53af3c&" />
     <meta property="og:url" content="https://h-scripts.site" />
     <meta property="og:type" content="website" />
-
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>H-SCRIPTS</title>
@@ -26,10 +23,9 @@
             margin: 0;
             padding: 0;
         }
-
         body {
             font-family: 'Arial', sans-serif;
-            background-color: #090913; /* لون الخلفية */
+            background-color: #090913; /* خلفية الصفحة */
             color: #fff;
             direction: rtl;
             text-align: right;
@@ -37,81 +33,79 @@
             display: flex;
             flex-direction: column;
         }
-
         .header {
             background-color: #252b39;
             padding: 10px;
             display: flex;
             align-items: center;
-            justify-content: flex-start; /* جعل المحتوى في البداية */
+            justify-content: flex-start;
         }
-
         .header img {
             height: 40px; /* تعديل حجم الشعار */
-            margin-right: 20px;
+            margin-left: 20px; /* للمسافة بين الشعار والاسم */
         }
-
         .header h1 {
             color: #fff;
             font-size: 1.5em;
+            margin-left: 10px; /* للمسافة بين الشعار والاسم */
         }
-
-        /* الخلفية الشفافة */
-        .overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            height: 100%;
-            width: 100%;
-            background: rgba(0, 0, 0, 0.05); /* خلفية سوداء شفافة بنسبة 5% */
-            display: none; /* مخفية بشكل افتراضي */
-            z-index: 1;
-            justify-content: center; /* لتوسيع المحتوى */
-            align-items: center; /* لتوسيع المحتوى عموديًا */
+        .container {
+            padding: 20px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
         }
-
+        .box {
+            background-color: #252b39;
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 20px;
+            width: 90%;
+            max-width: 400px;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
+        }
+        .box h2 {
+            font-size: 1.3em;
+            color: #ffffff;
+            margin-bottom: 10px;
+        }
+        .box ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        .box ul li {
+            font-size: 1.1em;
+            line-height: 1.6;
+            margin-bottom: 10px;
+        }
         /* القائمة الجانبية */
         .sidebar {
             height: 100%;
             width: 250px;
             position: fixed;
-            z-index: 3; /* تأكد من أن القائمة أعلى من الخلفية */
+            z-index: 1;
             top: 0;
-            right: -250px; /* اجعلها مخفية خارج الشاشة */
-            background-color: #252b39;
+            right: 0;
+            background-color: rgba(0, 0, 0, 0.05); /* خلفية شفافة */
             overflow-x: hidden;
             padding-top: 60px;
             transition: 0.5s;
-            display: flex;
-            flex-direction: column;
-            align-items: center; /* توسيط الأزرار */
+            display: none; /* إخفاء القائمة الجانبية بشكل افتراضي */
         }
-
         .sidebar a {
-            padding: 15px 20px; /* إضافة المزيد من الهوامش */
+            padding: 15px;
             text-decoration: none;
-            font-size: 20px;
-            color: #818181;
+            font-size: 25px;
+            color: #fff;
             display: block;
+            text-align: center; /* مركز الأزرار */
             transition: 0.3s;
-            width: 100%; /* تأكد من أن الروابط تأخذ العرض الكامل */
-            text-align: center; /* توسيط النص داخل الأزرار */
         }
-
         .sidebar a:hover {
             color: #f1f1f1;
-            background-color: #1a1e27; /* تغيير الخلفية عند التمرير */
         }
-
-        .sidebar .closebtn {
-            position: absolute;
-            top: 0;
-            left: 25px;
-            font-size: 36px;
-            margin-left: 20px;
-            color: #fff;
-        }
-
         /* زر القائمة (الهامبرغر) */
         .menu-btn {
             font-size: 30px;
@@ -120,9 +114,8 @@
             right: 20px;
             cursor: pointer;
             color: white;
-            z-index: 4; /* تأكد من أن الزر أعلى من الخلفية */
+            z-index: 2;
         }
-
     </style>
 </head>
 <body>
@@ -131,9 +124,6 @@
         <img src="path/to/your/logo.png" alt="Logo"> <!-- استبدل هذا بمسار الشعار -->
         <h1>H-Scripts</h1>
     </div>
-
-    <!-- الخلفية الشفافة -->
-    <div id="overlay" class="overlay" onclick="closeNav()"></div>
 
     <!-- القائمة الجانبية -->
     <div id="mySidebar" class="sidebar">
@@ -161,17 +151,24 @@
                 <li>صاحب قناة هيما تيك لشروحات روبلوكس و البرمجيات </li>
             </ul>
         </div>
+
+        <!-- أزرار الشبكات الاجتماعية -->
+        <div class="social-buttons">
+            <a href="https://discord.gg/WT2c6f34rD" target="_blank" class="social-btn discord-btn">Discord</a>
+            <a href="https://youtube.com/@hema_tech1?si=FI65ajrK8Qkv4AFx" target="_blank" class="social-btn youtube-btn">YouTube</a>
+            <a href="https://t.me/hscripts" target="_blank" class="social-btn telegram-btn">Telegram</a>
+        </div>
     </div>
 
     <script>
         function openNav() {
-            document.getElementById("mySidebar").style.right = "0"; // أظهر القائمة
-            document.getElementById("overlay").style.display = "flex"; // أظهر الخلفية
+            document.getElementById("mySidebar").style.display = "block"; // عرض القائمة الجانبية
+            document.getElementById("mySidebar").style.width = "250px"; // تحديد عرض القائمة الجانبية
         }
 
         function closeNav() {
-            document.getElementById("mySidebar").style.right = "-250px"; // اخف القائمة
-            document.getElementById("overlay").style.display = "none"; // اخف الخلفية
+            document.getElementById("mySidebar").style.width = "0"; // إغلاق القائمة الجانبية
+            document.getElementById("mySidebar").style.display = "none"; // إخفاء القائمة الجانبية
         }
     </script>
 
