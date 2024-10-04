@@ -27,6 +27,18 @@
             flex-direction: column;
         }
 
+        /* الاسم */
+        .logo-name {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+        }
+        .logo-name h1 {
+            font-size: 1.5em; /* حجم الخط */
+            margin-left: 10px; /* للمسافة بين الشعار والاسم */
+            color: #948DFF; /* لون الاسم */
+        }
+
         /* القائمة الجانبية */
         .sidebar {
             height: 100%; 
@@ -153,13 +165,18 @@
 </head>
 <body>
 
+    <!-- الاسم -->
+    <div class="logo-name">
+        <h1>H-Scripts</h1>
+    </div>
+
     <!-- القائمة الجانبية -->
     <div id="mySidebar" class="sidebar">
         <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
-        <a href="Public-Scripts.html">scripts</a>
-        <a href="Scripts.html">YouTube Scripts</a>
-        <a href="Hack.html">Exploits</a>
-        <a href="privacy.html">Privacy</a>
+        <a href="Public-Scripts.html">سكربتات</a>
+        <a href="Scripts.html">يوتيوب</a>
+        <a href="Hack.html">هاكات</a>
+        <a href="privacy.html">الخصوصية</a>
     </div>
 
     <span class="menu-btn" onclick="openNav()">&#9776;</span>
