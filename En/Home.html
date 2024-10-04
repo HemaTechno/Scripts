@@ -1,196 +1,221 @@
 <!DOCTYPE html>
 <html lang="ar">
 <head>
+    <script type="text/javascript" async src="https://platform.foremedia.net/code/55067/analytics"></script>
+
+    <meta name="monetag" content="98399970e4ba3713e4fb0406cb9b3922">
+    <!-- Admaven -->
+    <script src="https://alwingulla.com/88/tag.min.js" data-zone="104407" async data-cfasync="false"></script>
+    <script src="https://alwingulla.com/88/tag.min.js" data-zone="102579" async data-cfasync="false"></script>
+    <!-- Ads End -->
+
+    <meta property="og:title" content="H-Scripts" />
+    <meta property="og:description" content="افضل موقع يساعدك في اي شي بخصوص هاكات و سكربتات روبلوكس" />
+    <meta property="og:image" content="https://media.discordapp.net/attachments/1210197000306434069/1289012963142926417/20240926_203252.jpg?ex=66f7465f&is=66f5f4df&hm=feb5df21452b3dea3e62fd625a180d8f7a64eb497db830fc882f054e1d53af3c&" />
+    <meta property="og:url" content="https://h-scripts.site" />
+    <meta property="og:type" content="website" />
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Delta Executor Mobile</title>
+    <title>H-SCRIPTS</title>
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Arial', sans-serif;
+        }
+        html, body {
+            overflow-x: hidden;
+            width: 100%;
+            margin: 0;
+            padding: 0;
         }
 
         body {
-            background-color: #1e1e1e;
+            font-family: 'Arial', sans-serif;
+            background-color: #1a1e27;
             color: #fff;
-            line-height: 1.6;
-        }
-
-        header {
-            background-color: #141414;
-            padding: 40px 0;
-            text-align: center;
-        }
-
-        .logo img {
-            max-width: 150px;
-            margin-bottom: 20px;
-        }
-
-        h1 {
-            font-size: 2.8rem;
-            color: #e50914;
-        }
-
-        .description {
-            text-align: center;
-            margin: 20px auto;
-            max-width: 800px;
-        }
-
-        .description p {
-            font-size: 1.3rem;
-            color: #b3b3b3;
-        }
-
-        .downloads {
-            text-align: center;
-            margin: 50px 0;
-        }
-
-        .download-btn {
-            display: inline-block;
-            padding: 15px 40px;
-            margin: 10px;
-            background-color: #e50914;
-            color: #fff;
-            font-size: 1.2rem;
-            text-decoration: none;
-            border-radius: 8px;
-            transition: background-color 0.3s;
+            direction: rtl;
+            text-align: right;
+            height: 100vh;
             display: flex;
+            flex-direction: column;
+            justify-content: center;
             align-items: center;
-            justify-content: center;
         }
 
-        .download-btn img {
-            margin-right: 10px;
-            width: 30px;
-        }
-
-        .download-btn.android {
-            background-color: #3ddc84;
-        }
-
-        .download-btn.ios {
-            background-color: #007aff;
-        }
-
-        .download-btn:hover {
-            background-color: #f40612;
-        }
-
-        .features {
-            margin: 50px 0;
-            text-align: center;
-        }
-
-        .features h2 {
-            font-size: 2.2rem;
-            margin-bottom: 30px;
-            color: #e50914;
-        }
-
-        .features-container {
+        .container {
+            padding: 20px;
+            flex-grow: 1;
             display: flex;
-            flex-wrap: wrap;
+            flex-direction: column;
             justify-content: center;
+            align-items: center;
         }
 
-        .feature-box {
-            background-color: #333;
-            border-radius: 8px;
+        .box {
+            background-color: #252b39;
+            border-radius: 12px;
             padding: 20px;
-            margin: 15px;
-            width: 250px;
-            text-align: center;
-            color: #fff;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            margin-bottom: 20px;
+            width: 90%;
+            max-width: 400px;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
         }
 
-        .feature-box h3 {
-            font-size: 1.5rem;
-            margin-bottom: 15px;
-            color: #e50914;
+        .box h2 {
+            font-size: 1.3em;
+            color: #ffffff;
+            margin-bottom: 10px;
         }
 
-        .feature-box p {
-            font-size: 1.1rem;
-            color: #b3b3b3;
+        .box ul {
+            list-style-type: none;
+            padding: 0;
         }
 
-        footer {
-            background-color: #141414;
-            padding: 20px;
-            text-align: center;
+        .box ul li {
+            font-size: 1.1em;
+            line-height: 1.6;
+            margin-bottom: 10px;
         }
 
-        footer p {
-            color: #777;
+        /* أزرار الشبكات الاجتماعية */
+        .social-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 20px;
         }
 
-        .social-links a {
-            color: #e50914;
-            margin: 0 10px;
+        .social-btn {
+            color: white;
+            border: none;
+            padding: 15px;
+            font-size: 1.2em;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .discord-btn {
+            background-color: #5865F2;
+        }
+
+        .discord-btn:hover {
+            background-color: #4a57d4;
+        }
+
+        .youtube-btn {
+            background-color: #FF0000;
+        }
+
+        .youtube-btn:hover {
+            background-color: #cc0000;
+        }
+
+        .telegram-btn {
+            background-color: #0088cc;
+        }
+
+        .telegram-btn:hover {
+            background-color: #0077b3;
+        }
+
+        /* القائمة الجانبية */
+        .sidebar {
+            height: 100%;
+            width: 0;
+            position: fixed;
+            z-index: 1;
+            top: 0;
+            right: 0;
+            background-color: #252b39;
+            overflow-x: hidden;
+            transition: 0.5s;
+            padding-top: 60px;
+        }
+
+        .sidebar a {
+            padding: 10px 15px;
             text-decoration: none;
-            font-size: 1.3rem;
+            font-size: 25px;
+            color: #818181;
+            display: block;
+            transition: 0.3s;
         }
 
-        .social-links a:hover {
-            color: #fff;
+        .sidebar a:hover {
+            color: #f1f1f1;
         }
+
+        .sidebar .closebtn {
+            position: absolute;
+            top: 0;
+            right: 25px;
+            font-size: 36px;
+            margin-right: 20px;
+        }
+
+        /* زر القائمة (الهامبرغر) */
+        .menu-btn {
+            font-size: 30px;
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            cursor: pointer;
+            color: white;
+            z-index: 2;
+        }
+
     </style>
 </head>
 <body>
-    <header>
-        <div class="logo">
-            <img src="logo.png" alt="Logo">
+
+    <span class="menu-btn" onclick="openNav()">&#9776;</span>
+
+    <!-- القائمة الجانبية -->
+    <div id="mySidebar" class="sidebar">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
+        <a href="Public-Scripts.html">سكربتات</a>
+        <a href="Scripts.html">يوتيوب</a>
+        <a href="Hack.html">هاكات</a>
+        <a href="privacy.html">الخصوصية</a>
+    </div>
+
+    <div class="container">
+        <div class="box">
+            <h2>من نحن ؟:</h2>
+            <ul>
+                <li>نحن فريق يعمل علي مساعدتك لكي تستخدم الهاك و سكربتات روبلوكس افضل من اي وقت</li>
+                <li>ولقد وفرنا لك الكثير من الوقت و جمعنا لك كل ما تريده في مكان واحد</li>
+            </ul>
         </div>
-        <h1>Delta Executor Mobile</h1>
-    </header>
-
-    <section class="description">
-        <p>Delta Executor هو الأداة المثالية لتشغيل السكربتات على الهواتف الذكية. قم بتحميل التطبيق الآن لأداء مهامك بكل سهولة وسرعة!</p>
-    </section>
-
-    <section class="downloads">
-        <a href="#" class="download-btn android">
-            <img src="android-logo.png" alt="Android Logo">
-            تحميل لـ Android
-        </a>
-        <a href="#" class="download-btn ios">
-            <img src="ios-logo.png" alt="iOS Logo">
-            تحميل لـ iOS
-        </a>
-    </section>
-
-    <section class="features">
-        <h2>الميزات</h2>
-        <div class="features-container">
-            <div class="feature-box">
-                <h3>تشغيل سريع</h3>
-                <p>تشغيل السكربتات بسرعة وكفاءة على جميع الأجهزة المحمولة.</p>
-            </div>
-            <div class="feature-box">
-                <h3>واجهة بسيطة</h3>
-                <p>تطبيق يتميز بواجهة سهلة الاستخدام تناسب جميع المستخدمين.</p>
-            </div>
-            <div class="feature-box">
-                <h3>دعم مستمر</h3>
-                <p>تحديثات دائمة لضمان أفضل أداء وتجربة استخدام.</p>
-            </div>
+        <div class="box">
+            <h2>مين المسؤال عن الموقع:</h2>
+            <ul>
+                <li>Developer Ibrahim Mansour</li>
+                <li>صاحب قناة هيما تيك لشروحات روبلوكس و البرمجيات </li>
+            </ul>
         </div>
-    </section>
 
-    <footer>
-        <p>جميع الحقوق محفوظة &copy; 2024</p>
-        <div class="social-links">
-            <a href="#">Facebook</a>
-            <a href="#">Twitter</a>
-            <a href="#">YouTube</a>
+        <!-- أزرار الشبكات الاجتماعية -->
+        <div class="social-buttons">
+            <a href="https://discord.gg/WT2c6f34rD" target="_blank" class="social-btn discord-btn">Discord</a>
+            <a href="https://youtube.com/@hema_tech1?si=FI65ajrK8Qkv4AFx" target="_blank" class="social-btn youtube-btn">YouTube</a>
+            <a href="https://t.me/hscripts" target="_blank" class="social-btn telegram-btn">Telegram</a>
         </div>
-    </footer>
+    </div>
+
+    <script>
+        function openNav() {
+            document.getElementById("mySidebar").style.width = "250px";
+        }
+
+        function closeNav() {
+            document.getElementById("mySidebar").style.width = "0";
+        }
+    </script>
+
 </body>
 </html>
