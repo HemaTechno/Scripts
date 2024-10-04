@@ -13,25 +13,25 @@
         }
 
         body {
-            background-color: #1a1a1a;
+            background-color: #1e1e1e;
             color: #fff;
             line-height: 1.6;
         }
 
         header {
-            background-color: #222;
-            padding: 30px;
+            background-color: #141414;
+            padding: 40px 0;
             text-align: center;
         }
 
         .logo img {
-            max-width: 120px;
+            max-width: 150px;
             margin-bottom: 20px;
         }
 
         h1 {
-            font-size: 2.5rem;
-            color: #f4f4f4;
+            font-size: 2.8rem;
+            color: #e50914;
         }
 
         .description {
@@ -41,8 +41,8 @@
         }
 
         .description p {
-            font-size: 1.2rem;
-            color: #ddd;
+            font-size: 1.3rem;
+            color: #b3b3b3;
         }
 
         .downloads {
@@ -52,14 +52,22 @@
 
         .download-btn {
             display: inline-block;
-            padding: 15px 30px;
+            padding: 15px 40px;
             margin: 10px;
-            background-color: #ff6f61;
+            background-color: #e50914;
             color: #fff;
-            font-size: 1.1rem;
+            font-size: 1.2rem;
             text-decoration: none;
             border-radius: 8px;
             transition: background-color 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .download-btn img {
+            margin-right: 10px;
+            width: 30px;
         }
 
         .download-btn.android {
@@ -71,7 +79,7 @@
         }
 
         .download-btn:hover {
-            background-color: #333;
+            background-color: #f40612;
         }
 
         .features {
@@ -80,9 +88,9 @@
         }
 
         .features h2 {
-            font-size: 2rem;
+            font-size: 2.2rem;
             margin-bottom: 30px;
-            color: #ff6f61;
+            color: #e50914;
         }
 
         .features-container {
@@ -103,18 +111,18 @@
         }
 
         .feature-box h3 {
-            font-size: 1.4rem;
+            font-size: 1.5rem;
             margin-bottom: 15px;
-            color: #ff6f61;
+            color: #e50914;
         }
 
         .feature-box p {
-            font-size: 1rem;
-            color: #ddd;
+            font-size: 1.1rem;
+            color: #b3b3b3;
         }
 
         footer {
-            background-color: #222;
+            background-color: #141414;
             padding: 20px;
             text-align: center;
         }
@@ -124,10 +132,10 @@
         }
 
         .social-links a {
-            color: #ff6f61;
+            color: #e50914;
             margin: 0 10px;
             text-decoration: none;
-            font-size: 1.2rem;
+            font-size: 1.3rem;
         }
 
         .social-links a:hover {
@@ -148,8 +156,14 @@
     </section>
 
     <section class="downloads">
-        <a href="#" class="download-btn android">تحميل لـ Android</a>
-        <a href="#" class="download-btn ios">تحميل لـ iOS</a>
+        <a href="#" class="download-btn android">
+            <img src="android-logo.png" alt="Android Logo">
+            تحميل لـ Android
+        </a>
+        <a href="#" class="download-btn ios">
+            <img src="ios-logo.png" alt="iOS Logo">
+            تحميل لـ iOS
+        </a>
     </section>
 
     <section class="features">
