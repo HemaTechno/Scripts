@@ -27,7 +27,7 @@
             flex-direction: column;
         }
 
-        /* تعديل مكان الاسم والشعار */
+        /* تعديل مكان الاسم والصورة */
         .logo-name {
             position: absolute;
             top: 10px;
@@ -37,11 +37,11 @@
         }
         .logo-name img {
             height: 40px; /* تعديل حجم الشعار */
-            margin-right: 10px; /* للمسافة بين الشعار والاسم */
+            margin-left: 10px; /* للمسافة بين الشعار والاسم */
         }
         .logo-name h1 {
-            font-size: 1.5em; /* حجم الخط */
-            margin: 0; /* إزالة الهوامش */
+            font-size: 1.2em; /* تصغير حجم الخط */
+            margin-right: 10px; /* للمسافة بين الاسم والشعار */
         }
 
         /* القائمة الجانبية */
@@ -57,21 +57,18 @@
             padding-top: 60px;
             transition: 0.5s;
             display: none; /* إخفاء القائمة الجانبية بشكل افتراضي */
-            justify-content: center; /* لتوسيع القائمة عموديا */
-            align-items: center; /* لتوسيع القائمة أفقيا */
-            flex-direction: column; /* ترتيب الأزرار بشكل عمودي */
         }
         .sidebar a {
-            padding: 15px; /* مساحة داخلية أكبر قليلاً */
+            padding: 10px; /* تصغير المساحة الداخلية */
             text-decoration: none;
-            font-size: 18px; /* تصغير حجم النص */
+            font-size: 20px; /* تصغير حجم النص */
             color: #fff;
             display: block;
             text-align: center; /* مركز الأزرار */
             transition: 0.3s;
             border: 2px solid rgba(255, 255, 255, 0.5); /* إطار أبيض شفاف */
             border-radius: 5px; /* زوايا دائرية للإطار */
-            margin: 10px 0; /* مسافة بين الأزرار */
+            margin: 10px auto; /* مسافة بين الأزرار */
             width: 80%; /* تحديد عرض الأزرار */
         }
         .sidebar a:hover {
@@ -173,7 +170,7 @@
 </head>
 <body>
 
-    <!-- الاسم والشعار في الجهة العلوية اليسرى -->
+    <!-- الاسم والصورة في الجهة العلوية اليسرى -->
     <div class="logo-name">
         <img src="https://i.ibb.co/g6TR4PZ/download-8.png" alt="Logo"> <!-- مسار الصورة -->
         <h1>H-Scripts</h1>
@@ -217,7 +214,7 @@
 
     <script>
         function openNav() {
-            document.getElementById("mySidebar").style.display = "flex"; // عرض القائمة الجانبية
+            document.getElementById("mySidebar").style.display = "block"; // عرض القائمة الجانبية
         }
 
         function closeNav() {
