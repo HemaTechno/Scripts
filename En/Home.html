@@ -4,11 +4,7 @@
     <script type="text/javascript" async src="https://platform.foremedia.net/code/55067/analytics"></script>
 
     <meta name="monetag" content="98399970e4ba3713e4fb0406cb9b3922">
-    <!-- Admaven -->
-    <script src="https://alwingulla.com/88/tag.min.js" data-zone="104407" async data-cfasync="false"></script>
-    <script src="https://alwingulla.com/88/tag.min.js" data-zone="102579" async data-cfasync="false"></script>
-    <!-- Ads End -->
-
+    
     <meta property="og:title" content="H-Scripts" />
     <meta property="og:description" content="افضل موقع يساعدك في اي شي بخصوص هاكات و سكربتات روبلوكس" />
     <meta property="og:image" content="https://media.discordapp.net/attachments/1210197000306434069/1289012963142926417/20240926_203252.jpg?ex=66f7465f&is=66f5f4df&hm=feb5df21452b3dea3e62fd625a180d8f7a64eb497db830fc882f054e1d53af3c&" />
@@ -60,6 +56,18 @@
             font-size: 1.5em;
         }
 
+        /* الخلفية الشفافة */
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 100%;
+            background: rgba(0, 0, 0, 0.7); /* خلفية سوداء شفافة */
+            display: none; /* مخفية بشكل افتراضي */
+            z-index: 1;
+        }
+
         .container {
             padding: 20px;
             flex-grow: 1;
@@ -67,6 +75,8 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
+            position: relative; /* لوضع الحاوية فوق الخلفية الشفافة */
+            z-index: 2;
         }
 
         .box {
@@ -85,67 +95,14 @@
             margin-bottom: 10px;
         }
 
-        .box ul {
-            list-style-type: none;
-            padding: 0;
-        }
-
-        .box ul li {
-            font-size: 1.1em;
-            line-height: 1.6;
-            margin-bottom: 10px;
-        }
-
-        /* أزرار الشبكات الاجتماعية */
-        .social-buttons {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            margin-top: 20px;
-        }
-
-        .social-btn {
-            color: white;
-            border: none;
-            padding: 15px;
-            font-size: 1.2em;
-            border-radius: 30px;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-        }
-
-        .discord-btn {
-            background-color: #5865F2;
-        }
-
-        .discord-btn:hover {
-            background-color: #4a57d4;
-        }
-
-        .youtube-btn {
-            background-color: #FF0000;
-        }
-
-        .youtube-btn:hover {
-            background-color: #cc0000;
-        }
-
-        .telegram-btn {
-            background-color: #0088cc;
-        }
-
-        .telegram-btn:hover {
-            background-color: #0077b3;
-        }
-
         /* القائمة الجانبية */
         .sidebar {
             height: 100%;
             width: 250px;
             position: fixed;
-            z-index: 1;
+            z-index: 3; /* تأكد من أن القائمة أعلى من الخلفية */
             top: 0;
-            right: 0;
+            right: -250px; /* اجعلها مخفية خارج الشاشة */
             background-color: #252b39;
             overflow-x: hidden;
             padding-top: 60px;
@@ -153,9 +110,9 @@
         }
 
         .sidebar a {
-            padding: 10px 15px;
+            padding: 15px 20px; /* إضافة المزيد من الهوامش */
             text-decoration: none;
-            font-size: 25px;
+            font-size: 20px;
             color: #818181;
             display: block;
             transition: 0.3s;
@@ -163,6 +120,7 @@
 
         .sidebar a:hover {
             color: #f1f1f1;
+            background-color: #1a1e27; /* تغيير الخلفية عند التمرير */
         }
 
         .sidebar .closebtn {
@@ -182,18 +140,7 @@
             right: 20px;
             cursor: pointer;
             color: white;
-            z-index: 2;
-        }
-
-        /* تعديل لون الخلفية */
-        .container {
-            background-color: #1a1e27;
-            flex-grow: 1;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            margin-right: 250px; /* إضافة هوامش مناسبة للمساحة المخصصة للقائمة الجانبية */
+            z-index: 4; /* تأكد من أن الزر أعلى من الخلفية */
         }
 
     </style>
@@ -204,6 +151,9 @@
         <img src="path/to/your/logo.png" alt="Logo"> <!-- استبدل هذا بمسار الشعار -->
         <h1>H-Scripts</h1>
     </div>
+
+    <!-- الخلفية الشفافة -->
+    <div id="overlay" class="overlay" onclick="closeNav()"></div>
 
     <!-- القائمة الجانبية -->
     <div id="mySidebar" class="sidebar">
@@ -232,21 +182,17 @@
             </ul>
         </div>
 
-        <!-- أزرار الشبكات الاجتماعية -->
-        <div class="social-buttons">
-            <a href="https://discord.gg/WT2c6f34rD" target="_blank" class="social-btn discord-btn">Discord</a>
-            <a href="https://youtube.com/@hema_tech1?si=FI65ajrK8Qkv4AFx" target="_blank" class="social-btn youtube-btn">YouTube</a>
-            <a href="https://t.me/hscripts" target="_blank" class="social-btn telegram-btn">Telegram</a>
-        </div>
     </div>
 
     <script>
         function openNav() {
-            document.getElementById("mySidebar").style.width = "250px";
+            document.getElementById("mySidebar").style.right = "0"; // أظهر القائمة
+            document.getElementById("overlay").style.display = "block"; // أظهر الخلفية
         }
 
         function closeNav() {
-            document.getElementById("mySidebar").style.width = "0";
+            document.getElementById("mySidebar").style.right = "-250px"; // اخف القائمة
+            document.getElementById("overlay").style.display = "none"; // اخف الخلفية
         }
     </script>
 
