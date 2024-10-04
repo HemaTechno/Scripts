@@ -86,13 +86,93 @@
             color: white;
             z-index: 2;
         }
+
+        .container {
+            padding: 20px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            margin-top: 60px; /* لإفساح المجال لزر القائمة */
+        }
+
+        .box {
+            background-color: #252b39;
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 20px;
+            width: 90%;
+            max-width: 400px;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
+        }
+
+        .box h2 {
+            font-size: 1.3em;
+            color: #ffffff;
+            margin-bottom: 10px;
+        }
+
+        .box ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .box ul li {
+            font-size: 1.1em;
+            line-height: 1.6;
+            margin-bottom: 10px;
+        }
+
+        /* أزرار الشبكات الاجتماعية */
+        .social-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-btn {
+            color: white;
+            border: none;
+            padding: 15px;
+            font-size: 1.2em;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .discord-btn {
+            background-color: #5865F2;
+        }
+
+        .discord-btn:hover {
+            background-color: #4a57d4;
+        }
+
+        .youtube-btn {
+            background-color: #FF0000;
+        }
+
+        .youtube-btn:hover {
+            background-color: #cc0000;
+        }
+
+        .telegram-btn {
+            background-color: #0088cc;
+        }
+
+        .telegram-btn:hover {
+            background-color: #0077b3;
+        }
+
     </style>
 </head>
 <body>
 
-    <!-- الاسم والشعار في الجهة العلوية اليسرى -->
+    <!-- الاسم والصورة في الجهة العلوية اليسرى -->
     <div class="logo-name">
-        <img src="path/to/your/logo.png" alt="Logo"> <!-- استبدل هذا بمسار الشعار -->
+        <img src="https://i.ibb.co/g6TR4PZ/download-8.png" alt="Logo"> <!-- مسار الصورة -->
         <h1>H-Scripts</h1>
     </div>
 
@@ -106,6 +186,31 @@
     </div>
 
     <span class="menu-btn" onclick="openNav()">&#9776;</span>
+
+    <!-- محتوى الصفحة -->
+    <div class="container">
+        <div class="box">
+            <h2>من نحن ؟:</h2>
+            <ul>
+                <li>نحن فريق يعمل علي مساعدتك لكي تستخدم الهاك و سكربتات روبلوكس افضل من اي وقت</li>
+                <li>ولقد وفرنا لك الكثير من الوقت و جمعنا لك كل ما تريده في مكان واحد</li>
+            </ul>
+        </div>
+        <div class="box">
+            <h2>مين المسؤال عن الموقع:</h2>
+            <ul>
+                <li>Developer Ibrahim Mansour</li>
+                <li>صاحب قناة هيما تيك لشروحات روبلوكس و البرمجيات </li>
+            </ul>
+        </div>
+
+        <!-- أزرار الشبكات الاجتماعية -->
+        <div class="social-buttons">
+            <a href="https://discord.gg/WT2c6f34rD" target="_blank" class="social-btn discord-btn">Discord</a>
+            <a href="https://youtube.com/@hema_tech1?si=FI65ajrK8Qkv4AFx" target="_blank" class="social-btn youtube-btn">YouTube</a>
+            <a href="https://t.me/hscripts" target="_blank" class="social-btn telegram-btn">Telegram</a>
+        </div>
+    </div>
 
     <script>
         function openNav() {
