@@ -29,7 +29,7 @@
 
         body {
             font-family: 'Arial', sans-serif;
-            background-color: #1a1e27;
+            background-color: #090913; /* لون الخلفية */
             color: #fff;
             direction: rtl;
             text-align: right;
@@ -63,41 +63,11 @@
             left: 0;
             height: 100%;
             width: 100%;
-            background: rgba(0, 0, 0, 0.7); /* خلفية سوداء شفافة */
+            background: rgba(0, 0, 0, 0.05); /* خلفية سوداء شفافة بنسبة 5% */
             display: none; /* مخفية بشكل افتراضي */
             z-index: 1;
-            display: none; /* مخفية بشكل افتراضي */
-            justify-content: center; /* لتوسيط المحتوى */
-            align-items: center; /* لتوسيط المحتوى عموديًا */
-            color: white;
-            font-size: 2em; /* حجم الخط */
-        }
-
-        .container {
-            padding: 20px;
-            flex-grow: 1;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            position: relative; /* لوضع الحاوية فوق الخلفية الشفافة */
-            z-index: 2;
-        }
-
-        .box {
-            background-color: #252b39;
-            border-radius: 12px;
-            padding: 20px;
-            margin-bottom: 20px;
-            width: 90%;
-            max-width: 400px;
-            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
-        }
-
-        .box h2 {
-            font-size: 1.3em;
-            color: #ffffff;
-            margin-bottom: 10px;
+            justify-content: center; /* لتوسيع المحتوى */
+            align-items: center; /* لتوسيع المحتوى عموديًا */
         }
 
         /* القائمة الجانبية */
@@ -112,6 +82,9 @@
             overflow-x: hidden;
             padding-top: 60px;
             transition: 0.5s;
+            display: flex;
+            flex-direction: column;
+            align-items: center; /* توسيط الأزرار */
         }
 
         .sidebar a {
@@ -121,6 +94,8 @@
             color: #818181;
             display: block;
             transition: 0.3s;
+            width: 100%; /* تأكد من أن الروابط تأخذ العرض الكامل */
+            text-align: center; /* توسيط النص داخل الأزرار */
         }
 
         .sidebar a:hover {
@@ -158,7 +133,7 @@
     </div>
 
     <!-- الخلفية الشفافة -->
-    <div id="overlay" class="overlay" onclick="closeNav()">إضغط هنا للإغلاق</div>
+    <div id="overlay" class="overlay" onclick="closeNav()"></div>
 
     <!-- القائمة الجانبية -->
     <div id="mySidebar" class="sidebar">
@@ -186,7 +161,6 @@
                 <li>صاحب قناة هيما تيك لشروحات روبلوكس و البرمجيات </li>
             </ul>
         </div>
-
     </div>
 
     <script>
