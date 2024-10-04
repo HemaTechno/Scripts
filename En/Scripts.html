@@ -26,30 +26,41 @@
             direction: rtl;
         }
 
-        /* القائمة الجانبية */
+        /* قائمة الشريط الجانبي */
         .sidebar {
             height: 100%; 
-            width: 250px; /* عرض القائمة الجانبية */
+            width: 250px; 
             position: fixed;
             top: 0;
             right: 0;
             background-color: rgba(0, 0, 0, 0.95);
-            overflow-x: hidden;
             padding-top: 20px;
+            display: none; /* إخفاء القائمة الجانبية بشكل افتراضي */
             transition: 0.5s;
-            z-index: 1;
+            z-index: 2;
         }
         .sidebar a {
-            padding: 10px 15px; /* تصغير المساحة الداخلية */
+            padding: 10px 15px; 
             text-decoration: none;
-            font-size: 20px;
+            font-size: 18px; 
             color: #fff;
             display: block;
+            text-align: right; 
             transition: 0.3s;
+            margin: 10px 0; 
         }
         .sidebar a:hover {
-            color: #f1f1f1;
-            background-color: rgba(255, 255, 255, 0.1); /* تغيير الخلفية عند التحويم */
+            background-color: rgba(255, 255, 255, 0.1); 
+        }
+        
+        .menu-btn {
+            font-size: 30px;
+            cursor: pointer;
+            color: white;
+            z-index: 3;
+            position: fixed;
+            top: 20px;
+            right: 20px;
         }
 
         #boxContainer {
@@ -57,7 +68,7 @@
             flex-wrap: wrap;
             gap: 30px;
             justify-content: center;
-            margin-right: 260px; /* لترك مكان للقائمة الجانبية */
+            margin-right: 270px; /* إفساح المجال للشريط الجانبي */
         }
         .card {
             background-color: #2c3140;
@@ -69,9 +80,9 @@
         }
         .card img {
             width: 100%;
-            height: 200px; /* تعديل مقاس الصورة ليكون مستطيلاً */
-            object-fit: cover; /* لضمان أن الصورة تظهر بالكامل مع اقتصاص من الجوانب عند الحاجة */
-            cursor: pointer; /* جعل المؤشر يظهر كأنه قابل للنقر */
+            height: 200px; 
+            object-fit: cover; 
+            cursor: pointer; 
         }
         .card-content {
             padding: 20px;
@@ -115,8 +126,9 @@
 </head>
 <body>
 
-    <!-- القائمة الجانبية -->
-    <div class="sidebar">
+    <span class="menu-btn" onclick="openNav()">&#9776;</span>
+
+    <div id="mySidebar" class="sidebar">
         <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
         <a href="Scripts.html">Scripts</a>
         <a href="YouTubeScripts.html">YouTube Scripts</a>
@@ -128,7 +140,7 @@
 
     <script>
         // Fetch the JSON data
-        fetch('En/Scripte.json')
+        fetch('EnScripte.json') // تأكد من المسار الصحيح للملف
             .then(response => response.json())
             .then(data => {
                 createBoxes(data);
@@ -143,7 +155,6 @@
                 const card = document.createElement('div');
                 card.classList.add('card');
 
-                // Create an anchor element around the image
                 card.innerHTML = `
                     <a href="page.html?id=${item.id}">
                         <img src="${item.imageUrl}" alt="${item.title}">
@@ -164,6 +175,14 @@
 
                 boxContainer.appendChild(card);
             });
+        }
+
+        function openNav() {
+            document.getElementById("mySidebar").style.display = "block"; // عرض القائمة الجانبية
+        }
+
+        function closeNav() {
+            document.getElementById("mySidebar").style.display = "none"; // إخفاء القائمة الجانبية
         }
     </script>
 
