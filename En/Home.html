@@ -26,62 +26,33 @@
             display: flex;
             flex-direction: column;
         }
-        .header {
+
+        /* تعديل مكان الاسم والصورة */
+        .logo-name {
             position: absolute;
-            top: 20px;
-            left: 20px;
+            top: 10px;
+            left: 10px;
             display: flex;
             align-items: center;
         }
-        .header img {
+        .logo-name img {
             height: 40px; /* تعديل حجم الشعار */
-            margin-left: 20px; /* للمسافة بين الشعار والاسم */
-        }
-        .header h1 {
-            color: #fff;
-            font-size: 1.5em;
             margin-left: 10px; /* للمسافة بين الشعار والاسم */
         }
-        .container {
-            padding: 20px;
-            flex-grow: 1;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
+        .logo-name h1 {
+            font-size: 1.5em;
+            margin-right: 10px; /* للمسافة بين الاسم والشعار */
         }
-        .box {
-            background-color: #252b39;
-            border-radius: 12px;
-            padding: 20px;
-            margin-bottom: 20px;
-            width: 90%;
-            max-width: 400px;
-            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
-        }
-        .box h2 {
-            font-size: 1.3em;
-            color: #ffffff;
-            margin-bottom: 10px;
-        }
-        .box ul {
-            list-style-type: none;
-            padding: 0;
-        }
-        .box ul li {
-            font-size: 1.1em;
-            line-height: 1.6;
-            margin-bottom: 10px;
-        }
+
         /* القائمة الجانبية */
         .sidebar {
-            height: 100%;
-            width: 100%; /* غطاء كامل للشاشة */
+            height: 100%; 
+            width: 100%; /* الآن تشغل كامل الصفحة */
             position: fixed;
             z-index: 1;
             top: 0;
             right: 0;
-            background-color: rgba(0, 0, 0, 1); /* خلفية سوداء غير شفافة */
+            background-color: rgba(0, 0, 0, 0.95); /* خلفية سوداء غير شفافة */
             overflow-x: hidden;
             padding-top: 60px;
             transition: 0.5s;
@@ -95,10 +66,16 @@
             display: block;
             text-align: center; /* مركز الأزرار */
             transition: 0.3s;
+            border: 2px solid #fff; /* إطار أبيض حول الأزرار */
+            border-radius: 5px; /* زوايا دائرية للإطار */
+            margin: 10px auto; /* مسافة بين الأزرار */
+            width: 80%; /* تحديد عرض الأزرار */
         }
         .sidebar a:hover {
             color: #f1f1f1;
+            background-color: rgba(255, 255, 255, 0.1); /* تغيير الخلفية عند التحويم */
         }
+
         /* زر القائمة (الهامبرغر) */
         .menu-btn {
             font-size: 30px;
@@ -113,7 +90,8 @@
 </head>
 <body>
 
-    <div class="header">
+    <!-- الاسم والشعار في الجهة العلوية اليسرى -->
+    <div class="logo-name">
         <img src="path/to/your/logo.png" alt="Logo"> <!-- استبدل هذا بمسار الشعار -->
         <h1>H-Scripts</h1>
     </div>
@@ -129,38 +107,12 @@
 
     <span class="menu-btn" onclick="openNav()">&#9776;</span>
 
-    <div class="container">
-        <div class="box">
-            <h2>من نحن ؟:</h2>
-            <ul>
-                <li>نحن فريق يعمل علي مساعدتك لكي تستخدم الهاك و سكربتات روبلوكس افضل من اي وقت</li>
-                <li>ولقد وفرنا لك الكثير من الوقت و جمعنا لك كل ما تريده في مكان واحد</li>
-            </ul>
-        </div>
-        <div class="box">
-            <h2>مين المسؤال عن الموقع:</h2>
-            <ul>
-                <li>Developer Ibrahim Mansour</li>
-                <li>صاحب قناة هيما تيك لشروحات روبلوكس و البرمجيات </li>
-            </ul>
-        </div>
-
-        <!-- أزرار الشبكات الاجتماعية -->
-        <div class="social-buttons">
-            <a href="https://discord.gg/WT2c6f34rD" target="_blank" class="social-btn discord-btn">Discord</a>
-            <a href="https://youtube.com/@hema_tech1?si=FI65ajrK8Qkv4AFx" target="_blank" class="social-btn youtube-btn">YouTube</a>
-            <a href="https://t.me/hscripts" target="_blank" class="social-btn telegram-btn">Telegram</a>
-        </div>
-    </div>
-
     <script>
         function openNav() {
             document.getElementById("mySidebar").style.display = "block"; // عرض القائمة الجانبية
-            document.getElementById("mySidebar").style.width = "100%"; // تغطية كاملة للشاشة
         }
 
         function closeNav() {
-            document.getElementById("mySidebar").style.width = "0"; // إغلاق القائمة الجانبية
             document.getElementById("mySidebar").style.display = "none"; // إخفاء القائمة الجانبية
         }
     </script>
