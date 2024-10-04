@@ -40,8 +40,24 @@
             height: 100vh;
             display: flex;
             flex-direction: column;
-            justify-content: center;
+        }
+
+        .header {
+            background-color: #252b39;
+            padding: 10px;
+            display: flex;
             align-items: center;
+            justify-content: space-between;
+        }
+
+        .header img {
+            height: 40px; /* تعديل حجم الشعار */
+            margin-right: 20px;
+        }
+
+        .header h1 {
+            color: #fff;
+            font-size: 1.5em;
         }
 
         .container {
@@ -125,15 +141,15 @@
         /* القائمة الجانبية */
         .sidebar {
             height: 100%;
-            width: 0;
+            width: 250px;
             position: fixed;
             z-index: 1;
             top: 0;
             right: 0;
             background-color: #252b39;
             overflow-x: hidden;
-            transition: 0.5s;
             padding-top: 60px;
+            transition: 0.5s;
         }
 
         .sidebar a {
@@ -152,9 +168,10 @@
         .sidebar .closebtn {
             position: absolute;
             top: 0;
-            right: 25px;
+            left: 25px;
             font-size: 36px;
-            margin-right: 20px;
+            margin-left: 20px;
+            color: #fff;
         }
 
         /* زر القائمة (الهامبرغر) */
@@ -168,11 +185,25 @@
             z-index: 2;
         }
 
+        /* تعديل لون الخلفية */
+        .container {
+            background-color: #1a1e27;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            margin-right: 250px; /* إضافة هوامش مناسبة للمساحة المخصصة للقائمة الجانبية */
+        }
+
     </style>
 </head>
 <body>
 
-    <span class="menu-btn" onclick="openNav()">&#9776;</span>
+    <div class="header">
+        <img src="path/to/your/logo.png" alt="Logo"> <!-- استبدل هذا بمسار الشعار -->
+        <h1>H-Scripts</h1>
+    </div>
 
     <!-- القائمة الجانبية -->
     <div id="mySidebar" class="sidebar">
@@ -182,6 +213,8 @@
         <a href="Hack.html">هاكات</a>
         <a href="privacy.html">الخصوصية</a>
     </div>
+
+    <span class="menu-btn" onclick="openNav()">&#9776;</span>
 
     <div class="container">
         <div class="box">
