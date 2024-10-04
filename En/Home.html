@@ -43,7 +43,7 @@
             padding: 10px;
             display: flex;
             align-items: center;
-            justify-content: space-between;
+            justify-content: flex-start; /* جعل المحتوى في البداية */
         }
 
         .header img {
@@ -66,6 +66,11 @@
             background: rgba(0, 0, 0, 0.7); /* خلفية سوداء شفافة */
             display: none; /* مخفية بشكل افتراضي */
             z-index: 1;
+            display: none; /* مخفية بشكل افتراضي */
+            justify-content: center; /* لتوسيط المحتوى */
+            align-items: center; /* لتوسيط المحتوى عموديًا */
+            color: white;
+            font-size: 2em; /* حجم الخط */
         }
 
         .container {
@@ -153,7 +158,7 @@
     </div>
 
     <!-- الخلفية الشفافة -->
-    <div id="overlay" class="overlay" onclick="closeNav()"></div>
+    <div id="overlay" class="overlay" onclick="closeNav()">إضغط هنا للإغلاق</div>
 
     <!-- القائمة الجانبية -->
     <div id="mySidebar" class="sidebar">
@@ -187,7 +192,7 @@
     <script>
         function openNav() {
             document.getElementById("mySidebar").style.right = "0"; // أظهر القائمة
-            document.getElementById("overlay").style.display = "block"; // أظهر الخلفية
+            document.getElementById("overlay").style.display = "flex"; // أظهر الخلفية
         }
 
         function closeNav() {
