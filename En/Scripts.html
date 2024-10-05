@@ -64,12 +64,15 @@
         }
 
         #boxContainer {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 30px;
-            justify-content: center;
-            margin-right: 270px; /* إفساح المجال للشريط الجانبي */
-        }
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    justify-content: center; /* لضمان أن البطاقات في المنتصف */
+    margin-right: auto; /* إزالة الهامش من الجهة اليمنى */
+    margin-left: auto; /* إضافة الهامش الأيسر */
+    margin-top: 50px; /* مسافة من الأعلى لعرض البطاقات بوضوح */
+}
+
         .card {
             background-color: #2c3140;
             border-radius: 12px;
