@@ -1,11 +1,10 @@
-
 <!DOCTYPE html>
 <html lang="ar">
 <head>
     <!-- Admaven -->
     <script src="https://alwingulla.com/88/tag.min.js" data-zone="104407" async data-cfasync="false"></script>
     <!-- Ads End -->
-    
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="أفضل موقع يقدم شروحات و سكربتات و هاكات روبلوكس.">
@@ -26,50 +25,11 @@
             padding: 20px;
             direction: rtl;
         }
-
-        /* قائمة الشريط الجانبي */
-        .sidebar {
-            height: 100%; 
-            width: 250px; 
-            position: fixed;
-            top: 0;
-            right: 0;
-            background-color: rgba(0, 0, 0, 0.95);
-            padding-top: 20px;
-            display: none;
-            transition: 0.5s;
-            z-index: 2;
-        }
-        .sidebar a {
-            padding: 10px 15px;
-            text-decoration: none;
-            font-size: 18px;
-            color: #fff;
-            display: block;
-            text-align: right;
-            transition: 0.3s;
-            margin: 10px 0;
-        }
-        .sidebar a:hover {
-            background-color: rgba(255, 255, 255, 0.1);
-        }
-        
-        .menu-btn {
-            font-size: 30px;
-            cursor: pointer;
-            color: white;
-            z-index: 3;
-            position: fixed;
-            top: 20px;
-            right: 20px;
-        }
-
         #boxContainer {
             display: flex;
             flex-wrap: wrap;
             gap: 30px;
             justify-content: center;
-            margin-right: 270px;
         }
         .card {
             background-color: #2c3140;
@@ -123,46 +83,51 @@
             height: 30px;
             border-radius: 50%;
         }
-
-        /* نمط الإعلان */
-        .ad-container {
-            text-align: center;
-            margin: 20px 0;
-        }
     </style>
+    <!-- روابط Firebase -->
+    <script src="https://www.gstatic.com/firebasejs/10.7.2/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.2/firebase-firestore-compat.js"></script>
 </head>
 <body>
-
-    <span class="menu-btn" onclick="openNav()">&#9776;</span>
-
-    <div id="mySidebar" class="sidebar">
-        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
-        <a href="Scripts.html">Scripts</a>
-        <a href="YouTubeScripts.html">YouTube Scripts</a>
-        <a href="Hack.html">Exploits</a>
-        <a href="https://youtube.com/@hema_tech1?si=It1Tn77jTgsUZDWJ">Partner</a>
-    </div>
 
     <div id="boxContainer"></div>
 
     <script>
-        // Fetch the JSON data
-        fetch('En/Scripte.json')
-            .then(response => response.json())
-            .then(data => {
-                createBoxes(data);
-            })
-            .catch(error => console.error('Error loading data:', error));
+        // تكوين Firebase
+        const firebaseConfig = {
+            apiKey: "AIzaSyDN6hj_5iKkC76RWGXax4f5DQOj8E4syTQ",
+            authDomain: "hema-fcf76.firebaseapp.com",
+            projectId: "hema-fcf76",
+            storageBucket: "hema-fcf76.appspot.com",
+            messagingSenderId: "76044728790",
+            appId: "1:76044728790:web:776cd44b329beee03ccc77",
+            measurementId: "G-MB5N3JM8M8"
+        };
 
-        // Function to create boxes based on the JSON data
+        // تهيئة Firebase
+        firebase.initializeApp(firebaseConfig);
+        const db = firebase.firestore();
+
+        // جلب البيانات من Firestore
+        db.collection("scripts").get().then((querySnapshot) => {
+            const data = [];
+            querySnapshot.forEach((doc) => {
+                data.push(doc.data());
+            });
+            createBoxes(data);
+        }).catch((error) => {
+            console.error("Error getting documents: ", error);
+        });
+
+        // وظيفة إنشاء البطاقات استناداً إلى البيانات
         function createBoxes(data) {
             const boxContainer = document.getElementById('boxContainer');
 
-            data.forEach((item, index) => {
-                // Create the card element
+            data.forEach(item => {
                 const card = document.createElement('div');
                 card.classList.add('card');
 
+                // إنشاء العنصر المرئي للبطاقة
                 card.innerHTML = `
                     <a href="page.html?id=${item.id}">
                         <img src="${item.imageUrl}" alt="${item.title}">
@@ -181,42 +146,8 @@
                     </div>
                 `;
 
-                // Append the card to the container
                 boxContainer.appendChild(card);
-
-                // Add the advertisement after every card
-                const adDiv = document.createElement('div');
-                adDiv.classList.add('ad-container');
-                const scriptElement = document.createElement('script');
-                scriptElement.type = 'text/javascript';
-                scriptElement.innerHTML = `
-                    atOptions = {
-                        'key' : 'f2f1c0dd694672cbb78d5cbbf7fd578c',
-                        'format' : 'iframe',
-                        'height' : 250,
-                        'width' : 300,
-                        'params' : {}
-                    };
-                `;
-                const scriptSrc = document.createElement('script');
-                scriptSrc.src = '//dreadfullyemulateconservation.com/f2f1c0dd694672cbb78d5cbbf7fd578c/invoke.js';
-                scriptSrc.type = 'text/javascript';
-
-                // Append the ad script elements to the ad div
-                adDiv.appendChild(scriptElement);
-                adDiv.appendChild(scriptSrc);
-
-                // Append the ad div after each card
-                boxContainer.appendChild(adDiv);
             });
-        }
-
-        function openNav() {
-            document.getElementById("mySidebar").style.display = "block";
-        }
-
-        function closeNav() {
-            document.getElementById("mySidebar").style.display = "none";
         }
     </script>
 
