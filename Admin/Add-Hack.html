@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>إضافة سكربت جديد</title>
+    <style>
+        body {
+            font-family: 'Cairo', sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+            padding: 20px;
+        }
+        h1 {
+            text-align: center;
+            color: #5A5A5A;
+        }
+        form {
+            max-width: 500px;
+            margin: auto;
+            padding: 20px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        label {
+            margin-bottom: 10px;
+            display: block;
+        }
+        input[type="text"], input[type="url"], select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        input[type="submit"] {
+            background-color: #5A5A5A;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        input[type="submit"]:hover {
+            background-color: #333;
+        }
+        .link-input {
+            display: none; /* إخفاء حقل الرابط افتراضيًا */
+        }
+    </style>
+    <!-- روابط Firebase -->
+    <script src="https://www.gstatic.com/firebasejs/10.7.2/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.2/firebase-firestore-compat.js"></script>
+</head>
+<body>
+
+    <h1>إضافة سكربت جديد</h1>
+    <form id="scriptForm">
+        <label for="title">العنوان:</label>
+        <input type="text" id="title" required>
+
+        <label for="description">الوصف:</label>
+        <input type="text" id="description" required>
+
+        <label for="platform">اختر النظام:</label>
+        <select id="platform" required>
+            <option value="">-- اختر النظام --</option>
+            <option value="android">أندرويد</option>
+            <option value="ios">آيفون</option>
+            <option value="windows">ويندوز</option>
+        </select>
+
+        <div id="linkInputContainer" class="link-input">
+            <label for="downloadLink">رابط التحميل:</label>
+            <input type="url" id="downloadLink" required>
+        </div>
+
+        <input type="submit" value="إضافة سكربت">
+    </form>
+
+    <script>
+        // تكوين Firebase
+        const firebaseConfig = {
+  apiKey: "AIzaSyBespCtavesyrdzKcB3LRr4vXd_U6XhfO4",
+  authDomain: "token-9ae6a.firebaseapp.com",
+  projectId: "token-9ae6a",
+  storageBucket: "token-9ae6a.appspot.com",
+  messagingSenderId: "434290198239",
+  appId: "1:434290198239:web:a56983c6f74da146830b6a",
+  measurementId: "G-FMB4BZ07DR"
+};
+
+        // تهيئة Firebase
+        firebase.initializeApp(firebaseConfig);
+        const db = firebase.firestore();
+
+        // إظهار حقل الرابط عند اختيار النظام
+        document.getElementById('platform').addEventListener('change', function() {
+            const selectedPlatform = this.value;
+            const linkInputContainer = document.getElementById('linkInputContainer');
+
+            if (selectedPlatform) {
+                linkInputContainer.style.display = 'block'; // إظهار حقل الرابط
+            } else {
+                linkInputContainer.style.display = 'none'; // إخفاء حقل الرابط
+            }
+        });
+
+        // إضافة حدث عند إرسال النموذج
+        document.getElementById('scriptForm').addEventListener('submit', function(e) {
+            e.preventDefault(); // منع إعادة تحميل الصفحة
+
+            // الحصول على القيم من النموذج
+            const title = document.getElementById('title').value;
+            const description = document.getElementById('description').value;
+            const platform = document.getElementById('platform').value;
+            const downloadLink = document.getElementById('downloadLink').value;
+
+            // حفظ البيانات في Firestore
+            db.collection("scripts").add({
+                title: title,
+                description: description,
+                platform: platform,
+                downloadLink: downloadLink,
+                id: Date.now() // استخدام timestamp كـ id
+            }).then(() => {
+                alert('تم إضافة السكربت بنجاح!');
+                document.getElementById('scriptForm').reset(); // إعادة تعيين النموذج
+                document.getElementById('linkInputContainer').style.display = 'none'; // إعادة إخفاء حقل الرابط
+            }).catch((error) => {
+                console.error("خطأ في إضافة السكربت: ", error);
+            });
+        });
+    </script>
+</body>
+</html>
