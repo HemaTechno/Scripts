@@ -3,129 +3,128 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>عرض السكربتات - H-Scripts</title>
+    <title>عرض السكربتات</title>
     <style>
-        body {
-            font-family: 'Cairo', sans-serif;
-            background-color: #f4f4f4;
-            color: #333;
+        * {
             margin: 0;
             padding: 0;
+            box-sizing: border-box;
         }
-
-        h1 {
-            text-align: center;
-            color: #7A3E68;
-            font-size: 2.5em;
-            margin-top: 20px;
-        }
-
-        /* Sidebar */
-        .sidebar {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 250px;
-            height: 100%;
-            background-color: #333;
-            padding-top: 20px;
-            transition: all 0.3s ease;
-        }
-
-        .sidebar.closed {
-            transform: translateX(-250px);
-        }
-
-        .sidebar h2 {
+        body {
+            font-family: 'Cairo', sans-serif;
+            background-color: #090913; /* خلفية الصفحة */
             color: #fff;
-            text-align: center;
-            margin-bottom: 20px;
-            font-size: 24px;
-        }
-
-        .sidebar a {
-            display: block;
-            color: white;
-            padding: 10px 20px;
-            font-size: 18px;
-            text-decoration: none;
-            transition: background 0.3s ease;
-        }
-
-        .sidebar a:hover {
-            background-color: #575757;
-        }
-
-        /* محتوى الصفحة */
-        .content {
-            margin-left: 270px;
             padding: 20px;
-            background-color: #f4f4f4;
+            direction: rtl;
         }
-
-        .container {
-            max-width: 800px;
-            margin: auto;
-            padding: 20px;
-            background: white;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        h1 {
+            text-align: left; /* محاذاة العنوان إلى اليسار */
+            color: #948DFF; /* لون العنوان */
+            margin-bottom: 30px;
+            font-size: 2.5em;
+            margin-left: 20px; /* مسافة من اليسار */
         }
-
-        .script-box {
-            margin-bottom: 20px;
-            padding: 15px;
-            background-color: #fff;
-            border: 1px solid #ccc;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-
-        .script-box h2 {
-            margin-bottom: 10px;
-            color: #333;
-        }
-
-        .script-box p {
-            margin-bottom: 10px;
-        }
-
-        .script-box img {
-            width: 50px;
-            margin-right: 10px;
-            vertical-align: middle;
-        }
-
-        .download-btn {
-            display: inline-block;
-            padding: 10px 20px;
-            background-color: #7A3E68;
-            color: white;
-            border-radius: 30px;
-            text-decoration: none;
-            font-size: 16px;
-            transition: background-color 0.3s ease;
-            margin-top: 10px;
-        }
-
-        .download-btn:hover {
-            background-color: #532F47;
-        }
-
-        /* زر فتح وإغلاق الـ Sidebar */
-        .toggle-btn {
+        /* القائمة الجانبية */
+        .sidebar {
+            height: 100%;
+            width: 250px;
             position: fixed;
-            left: 20px;
-            top: 20px;
-            background-color: #333;
-            color: white;
-            border: none;
-            padding: 10px;
-            font-size: 18px;
-            cursor: pointer;
-            z-index: 1000;
+            z-index: 1;
+            top: 0;
+            right: -250px; /* تبدأ خارج الشاشة */
+            background-color: rgba(0, 0, 0, 0.95); /* خلفية القائمة الجانبية */
+            overflow-x: hidden;
+            padding-top: 60px;
+            transition: 0.5s; /* انتقال سلس عند الفتح والإغلاق */
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5); /* ظل للقائمة */
         }
-
+        .sidebar a {
+            padding: 10px;
+            text-decoration: none;
+            font-size: 20px;
+            color: #fff;
+            display: block;
+            text-align: right; /* محاذاة النص إلى اليمين */
+            transition: 0.3s;
+            margin: 10px 0; /* مسافة بين الروابط */
+            border-radius: 5px;
+            background-color: rgba(255, 255, 255, 0.1); /* خلفية شفافة */
+        }
+        .sidebar a:hover {
+            color: #f1f1f1; /* لون النص عند التحويم */
+            background-color: rgba(255, 204, 0, 0.2); /* خلفية عند التحويم */
+        }
+        .menu-btn {
+            font-size: 30px;
+            position: fixed;
+            top: 20px;
+            right: 20px; /* نقل الزر إلى اليمين */
+            cursor: pointer;
+            color: white;
+            z-index: 2;
+        }
+        .script-box {
+            background: #1e1e1e; /* لون خلفية الصندوق */
+            border-radius: 10px;
+            padding: 20px;
+            margin: 15px 0;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+            transition: transform 0.3s;
+            display: flex;
+            flex-direction: column;
+            align-items: center; /* توسيط العناصر داخل الصندوق */
+        }
+        .script-box:hover {
+            transform: scale(1.02); /* تأثير التحويم */
+        }
+        .script-title {
+            font-size: 24px;
+            color: #948DFF; /* لون عنوان السكربت */
+            text-align: center;
+        }
+        .script-description {
+            margin: 10px 0;
+            font-size: 16px;
+            text-align: center; /* توسيط الوصف */
+        }
+        .script-platform {
+            margin: 10px 0;
+            text-align: center;
+        }
+        .platform-image {
+            border: 1px solid #948DFF; /* إطار للصورة */
+            border-radius: 2px; /* زوايا مدورة للإطار */
+            padding: 2px; /* مسافة داخلية للإطار */
+            width: 60px; /* زيادة العرض */
+            height: 60px; /* زيادة الارتفاع */
+        }
+        .script-link, .share-button {
+            display: inline-block;
+            margin-top: 15px;
+            text-decoration: none;
+            color: #fff;
+            background-color: #948DFF; /* لون زر التحميل */
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-size: 18px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: background-color 0.3s, transform 0.3s;
+            width: 100%; /* جعل الأزرار تأخذ عرض الصندوق */
+            text-align: center; /* توسيط النص داخل الأزرار */
+        }
+        .script-link:hover, .share-button:hover {
+            background-color: #7b79e8; /* لون زر التحميل عند التحويم */
+            transform: translateY(-2px); /* تأثير التحويم */
+        }
+        /* لإخفاء القائمة الجانبية */
+        .closebtn {
+            color: white;
+            font-size: 30px;
+            position: absolute;
+            top: 10px;
+            left: 20px;
+        }
     </style>
     <!-- روابط Firebase -->
     <script src="https://www.gstatic.com/firebasejs/10.7.2/firebase-app-compat.js"></script>
@@ -133,22 +132,17 @@
 </head>
 <body>
 
-    <!-- زر فتح وإغلاق الـ Sidebar -->
-    <button class="toggle-btn" onclick="toggleSidebar()">☰</button>
-
-    <!-- Sidebar -->
-    <div class="sidebar closed">
-        <h2>H-Scripts</h2>
-        <a href="#">الرئيسية</a>
-        <a href="#">إضافة سكربت</a>
-        <a href="#">الإعدادات</a>
+    <span class="menu-btn" onclick="openNav()">&#9776;</span>
+    <div class="sidebar" id="mySidebar">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
+        <a href="Scripts.html">سكربتات</a>
+        <a href="YouTubeScripts.html">سكربتات يوتيوب</a>
+        <a href="Hack.html">ثغرات</a>
+        <a href="https://youtube.com/@hema_tech1?si=It1Tn77jTgsUZDWJ">شريك</a>
     </div>
 
-    <!-- المحتوى -->
-    <div class="content">
-        <h1>السكربتات المتاحة</h1>
-        <div class="container" id="scriptsContainer"></div>
-    </div>
+    <h1>H-Scripts</h1>
+    <div id="scriptsContainer"></div>
 
     <script>
         // تكوين Firebase
@@ -166,53 +160,58 @@
         firebase.initializeApp(firebaseConfig);
         const db = firebase.firestore();
 
-        // دالة عرض السكربتات
-        function displayScripts(scripts) {
-            const scriptsContainer = document.getElementById('scriptsContainer');
-            scriptsContainer.innerHTML = ''; // تفريغ المحتوى السابق
-
-            scripts.forEach(script => {
-                const scriptBox = document.createElement('div');
-                scriptBox.classList.add('script-box');
-
-                // صور نظم التشغيل
-                let platformImage = '';
-                if (script.platform === 'android') {
-                    platformImage = '<img src="https://cdn-icons-png.flaticon.com/512/888/888857.png" alt="أندرويد">';
-                } else if (script.platform === 'ios') {
-                    platformImage = '<img src="https://cdn-icons-png.flaticon.com/512/179/179309.png" alt="آيفون">';
-                } else if (script.platform === 'windows') {
-                    platformImage = '<img src="https://cdn-icons-png.flaticon.com/512/732/732225.png" alt="ويندوز">';
-                }
+        // جلب السكربتات من Firestore
+        db.collection("scripts").get().then((querySnapshot) => {
+            const scriptsContainer = document.getElementById("scriptsContainer");
+            querySnapshot.forEach((doc) => {
+                const scriptData = doc.data();
+                const scriptBox = document.createElement("div");
+                scriptBox.classList.add("script-box");
 
                 scriptBox.innerHTML = `
-                    <h2>${script.title}</h2>
-                    <p>الوصف: ${script.description}</p>
-                    <p>النظام: ${platformImage}</p>
-                    <a href="${script.downloadLink}" target="_blank" class="download-btn">تحميل السكربت</a>
+                    <div class="script-title">${scriptData.title}</div>
+                    <div class="script-description">${scriptData.description}</div>
+                    <div class="script-platform">
+                        <img src="${getPlatformImage(scriptData.platform)}" alt="${scriptData.platform}" class="platform-image" style="width: 60px; height: 60px;">
+                    </div>
+                    <a href="${scriptData.downloadLink}" class="script-link" target="_blank">رابط التحميل</a>
+                    <button class="share-button" onclick="shareLink('${doc.id}')">مشاركة</button>
                 `;
-
                 scriptsContainer.appendChild(scriptBox);
             });
-        }
-
-        // جلب البيانات من Firestore
-        db.collection("scripts").get().then((querySnapshot) => {
-            const scripts = [];
-            querySnapshot.forEach((doc) => {
-                scripts.push({ id: doc.id, ...doc.data() });
-            });
-            displayScripts(scripts);
-        }).catch((error) => {
-            console.error("خطأ في جلب البيانات: ", error);
         });
 
-        // دالة فتح وإغلاق الـ Sidebar
-        function toggleSidebar() {
-            const sidebar = document.querySelector('.sidebar');
-            sidebar.classList.toggle('closed');
+        // دالة فتح القائمة الجانبية
+        function openNav() {
+            document.getElementById("mySidebar").style.right = "0"; // إظهار القائمة
+        }
+
+        // دالة إغلاق القائمة الجانبية
+        function closeNav() {
+            document.getElementById("mySidebar").style.right = "-250px"; // إخفاء القائمة
+        }
+
+        // دالة مشاركة الرابط
+        function shareLink(id) {
+            const link = `https://h-scripts.site/?id=${id}`;
+            navigator.clipboard.writeText(link).then(() => {
+                alert("تم نسخ الرابط للمشاركة!");
+            }).catch(err => {
+                console.error('خطأ في النسخ:', err);
+            });
+        }
+
+        // دالة لجلب صورة المنصة
+        function getPlatformImage(platform) {
+            // عودة بصورة المنصة بناءً على النظام
+            const images = {
+                "android": "https://i.ibb.co/qxNW56g/Android-robot.png",
+                "ios": "https://i.ibb.co/DVYptjt/download-9.png",
+                "windows": "https://i.ibb.co/jkGKs5t/Windows-logo-2012.png",
+                "linux": "https://i.ibb.co/XVqYwdS/unnamed.png"
+            };
+            return images[platform.toLowerCase()] || "default.png"; // صورة افتراضية إذا لم توجد
         }
     </script>
-
 </body>
 </html>
