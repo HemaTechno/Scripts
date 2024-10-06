@@ -1,21 +1,8 @@
 <!DOCTYPE html>
 <html lang="ar">
+    
 <head>
-	<script type="text/javascript" async src="https://platform.foremedia.net/code/55067/analytics"></script>
-
-	<meta name="monetag" content="98399970e4ba3713e4fb0406cb9b3922">
-<!-- Admaven -->
-	<script src="https://alwingulla.com/88/tag.min.js" data-zone="104407" async data-cfasync="false"></script>
- <script src="https://alwingulla.com/88/tag.min.js" data-zone="102579" async data-cfasync="false"></script>
-		<script type='text/javascript' src='//dreadfullyemulateconservation.com/c8/67/c2/c867c21ca6f549c59064f55534db0add.js'></script>
-	<!-- Ads End -->
-     
-    <meta property="og:title" content="H-Scripts" />
-    <meta property="og:description" content="افضل موقع يساعدك في اي شي بخصوص هاكات و سكربتات روبلوكس" />
-    <meta property="og:image" content="https://media.discordapp.net/attachments/1210197000306434069/1289012963142926417/20240926_203252.jpg?ex=66f7465f&is=66f5f4df&hm=feb5df21452b3dea3e62fd625a180d8f7a64eb497db830fc882f054e1d53af3c&" />
-    <meta property="og:url" content="https://h-scripts.site" />
-    <meta property="og:type" content="website" />
-
+<script type='text/javascript' src='//dreadfullyemulateconservation.com/c8/67/c2/c867c21ca6f549c59064f55534db0add.js'></script>
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -26,25 +13,77 @@
             padding: 0;
             box-sizing: border-box;
         }
-	    html, body {
-            overflow-x: hidden; /* منع التحرك الأفقي */
+        html, body {
+            overflow-x: hidden;
             width: 100%;
             margin: 0;
             padding: 0;
-	    }
-
+        }
         body {
             font-family: 'Arial', sans-serif;
-            background-color: #1a1e27;
+            background-color: #090913; /* خلفية الصفحة */
             color: #fff;
             direction: rtl;
             text-align: right;
             height: 100vh;
             display: flex;
             flex-direction: column;
-            justify-content: center; /* لجعل المحتوى في وسط الصفحة عموديًا */
-            align-items: center; 
-	}
+        }
+
+        /* الاسم */
+        .logo-name {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+        }
+        .logo-name h1 {
+            font-size: 1.5em; /* حجم الخط */
+            margin-left: 10px; /* للمسافة بين الشعار والاسم */
+            color: #948DFF; /* لون الاسم */
+        }
+
+        /* القائمة الجانبية */
+        .sidebar {
+            height: 100%; 
+            width: 100%; /* الآن تشغل كامل الصفحة */
+            position: fixed;
+            z-index: 1;
+            top: 0;
+            right: 0;
+            background-color: rgba(0, 0, 0, 0.95); /* خلفية سوداء غير شفافة */
+            overflow-x: hidden;
+            padding-top: 60px;
+            transition: 0.5s;
+            display: none; /* إخفاء القائمة الجانبية بشكل افتراضي */
+        }
+        .sidebar a {
+            padding: 10px; /* تصغير المساحة الداخلية */
+            text-decoration: none;
+            font-size: 20px; /* تصغير حجم النص */
+            color: #fff;
+            display: block;
+            text-align: center; /* مركز الأزرار */
+            transition: 0.3s;
+            border: 2px solid rgba(255, 255, 255, 0.5); /* إطار أبيض شفاف */
+            border-radius: 5px; /* زوايا دائرية للإطار */
+            margin: 10px auto; /* مسافة بين الأزرار */
+            width: 80%; /* تحديد عرض الأزرار */
+        }
+        .sidebar a:hover {
+            color: #f1f1f1;
+            background-color: rgba(255, 255, 255, 0.1); /* تغيير الخلفية عند التحويم */
+        }
+
+        /* زر القائمة (الهامبرغر) */
+        .menu-btn {
+            font-size: 30px;
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            cursor: pointer;
+            color: white;
+            z-index: 2;
+        }
 
         .container {
             padding: 20px;
@@ -53,12 +92,13 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
+            margin-top: 60px; /* لإفساح المجال لزر القائمة */
         }
 
         .box {
             background-color: #252b39;
             border-radius: 12px;
-            padding: 20px;
+            padding: 15px; /* تصغير المساحة الداخلية */
             margin-bottom: 20px;
             width: 90%;
             max-width: 400px;
@@ -66,7 +106,7 @@
         }
 
         .box h2 {
-            font-size: 1.3em;
+            font-size: 1.2em; /* تصغير حجم الخط */
             color: #ffffff;
             margin-bottom: 10px;
         }
@@ -77,7 +117,7 @@
         }
 
         .box ul li {
-            font-size: 1.1em;
+            font-size: 1em; /* تصغير حجم النص */
             line-height: 1.6;
             margin-bottom: 10px;
         }
@@ -93,8 +133,8 @@
         .social-btn {
             color: white;
             border: none;
-            padding: 15px;
-            font-size: 1.2em;
+            padding: 10px; /* تصغير المساحة الداخلية */
+            font-size: 1em; /* تصغير حجم الخط */
             border-radius: 30px;
             cursor: pointer;
             transition: background-color 0.3s ease;
@@ -124,88 +164,48 @@
             background-color: #0077b3;
         }
 
-        /* شريط التنقل السفلي */
-        .navbar {
-            background-color: #252b39;
-            padding: 10px 0;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            position: fixed;
-            bottom: 0;
-            width: 100%;
-            height: 70px;
-            box-shadow: 0px -4px 6px rgba(0, 0, 0, 0.2);
-            padding: 0 20px;
-        }
-
-        .navbar-item {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            color: #7a7a7a;
-            font-size: 12px;
-            transition: color 0.3s ease;
-        }
-
-        .navbar-item i {
-            font-size: 24px;
-            margin-bottom: 5px;
-        }
-
-        .navbar-item.active,
-        .navbar-item:hover {
-            color: #007bff;
-        }
-
-        .add-btn {
-            background-color: #007bff;
-            color: white;
-            border: none;
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            font-size: 36px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            cursor: pointer;
-            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
-            transition: background-color 0.3s ease, box-shadow 0.3s ease;
-            position: relative;
-            top: -30px; /* تم تعديل قيمة التمركز */
-        }
-
-        .add-btn:hover {
-            background-color: #0056b3;
-            box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.4);
-        }
-
-        a {
-            color: inherit;
-            text-decoration: none;
-        }
-
     </style>
 </head>
 <body>
 
+    <!-- الاسم -->
+    <div class="logo-name">
+        <h1>H-Scripts</h1>
+    </div>
+
+    <!-- القائمة الجانبية -->
+    <div id="mySidebar" class="sidebar">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
+        <a href="public-scripts.html">scripts</a>
+        <a href="Scripts.html">YouTube Scripts</a>
+        <a href="Hack.html">exploits</a>
+        <a href="https://youtube.com/@hema_tech1?si=It1Tn77jTgsUZDWJ">Partner</a>
+    </div>
+
+    <span class="menu-btn" onclick="openNav()">&#9776;</span>
+
+    <!-- محتوى الصفحة -->
     <div class="container">
         <div class="box">
-            <h2>من نحن ؟:</h2>
+            <h2 style="color: #948DFF;">H-Scripts</h2>
             <ul>
-                <li>نحن فريق يعمل علي مساعدتك لكي تستخدم الهاك و سكربتات روبلوكس افضل من اي وقت</li>
-                <li>ولقد وفرنا لك الكثير من الوقت و جمعنا لك كل ما تريده في مكان واحد</li>
-            </ul>
-        </div>
-        <div class="box">
-            <h2>مين المسؤال عن الموقع:</h2>
-            <ul>
-                <li>Developer Ibrahim Mansour</li>
-                <li>صاحب قناة هيما تيك لشروحات روبلوكس و البرمجيات </li>
+                <li>Welcome to my website my scripts good luck.</li>
+                <li>We have made everything easy for you. You will find scripts and hacks in one place. </li>
             </ul>
         </div>
 
+        <!-- كود الإعلان بعد Crazy Script -->
+        
+        <div class="box">
+            <h2 style="color: #948DFF;">Information</h2>
+            <ul>
+                <li>Developer Ibrahim Mansour</li>
+                <li> Partner: Hema_tech1 | crazy_Script1</li>
+            </ul>
+        </div>
+
+        <!-- كود الإعلان بعد Information -->
+        
         <!-- أزرار الشبكات الاجتماعية -->
         <div class="social-buttons">
             <a href="https://discord.gg/WT2c6f34rD" target="_blank" class="social-btn discord-btn">Discord</a>
@@ -214,34 +214,15 @@
         </div>
     </div>
 
-    <!-- شريط التنقل السفلي -->
-    <div class="navbar">
-        <a href="Public-Scripts.html" class="navbar-item">
-            <i class="navbar-icon">🌐</i>
-            <span>سكربتات</span>
-        </a>
-        <a href="Scripts.html" class="navbar-item">
-            <i class="navbar-icon">🗂️</i>
-            <span> يوتيوب</span>
-        </a>
-        <button class="add-btn">🏠</button>
-        <a href="Hack.html" class="navbar-item">
-            <i class="navbar-icon">👾</i>
-            <span>هاكات</span>
-        </a>
-        <a href="privacy.html" class="navbar-item">
-            <i class="navbar-icon">🔖</i>
-            <span>الخصوصيه</span>
-        </a>
-    </div>
+    <script>
+        function openNav() {
+            document.getElementById("mySidebar").style.display = "block"; // عرض القائمة الجانبية
+        }
 
-
-
-<!-- ADSTERRA -->
-
-
-<!-- ADSTERRA -->
-     
+        function closeNav() {
+            document.getElementById("mySidebar").style.display = "none"; // إخفاء القائمة الجانبية
+        }
+    </script>
 
 </body>
 </html>
