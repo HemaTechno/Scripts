@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>إدارة السكربتات</title>
+    <style>
+        body {
+            font-family: 'Cairo', sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+            padding: 20px;
+        }
+        h1 {
+            text-align: center;
+            color: #5A5A5A;
+        }
+        .script-item {
+            background: white;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 10px 0;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .script-title {
+            font-size: 20px;
+            color: #5A5A5A;
+        }
+        .button-container {
+            margin-top: 10px;
+        }
+        button {
+            background-color: #5A5A5A;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-right: 5px;
+        }
+        button:hover {
+            background-color: #333;
+        }
+    </style>
+    <!-- روابط Firebase -->
+    <script src="https://www.gstatic.com/firebasejs/10.7.2/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.2/firebase-firestore-compat.js"></script>
+</head>
+<body>
+
+    <h1>إدارة السكربتات</h1>
+    <div id="scriptsContainer"></div>
+
+    <script>
+        // تكوين Firebase
+        const firebaseConfig = {
+            apiKey: "AIzaSyBespCtavesyrdzKcB3LRr4vXd_U6XhfO4",
+            authDomain: "token-9ae6a.firebaseapp.com",
+            projectId: "token-9ae6a",
+            storageBucket: "token-9ae6a.appspot.com",
+            messagingSenderId: "434290198239",
+            appId: "1:434290198239:web:a56983c6f74da146830b6a",
+            measurementId: "G-FMB4BZ07DR"
+        };
+
+        // تهيئة Firebase
+        firebase.initializeApp(firebaseConfig);
+        const db = firebase.firestore();
+
+        // جلب جميع السكربتات من Firestore
+        db.collection("scripts").get().then((querySnapshot) => {
+            const scriptsContainer = document.getElementById('scriptsContainer');
+            querySnapshot.forEach((doc) => {
+                const scriptData = doc.data();
+                const scriptId = doc.id;
+
+                // إنشاء عنصر لعرض السكربت
+                const scriptItem = document.createElement('div');
+                scriptItem.className = 'script-item';
+                scriptItem.innerHTML = `
+                    <div class="script-title">${scriptData.title}</div>
+                    <div>${scriptData.description}</div>
+                    <div>${scriptData.platform}</div>
+                    <div>${scriptData.downloadLink}</div>
+                    <div class="button-container">
+                        <button onclick="editScript('${scriptId}')">تعديل</button>
+                        <button onclick="deleteScript('${scriptId}')">حذف</button>
+                    </div>
+                `;
+                scriptsContainer.appendChild(scriptItem);
+            });
+        }).catch((error) => {
+            console.error("خطأ في جلب السكربتات: ", error);
+        });
+
+        // دالة لتعديل السكربت
+        function editScript(scriptId) {
+            window.location.href = `editScript.html?id=${scriptId}`; // الانتقال إلى صفحة التعديل
+        }
+
+        // دالة لحذف السكربت
+        function deleteScript(scriptId) {
+            if (confirm("هل أنت متأكد أنك تريد حذف هذا السكربت؟")) {
+                db.collection("scripts").doc(scriptId).delete().then(() => {
+                    alert('تم حذف السكربت بنجاح!');
+                    location.reload(); // إعادة تحميل الصفحة لتحديث القائمة
+                }).catch((error) => {
+                    console.error("خطأ في حذف السكربت: ", error);
+                });
+            }
+        }
+    </script>
+</body>
+</html>
