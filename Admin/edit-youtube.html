@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta property="og:title" content="H-Scripts" />
+    <meta property="og:description" content="احصل على سكربتك الان" />
+    <meta property="og:image" content="https://media.discordapp.net/attachments/1210197000306434069/1289012963142926417/20240926_203252.jpg?ex=66f7465f&is=66f5f4df&hm=feb5df21452b3dea3e62fd625a180d8f7a64eb497db830fc882f054e1d53af3c&" />
+    <meta property="og:url" content="https://h-scripts.site" />
+    <meta property="og:type" content="website" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>إدارة المحتوى</title>
+    <style>
+        body {
+            font-family: 'Cairo', sans-serif;
+            background-color: #121212;
+            color: #fff;
+            text-align: center;
+            padding: 20px;
+            margin: 0;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        h1, p {
+            margin-bottom: 20px;
+        }
+
+        #stepsContainer {
+            width: 100%;
+            max-width: 600px;
+        }
+
+        .step {
+            background-color: #1e1e1e;
+            padding: 20px;
+            margin: 10px 0;
+            border-radius: 12px;
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+            transition: background-color 0.3s, transform 0.2s;
+        }
+
+        .step:hover {
+            background-color: #333;
+            transform: translateY(-5px);
+        }
+
+        .step.completed {
+            background-color: #4caf50;
+        }
+
+        .step h3 {
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+
+        .step button {
+            background-color: #6200ea;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .step button:hover {
+            background-color: #4a00c8;
+        }
+
+        #unlockButton {
+            background-color: #03dac5;
+            color: black;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 12px;
+            margin-top: 30px;
+            cursor: pointer;
+            display: none;
+        }
+
+        #unlockButton:hover {
+            background-color: #00bfa5;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            margin-bottom: 20px;
+            border-radius: 12px;
+        }
+
+        #notification {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #4caf50;
+            color: white;
+            padding: 15px 25px;
+            border-radius: 10px;
+            display: none;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            font-size: 16px;
+        }
+
+        #editButton, #deleteButton {
+            background-color: #ffa500; /* لون الزر */
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            margin: 10px;
+            transition: background-color 0.3s;
+        }
+
+        #editButton:hover, #deleteButton:hover {
+            background-color: #e68a00; /* لون الزر عند التمرير */
+        }
+
+        /* نموذج تعديل المحتوى */
+        #editModal {
+            display: none;
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            justify-content: center;
+            align-items: center;
+        }
+
+        #editForm {
+            background-color: #222;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        #editForm input, #editForm textarea {
+            width: 100%;
+            margin: 10px 0;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            background-color: #333;
+            color: #fff;
+        }
+
+        #saveButton {
+            background-color: #4caf50;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            padding: 10px 20px;
+        }
+
+        #saveButton:hover {
+            background-color: #45a049;
+        }
+
+        #closeButton {
+            background-color: #f44336;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            padding: 10px 20px;
+        }
+
+        #closeButton:hover {
+            background-color: #e53935;
+        }
+    </style>
+
+    <!-- روابط Firebase -->
+    <script src="https://www.gstatic.com/firebasejs/10.7.2/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.2/firebase-firestore-compat.js"></script>
+</head>
+<body>
+
+    <h1 id="title">إدارة المحتوى</h1>
+    
+    <!-- قائمة الـ IDs -->
+    <select id="idSelect">
+        <option value="">اختر ID</option>
+    </select>
+    
+    <button id="loadButton">تحميل المحتوى</button>
+    
+    <img id="image" src="" alt="Image" style="display:none;">
+    <p id="description">جاري التحميل...</p>
+    <div id="stepsContainer"></div>
+    <button id="unlockButton">افتح المحتوى</button>
+
+    <div id="notification">تمت المهمة! انتقل إلى المهمة القادمة.</div>
+
+    <div>
+        <button id="editButton">تعديل</button>
+        <button id="deleteButton">حذف</button>
+    </div>
+
+    <!-- نموذج التعديل -->
+    <div id="editModal">
+        <div id="editForm">
+            <h2>تعديل المحتوى</h2>
+            <input type="text" id="editTitle" placeholder="العنوان">
+            <textarea id="editDescription" rows="4" placeholder="الوصف"></textarea>
+            <input type="text" id="editImage" placeholder="رابط الصورة">
+            <button id="saveButton">حفظ التغييرات</button>
+            <button id="closeButton">إغلاق</button>
+        </div>
+    </div>
+
+    <script>
+        let currentId = ''; // لتخزين المعرف الحالي للمحتوى
+
+        // إعداد Firebase
+        const firebaseConfig = {
+            apiKey: "AIzaSyDN6hj_5iKkC76RWGXax4f5DQOj8E4syTQ",
+            authDomain: "hema-fcf76.firebaseapp.com",
+            projectId: "hema-fcf76",
+            storageBucket: "hema-fcf76.appspot.com",
+            messagingSenderId: "76044728790",
+            appId: "1:76044728790:web:776cd44b329beee03ccc77",
+            measurementId: "G-MB5N3JM8M8"
+        };
+        // تهيئة Firebase
+        firebase.initializeApp(firebaseConfig);
+        const db = firebase.firestore();
+
+        // تحميل قائمة الـ IDs
+        function loadIds() {
+            const idSelect = document.getElementById('idSelect');
+            db.collection("scripts").get().then((snapshot) => {
+                snapshot.forEach((doc) => {
+                    const option = document.createElement('option');
+                    option.value = doc.id;
+                    option.textContent = doc.id;
+                    idSelect.appendChild(option);
+                });
+            }).catch((error) => {
+                console.error("خطأ في تحميل الـ IDs:", error);
+            });
+        }
+
+        // تحميل البيانات بناءً على المعرف المحدد
+        document.getElementById('loadButton').addEventListener('click', () => {
+            const id = document.getElementById('idSelect').value;
+            if (id) {
+                currentId = id; // تخزين المعرف الحالي
+                loadContent(currentId);
+            } else {
+                alert("يرجى اختيار ID لتحميل المحتوى.");
+            }
+        });
+
+        function loadContent(id) {
+            db.collection("scripts").doc(id).get()
+                .then(doc => {
+                    if (doc.exists) {
+                        const content = doc.data();
+                        document.getElementById('title').innerText = content.title;
+                        document.getElementById('description').innerText = content.description;
+                        document.getElementById('image').src = content.image;
+                        document.getElementById('image').style.display = 'block';
+
+                        const stepsContainer = document.getElementById('stepsContainer');
+                        stepsContainer.innerHTML = '';
+                        content.steps.forEach((step, index) => {
+                            const stepDiv = document.createElement('div');
+                            stepDiv.className = 'step';
+                            stepDiv.innerHTML = `
+                                <h3>خطوة ${index + 1}</h3>
+                                <p>${step}</p>
+                            `;
+                            stepsContainer.appendChild(stepDiv);
+                        });
+
+                        const unlockButton = document.getElementById('unlockButton');
+                        unlockButton.style.display = 'block';
+                        unlockButton.onclick = () => {
+                            // هنا يمكنك إضافة منطق فتح المحتوى
+                            window.open(content.finalLink, '_blank');
+                        };
+                    } else {
+                        alert("لم يتم العثور على المحتوى.");
+                    }
+                })
+                .catch(error => {
+                    console.error('خطأ في تحميل المحتوى:', error);
+                    alert('حدث خطأ أثناء تحميل المحتوى.');
+                });
+        }
+
+        // معالجة زر الحذف
+        document.getElementById('deleteButton').addEventListener('click', () => {
+            if (currentId) {
+                db.collection("scripts").doc(currentId).delete()
+                    .then(() => {
+                        alert('تم حذف المحتوى بنجاح.');
+                        loadIds(); // إعادة تحميل قائمة الـ IDs بعد الحذف
+                        document.getElementById('idSelect').value = ''; // إعادة تعيين الاختيار
+                        document.getElementById('image').style.display = 'none'; // إخفاء الصورة
+                        document.getElementById('description').innerText = ''; // إفراغ الوصف
+                        document.getElementById('stepsContainer').innerHTML = ''; // إفراغ الخطوات
+                    })
+                    .catch(error => {
+                        console.error('خطأ في الحذف:', error);
+                        alert('حدث خطأ أثناء حذف المحتوى.');
+                    });
+            } else {
+                alert("يرجى اختيار ID لحذف المحتوى.");
+            }
+        });
+
+        // معالجة زر التعديل
+        document.getElementById('editButton').addEventListener('click', () => {
+            if (currentId) {
+                db.collection("scripts").doc(currentId).get()
+                    .then(doc => {
+                        if (doc.exists) {
+                            const content = doc.data();
+                            document.getElementById('editTitle').value = content.title;
+                            document.getElementById('editDescription').value = content.description;
+                            document.getElementById('editImage').value = content.image;
+
+                            // عرض نموذج التعديل
+                            document.getElementById('editModal').style.display = 'flex';
+                        }
+                    })
+                    .catch(error => {
+                        console.error('خطأ في تحميل البيانات للتعديل:', error);
+                    });
+            } else {
+                alert("يرجى اختيار ID للتعديل.");
+            }
+        });
+
+        // معالجة زر حفظ التغييرات
+        document.getElementById('saveButton').addEventListener('click', () => {
+            const updatedContent = {
+                title: document.getElementById('editTitle').value,
+                description: document.getElementById('editDescription').value,
+                image: document.getElementById('editImage').value
+            };
+
+            db.collection("scripts").doc(currentId).update(updatedContent)
+                .then(() => {
+                    alert('تم تحديث المحتوى بنجاح.');
+                    document.getElementById('editModal').style.display = 'none'; // إخفاء النموذج
+                    loadContent(currentId); // إعادة تحميل المحتوى
+                })
+                .catch(error => {
+                    console.error('خطأ في تحديث البيانات:', error);
+                    alert('حدث خطأ أثناء تحديث المحتوى.');
+                });
+        });
+
+        // معالجة زر إغلاق النموذج
+        document.getElementById('closeButton').addEventListener('click', () => {
+            document.getElementById('editModal').style.display = 'none'; // إخفاء النموذج
+        });
+
+        // تحميل قائمة الـ IDs عند تحميل الصفحة
+        loadIds();
+    </script>
+
+</body>
+</html>
