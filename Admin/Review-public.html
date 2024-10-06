@@ -55,6 +55,7 @@
             const scriptsContainer = document.getElementById('scriptsContainer');
             scriptsContainer.innerHTML = '';
 
+            // جلب جميع السكربتات المحفوظة من Firestore
             db.collection("scripts").where("approved", "==", false).get().then(querySnapshot => {
                 querySnapshot.forEach(doc => {
                     const data = doc.data();
@@ -63,6 +64,7 @@
                     scriptDiv.innerHTML = `
                         <h3>${data.title}</h3>
                         <p>${data.description}</p>
+                        <p><strong>كود السكربت:</strong> ${data.scriptText}</p>
                         <a href="${data.youtubeLink}" target="_blank">رابط يوتيوب</a><br>
                         <button onclick="approveScript('${doc.id}')">موافقة</button>
                         <button onclick="rejectScript('${doc.id}')">رفض</button>
