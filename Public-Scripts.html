@@ -244,20 +244,22 @@
                                 <button onclick="shareLink('${doc.id}')">مشاركة</button>
                             </div>
                         `;
-                        const scriptsContainer = document.getElementById('scriptsContainer');
-                        scriptsContainer.innerHTML = ''; // مسح المحتوى الحالي
-                        scriptsContainer.appendChild(scriptDiv);
+                        document.getElementById('scriptsContainer').appendChild(scriptDiv);
+                    } else {
+                        alert("لا يوجد سكربت بهذا المعرف.");
                     }
+                }).catch(err => {
+                    console.error('خطأ في تحميل السكربت:', err);
                 });
+            } else {
+                loadApprovedScripts(); // إذا لم يكن هناك معرف، قم بتحميل جميع السكربتات
             }
         }
 
-        // استدعاء تحميل السكربتات عند تحميل الصفحة
+        // استدعاء دالة التحقق عند تحميل الصفحة
         window.onload = function() {
             checkForScriptId();
-            loadApprovedScripts();
         };
     </script>
-
 </body>
 </html>
