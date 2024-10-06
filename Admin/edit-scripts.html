@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <!-- Firebase SDKs -->
+    <script src="https://www.gstatic.com/firebasejs/10.7.2/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.2/firebase-firestore-compat.js"></script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="صفحة تعديل المحتوى">
+    <meta name="keywords" content="تعديل, محتوى, سكربتات">
+    <meta name="author" content="Hema_Tech1">
+    <title>تعديل المحتوى</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #1a1e27;
+            color: #fff;
+            text-align: center;
+            padding: 20px;
+            direction: rtl;
+        }
+        form {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #2c3140;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
+        }
+        form input, form textarea {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 4px;
+            border: none;
+            font-size: 1.1em;
+        }
+        form button {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-size: 1.1em;
+        }
+        form button:hover {
+            opacity: 0.8;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>تعديل المحتوى</h1>
+
+    <form id="editForm">
+        <input type="text" id="title" placeholder="العنوان" required>
+        <textarea id="description" placeholder="الوصف" required></textarea>
+        <input type="text" id="imageUrl" placeholder="رابط الصورة" required>
+        <input type="text" id="author" placeholder="المؤلف" required>
+        <input type="text" id="authorImage" placeholder="رابط صورة المؤلف" required>
+        <input type="text" id="videoUrl" placeholder="رابط الفيديو" required>
+        <input type="text" id="script" placeholder="سكريبت" required>
+        <button type="submit">حفظ التعديلات</button>
+    </form>
+
+    <script>
+        // تكوين Firebase
+        const firebaseConfig = {
+            apiKey: "AIzaSyDN6hj_5iKkC76RWGXax4f5DQOj8E4syTQ",
+            authDomain: "hema-fcf76.firebaseapp.com",
+            projectId: "hema-fcf76",
+            storageBucket: "hema-fcf76.appspot.com",
+            messagingSenderId: "76044728790",
+            appId: "1:76044728790:web:776cd44b329beee03ccc77",
+            measurementId: "G-MB5N3JM8M8"
+        };
+
+        // تهيئة Firebase
+        firebase.initializeApp(firebaseConfig);
+        const db = firebase.firestore();
+
+        // جلب الـ ID من الـ URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const docId = urlParams.get('id');
+
+        // تحميل البيانات الحالية للعنصر
+        if (docId) {
+            db.collection("scripts").doc(docId).get().then((doc) => {
+                if (doc.exists) {
+                    const data = doc.data();
+                    document.getElementById('title').value = data.title;
+                    document.getElementById('description').value = data.description;
+                    document.getElementById('imageUrl').value = data.imageUrl;
+                    document.getElementById('author').value = data.author;
+                    document.getElementById('authorImage').value = data.authorImage;
+                    document.getElementById('videoUrl').value = data.videoUrl;
+                    document.getElementById('script').value = data.script;
+                } else {
+                    alert('المستند غير موجود');
+                }
+            }).catch((error) => {
+                console.error("Error getting document:", error);
+            });
+        }
+
+        // عند الضغط على "حفظ التعديلات"
+        document.getElementById('editForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const updatedData = {
+                title: document.getElementById('title').value,
+                description: document.getElementById('description').value,
+                imageUrl: document.getElementById('imageUrl').value,
+                author: document.getElementById('author').value,
+                authorImage: document.getElementById('authorImage').value,
+                videoUrl: document.getElementById('videoUrl').value,
+                script: document.getElementById('script').value
+            };
+
+            db.collection("scripts").doc(docId).update(updatedData).then(() => {
+                alert('تم حفظ التعديلات بنجاح');
+                window.location.href = 'manage-content.html'; // العودة إلى صفحة إدارة المحتوى
+            }).catch((error) => {
+                console.error("Error updating document: ", error);
+            });
+        });
+    </script>
+
+</body>
+</html>
