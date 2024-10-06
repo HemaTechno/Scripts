@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تعديل وحذف السكربتات</title>
+    <style>
+        body {
+            font-family: 'Cairo', sans-serif;
+            background-color: #121212;
+            color: #fff;
+            text-align: center;
+            padding: 20px;
+        }
+        button {
+            margin: 10px;
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .script-container {
+            margin-bottom: 20px;
+            background-color: #333;
+            padding: 10px;
+            border-radius: 5px;
+        }
+        input, textarea {
+            margin: 10px 0;
+            padding: 10px;
+            width: 80%;
+            border-radius: 5px;
+            border: none;
+        }
+    </style>
+    <script src="https://www.gstatic.com/firebasejs/10.7.2/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.2/firebase-firestore-compat.js"></script>
+</head>
+<body>
+
+    <h1>تعديل وحذف السكربتات</h1>
+    <div id="scriptsContainer"></div>
+
+    <script>
+        const firebaseConfig = {
+            apiKey: "AIzaSyBF-sE1rBlblyLGpN1m08VnQA-bvfmLvtk",
+            authDomain: "public-fcf30.firebaseapp.com",
+            projectId: "public-fcf30",
+            storageBucket: "public-fcf30.appspot.com",
+            messagingSenderId: "4481826675",
+            appId: "1:4481826675:web:1663b07dcfc06fec130f06"
+        };
+
+        firebase.initializeApp(firebaseConfig);
+        const db = firebase.firestore();
+
+        // تحميل السكربتات وتوفير خيارات التعديل والحذف
+        function loadScripts() {
+            const scriptsContainer = document.getElementById('scriptsContainer');
+            scriptsContainer.innerHTML = '';
+
+            db.collection("scripts").get().then(querySnapshot => {
+                querySnapshot.forEach(doc => {
+                    const data = doc.data();
+                    const scriptDiv = document.createElement('div');
+                    scriptDiv.className = 'script-container';
+                    scriptDiv.innerHTML = `
+                        <h3>${data.title}</h3>
+                        <p>${data.description}</p>
+                        <a href="${data.youtubeLink}" target="_blank">رابط يوتيوب</a><br>
+                        <textarea id="scriptText-${doc.id}">${data.scriptText}</textarea><br>
+                        <button onclick="updateScript('${doc.id}')">تعديل</button>
+                        <button onclick="deleteScript('${doc.id}')">حذف</button>
+                    `;
+                    scriptsContainer.appendChild(scriptDiv);
+                });
+            });
+        }
+
+        // تعديل السكربت
+        function updateScript(id) {
+            const scriptText = document.getElementById(`scriptText-${id}`).value;
+
+            const password = prompt("أدخل كلمة المرور:");
+            if (password === "2007") {
+                db.collection("scripts").doc(id).update({
+                    scriptText: scriptText
+                }).then(() => {
+                    alert("تم تعديل السكربت بنجاح.");
+                    loadScripts(); // إعادة تحميل السكربتات بعد التعديل
+                }).catch(error => {
+                    console.error("خطأ في تعديل السكربت:", error);
+                });
+            } else {
+                alert("كلمة المرور خاطئة.");
+            }
+        }
+
+        // حذف السكربت
+        function deleteScript(id) {
+            const password = prompt("أدخل كلمة المرور:");
+            if (password === "2007") {
+                db.collection("scripts").doc(id).delete().then(() => {
+                    alert("تم حذف السكربت.");
+                    loadScripts(); // إعادة تحميل السكربتات بعد الحذف
+                }).catch(error => {
+                    console.error("خطأ في حذف السكربت:", error);
+                });
+            } else {
+                alert("كلمة المرور خاطئة.");
+            }
+        }
+
+        // تحميل السكربتات عند تحميل الصفحة
+        loadScripts();
+    </script>
+
+</body>
+</html>
