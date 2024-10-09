@@ -1,228 +1,134 @@
 <!DOCTYPE html>
 <html lang="ar">
 <head>
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8337153050970662"
-        crossorigin="anonymous"></script>
-
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-4WGJCB2SMZ"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-        gtag('config', 'G-4WGJCB2SMZ');
-    </script>
-
-    <!-- وصف الموقع -->
-    <meta name="description" content="أفضل موقع لمشاركة السكربتات و الهاكات الخاصة بأنظمة التشغيل المختلفة.">
-    <meta property="og:title" content="H-Scripts - أفضل موقع للسكربتات">
-    <meta property="og:description" content="افضل موقع سكربتات و هاكات روبلوكس و تقدر اسكربت الان">
-    <meta property="og:image" content="https://i.ibb.co/FVr4b2z/20240926-203252.jpg">
-    <meta property="og:url" content="https://h-scripts.site">
-    <meta property="og:type" content="website">
-
-    <meta name="twitter:card" content="https://i.ibb.co/FVr4b2z/20240926-203252.jpg">
-    <meta name="twitter:title" content="H-Scripts - أفضل موقع للسكربتات">
-    <meta name="twitter:description" content="شارك أفضل السكربتات مع الآخرين وتعلم المزيد حول الهاكات.">
-    <meta name="twitter:image" content="https://i.ibb.co/FVr4b2z/20240926-203252.jpg">
-
-    <link rel="icon" href="https://i.ibb.co/FVr4b2z/20240926-203252.jpg" type="image/x-icon">
-
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>H-SCRIPTS</title>
+    <title>منتدى H-Scripts</title>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore.js"></script>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        html, body {
-            overflow-x: hidden;
-            width: 100%;
-            margin: 0;
-            padding: 0;
-        }
         body {
-            font-family: 'Arial', sans-serif;
-            background-color: #090913;
-            color: #fff;
-            direction: rtl;
-            text-align: right;
-            height: 100vh;
-            display: flex;
-            flex-direction: column;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
         }
-        .logo-name {
-            position: absolute;
-            top: 10px;
-            left: 10px;
-        }
-        .logo-name h1 {
-            font-size: 1.5em;
-            margin-left: 10px;
-            color: #948DFF;
-        }
-        .sidebar {
-            height: 100%;
-            width: 100%;
-            position: fixed;
-            z-index: 1;
-            top: 0;
-            right: 0;
-            background-color: rgba(0, 0, 0, 0.95);
-            overflow-x: hidden;
-            padding-top: 60px;
-            transition: 0.5s;
-            display: none;
-        }
-        .sidebar a {
-            padding: 10px;
-            text-decoration: none;
-            font-size: 20px;
-            color: #fff;
-            display: block;
-            text-align: center;
-            transition: 0.3s;
-            border: 2px solid rgba(255, 255, 255, 0.5);
-            border-radius: 5px;
-            margin: 10px auto;
-            width: 80%;
-        }
-        .sidebar a:hover {
-            color: #f1f1f1;
-            background-color: rgba(255, 255, 255, 0.1);
-        }
-        .menu-btn {
-            font-size: 30px;
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            cursor: pointer;
+
+        header {
+            background-color: #4CAF50;
             color: white;
-            z-index: 2;
+            padding: 15px 0;
+            text-align: center;
         }
-        .container {
-            padding: 20px;
-            flex-grow: 1;
+
+        main {
             display: flex;
-            flex-direction: column;
             justify-content: center;
-            align-items: center;
-            margin-top: 60px;
+            padding: 20px;
         }
-        .box {
-            background-color: #252b39;
-            border-radius: 12px;
-            padding: 15px;
-            margin-bottom: 20px;
-            width: 90%;
-            max-width: 400px;
-            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
+
+        .forum-container {
+            width: 80%;
+            max-width: 800px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
         }
-        .box h2 {
-            font-size: 1.2em;
-            color: #ffffff;
-            margin-bottom: 10px;
+
+        h2 {
+            color: #4CAF50;
         }
-        .box ul {
+
+        .topics-list, .replies {
             list-style-type: none;
             padding: 0;
         }
-        .box ul li {
-            font-size: 1em;
-            line-height: 1.6;
-            margin-bottom: 10px;
+
+        .topics-list li {
+            background: #e8e8e8;
+            margin: 10px 0;
+            padding: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s;
         }
-        .social-buttons {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
+
+        .topics-list li:hover {
+            background: #d8d8d8;
+        }
+
+        .add-reply {
             margin-top: 20px;
         }
-        .social-btn {
-            color: white;
-            border: none;
+
+        textarea {
+            width: 100%;
             padding: 10px;
-            font-size: 1em;
-            border-radius: 30px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            resize: none;
+            height: 100px;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
             cursor: pointer;
-            transition: background-color 0.3s ease;
+            transition: background 0.3s;
         }
-        .discord-btn {
-            background-color: #5865F2;
+
+        button:hover {
+            background-color: #45a049;
         }
-        .discord-btn:hover {
-            background-color: #4a57d4;
-        }
-        .youtube-btn {
-            background-color: #FF0000;
-        }
-        .youtube-btn:hover {
-            background-color: #cc0000;
-        }
-        .telegram-btn {
-            background-color: #0088cc;
-        }
-        .telegram-btn:hover {
-            background-color: #0077b3;
+
+        footer {
+            text-align: center;
+            padding: 15px 0;
+            background-color: #4CAF50;
+            color: white;
+            position: relative;
+            bottom: 0;
+            width: 100%;
         }
     </style>
 </head>
 <body>
+    <header>
+        <h1>منتدى H-Scripts</h1>
+    </header>
 
-    <!-- الاسم -->
-    <div class="logo-name">
-        <h1>H-Scripts</h1>
-    </div>
+    <main>
+        <div class="forum-container">
+            <section class="topics-section">
+                <h2>المواضيع</h2>
+                <ul class="topics-list" id="topics-list">
+                    <!-- سيتم عرض المواضيع هنا -->
+                </ul>
+            </section>
 
-    <!-- القائمة الجانبية -->
-    <div id="mySidebar" class="sidebar">
-        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
-        <a href="public-scripts.html">scripts</a>
-        <a href="Scripts.html">YouTube Scripts</a>
-        <a href="Hack.html">exploits</a>
-        <a href="https://youtube.com/@hema_tech1?si=It1Tn77jTgsUZDWJ">Partner</a>
-    </div>
-
-    <span class="menu-btn" onclick="openNav()">&#9776;</span>
-
-    <!-- محتوى الصفحة -->
-    <div class="container">
-        <div class="box">
-            <h2 style="color: #948DFF;">H-Scripts</h2>
-            <ul>
-                <li>Welcome to my website my scripts good luck.</li>
-                <li>We have made everything easy for you. You will find scripts and hacks in one place. </li>
-            </ul>
+            <section class="replies-section">
+                <h2>الردود</h2>
+                <div class="replies" id="replies">
+                    <!-- سيتم عرض الردود هنا -->
+                </div>
+                <div class="add-reply">
+                    <textarea id="replyText" placeholder="أضف ردك هنا..."></textarea>
+                    <button type="button" id="sendReply">إرسال</button>
+                </div>
+            </section>
         </div>
+    </main>
 
-        <div class="box">
-            <h2 style="color: #948DFF;">Information</h2>
-            <ul>
-                <li>Developer Ibrahim Mansour</li>
-                <li> Partner: Hema_tech1 | crazy_Script1</li>
-            </ul>
-        </div>
-
-        <!-- أزرار الشبكات الاجتماعية -->
-        <div class="social-buttons">
-            <a href="https://discord.gg/WT2c6f34rD" target="_blank" class="social-btn discord-btn">Discord</a>
-            <a href="https://youtube.com/@hema_tech1?si=FI65ajrK8Qkv4AFx" target="_blank" class="social-btn youtube-btn">YouTube</a>
-            <a href="https://t.me/hscripts" target="_blank" class="social-btn telegram-btn">Telegram</a>
-        </div>
-
-        <!-- عرض عدد الزيارات في أسفل الصفحة -->
-        <div style="margin-top: 20px; text-align: center;">
-            <p>عدد الزيارات: <span id="visitCount">0</span></p>
-        </div>
-    </div>
-
-    <script src="https://www.gstatic.com/firebasejs/9.1.0/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/9.1.0/firebase-firestore.js"></script>
+    <footer>
+        <p>&copy; 2024 منتدى H-Scripts</p>
+    </footer>
 
     <script>
-        // تكوين Firebase
+        // إعداد Firebase
         const firebaseConfig = {
   apiKey: "AIzaSyDKEZYK77OPqDro7wEDm4iVssl2srSjC2g",
   authDomain: "hrma-5ec84.firebaseapp.com",
@@ -236,40 +142,35 @@
         const app = firebase.initializeApp(firebaseConfig);
         const db = firebase.firestore();
 
-        // جلب وتحديث عدد الزيارات
-        const visitCountElement = document.getElementById('visitCount');
-
-        function updateVisitCount() {
-            const visitsRef = db.collection('visits').doc('counter');
-
-            visitsRef.get().then((doc) => {
-                if (doc.exists) {
-                    const currentCount = doc.data().count;
-                    visitCountElement.textContent = currentCount;
-
-                    // تحديث عدد الزيارات في Firebase
-                    visitsRef.update({ count: currentCount + 1 });
-                } else {
-                    // إذا كانت أول زيارة
-                    visitsRef.set({ count: 1 });
-                    visitCountElement.textContent = 1;
-                }
+        // جلب المواضيع من Firestore
+        const topicsList = document.getElementById('topics-list');
+        db.collection('topics').get().then((snapshot) => {
+            snapshot.docs.forEach(doc => {
+                const topic = doc.data();
+                const li = document.createElement('li');
+                li.classList.add('topic');
+                li.innerHTML = `<a href="#">${topic.title}</a><p>عدد الردود: ${topic.replies}</p>`;
+                topicsList.appendChild(li);
             });
-        }
+        });
 
-        // تحديث عدد الزيارات عند تحميل الصفحة
-        window.onload = updateVisitCount;
-
-        // فتح القائمة الجانبية
-        function openNav() {
-            document.getElementById("mySidebar").style.display = "block";
-        }
-
-        // إغلاق القائمة الجانبية
-        function closeNav() {
-            document.getElementById("mySidebar").style.display = "none";
-        }
+        // إرسال رد جديد
+        document.getElementById('sendReply').addEventListener('click', () => {
+            const replyText = document.getElementById('replyText').value;
+            if (replyText.trim()) {
+                db.collection('replies').add({
+                    text: replyText,
+                    user: 'مستخدم مجهول'
+                }).then(() => {
+                    alert('تم إرسال الرد بنجاح!');
+                    document.getElementById('replyText').value = ''; // تفريغ الحقل بعد الإرسال
+                }).catch((error) => {
+                    console.error('خطأ في إرسال الرد: ', error);
+                });
+            } else {
+                alert('الرجاء كتابة رد قبل الإرسال');
+            }
+        });
     </script>
-
 </body>
 </html>
