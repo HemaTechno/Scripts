@@ -3,133 +3,99 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>منتدى H-Scripts</title>
-    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore.js"></script>
+    <title>منتدى احترافي</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         body {
             font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
             margin: 0;
             padding: 0;
-            background-color: #f4f4f4;
+            direction: rtl;
         }
-
         header {
-            background-color: #4CAF50;
+            background-color: #333;
             color: white;
-            padding: 15px 0;
+            padding: 10px 0;
             text-align: center;
         }
-
-        main {
-            display: flex;
-            justify-content: center;
-            padding: 20px;
-        }
-
-        .forum-container {
+        .container {
             width: 80%;
-            max-width: 800px;
+            margin: auto;
+            overflow: hidden;
+        }
+        .forum-post {
             background: white;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             padding: 20px;
-        }
-
-        h2 {
-            color: #4CAF50;
-        }
-
-        .topics-list, .replies {
-            list-style-type: none;
-            padding: 0;
-        }
-
-        .topics-list li {
-            background: #e8e8e8;
-            margin: 10px 0;
-            padding: 10px;
+            margin: 20px 0;
             border-radius: 5px;
-            cursor: pointer;
-            transition: background 0.3s;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
-
-        .topics-list li:hover {
-            background: #d8d8d8;
+        .forum-post h3 {
+            margin: 0;
+            color: #333;
         }
-
-        .add-reply {
+        .forum-post p {
+            color: #666;
+        }
+        .comment-section {
             margin-top: 20px;
         }
-
-        textarea {
+        .comment {
+            background: #f9f9f9;
+            padding: 10px;
+            margin-top: 10px;
+            border-radius: 5px;
+        }
+        .comment p {
+            margin: 0;
+        }
+        .form-group {
+            margin-top: 20px;
+        }
+        input[type="text"], textarea {
             width: 100%;
             padding: 10px;
+            margin-top: 5px;
             border: 1px solid #ccc;
-            border-radius: 4px;
-            resize: none;
-            height: 100px;
+            border-radius: 5px;
         }
-
         button {
-            background-color: #4CAF50;
+            background-color: #333;
             color: white;
             padding: 10px 15px;
             border: none;
             border-radius: 5px;
             cursor: pointer;
-            transition: background 0.3s;
         }
-
         button:hover {
-            background-color: #45a049;
-        }
-
-        footer {
-            text-align: center;
-            padding: 15px 0;
-            background-color: #4CAF50;
-            color: white;
-            position: relative;
-            bottom: 0;
-            width: 100%;
+            background-color: #555;
         }
     </style>
 </head>
 <body>
-    <header>
-        <h1>منتدى H-Scripts</h1>
-    </header>
 
-    <main>
-        <div class="forum-container">
-            <section class="topics-section">
-                <h2>المواضيع</h2>
-                <ul class="topics-list" id="topics-list">
-                    <!-- سيتم عرض المواضيع هنا -->
-                </ul>
-            </section>
+<header>
+    <h1>منتدى احترافي</h1>
+</header>
 
-            <section class="replies-section">
-                <h2>الردود</h2>
-                <div class="replies" id="replies">
-                    <!-- سيتم عرض الردود هنا -->
-                </div>
-                <div class="add-reply">
-                    <textarea id="replyText" placeholder="أضف ردك هنا..."></textarea>
-                    <button type="button" id="sendReply">إرسال</button>
-                </div>
-            </section>
-        </div>
-    </main>
+<div class="container">
+    <div id="posts"></div>
 
-    <footer>
-        <p>&copy; 2024 منتدى H-Scripts</p>
-    </footer>
+    <div class="form-group">
+        <h3>إضافة موضوع جديد</h3>
+        <input type="text" id="postTitle" placeholder="عنوان الموضوع" required>
+        <textarea id="postContent" rows="4" placeholder="محتوى الموضوع" required></textarea>
+        <button onclick="addPost()">إضافة الموضوع</button>
+    </div>
+</div>
 
-    <script>
-        // إعداد Firebase
-        const firebaseConfig = {
+<!-- Firebase Configuration -->
+<script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-firestore.js"></script>
+
+<script>
+    const firebaseConfig = {
   apiKey: "AIzaSyDKEZYK77OPqDro7wEDm4iVssl2srSjC2g",
   authDomain: "hrma-5ec84.firebaseapp.com",
   projectId: "hrma-5ec84",
@@ -138,39 +104,76 @@
   appId: "1:555454019427:web:2e014a372497051d9d4556"
 };
 
-        // تهيئة Firebase
-        const app = firebase.initializeApp(firebaseConfig);
-        const db = firebase.firestore();
+    // Initialize Firebase
+    const app = firebase.initializeApp(firebaseConfig);
+    const db = firebase.firestore();
 
-        // جلب المواضيع من Firestore
-        const topicsList = document.getElementById('topics-list');
-        db.collection('topics').get().then((snapshot) => {
-            snapshot.docs.forEach(doc => {
-                const topic = doc.data();
-                const li = document.createElement('li');
-                li.classList.add('topic');
-                li.innerHTML = `<a href="#">${topic.title}</a><p>عدد الردود: ${topic.replies}</p>`;
-                topicsList.appendChild(li);
+    function displayPosts() {
+        const postsContainer = document.getElementById('posts');
+        postsContainer.innerHTML = '';
+
+        db.collection('posts').get().then((querySnapshot) => {
+            querySnapshot.forEach((doc) => {
+                const post = doc.data();
+                const postElement = document.createElement('div');
+                postElement.classList.add('forum-post');
+                postElement.innerHTML = `
+                    <h3>${post.title}</h3>
+                    <p>${post.content}</p>
+                    <div class="comment-section" id="comments-${doc.id}"></div>
+                    <textarea id="commentInput-${doc.id}" rows="2" placeholder="اكتب تعليقك هنا"></textarea>
+                    <button onclick="addComment('${doc.id}')">إضافة تعليق</button>
+                `;
+                postsContainer.appendChild(postElement);
+
+                // Display comments
+                displayComments(doc.id);
             });
         });
+    }
 
-        // إرسال رد جديد
-        document.getElementById('sendReply').addEventListener('click', () => {
-            const replyText = document.getElementById('replyText').value;
-            if (replyText.trim()) {
-                db.collection('replies').add({
-                    text: replyText,
-                    user: 'مستخدم مجهول'
-                }).then(() => {
-                    alert('تم إرسال الرد بنجاح!');
-                    document.getElementById('replyText').value = ''; // تفريغ الحقل بعد الإرسال
-                }).catch((error) => {
-                    console.error('خطأ في إرسال الرد: ', error);
-                });
-            } else {
-                alert('الرجاء كتابة رد قبل الإرسال');
-            }
+    function addPost() {
+        const title = document.getElementById('postTitle').value;
+        const content = document.getElementById('postContent').value;
+
+        db.collection('posts').add({
+            title: title,
+            content: content
+        }).then(() => {
+            document.getElementById('postTitle').value = '';
+            document.getElementById('postContent').value = '';
+            displayPosts();
         });
-    </script>
+    }
+
+    function displayComments(postId) {
+        const commentsContainer = document.getElementById(`comments-${postId}`);
+        commentsContainer.innerHTML = '';
+
+        db.collection('posts').doc(postId).collection('comments').get().then((querySnapshot) => {
+            querySnapshot.forEach((doc) => {
+                const comment = doc.data();
+                const commentElement = document.createElement('div');
+                commentElement.classList.add('comment');
+                commentElement.innerHTML = `<p>${comment.content}</p>`;
+                commentsContainer.appendChild(commentElement);
+            });
+        });
+    }
+
+    function addComment(postId) {
+        const commentInput = document.getElementById(`commentInput-${postId}`).value;
+
+        db.collection('posts').doc(postId).collection('comments').add({
+            content: commentInput
+        }).then(() => {
+            document.getElementById(`commentInput-${postId}`).value = '';
+            displayComments(postId);
+        });
+    }
+
+    displayPosts();
+</script>
+
 </body>
 </html>
