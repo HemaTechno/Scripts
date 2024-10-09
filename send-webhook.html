@@ -83,7 +83,7 @@
                         <p><strong>Description:</strong> ${data.description}</p>
                         <p><strong>YouTube Link:</strong> <a href="${data.youtubeLink}" target="_blank">${data.youtubeLink}</a></p>
                         <p><strong>Script Code:</strong> <pre>${data.scriptText}</pre></p>
-                        <button class="approve-btn" onclick="promptForPassword('${doc.id}', '${data.title}')">Approve</button>
+                        <button class="approve-btn" onclick="promptForPassword('${doc.id}', '${data.title}', '${data.description}', '${data.youtubeLink}', '${data.scriptText}')">Approve</button>
                         <button class="reject-btn" onclick="rejectScript('${doc.id}')">Reject</button>
                     `;
                     scriptsContainer.appendChild(scriptDiv);
@@ -93,54 +93,45 @@
             });
         }
 
-        function promptForPassword(scriptId, scriptTitle) {
+        function promptForPassword(scriptId, title, description, youtubeLink, scriptText) {
             const password = prompt("Please enter the password:");
             if (password === "2007") {
-                approveScript(scriptId, scriptTitle);
+                approveScript(scriptId, title, description, youtubeLink, scriptText);
             } else {
                 alert("Incorrect password. Access denied.");
             }
         }
 
-        function approveScript(scriptId, scriptTitle) {
-            // سحب رابط الويب هوك من Firestore
-            db.collection("webhooks").doc("webhookUrl").get().then(doc => {
-                if (doc.exists) {
-                    const webhookUrl = doc.data().url; // استخرج رابط الويب هوك
-                    const payload = {
-                        content: `The script "${scriptTitle}" has been approved!`,
-                        scriptId: scriptId,
-                        status: "approved"
-                    };
+        function approveScript(scriptId, title, description, youtubeLink, scriptText) {
+            const webhookUrl = "YOUR_WEBHOOK_URL"; // استبدل هذا برابط الويب هوك الخاص بك
+            const payload = {
+                content: `Script Approved: ${title}\nDescription: ${description}\nYouTube Link: ${youtubeLink}\nScript Code: ${scriptText}`,
+                scriptId: scriptId,
+                status: "approved"
+            };
 
-                    // إرسال بيانات السكربت إلى الويب هوك
-                    fetch(webhookUrl, {
-                        method: 'POST',
-                        headers: {
-                            'Content-Type': 'application/json',
-                        },
-                        body: JSON.stringify(payload)
-                    }).then(response => {
-                        if (response.ok) {
-                            // تحديث حالة السكربت في Firestore
-                            db.collection("scripts").doc(scriptId).update({ approved: true })
-                                .then(() => {
-                                    alert("Script approved successfully.");
-                                    loadPendingScripts(); // Reload scripts
-                                }).catch(error => {
-                                    console.error("Error approving script:", error);
-                                });
-                        } else {
-                            alert("Error sending webhook data.");
-                        }
-                    }).catch(error => {
-                        console.error("Error with webhook:", error);
-                    });
+            // إرسال بيانات السكربت إلى الويب هوك
+            fetch(webhookUrl, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(payload)
+            }).then(response => {
+                if (response.ok) {
+                    // تحديث حالة السكربت في Firestore
+                    db.collection("scripts").doc(scriptId).update({ approved: true })
+                        .then(() => {
+                            alert("Script approved successfully.");
+                            loadPendingScripts(); // Reload scripts
+                        }).catch(error => {
+                            console.error("Error approving script:", error);
+                        });
                 } else {
-                    console.error("Webhook document does not exist.");
+                    alert("Error sending webhook data.");
                 }
             }).catch(error => {
-                console.error("Error fetching webhook URL:", error);
+                console.error("Error with webhook:", error);
             });
         }
 
