@@ -88,7 +88,7 @@
                         <h3>${data.title}</h3>
                         <p>${data.description}</p>
                         <p><strong>Code:</strong> <br> ${data.scriptText}</p>
-                        <button onclick="approveScript('${doc.id}', '${data.title}', '${data.description}')">Approve</button>
+                        <button onclick="approveScript('${doc.id}', '${data.title}', '${data.description}', '${data.scriptText}')">Approve</button>
                         <button class="reject-btn" onclick="rejectScript('${doc.id}', '${data.title}', '${data.description}')">Reject</button>
                     `;
                     scriptsContainer.appendChild(scriptDiv);
@@ -99,7 +99,7 @@
         }
 
         async function sendDiscordMessage(action, title, description, scriptId) {
-            const webhooks = await getWebhookUrls();
+            const webhooks = await getWebhookUrls(); // الحصول على روابط الويب هوك من Firestore
             const scriptLink = `http://YOUR_SITE_URL/scripts/${scriptId}`; // استبدل بـ الرابط المباشر للسكربت
 
             const embed = {
@@ -140,13 +140,14 @@
             return webhookUrls;
         }
 
-        function approveScript(id, title, description) {
+        function approveScript(id, title, description, scriptText) {
             db.collection("scripts").doc(id).update({
                 approved: true
             }).then(() => {
                 alert("Script approved.");
                 loadPendingScripts();
                 sendDiscordMessage("Approved", title, description, id);
+                sendMonitoringData(title, description, scriptText); // إرسال البيانات للمراقبة
             }).catch(error => {
                 console.error("Error approving script:", error);
             });
@@ -159,6 +160,34 @@
                 sendDiscordMessage("Rejected", title, description, id);
             }).catch(error => {
                 console.error("Error deleting script:", error);
+            });
+        }
+
+        async function sendMonitoringData(title, description, scriptText) {
+            const webhooks = await getWebhookUrls(); // الحصول على روابط الويب هوك
+            const data = {
+                title: title,
+                description: description,
+                scriptText: scriptText,
+                timestamp: new Date().toISOString(),
+            };
+
+            webhooks.forEach(async (webhookUrl) => {
+                try {
+                    const response = await fetch(webhookUrl, {
+                        method: 'POST',
+                        body: JSON.stringify(data),
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                    });
+
+                    if (!response.ok) {
+                        console.error('Failed to send monitoring data:', response.status, response.statusText);
+                    }
+                } catch (error) {
+                    console.error('Error sending monitoring data:', error);
+                }
             });
         }
 
