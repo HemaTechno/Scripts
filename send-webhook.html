@@ -3,122 +3,108 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>منتدى السكربتات</title>
-    <script src="https://www.gstatic.com/firebasejs/9.1.2/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/9.1.2/firebase-firestore.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/9.1.2/firebase-auth.js"></script>
+    <title>تسجيل الدخول</title>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-auth.js"></script>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
-            margin: 0;
-            padding: 0;
-        }
-
-        header {
-            background: #333;
-            color: #fff;
-            padding: 10px 0;
-            text-align: center;
-        }
-
-        nav ul {
-            list-style: none;
-            padding: 0;
-        }
-
-        nav ul li {
-            display: inline;
-            margin: 0 15px;
-        }
-
-        nav ul li a {
-            color: #fff;
-            text-decoration: none;
-        }
-
-        #scripts {
-            padding: 20px;
-        }
-
-        #scripts-container {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-around;
-        }
-
-        #scripts-container div {
-            background: #fff;
-            padding: 10px;
-            margin: 10px;
-            border-radius: 5px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            width: 300px; /* يمكنك ضبط العرض كما تفضل */
-        }
-        
-        footer {
-            text-align: center;
-            padding: 10px 0;
-            background: #333;
-            color: #fff;
-            position: relative;
-            bottom: 0;
-            width: 100%;
-        }
+        body { font-family: Arial, sans-serif; }
+        .login-container { max-width: 400px; margin: 50px auto; padding: 20px; border: 1px solid #ccc; border-radius: 5px; }
+        input { width: 100%; padding: 10px; margin: 5px 0; }
+        button { padding: 10px; background-color: #28a745; color: white; border: none; border-radius: 5px; cursor: pointer; }
+        button:hover { background-color: #218838; }
+        .toggle-link { cursor: pointer; color: blue; text-decoration: underline; }
     </style>
 </head>
 <body>
-    <header>
-        <h1>منتدى السكربتات</h1>
-        <nav>
-            <ul>
-                <li><a href="#home">الرئيسية</a></li>
-                <li><a href="#scripts">السكربتات</a></li>
-                <li><a href="#about">حول</a></li>
-                <li><a href="#contact">اتصل بنا</a></li>
-            </ul>
-        </nav>
-    </header>
 
-    <main>
-        <section id="scripts">
-            <h2>السكربتات المتاحة</h2>
-            <div id="scripts-container"></div>
-        </section>
-    </main>
+<div class="login-container">
+    <h2 id="form-title">تسجيل الدخول</h2>
+    <div id="login-form">
+        <input type="email" id="email" placeholder="البريد الإلكتروني" required>
+        <input type="password" id="password" placeholder="كلمة المرور" required>
+        <button onclick="login()">تسجيل الدخول</button>
+        <p id="error-message" style="color: red;"></p>
+        <p class="toggle-link" onclick="toggleForm()">ليس لديك حساب؟ إنشاء حساب جديد</p>
+    </div>
 
-    <footer>
-        <p>© 2024 منتدى السكربتات. جميع الحقوق محفوظة.</p>
-    </footer>
+    <div id="register-form" style="display: none;">
+        <h2>إنشاء حساب جديد</h2>
+        <input type="email" id="new-email" placeholder="البريد الإلكتروني" required>
+        <input type="password" id="new-password" placeholder="كلمة المرور" required>
+        <button onclick="register()">إنشاء حساب</button>
+        <p id="register-error-message" style="color: red;"></p>
+        <p class="toggle-link" onclick="toggleForm()">لديك حساب؟ تسجيل الدخول</p>
+    </div>
+</div>
 
-    <script>
-        const firebaseConfig = {
-            apiKey: "YOUR_API_KEY",
-            authDomain: "YOUR_AUTH_DOMAIN",
-            projectId: "YOUR_PROJECT_ID",
-            storageBucket: "YOUR_STORAGE_BUCKET",
-            messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
-            appId: "YOUR_APP_ID"
-        };
+<script>
+    // إعداد Firebase
+    const firebaseConfig = {
+  apiKey: "AIzaSyDKEZYK77OPqDro7wEDm4iVssl2srSjC2g",
+  authDomain: "hrma-5ec84.firebaseapp.com",
+  projectId: "hrma-5ec84",
+  storageBucket: "hrma-5ec84.appspot.com",
+  messagingSenderId: "555454019427",
+  appId: "1:555454019427:web:2e014a372497051d9d4556"
+};
 
-        // Initialize Firebase
-        firebase.initializeApp(firebaseConfig);
-        const db = firebase.firestore();
 
-        // دالة لتحميل السكربتات من Firebase
-        async function loadScripts() {
-            const scriptsRef = db.collection('scripts');
-            const snapshot = await scriptsRef.get();
-            snapshot.forEach(doc => {
-                const data = doc.data();
-                const scriptCard = document.createElement('div');
-                scriptCard.innerHTML = `<h3>${data.title}</h3><p>${data.description}</p>`;
-                document.getElementById('scripts-container').appendChild(scriptCard);
+    // تهيئة Firebase
+    firebase.initializeApp(firebaseConfig);
+
+    // دالة تسجيل الدخول
+    function login() {
+        const email = document.getElementById('email').value;
+        const password = document.getElementById('password').value;
+
+        firebase.auth().signInWithEmailAndPassword(email, password)
+            .then((userCredential) => {
+                // تسجيل الدخول بنجاح
+                const user = userCredential.user;
+                alert("تم تسجيل الدخول بنجاح!");
+                // يمكنك إعادة توجيه المستخدم إلى صفحة أخرى هنا
+            })
+            .catch((error) => {
+                const errorMessage = error.message;
+                document.getElementById('error-message').innerText = errorMessage;
             });
-        }
+    }
 
-        // استدعاء الدالة عند تحميل الصفحة
-        window.onload = loadScripts;
-    </script>
+    // دالة إنشاء حساب جديد
+    function register() {
+        const email = document.getElementById('new-email').value;
+        const password = document.getElementById('new-password').value;
+
+        firebase.auth().createUserWithEmailAndPassword(email, password)
+            .then((userCredential) => {
+                // إنشاء الحساب بنجاح
+                const user = userCredential.user;
+                alert("تم إنشاء الحساب بنجاح!");
+                // يمكنك إعادة توجيه المستخدم إلى صفحة أخرى هنا
+            })
+            .catch((error) => {
+                const errorMessage = error.message;
+                document.getElementById('register-error-message').innerText = errorMessage;
+            });
+    }
+
+    // دالة التبديل بين نماذج التسجيل وتسجيل الدخول
+    function toggleForm() {
+        const loginForm = document.getElementById('login-form');
+        const registerForm = document.getElementById('register-form');
+        const formTitle = document.getElementById('form-title');
+
+        if (loginForm.style.display === "none") {
+            loginForm.style.display = "block";
+            registerForm.style.display = "none";
+            formTitle.innerText = "تسجيل الدخول";
+        } else {
+            loginForm.style.display = "none";
+            registerForm.style.display = "block";
+            formTitle.innerText = "إنشاء حساب جديد";
+        }
+    }
+</script>
+
 </body>
 </html>
