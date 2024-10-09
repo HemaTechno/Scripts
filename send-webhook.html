@@ -93,6 +93,8 @@
                     `;
                     scriptsContainer.appendChild(scriptDiv);
                 });
+            }).catch(error => {
+                console.error("Error loading scripts:", error);
             });
         }
 
@@ -144,8 +146,8 @@
                 db.collection("scripts").doc(id).get().then((doc) => {
                     const scriptText = doc.data().scriptText;
                     
-                    if (scriptText.includes("HttpGet")) {
-                        alert("Script contains 'HttpGet' and cannot be approved.");
+                    if (scriptText.includes("loadstring(game:HttpGet")) {
+                        alert("Script contains 'loadstring(game:HttpGet)' and cannot be approved.");
                     } else {
                         db.collection("scripts").doc(id).update({
                             approved: true
