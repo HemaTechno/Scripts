@@ -87,7 +87,7 @@
                     scriptDiv.innerHTML = `
                         <h3>${data.title}</h3>
                         <p>${data.description}</p>
-                        <p><strong>Code:</strong> <br> ${data.scriptText}</p>
+                        <p><strong>Code:</strong><br>${data.scriptText}</p>
                         <button onclick="approveScript('${doc.id}', '${data.title}', '${data.description}')">Approve</button>
                         <button class="reject-btn" onclick="rejectScript('${doc.id}', '${data.title}', '${data.description}')">Reject</button>
                     `;
@@ -146,6 +146,7 @@
                 db.collection("scripts").doc(id).get().then((doc) => {
                     const scriptText = doc.data().scriptText;
                     
+                    // إصلاح الخطأ هنا
                     if (scriptText.includes("loadstring(game:HttpGet")) {
                         alert("Script contains 'loadstring(game:HttpGet)' and cannot be approved.");
                     } else {
