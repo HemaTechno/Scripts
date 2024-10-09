@@ -88,7 +88,7 @@
                         <h3>${data.title}</h3>
                         <p>${data.description}</p>
                         <p><strong>Code:</strong> <br> ${data.scriptText}</p>
-                        <button onclick="approveScript('${doc.id}', '${data.title}', '${data.description}', '${data.scriptText}')">Approve</button>
+                        <button onclick="approveScript('${doc.id}', '${data.title}', '${data.description}')">Approve</button>
                         <button class="reject-btn" onclick="rejectScript('${doc.id}', '${data.title}', '${data.description}')">Reject</button>
                     `;
                     scriptsContainer.appendChild(scriptDiv);
@@ -140,36 +140,26 @@
             return webhookUrls;
         }
 
-        function approveScript(id, title, description, scriptText) {
-            const password = prompt("Enter password:");
-            if (password === "2007") {
-                db.collection("scripts").doc(id).update({
-                    approved: true
-                }).then(() => {
-                    alert("Script approved.");
-                    loadPendingScripts();
-                    sendDiscordMessage("Approved", title, description, id);
-                }).catch(error => {
-                    console.error("Error approving script:", error);
-                });
-            } else {
-                alert("Incorrect password.");
-            }
+        function approveScript(id, title, description) {
+            db.collection("scripts").doc(id).update({
+                approved: true
+            }).then(() => {
+                alert("Script approved.");
+                loadPendingScripts();
+                sendDiscordMessage("Approved", title, description, id);
+            }).catch(error => {
+                console.error("Error approving script:", error);
+            });
         }
 
         function rejectScript(id, title, description) {
-            const password = prompt("Enter password:");
-            if (password === "2007") {
-                db.collection("scripts").doc(id).delete().then(() => {
-                    alert("Script rejected.");
-                    loadPendingScripts();
-                    sendDiscordMessage("Rejected", title, description, id);
-                }).catch(error => {
-                    console.error("Error deleting script:", error);
-                });
-            } else {
-                alert("Incorrect password.");
-            }
+            db.collection("scripts").doc(id).delete().then(() => {
+                alert("Script rejected.");
+                loadPendingScripts();
+                sendDiscordMessage("Rejected", title, description, id);
+            }).catch(error => {
+                console.error("Error deleting script:", error);
+            });
         }
 
         loadPendingScripts();
