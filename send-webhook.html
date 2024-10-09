@@ -83,7 +83,7 @@
                         <p><strong>Description:</strong> ${data.description}</p>
                         <p><strong>YouTube Link:</strong> <a href="${data.youtubeLink}" target="_blank">${data.youtubeLink}</a></p>
                         <p><strong>Script Code:</strong> <pre>${data.scriptText}</pre></p>
-                        <button class="approve-btn" onclick="approveScript('${doc.id}')">Approve</button>
+                        <button class="approve-btn" onclick="promptForPassword('${doc.id}', '${data.title}')">Approve</button>
                         <button class="reject-btn" onclick="rejectScript('${doc.id}')">Reject</button>
                     `;
                     scriptsContainer.appendChild(scriptDiv);
@@ -93,14 +93,53 @@
             });
         }
 
-        function approveScript(scriptId) {
-            db.collection("scripts").doc(scriptId).update({ approved: true })
-                .then(() => {
-                    alert("Script approved successfully.");
-                    loadPendingScripts(); // Reload scripts
-                }).catch(error => {
-                    console.error("Error approving script:", error);
-                });
+        function promptForPassword(scriptId, scriptTitle) {
+            const password = prompt("Please enter the password:");
+            if (password === "2007") {
+                approveScript(scriptId, scriptTitle);
+            } else {
+                alert("Incorrect password. Access denied.");
+            }
+        }
+
+        function approveScript(scriptId, scriptTitle) {
+            // Retrieve the Discord webhook URL from Firestore
+            db.collection("settings").doc("webhook").get().then(webhookDoc => {
+                if (webhookDoc.exists) {
+                    const webhookUrl = webhookDoc.data().discordWebhook; // Ensure this matches your Firestore field
+                    const payload = {
+                        content: `A new script has been approved:\n**Title:** ${scriptTitle}\n**Script ID:** ${scriptId}`
+                    };
+
+                    // Send data to the webhook
+                    fetch(webhookUrl, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify(payload)
+                    }).then(response => {
+                        if (response.ok) {
+                            // Update the script status in Firestore
+                            db.collection("scripts").doc(scriptId).update({ approved: true })
+                                .then(() => {
+                                    alert("Script approved successfully and notification sent to Discord.");
+                                    loadPendingScripts(); // Reload scripts
+                                }).catch(error => {
+                                    console.error("Error approving script:", error);
+                                });
+                        } else {
+                            alert("Error sending webhook data.");
+                        }
+                    }).catch(error => {
+                        console.error("Error with webhook:", error);
+                    });
+                } else {
+                    alert("Webhook URL not found.");
+                }
+            }).catch(error => {
+                console.error("Error retrieving webhook URL:", error);
+            });
         }
 
         function rejectScript(scriptId) {
