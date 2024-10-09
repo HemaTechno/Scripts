@@ -1,152 +1,274 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ar">
 <head>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8337153050970662"
+        crossorigin="anonymous"></script>
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-4WGJCB2SMZ"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-4WGJCB2SMZ');
+    </script>
+
+    <!-- وصف الموقع -->
+    <meta name="description" content="أفضل موقع لمشاركة السكربتات و الهاكات الخاصة بأنظمة التشغيل المختلفة.">
+    <meta property="og:title" content="H-Scripts - أفضل موقع للسكربتات">
+    <meta property="og:description" content="افضل موقع سكربتات و هاكات روبلوكس و تقدر اسكربت الان">
+    <meta property="og:image" content="https://i.ibb.co/FVr4b2z/20240926-203252.jpg">
+    <meta property="og:url" content="https://h-scripts.site">
+    <meta property="og:type" content="website">
+
+    <meta name="twitter:card" content="https://i.ibb.co/FVr4b2z/20240926-203252.jpg">
+    <meta name="twitter:title" content="H-Scripts - أفضل موقع للسكربتات">
+    <meta name="twitter:description" content="شارك أفضل السكربتات مع الآخرين وتعلم المزيد حول الهاكات.">
+    <meta name="twitter:image" content="https://i.ibb.co/FVr4b2z/20240926-203252.jpg">
+
+    <link rel="icon" href="https://i.ibb.co/FVr4b2z/20240926-203252.jpg" type="image/x-icon">
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Review Scripts</title>
+    <title>H-SCRIPTS</title>
     <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        html, body {
+            overflow-x: hidden;
+            width: 100%;
+            margin: 0;
+            padding: 0;
+        }
         body {
-            font-family: 'Cairo', sans-serif;
-            background-color: #121212;
+            font-family: 'Arial', sans-serif;
+            background-color: #090913;
             color: #fff;
+            direction: rtl;
+            text-align: right;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        .logo-name {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+        }
+        .logo-name h1 {
+            font-size: 1.5em;
+            margin-left: 10px;
+            color: #948DFF;
+        }
+        .sidebar {
+            height: 100%;
+            width: 100%;
+            position: fixed;
+            z-index: 1;
+            top: 0;
+            right: 0;
+            background-color: rgba(0, 0, 0, 0.95);
+            overflow-x: hidden;
+            padding-top: 60px;
+            transition: 0.5s;
+            display: none;
+        }
+        .sidebar a {
+            padding: 10px;
+            text-decoration: none;
+            font-size: 20px;
+            color: #fff;
+            display: block;
             text-align: center;
-            padding: 20px;
-        }
-        h1 {
-            margin-bottom: 20px;
-            color: #ffa726; /* Title color */
-        }
-        .script-container {
-            background-color: #2e2e2e;
+            transition: 0.3s;
+            border: 2px solid rgba(255, 255, 255, 0.5);
             border-radius: 5px;
-            padding: 20px;
-            margin-bottom: 20px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            text-align: left;
+            margin: 10px auto;
+            width: 80%;
         }
-        button {
-            margin: 10px 5px;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 5px;
+        .sidebar a:hover {
+            color: #f1f1f1;
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+        .menu-btn {
+            font-size: 30px;
+            position: fixed;
+            top: 20px;
+            right: 20px;
             cursor: pointer;
-            transition: background-color 0.3s;
-            font-size: 16px; /* Button font size */
-        }
-        .approve-btn {
-            background-color: #4CAF50; /* Approve button color */
             color: white;
+            z-index: 2;
         }
-        .approve-btn:hover {
-            background-color: #45a049; /* Approve button hover color */
+        .container {
+            padding: 20px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            margin-top: 60px;
         }
-        .reject-btn {
-            background-color: #f44336; /* Reject button color */
+        .box {
+            background-color: #252b39;
+            border-radius: 12px;
+            padding: 15px;
+            margin-bottom: 20px;
+            width: 90%;
+            max-width: 400px;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
+        }
+        .box h2 {
+            font-size: 1.2em;
+            color: #ffffff;
+            margin-bottom: 10px;
+        }
+        .box ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        .box ul li {
+            font-size: 1em;
+            line-height: 1.6;
+            margin-bottom: 10px;
+        }
+        .social-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        .social-btn {
             color: white;
+            border: none;
+            padding: 10px;
+            font-size: 1em;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
         }
-        .reject-btn:hover {
-            background-color: #d32f2f; /* Reject button hover color */
+        .discord-btn {
+            background-color: #5865F2;
+        }
+        .discord-btn:hover {
+            background-color: #4a57d4;
+        }
+        .youtube-btn {
+            background-color: #FF0000;
+        }
+        .youtube-btn:hover {
+            background-color: #cc0000;
+        }
+        .telegram-btn {
+            background-color: #0088cc;
+        }
+        .telegram-btn:hover {
+            background-color: #0077b3;
         }
     </style>
-    <script src="https://www.gstatic.com/firebasejs/10.7.2/firebase-app-compat.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/10.7.2/firebase-firestore-compat.js"></script>
 </head>
 <body>
 
-    <h1>Review Scripts</h1>
-    <div id="scriptsContainer"></div>
+    <!-- الاسم -->
+    <div class="logo-name">
+        <h1>H-Scripts</h1>
+    </div>
+
+    <!-- القائمة الجانبية -->
+    <div id="mySidebar" class="sidebar">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
+        <a href="public-scripts.html">scripts</a>
+        <a href="Scripts.html">YouTube Scripts</a>
+        <a href="Hack.html">exploits</a>
+        <a href="https://youtube.com/@hema_tech1?si=It1Tn77jTgsUZDWJ">Partner</a>
+    </div>
+
+    <span class="menu-btn" onclick="openNav()">&#9776;</span>
+
+    <!-- محتوى الصفحة -->
+    <div class="container">
+        <div class="box">
+            <h2 style="color: #948DFF;">H-Scripts</h2>
+            <ul>
+                <li>Welcome to my website my scripts good luck.</li>
+                <li>We have made everything easy for you. You will find scripts and hacks in one place. </li>
+            </ul>
+        </div>
+
+        <div class="box">
+            <h2 style="color: #948DFF;">Information</h2>
+            <ul>
+                <li>Developer Ibrahim Mansour</li>
+                <li> Partner: Hema_tech1 | crazy_Script1</li>
+            </ul>
+        </div>
+
+        <!-- أزرار الشبكات الاجتماعية -->
+        <div class="social-buttons">
+            <a href="https://discord.gg/WT2c6f34rD" target="_blank" class="social-btn discord-btn">Discord</a>
+            <a href="https://youtube.com/@hema_tech1?si=FI65ajrK8Qkv4AFx" target="_blank" class="social-btn youtube-btn">YouTube</a>
+            <a href="https://t.me/hscripts" target="_blank" class="social-btn telegram-btn">Telegram</a>
+        </div>
+
+        <!-- عرض عدد الزيارات في أسفل الصفحة -->
+        <div style="margin-top: 20px; text-align: center;">
+            <p>عدد الزيارات: <span id="visitCount">0</span></p>
+        </div>
+    </div>
+
+    <script src="https://www.gstatic.com/firebasejs/9.1.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.1.0/firebase-firestore.js"></script>
 
     <script>
+        // تكوين Firebase
         const firebaseConfig = {
-            apiKey: "AIzaSyBF-sE1rBlblyLGpN1m08VnQA-bvfmLvtk",
-            authDomain: "public-fcf30.firebaseapp.com",
-            projectId: "public-fcf30",
-            storageBucket: "public-fcf30.appspot.com",
-            messagingSenderId: "4481826675",
-            appId: "1:4481826675:web:1663b07dcfc06fec130f06"
-        };
+  apiKey: "AIzaSyDKEZYK77OPqDro7wEDm4iVssl2srSjC2g",
+  authDomain: "hrma-5ec84.firebaseapp.com",
+  projectId: "hrma-5ec84",
+  storageBucket: "hrma-5ec84.appspot.com",
+  messagingSenderId: "555454019427",
+  appId: "1:555454019427:web:2e014a372497051d9d4556"
+};
 
-        firebase.initializeApp(firebaseConfig);
+        // تهيئة Firebase
+        const app = firebase.initializeApp(firebaseConfig);
         const db = firebase.firestore();
 
-        function loadPendingScripts() {
-            const scriptsContainer = document.getElementById('scriptsContainer');
-            scriptsContainer.innerHTML = '';
+        // جلب وتحديث عدد الزيارات
+        const visitCountElement = document.getElementById('visitCount');
 
-            db.collection("scripts").where("approved", "==", false).get().then(querySnapshot => {
-                querySnapshot.forEach(doc => {
-                    const data = doc.data();
-                    const scriptDiv = document.createElement('div');
-                    scriptDiv.className = 'script-container';
-                    scriptDiv.innerHTML = `
-                        <h3>${data.title}</h3>
-                        <p><strong>Description:</strong> ${data.description}</p>
-                        <p><strong>YouTube Link:</strong> <a href="${data.youtubeLink}" target="_blank">${data.youtubeLink}</a></p>
-                        <p><strong>Script Code:</strong> <pre>${data.scriptText}</pre></p>
-                        <button class="approve-btn" onclick="promptForPassword('${doc.id}', '${data.title}', '${data.description}', '${data.youtubeLink}', '${data.scriptText}')">Approve</button>
-                        <button class="reject-btn" onclick="rejectScript('${doc.id}')">Reject</button>
-                    `;
-                    scriptsContainer.appendChild(scriptDiv);
-                });
-            }).catch(error => {
-                console.error("Error loading scripts:", error);
-            });
-        }
+        function updateVisitCount() {
+            const visitsRef = db.collection('visits').doc('counter');
 
-        function promptForPassword(scriptId, title, description, youtubeLink, scriptText) {
-            const password = prompt("Please enter the password:");
-            if (password === "2007") {
-                approveScript(scriptId, title, description, youtubeLink, scriptText);
-            } else {
-                alert("Incorrect password. Access denied.");
-            }
-        }
+            visitsRef.get().then((doc) => {
+                if (doc.exists) {
+                    const currentCount = doc.data().count;
+                    visitCountElement.textContent = currentCount;
 
-        function approveScript(scriptId, title, description, youtubeLink, scriptText) {
-            const webhookUrl = "YOUR_WEBHOOK_URL"; // استبدل هذا برابط الويب هوك الخاص بك
-            const payload = {
-                content: `Script Approved: ${title}\nDescription: ${description}\nYouTube Link: ${youtubeLink}\nScript Code: ${scriptText}`,
-                scriptId: scriptId,
-                status: "approved"
-            };
-
-            // إرسال بيانات السكربت إلى الويب هوك
-            fetch(webhookUrl, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(payload)
-            }).then(response => {
-                if (response.ok) {
-                    // تحديث حالة السكربت في Firestore
-                    db.collection("scripts").doc(scriptId).update({ approved: true })
-                        .then(() => {
-                            alert("Script approved successfully.");
-                            loadPendingScripts(); // Reload scripts
-                        }).catch(error => {
-                            console.error("Error approving script:", error);
-                        });
+                    // تحديث عدد الزيارات في Firebase
+                    visitsRef.update({ count: currentCount + 1 });
                 } else {
-                    alert("Error sending webhook data.");
+                    // إذا كانت أول زيارة
+                    visitsRef.set({ count: 1 });
+                    visitCountElement.textContent = 1;
                 }
-            }).catch(error => {
-                console.error("Error with webhook:", error);
             });
         }
 
-        function rejectScript(scriptId) {
-            db.collection("scripts").doc(scriptId).delete()
-                .then(() => {
-                    alert("Script rejected successfully.");
-                    loadPendingScripts(); // Reload scripts
-                }).catch(error => {
-                    console.error("Error rejecting script:", error);
-                });
+        // تحديث عدد الزيارات عند تحميل الصفحة
+        window.onload = updateVisitCount;
+
+        // فتح القائمة الجانبية
+        function openNav() {
+            document.getElementById("mySidebar").style.display = "block";
         }
 
-        // Load pending scripts on page load
-        window.onload = loadPendingScripts;
+        // إغلاق القائمة الجانبية
+        function closeNav() {
+            document.getElementById("mySidebar").style.display = "none";
+        }
     </script>
 
 </body>
