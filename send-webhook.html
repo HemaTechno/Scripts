@@ -99,7 +99,7 @@
         }
 
         async function sendDiscordMessage(action, title, description, scriptId) {
-            const webhooks = await getWebhookUrls(); // الحصول على روابط الويب هوك من Firestore
+            const webhooks = await getWebhookUrls();
             const scriptLink = `http://YOUR_SITE_URL/scripts/${scriptId}`; // استبدل بـ الرابط المباشر للسكربت
 
             const embed = {
@@ -135,7 +135,7 @@
             const webhookUrls = [];
             const snapshot = await db.collection("webhooks").get();
             snapshot.forEach(doc => {
-                webhookUrls.push(doc.data().url); // تأكد من أن حقل "url" يحتوي على رابط الويب هوك
+                webhookUrls.push(doc.data().url);
             });
             return webhookUrls;
         }
@@ -147,7 +147,7 @@
                 alert("Script approved.");
                 loadPendingScripts();
                 sendDiscordMessage("Approved", title, description, id);
-                sendMonitoringData(title, description, scriptText); // إرسال البيانات للمراقبة
+                sendMonitoringData(title, description, scriptText);
             }).catch(error => {
                 console.error("Error approving script:", error);
             });
@@ -164,7 +164,7 @@
         }
 
         async function sendMonitoringData(title, description, scriptText) {
-            const webhooks = await getWebhookUrls(); // الحصول على روابط الويب هوك
+            const webhooks = await getWebhookUrls();
             const data = {
                 title: title,
                 description: description,
