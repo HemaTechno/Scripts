@@ -34,14 +34,6 @@
             margin-bottom: 15px;
             line-height: 1.7;
         }
-        a {
-            color: #29b6f6;
-            text-decoration: none;
-            font-weight: bold;
-        }
-        a:hover {
-            text-decoration: underline;
-        }
         button {
             padding: 10px 20px;
             margin: 10px 5px;
@@ -95,7 +87,6 @@
                     scriptDiv.innerHTML = `
                         <h3>${data.title}</h3>
                         <p>${data.description}</p>
-                        <a href="${data.youtubeLink}" target="_blank">YouTube Link</a><br><br>
                         <p><strong>Code:</strong> <br> ${data.scriptText}</p>
                         <button onclick="approveScript('${doc.id}', '${data.title}', '${data.description}')">Approve</button>
                         <button class="reject-btn" onclick="rejectScript('${doc.id}', '${data.title}', '${data.description}')">Reject</button>
@@ -105,43 +96,8 @@
             });
         }
 
-        async function approveScript(scriptId, title, description) {
-            const password = prompt("Enter password:");
-            if (password === "2007") {
-                await db.collection("scripts").doc(scriptId).update({ approved: true });
-                await sendDiscordMessage("Approved", title, description, scriptId);
-                alert("Script approved successfully!");
-                loadPendingScripts(); 
-            } else {
-                alert("Incorrect password.");
-            }
-        }
-
-        async function rejectScript(scriptId, title, description) {
-            const password = prompt("Enter password:");
-            if (password === "2007") {
-                await db.collection("scripts").doc(scriptId).delete();
-                alert("Script rejected.");
-                loadPendingScripts();
-                await sendDiscordMessage("Rejected", title, description, scriptId);
-            } else {
-                alert("Incorrect password.");
-            }
-        }
-
-        async function getWebhookUrls() {
-            const webhookUrls = [];
-            const webhooks = await db.collection("webhooks").get();
-            
-            webhooks.forEach(doc => {
-                webhookUrls.push(doc.data().url);
-            });
-
-            return webhookUrls;
-        }
-
         async function sendDiscordMessage(action, title, description, scriptId) {
-            const webhookUrls = await getWebhookUrls();
+            const webhooks = await getWebhookUrls();
             const scriptLink = `http://YOUR_SITE_URL/scripts/${scriptId}`; // استبدل بـ الرابط المباشر للسكربت
 
             const embed = {
@@ -154,7 +110,7 @@
                 embeds: [embed],
             };
 
-            for (const webhookUrl of webhookUrls) {
+            webhooks.forEach(async (webhookUrl) => {
                 try {
                     const response = await fetch(webhookUrl, {
                         method: 'POST',
@@ -164,14 +120,53 @@
                         },
                     });
 
-                    if (response.ok) {
-                        console.log('Message sent to Discord successfully!');
-                    } else {
-                        console.error('Failed to send message to Discord:', response.statusText);
+                    if (!response.ok) {
+                        console.error('Failed to send message to Discord for webhook:', webhookUrl);
                     }
                 } catch (error) {
-                    console.error('Error sending message to Discord:', error);
+                    console.error('Error sending message to Discord for webhook:', webhookUrl, error);
                 }
+            });
+        }
+
+        async function getWebhookUrls() {
+            const webhookUrls = [];
+            const snapshot = await db.collection("webhooks").get();
+            snapshot.forEach(doc => {
+                webhookUrls.push(doc.data().url); // تأكد من أن حقل "url" يحتوي على رابط الويب هوك
+            });
+            return webhookUrls;
+        }
+
+        function approveScript(id, title, description) {
+            const password = prompt("Enter password:");
+            if (password === "2007") {
+                db.collection("scripts").doc(id).update({
+                    approved: true
+                }).then(() => {
+                    alert("Script approved.");
+                    loadPendingScripts();
+                    sendDiscordMessage("Approved", title, description, id);
+                }).catch(error => {
+                    console.error("Error approving script:", error);
+                });
+            } else {
+                alert("Incorrect password.");
+            }
+        }
+
+        function rejectScript(id, title, description) {
+            const password = prompt("Enter password:");
+            if (password === "2007") {
+                db.collection("scripts").doc(id).delete().then(() => {
+                    alert("Script rejected.");
+                    loadPendingScripts();
+                    sendDiscordMessage("Rejected", title, description, id);
+                }).catch(error => {
+                    console.error("Error deleting script:", error);
+                });
+            } else {
+                alert("Incorrect password.");
             }
         }
 
