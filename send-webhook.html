@@ -87,8 +87,8 @@
                     scriptDiv.innerHTML = `
                         <h3>${data.title}</h3>
                         <p>${data.description}</p>
-                        <p><strong>Code:</strong><br>${data.scriptText}</p>
-                        <button onclick="approveScript('${doc.id}', '${data.title}', '${data.description}')">Approve</button>
+                        <p><strong>Code:</strong> <br> ${data.scriptText}</p>
+                        <button onclick="approveScript('${doc.id}', '${data.title}', '${data.description}', '${data.scriptText}')">Approve</button>
                         <button class="reject-btn" onclick="rejectScript('${doc.id}', '${data.title}', '${data.description}')">Reject</button>
                     `;
                     scriptsContainer.appendChild(scriptDiv);
@@ -140,26 +140,17 @@
             return webhookUrls;
         }
 
-        function approveScript(id, title, description) {
+        function approveScript(id, title, description, scriptText) {
             const password = prompt("Enter password:");
             if (password === "2007") {
-                db.collection("scripts").doc(id).get().then((doc) => {
-                    const scriptText = doc.data().scriptText;
-                    
-                    // إصلاح الخطأ هنا
-                    if (scriptText.includes("loadstring(game:HttpGet")) {
-                        alert("Script contains 'loadstring(game:HttpGet)' and cannot be approved.");
-                    } else {
-                        db.collection("scripts").doc(id).update({
-                            approved: true
-                        }).then(() => {
-                            alert("Script approved.");
-                            loadPendingScripts();
-                            sendDiscordMessage("Approved", title, description, id);
-                        }).catch(error => {
-                            console.error("Error approving script:", error);
-                        });
-                    }
+                db.collection("scripts").doc(id).update({
+                    approved: true
+                }).then(() => {
+                    alert("Script approved.");
+                    loadPendingScripts();
+                    sendDiscordMessage("Approved", title, description, id);
+                }).catch(error => {
+                    console.error("Error approving script:", error);
                 });
             } else {
                 alert("Incorrect password.");
