@@ -12,14 +12,25 @@
             padding: 20px;
             text-align: center;
         }
-        input {
+        .form-container {
+            background: linear-gradient(145deg, #2e2e2e, #232323);
+            box-shadow: 5px 5px 15px #000000, -5px -5px 15px #262626;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 0 auto;
+            max-width: 400px;
+        }
+        input[type="text"] {
+            width: 100%;
             padding: 10px;
             margin: 10px 0;
-            width: 80%;
+            border: none;
+            border-radius: 5px;
+            background-color: #3a3a3a;
+            color: white;
         }
         button {
             padding: 10px 20px;
-            margin: 10px 5px;
             background-color: #4caf50;
             border: none;
             border-radius: 5px;
@@ -37,11 +48,10 @@
 <body>
 
     <h1>Add Webhook URL</h1>
-    <input type="text" id="webhookUrl" placeholder="Enter Webhook URL">
-    <button onclick="addWebhook()">Add Webhook</button>
-
-    <h2>Stored Webhooks</h2>
-    <div id="webhookList"></div>
+    <div class="form-container">
+        <input type="text" id="webhookUrl" placeholder="Enter Webhook URL" required>
+        <button onclick="addWebhookUrl()">Add Webhook</button>
+    </div>
 
     <script>
         const firebaseConfig = {
@@ -56,38 +66,23 @@
         firebase.initializeApp(firebaseConfig);
         const db = firebase.firestore();
 
-        function addWebhook() {
-            const webhookUrl = document.getElementById('webhookUrl').value;
-            if (webhookUrl) {
-                db.collection("webhooks").add({ url: webhookUrl })
-                    .then(() => {
-                        alert("Webhook added successfully.");
-                        document.getElementById('webhookUrl').value = '';
-                        loadWebhooks();
-                    })
-                    .catch(error => {
-                        console.error("Error adding webhook:", error);
-                    });
+        function addWebhookUrl() {
+            const url = document.getElementById('webhookUrl').value;
+
+            if (url) {
+                db.collection("webhooks").add({
+                    url: url
+                }).then(() => {
+                    alert("Webhook URL added successfully.");
+                    document.getElementById('webhookUrl').value = ''; // Clear the input field
+                }).catch(error => {
+                    console.error("Error adding webhook URL:", error);
+                    alert("Error adding webhook URL. Please try again.");
+                });
             } else {
-                alert("Please enter a valid URL.");
+                alert("Please enter a valid webhook URL.");
             }
         }
-
-        function loadWebhooks() {
-            const webhookList = document.getElementById('webhookList');
-            webhookList.innerHTML = '';
-
-            db.collection("webhooks").get().then(querySnapshot => {
-                querySnapshot.forEach(doc => {
-                    const data = doc.data();
-                    const div = document.createElement('div');
-                    div.innerText = data.url;
-                    webhookList.appendChild(div);
-                });
-            });
-        }
-
-        loadWebhooks();
     </script>
 
 </body>
