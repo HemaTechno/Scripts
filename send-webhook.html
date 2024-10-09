@@ -105,9 +105,43 @@
             });
         }
 
-        async function sendDiscordMessage(action, title, description, scriptId) {
+        async function approveScript(scriptId, title, description) {
+            const password = prompt("Enter password:");
+            if (password === "2007") {
+                await db.collection("scripts").doc(scriptId).update({ approved: true });
+                await sendDiscordMessage("Approved", title, description, scriptId);
+                alert("Script approved successfully!");
+                loadPendingScripts(); 
+            } else {
+                alert("Incorrect password.");
+            }
+        }
+
+        async function rejectScript(scriptId, title, description) {
+            const password = prompt("Enter password:");
+            if (password === "2007") {
+                await db.collection("scripts").doc(scriptId).delete();
+                alert("Script rejected.");
+                loadPendingScripts();
+                await sendDiscordMessage("Rejected", title, description, scriptId);
+            } else {
+                alert("Incorrect password.");
+            }
+        }
+
+        async function getWebhookUrls() {
+            const webhookUrls = [];
             const webhooks = await db.collection("webhooks").get();
-            const webhookUrls = webhooks.docs.map(doc => doc.data().url);
+            
+            webhooks.forEach(doc => {
+                webhookUrls.push(doc.data().url);
+            });
+
+            return webhookUrls;
+        }
+
+        async function sendDiscordMessage(action, title, description, scriptId) {
+            const webhookUrls = await getWebhookUrls();
             const scriptLink = `http://YOUR_SITE_URL/scripts/${scriptId}`; // استبدل بـ الرابط المباشر للسكربت
 
             const embed = {
@@ -120,7 +154,6 @@
                 embeds: [embed],
             };
 
-            // إرسال الرسائل إلى جميع روابط الويب هوك
             for (const webhookUrl of webhookUrls) {
                 try {
                     const response = await fetch(webhookUrl, {
@@ -140,4 +173,10 @@
                     console.error('Error sending message to Discord:', error);
                 }
             }
-       
+        }
+
+        loadPendingScripts();
+    </script>
+
+</body>
+</html>
