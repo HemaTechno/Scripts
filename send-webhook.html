@@ -1,110 +1,21 @@
 <!DOCTYPE html>
-<html lang="ar">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>تسجيل الدخول</title>
-    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-auth.js"></script>
-    <style>
-        body { font-family: Arial, sans-serif; }
-        .login-container { max-width: 400px; margin: 50px auto; padding: 20px; border: 1px solid #ccc; border-radius: 5px; }
-        input { width: 100%; padding: 10px; margin: 5px 0; }
-        button { padding: 10px; background-color: #28a745; color: white; border: none; border-radius: 5px; cursor: pointer; }
-        button:hover { background-color: #218838; }
-        .toggle-link { cursor: pointer; color: blue; text-decoration: underline; }
-    </style>
+    <title>تشغيل فيديو Base64</title>
 </head>
 <body>
+    <h1>فيديو WebM:</h1>
+    <video controls>
+        <source src="data:video/webm;base64,GkXfo0AgQoaBAUL3gQFC8oEEQvOBCEKCQAR3ZWJtQoeBAkKFgQIYU4BnQI0VSalmQCgq17FAAw9CQE2AQAZ3aGFtbXlXQUAGd2hhbW15RIlACECPQAAAAAAAFlSua0AxrkAu14EBY8WBAZyBACK1nEADdW5khkAFVl9WUDglhohAA1ZQOIOBAeBABrCBCLqBCB9DtnVAIueBAKNAHIEAAIAwAQCdASoIAAgAAUAmJaQAA3AA/vz0AAA=" type="video/webm">
+        Your browser does not support the video tag.
+    </video>
 
-<div class="login-container">
-    <h2 id="form-title">تسجيل الدخول</h2>
-    <div id="login-form">
-        <input type="email" id="email" placeholder="البريد الإلكتروني" required>
-        <input type="password" id="password" placeholder="كلمة المرور" required>
-        <button onclick="login()">تسجيل الدخول</button>
-        <p id="error-message" style="color: red;"></p>
-        <p class="toggle-link" onclick="toggleForm()">ليس لديك حساب؟ إنشاء حساب جديد</p>
-    </div>
-
-    <div id="register-form" style="display: none;">
-        <h2>إنشاء حساب جديد</h2>
-        <input type="email" id="new-email" placeholder="البريد الإلكتروني" required>
-        <input type="password" id="new-password" placeholder="كلمة المرور" required>
-        <button onclick="register()">إنشاء حساب</button>
-        <p id="register-error-message" style="color: red;"></p>
-        <p class="toggle-link" onclick="toggleForm()">لديك حساب؟ تسجيل الدخول</p>
-    </div>
-</div>
-
-<script>
-    // إعداد Firebase
-    const firebaseConfig = {
-  apiKey: "AIzaSyDKEZYK77OPqDro7wEDm4iVssl2srSjC2g",
-  authDomain: "hrma-5ec84.firebaseapp.com",
-  projectId: "hrma-5ec84",
-  storageBucket: "hrma-5ec84.appspot.com",
-  messagingSenderId: "555454019427",
-  appId: "1:555454019427:web:2e014a372497051d9d4556"
-};
-
-
-    // تهيئة Firebase
-    firebase.initializeApp(firebaseConfig);
-
-    // دالة تسجيل الدخول
-    function login() {
-        const email = document.getElementById('email').value;
-        const password = document.getElementById('password').value;
-
-        firebase.auth().signInWithEmailAndPassword(email, password)
-            .then((userCredential) => {
-                // تسجيل الدخول بنجاح
-                const user = userCredential.user;
-                alert("تم تسجيل الدخول بنجاح!");
-                // يمكنك إعادة توجيه المستخدم إلى صفحة أخرى هنا
-            })
-            .catch((error) => {
-                const errorMessage = error.message;
-                document.getElementById('error-message').innerText = errorMessage;
-            });
-    }
-
-    // دالة إنشاء حساب جديد
-    function register() {
-        const email = document.getElementById('new-email').value;
-        const password = document.getElementById('new-password').value;
-
-        firebase.auth().createUserWithEmailAndPassword(email, password)
-            .then((userCredential) => {
-                // إنشاء الحساب بنجاح
-                const user = userCredential.user;
-                alert("تم إنشاء الحساب بنجاح!");
-                // يمكنك إعادة توجيه المستخدم إلى صفحة أخرى هنا
-            })
-            .catch((error) => {
-                const errorMessage = error.message;
-                document.getElementById('register-error-message').innerText = errorMessage;
-            });
-    }
-
-    // دالة التبديل بين نماذج التسجيل وتسجيل الدخول
-    function toggleForm() {
-        const loginForm = document.getElementById('login-form');
-        const registerForm = document.getElementById('register-form');
-        const formTitle = document.getElementById('form-title');
-
-        if (loginForm.style.display === "none") {
-            loginForm.style.display = "block";
-            registerForm.style.display = "none";
-            formTitle.innerText = "تسجيل الدخول";
-        } else {
-            loginForm.style.display = "none";
-            registerForm.style.display = "block";
-            formTitle.innerText = "إنشاء حساب جديد";
-        }
-    }
-</script>
-
+    <h1>فيديو MP4:</h1>
+    <video controls>
+        <source src="data:video/mp4;base64,AAAAIGZ0eXBtcDQyAAACAGlzb21pc28yYXZjMW1wNDEAAAAIZnJlZQAACKBtZGF0AAAC8wYF///v3EXpvebZSLeWLNgg2SPu73gyNjQgLSBjb3JlIDE0MiByMjQ3OSBkZDc5YTYxIC0gSC4yNjQvTVBFRy00IEFWQyBjb2RlYyAtIENvcHlsZWZ0IDIwMDMtMjAxNCAtIGh0dHA6Ly93d3cudmlkZW9sYW4ub3JnL3gyNjQuaHRtbCAtIG9wdGlvbnM6IGNhYmFjPTEgcmVmPTEgZGVibG9jaz0xOjA6MCBhbmFseXNlPTB4MToweDExMSBtZT1oZXggc3VibWU9MiBwc3k9MSBwc3lfcmQ9MS4wMDowLjAwIG1peGVkX3JlZj0wIG1lX3JhbmdlPTE2IGNocm9tYV9tZT0xIHRyZWxsaXM9MCA4eDhkY3Q9MCBjcW09MCBkZWFkem9uZT0yMSwxMSBmYXN0X3Bza2lwPTEgY2hyb21hX3FwX29mZnNldD0wIHRocmVhZHM9NiBsb29rYWhlYWRfdGhyZWFkcz0xIHNsaWNlZF90aHJlYWRzPTAgbnI9MCBkZWNpbWF0ZT0xIGludGVybGFjZWQ9MCBibHVyYXlfY29tcGF0PTAgY29uc3RyYWluZWRfaW50cmE9MCBiZnJhbWVzPTMgYl9weXJhbWlkPTIgYl9hZGFwdD0xIGJfYmlhcz0wIGRpcmVjdD0xIHdlaWdodGI9MSBvcGVuX2dvcD0wIHdlaWdodHA9MSBrZXlpbnQ9MzAwIGtleWludF9taW49MzAgc2NlbmVjdXQ9NDAgaW50cmFfcmVmcmVzaD0wIHJjX2xvb2thaGVhZD0xMCByYz1jcmYgbWJ0cmVlPTEgY3JmPTIwLjAgcWNvbXA9MC42MCBxcG1pbj0wIHFwbWF4PTY5IHFwc3RlcD00IHZidl9tYXhyYXRlPTIwMDAwIHZidl9idWZzaXplPTI1MDAwIGNyZl9tYXg9MC4wIG5hbF9ocmQ9bm9uZSBmaWxsZXI9MCBpcF9yYXRpbz0xLjQwIGFxPTE6MS4wMACAAAAAOWWIhAA3//p+C7v8tDDSTjf97w55i3SbRPO4ZY+hkjD5hbkAkL3zpJ6h/LR1CAABzgB1kqqzUorlhQAAAAxBmiQYhn/+qZYADLgAAAAJQZ5CQhX/AAj5IQADQGgcIQADQGgcAAAACQGeYUQn/wALKCEAA0BoHAAAAAkBnmNEJ/8ACykhAANAaBwhAANAaBwAAAANQZpoNExDP/6plgAMuSEAA0BoHAAAAAtBnoZFESwr/wAI+SEAA0BoHCEAA0BoHAAAAAkBnqVEJ/8ACykhAANAaBwAAAAJAZ6nRCf/AAsoIQADQGgcIQADQGgcAAAADUGarDRMQz/+qZYADLghAANAaBwAAAALQZ7KRRUsK/8ACPkhAANAaBwhAANAaBwAAAANQZs0NExDP/6plgAMuSEAA0BoHAAAAAtBn1JFFSwr/wAI+SEAA0BoHAAAAAkBn3FEJ/8ACykhAANAaBwhAANAaBwAAAANQZt4NExDP/6plgAMuCEAA0BoHAAAAAtBn5ZFFSwr/wAI+CEAA0BoHCEAA0BoHAAAAAkBn7VEJ/8ACykhAANAaBwhAANAaBwAAAANQZvgNExDP/6plgAMuSEAA0BoHAAAAAtBnh5FFSwr/wAI+CEAA0BoHAAAAAkBnj1EJ/8ACykhAANAaBwAAAANQZs0NExDP/6plgAMuCEAA0BoHAAAAAtBn1JFFSwr/wAI+SEAA0BoHCEAA0BoHAAAAAkBn3FEJ/8ACykhAANAaBwAAAANQZt4NExDP/6plgAMuSEAA0BoHAAAAAtBn5ZFFSwr/wAI+CEAA0BoHAAAAAkBn7VEJ/8ACykhAANAaBwhAANAaBwAAAAANQZvgNExC//6plgAMuCEAA0BoHAAAAAtBnh5FFSwr/wAI+CEAA0BoHAAAAAkBnj1EJ/8ACykhAANAaBwAAA=" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
 </body>
 </html>
