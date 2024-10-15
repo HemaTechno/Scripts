@@ -196,6 +196,51 @@
             background-color: #0077b3;
         }
 
+        /* جزء الشركاء */
+        .partners-section {
+            padding: 40px 20px;
+            background-color: #252b39;
+            text-align: center;
+        }
+
+        .partners-section h2 {
+            color: #948DFF;
+            margin-bottom: 30px;
+        }
+
+        .partners-container {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .partner {
+            background-color: #333;
+            padding: 10px;
+            border-radius: 10px;
+            width: 150px;
+            text-align: center;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease;
+        }
+
+        .partner:hover {
+            transform: translateY(-10px);
+        }
+
+        .partner img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+            margin-bottom: 10px;
+        }
+
+        .partner p {
+            color: #fff;
+            font-size: 1em;
+        }
+
     </style>
 </head>
 <body>
@@ -214,9 +259,9 @@
         <a href="https://youtube.com/@hema_tech1?si=It1Tn77jTgsUZDWJ">Partner</a>
     </div>
 
-    <span class="menu-btn" onclick="openNav()">&#9776;</span>
+    <!-- زر القائمة -->
+    <span class="menu-btn" onclick="openNav()">☰</span>
 
-    <!-- محتوى الصفحة -->
     <div class="container">
         <div class="box">
             <h2 style="color: #948DFF;">H-Scripts</h2>
@@ -232,27 +277,46 @@
             <h2 style="color: #948DFF;">Information</h2>
             <ul>
                 <li>Developer Ibrahim Mansour</li>
-                <li> Partner: Hema_tech1 | crazy_Script1</li>
+                <li> Ceo: Hema_tech1 | crazy_Script1</li>
             </ul>
         </div>
 
-        <!-- كود الإعلان بعد Information -->
-        
-        <!-- أزرار الشبكات الاجتماعية -->
+
         <div class="social-buttons">
-            <a href="https://discord.gg/WT2c6f34rD" target="_blank" class="social-btn discord-btn">Discord</a>
-            <a href="https://youtube.com/@hema_tech1?si=FI65ajrK8Qkv4AFx" target="_blank" class="social-btn youtube-btn">YouTube</a>
-            <a href="https://t.me/hscripts" target="_blank" class="social-btn telegram-btn">Telegram</a>
+            <button class="social-btn discord-btn">Discord</button>
+            <button class="social-btn youtube-btn">YouTube</button>
+            <button class="social-btn telegram-btn">Telegram</button>
+        </div>
+    </div>
+
+    <!-- جزء الشركاء -->
+    <div class="partners-section">
+        <h2>شركاؤنا</h2>
+        <div class="partners-container">
+            <!-- شريك 1 -->
+            <div class="partner">
+                <a href="https://youtube.com/@hema_tech1?si=It1Tn77jTgsUZDWJ" target="_blank">
+                    <img src="https://i.ibb.co/FVr4b2z/20240926-203252.jpg" alt="Hema Tech">
+                    <p>Hema Tech</p>
+                </a>
+            </div>
+            <!-- شريك 2 -->
+            <div class="partner">
+                <a href="https://t.me/hscripts" target="_blank">
+                    <img src="https://i.ibb.co/FVr4b2z/20240926-203252.jpg" alt="H-Scripts Telegram">
+                    <p>H-Scripts Telegram</p>
+                </a>
+            </div>
         </div>
     </div>
 
     <script>
         function openNav() {
-            document.getElementById("mySidebar").style.display = "block"; // عرض القائمة الجانبية
+            document.getElementById("mySidebar").style.display = "block";
         }
 
         function closeNav() {
-            document.getElementById("mySidebar").style.display = "none"; // إخفاء القائمة الجانبية
+            document.getElementById("mySidebar").style.display = "none";
         }
     </script>
 
