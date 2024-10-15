@@ -5,7 +5,7 @@
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-4WGJCB2SMZ"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
+        function gtag() { dataLayer.push(arguments); }
         gtag('js', new Date());
         gtag('config', 'G-4WGJCB2SMZ');
     </script>
@@ -131,18 +131,22 @@
             background-color: rgba(255, 255, 255, 0.1);
         }
 
-        /* زر القائمة الجانبية */
-        .menu-btn {
-            font-size: 30px;
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            cursor: pointer;
-            color: white;
-        }
     </style>
 </head>
 <body>
+
+    <script>
+        // تعيين كلمة المرور
+        const password = "admin123"; // يمكنك تغيير كلمة المرور هنا
+
+        // طلب كلمة المرور عند دخول الصفحة
+        const userPassword = prompt("من فضلك أدخل كلمة المرور للدخول إلى لوحة التحكم:");
+
+        if (userPassword !== password) {
+            alert("كلمة المرور غير صحيحة!");
+            window.location.href = "https://example.com"; // تغيير الرابط إلى صفحة أخرى
+        }
+    </script>
 
     <!-- القائمة الجانبية -->
     <div id="mySidebar" class="sidebar">
