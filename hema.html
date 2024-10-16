@@ -106,14 +106,26 @@
         }
 
         async function sendDiscordMessage(action, title, description, scriptId) {
-            const webhookUrl = 'https://discord.com/api/webhooks/1157476878114889768/iJ6OmAmYxfjd_NkXgbEDMLxudbYmidxnqsP-uWKcYzOZYaE8wIhvjH_3OTgZwy8lDSNt'; // استبدل بهذا الرابط
-            const scriptLink = `http://YOUR_SITE_URL/scripts/${scriptId}`; // استبدل بـ الرابط المباشر للسكربت
+            let webhookUrl;
+            if (action === "Approved") {
+                webhookUrl = 'https://discord.com/api/webhooks/1157476878114889768/iJ6OmAmYxfjd_NkXgbEDMLxudbYmidxnqsP-uWKcYzOZYaE8wIhvjH_3OTgZwy8lDSNt'; // Webhook للقبول
+            } else {
+                webhookUrl = 'https://discord.com/api/webhooks/1157476878114889769/jF7sOmAmYsfjd_NkXgbEDMLxudbYmidxnqsP-uWKcYzOZYaE8wIhvjH_4OTgZwy8lDTUv'; // Webhook للرفض
+            }
+
+            const scriptLink = `https://h-scripts.site/public-scripts?id=${scriptId}`;
 
             const embed = {
                 title: `Script ${action}`,
                 description: `Script Title: ${title}\nDescription: ${description}\n[View Script](${scriptLink})`,
                 color: action === "Approved" ? 0x00ff00 : 0xff0000,
             };
+
+            if (action === "Approved") {
+                embed.image = {
+                    url: 'https://media.discordapp.net/attachments/1135848559607021680/1293924291368194089/20241010_161301.png?ex=67110d67&is=670fbbe7&hm=68d50fafe461ad47d614886e3b05076220e5b09e93e7cb21d6115e735a437830&' // رابط الصورة
+                };
+            }
 
             const messageData = {
                 embeds: [embed],
