@@ -61,7 +61,7 @@
               querySnapshot.forEach((doc) => {
                   const scriptData = doc.data();
                   const li = document.createElement('li');
-                  li.textContent = scriptData.name; // افتراضًا أن اسم السكربت موجود في الحقل 'name'
+                  li.textContent = scriptData.title; // افتراضًا أن اسم السكربت موجود في الحقل 'name'
                   scriptList.appendChild(li);
               });
           })
