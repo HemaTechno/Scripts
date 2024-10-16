@@ -102,6 +102,8 @@
                     `;
                     scriptsContainer.appendChild(scriptDiv);
                 });
+            }).catch(error => {
+                console.error("Error loading scripts:", error);
             });
         }
 
