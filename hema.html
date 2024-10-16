@@ -97,8 +97,8 @@
                         <p>${sanitizeHTML(data.description)}</p>
                         <a href="${sanitizeURL(data.youtubeLink)}" target="_blank">YouTube Link</a><br><br>
                         <p><strong>Code:</strong> <br> ${sanitizeHTML(data.scriptText)}</p>
-                        <button onclick="approveScript('${doc.id}', '${sanitizeJSString(data.title)}', '${sanitizeJSString(data.description)}')">Approve</button>
-                        <button class="reject-btn" onclick="rejectScript('${doc.id}', '${sanitizeJSString(data.title)}', '${sanitizeJSString(data.description)}')">Reject</button>
+                        <button onclick="approveScript('${doc.id}', ${JSON.stringify(data.title)}, ${JSON.stringify(data.description)})">Approve</button>
+                        <button class="reject-btn" onclick="rejectScript('${doc.id}', ${JSON.stringify(data.title)}, ${JSON.stringify(data.description)})">Reject</button>
                     `;
                     scriptsContainer.appendChild(scriptDiv);
                 });
@@ -113,7 +113,7 @@
                 webhookUrl = 'https://discord.com/api/webhooks/1157476878114889769/jF7sOmAmYsfjd_NkXgbEDMLxudbYmidxnqsP-uWKcYzOZYaE8wIhvjH_4OTgZwy8lDTUv'; // Webhook للرفض
             }
 
-            const scriptLink = `https://h-scripts.site/public-scripts?id=${encodeURIComponent(scriptId)}`;
+            const scriptLink = `https://h-scripts.site/public-scripts?id=${scriptId}`;
 
             const embed = {
                 title: `Script ${action}`,
@@ -123,7 +123,7 @@
 
             if (action === "Approved") {
                 embed.image = {
-                    url: 'https://media.discordapp.net/attachments/1135848559607021680/1293924291368194089/20241010_161301.png?ex=67110d67&is=670fbbe7&hm=68d50fafe461ad47d614886e3b05076220e5b09e93e7cb21d6115e735a437830&' // رابط الصورة
+                    url: 'https://media.discordapp.net/attachments/1135848559607021680/1293924291368194089/20241010_161301.png?ex=67110d67&is=670fbbe7&hm=68d50fafe461ad47d614886e3b05076220e5b09e93e7cb21d6115e735a437830&'
                 };
             }
 
@@ -182,21 +182,16 @@
             }
         }
 
-        // دالة لتنظيف النصوص من الأحرف الخاصة
-        function sanitizeJSString(str) {
-            return str.replace(/'/g, "\\'").replace(/"/g, '\\"');
-        }
-
-        // دالة لتنظيف النصوص المنسقة ك HTML
         function sanitizeHTML(str) {
-            const temp = document.createElement('div');
+            var temp = document.createElement('div');
             temp.textContent = str;
             return temp.innerHTML;
         }
 
-        // دالة لتنظيف روابط URL
         function sanitizeURL(url) {
-            return encodeURIComponent(url);
+            const a = document.createElement('a');
+            a.href = url;
+            return a.href;
         }
 
         loadPendingScripts();
