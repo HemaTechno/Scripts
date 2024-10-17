@@ -88,6 +88,14 @@
             width: calc(50% - 20px); /* عرض 50% مع مسافة بين المربعات */
         }
 
+        .script-card img, .script-card video {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 10px;
+            margin-bottom: 10px;
+        }
+
         .script-card h3 {
             color: #948DFF;
             margin: 10px 0;
@@ -95,14 +103,6 @@
 
         .script-card p {
             color: #fff;
-            margin-bottom: 10px;
-        }
-
-        .script-card img, .script-card video {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-            border-radius: 10px;
             margin-bottom: 10px;
         }
 
@@ -117,6 +117,20 @@
         }
         button:hover {
             background-color: #7b79e8;
+        }
+
+        .get-button {
+            margin-top: 15px;
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #FFD700; /* لون زر Get */
+            color: black;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .get-button:hover {
+            background-color: #FFC107; /* لون عند المرور فوق الزر */
         }
 
     </style>
@@ -163,7 +177,10 @@
                     const data = doc.data();
                     const scriptDiv = document.createElement('div');
                     scriptDiv.className = 'script-card';
+                    
+                    // إضافة الصورة فوق العنوان
                     scriptDiv.innerHTML = `
+                        <img src="${data.mediaURL || 'https://i.ibb.co/FVr4b2z/20240926-203252.jpg'}" alt="Script Image">
                         <h3>${data.title}</h3>
                         <p><strong>Description:</strong> ${data.description}</p>
                         <p><strong>YouTube Link:</strong> <a href="${data.youtubeLink}" target="_blank">Watch on YouTube</a></p>
@@ -181,6 +198,9 @@
                         // عرض رسالة إذا لم توجد وسائط
                         scriptDiv.innerHTML += `<p>No media available for this script.</p>`;
                     }
+                    
+                    // إضافة زر Get
+                    scriptDiv.innerHTML += `<button class="get-button">Get</button>`;
 
                     scriptsContainer.appendChild(scriptDiv);
                 });
