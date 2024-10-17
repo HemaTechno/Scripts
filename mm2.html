@@ -1,28 +1,7 @@
 <!DOCTYPE html>
 <html lang="ar">
 <head>
-
-<script src="https://alwingulla.com/88/tag.min.js" data-zone="104407" async data-cfasync="false"></script>
-    
-
-<!-- وصف الموقع -->
-    <meta name="description" content="أفضل موقع لمشاركة السكربتات و الهاكات الخاصة بأنظمة التشغيل المختلفة.">
-
-    <!-- وسم Open Graph الخاص بالفيسبوك ومنصات أخرى -->
-    <meta property="og:title" content="H-Scripts - أفضل موقع للسكربتات">
-    <meta property="og:description" content="افضل موقع سكربتات و هاكات روبلوكس و تقدر اسكربت الان">
-    <meta property="og:image" content="https://i.ibb.co/FVr4b2z/20240926-203252.jpg">
-    <meta property="og:url" content="https://h-scripts.site">
-    <meta property="og:type" content="website">
-
-    <!-- وسم Twitter Card الخاص بتويتر -->
-    <meta name="twitter:card" content="https://i.ibb.co/FVr4b2z/20240926-203252.jpg">
-    <meta name="twitter:title" content="H-Scripts - أفضل موقع للسكربتات">
-    <meta name="twitter:description" content="شارك أفضل السكربتات مع الآخرين وتعلم المزيد حول الهاكات.">
-    <meta name="twitter:image" content="https://i.ibb.co/FVr4b2z/20240926-203252.jpg">
-
-    <!-- أيقونة الموقع -->
-    <link rel="icon" href="https://i.ibb.co/FVr4b2z/20240926-203252.jpg" type="image/x-icon">
+    <script src="https://alwingulla.com/88/tag.min.js" data-zone="104407" async data-cfasync="false"></script>
     
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -53,7 +32,6 @@
             margin-left: 10px; /* للمسافة بين الشعار والاسم */
             color: #948DFF; /* لون الاسم */
         }
-        /* القائمة الجانبية */
         .sidebar {
             height: 100%; 
             width: 250px;
@@ -83,7 +61,6 @@
             color: #f1f1f1;
             background-color: rgba(255, 255, 255, 0.1);
         }
-        /* زر القائمة (الهامبرغر) */
         .menu-btn {
             font-size: 30px;
             position: fixed;
@@ -93,11 +70,13 @@
             color: white;
             z-index: 2;
         }
-        
-        /* تنسيق عرض السكربتات */
+
         #scriptsContainer {
-            margin-top: 20px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
             padding: 20px;
+            justify-content: space-around;
         }
         .script-card {
             background-color: #1e1e1e;
@@ -106,6 +85,7 @@
             margin-bottom: 15px;
             box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3);
             text-align: center;
+            width: calc(50% - 20px); /* عرض 50% مع مسافة بين المربعات */
         }
 
         .script-card h3 {
@@ -120,6 +100,8 @@
 
         .script-card img {
             width: 100%;
+            height: 200px;
+            object-fit: cover;
             border-radius: 10px;
             margin-bottom: 10px;
         }
@@ -147,7 +129,6 @@
         <h1>H-Scripts</h1>
     </div>
 
-    <!-- القائمة الجانبية -->
     <div id="mySidebar" class="sidebar">
         <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
         <a href="public-scripts">scripts</a>
@@ -158,11 +139,9 @@
 
     <span class="menu-btn" onclick="openNav()">&#9776;</span>
 
-    
     <div id="scriptsContainer"></div>
 
     <script>
-        // إعداد Firebase
         const firebaseConfig = {
             apiKey: "AIzaSyBF-sE1rBlblyLGpN1m08VnQA-bvfmLvtk",
             authDomain: "public-fcf30.firebaseapp.com",
@@ -172,14 +151,12 @@
             appId: "1:4481826675:web:1663b07dcfc06fec130f06"
         };
 
-        // تهيئة Firebase
         firebase.initializeApp(firebaseConfig);
         const db = firebase.firestore();
 
-        // تحميل السكربتات المعتمدة
         function loadApprovedScripts() {
             const scriptsContainer = document.getElementById('scriptsContainer');
-            scriptsContainer.innerHTML = ''; // مسح المحتوى الحالي
+            scriptsContainer.innerHTML = '';
 
             db.collection("scripts").where("approved", "==", true).get().then(querySnapshot => {
                 querySnapshot.forEach(doc => {
@@ -187,7 +164,7 @@
                     const scriptDiv = document.createElement('div');
                     scriptDiv.className = 'script-card';
                     scriptDiv.innerHTML = `
-                        <img src="${data.imageURL}" alt="Script Image">
+                        <img src="${data.imageURL || 'https://i.ibb.co/FVr4b2z/20240926-203252.jpg'}" alt="Script Image">
                         <h3>${data.title}</h3>
                         <p>${data.description}</p>
                         <button onclick="openScriptPage('${doc.id}')">Get</button>
@@ -197,22 +174,18 @@
             });
         }
 
-        // دالة فتح صفحة السكربت
         function openScriptPage(id) {
             window.location.href = `script-details.html?id=${id}`;
         }
 
-        // دالة فتح القائمة الجانبية
         function openNav() {
-            document.getElementById("mySidebar").style.right = "0"; // إظهار القائمة
+            document.getElementById("mySidebar").style.right = "0";
         }
 
-        // دالة إغلاق القائمة الجانبية
         function closeNav() {
-            document.getElementById("mySidebar").style.right = "-250px"; // إخفاء القائمة
+            document.getElementById("mySidebar").style.right = "-250px";
         }
 
-        // استدعاء دالة التحميل عند تحميل الصفحة
         window.onload = function() {
             loadApprovedScripts();
         };
