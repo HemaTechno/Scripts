@@ -2,21 +2,7 @@
 <html lang="ar">
 <head>
     <script src="https://alwingulla.com/88/tag.min.js" data-zone="104407" async data-cfasync="false"></script>
-
-    <!-- وصف الموقع -->
-    <meta name="description" content="أفضل موقع لمشاركة السكربتات و الهاكات الخاصة بأنظمة التشغيل المختلفة.">
-    <meta property="og:title" content="H-Scripts - أفضل موقع للسكربتات">
-    <meta property="og:description" content="افضل موقع سكربتات و هاكات روبلوكس و تقدر اسكربت الان">
-    <meta property="og:image" content="https://i.ibb.co/FVr4b2z/20240926-203252.jpg">
-    <meta property="og:url" content="https://h-scripts.site">
-    <meta property="og:type" content="website">
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="H-Scripts - أفضل موقع للسكربتات">
-    <meta name="twitter:description" content="شارك أفضل السكربتات مع الآخرين وتعلم المزيد حول الهاكات.">
-    <meta name="twitter:image" content="https://i.ibb.co/FVr4b2z/20240926-203252.jpg">
     
-    <link rel="icon" href="https://i.ibb.co/FVr4b2z/20240926-203252.jpg" type="image/x-icon">
-
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>H-Scripts</title>
@@ -46,7 +32,6 @@
             margin-left: 10px; /* للمسافة بين الشعار والاسم */
             color: #948DFF; /* لون الاسم */
         }
-        /* القائمة الجانبية */
         .sidebar {
             height: 100%; 
             width: 250px;
@@ -76,7 +61,6 @@
             color: #f1f1f1;
             background-color: rgba(255, 255, 255, 0.1);
         }
-        /* زر القائمة (الهامبرغر) */
         .menu-btn {
             font-size: 30px;
             position: fixed;
@@ -86,11 +70,13 @@
             color: white;
             z-index: 2;
         }
-        
-        /* تنسيق عرض السكربتات */
+
         #scriptsContainer {
-            margin-top: 20px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
             padding: 20px;
+            justify-content: space-around;
         }
         .script-card {
             background-color: #1e1e1e;
@@ -99,6 +85,7 @@
             margin-bottom: 15px;
             box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3);
             text-align: center;
+            width: calc(50% - 20px); /* عرض 50% مع مسافة بين المربعات */
         }
 
         .script-card h3 {
@@ -111,12 +98,12 @@
             margin-bottom: 10px;
         }
 
-        .script-card img {
+        .script-card img, .script-card video {
             width: 100%;
+            height: 200px;
+            object-fit: cover;
             border-radius: 10px;
             margin-bottom: 10px;
-            max-height: 200px; /* تحديد الحد الأقصى لارتفاع الصورة */
-            object-fit: cover; /* الحفاظ على نسبة العرض إلى الارتفاع */
         }
 
         button {
@@ -131,6 +118,7 @@
         button:hover {
             background-color: #7b79e8;
         }
+
     </style>
     <script src="https://www.gstatic.com/firebasejs/10.7.2/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/10.7.2/firebase-firestore-compat.js"></script>
@@ -141,21 +129,19 @@
         <h1>H-Scripts</h1>
     </div>
 
-    <!-- القائمة الجانبية -->
     <div id="mySidebar" class="sidebar">
         <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
-        <a href="public-scripts.html">السكربتات</a>
+        <a href="public-scripts">السكربتات</a>
         <a href="Scripts.html">سكربتات يوتيوب</a>
         <a href="Hack.html">الهاكات</a>
-        <a href="https://youtube.com/@hema_tech1?si=It1Tn77jTgsUZDWJ">شريك</a>
+        <a href="https://youtube.com/@hema_tech1?si=It1Tn77jTgsUZDWJ">الشريك</a>
     </div>
 
     <span class="menu-btn" onclick="openNav()">&#9776;</span>
-    
+
     <div id="scriptsContainer"></div>
 
     <script>
-        // إعداد Firebase
         const firebaseConfig = {
             apiKey: "AIzaSyBF-sE1rBlblyLGpN1m08VnQA-bvfmLvtk",
             authDomain: "public-fcf30.firebaseapp.com",
@@ -165,14 +151,12 @@
             appId: "1:4481826675:web:1663b07dcfc06fec130f06"
         };
 
-        // تهيئة Firebase
         firebase.initializeApp(firebaseConfig);
         const db = firebase.firestore();
 
-        // تحميل السكربتات المعتمدة
         function loadApprovedScripts() {
             const scriptsContainer = document.getElementById('scriptsContainer');
-            scriptsContainer.innerHTML = ''; // مسح المحتوى الحالي
+            scriptsContainer.innerHTML = '';
 
             db.collection("scripts").where("approved", "==", true).get().then(querySnapshot => {
                 querySnapshot.forEach(doc => {
@@ -180,48 +164,37 @@
                     const scriptDiv = document.createElement('div');
                     scriptDiv.className = 'script-card';
                     scriptDiv.innerHTML = `
-                        <img src="${data.mediaURL || 'https://i.ibb.co/FVr4b2z/20240926-203252.jpg'}" alt="Script Image" style="height: 200px; object-fit: cover;">
                         <h3>${data.title}</h3>
-                        <p><strong>Description:</strong> ${data.description}</p>
-                        
-                        
+                        <p><strong>الوصف:</strong> ${data.description}</p>
+                        <p><strong>رابط يوتيوب:</strong> <a href="${data.youtubeLink}" target="_blank">شاهد على يوتيوب</a></p>
+                        <p><strong>كود السكربت:</strong> <br> ${data.scriptText}</p>
                     `;
 
                     // التحقق من نوع الوسائط
-                    if (data.mediaType === 'video' && data.mediaURL) {
+                    if (data.mediaType === 'image') {
+                        // عرض الصورة إذا كانت موجودة، وإلا عرض صورة افتراضية
+                        scriptDiv.innerHTML += `<img src="${data.mediaURL || 'https://i.ibb.co/FVr4b2z/20240926-203252.jpg'}" alt="صورة السكربت">`;
+                    } else if (data.mediaType === 'video' && data.mediaURL) {
                         // عرض الفيديو إذا كان mediaURL موجود
-                        scriptDiv.innerHTML += `<video src="${data.mediaURL}" controls style="width: 100%; height: auto;"></video>`;
+                        scriptDiv.innerHTML += `<video src="${data.mediaURL}" controls></video>`;
                     } else {
                         // عرض رسالة إذا لم توجد وسائط
-                        scriptDiv.innerHTML += `<p>No media available for this script.</p>`;
+                        scriptDiv.innerHTML += `<p>لا توجد وسائط متاحة لهذا السكربت.</p>`;
                     }
-                    
-                    // إضافة زر Get مع توجيه إلى صفحة التفاصيل
-                    scriptDiv.innerHTML += `<button class="get-button" onclick="goToDetails('${scriptId}')">Get</button>`;
 
                     scriptsContainer.appendChild(scriptDiv);
                 });
-            }).catch(error => {
-                console.error("خطأ في تحميل السكربتات: ", error);
             });
         }
 
-        // دالة فتح صفحة السكربت
-        function openScriptPage(id) {
-            window.location.href = `script-details.html?id=${id}`;
-        }
-
-        // دالة فتح القائمة الجانبية
         function openNav() {
-            document.getElementById("mySidebar").style.right = "0"; // إظهار القائمة
+            document.getElementById("mySidebar").style.right = "0";
         }
 
-        // دالة إغلاق القائمة الجانبية
         function closeNav() {
-            document.getElementById("mySidebar").style.right = "-250px"; // إخفاء القائمة
+            document.getElementById("mySidebar").style.right = "-250px";
         }
 
-        // استدعاء دالة التحميل عند تحميل الصفحة
         window.onload = function() {
             loadApprovedScripts();
         };
