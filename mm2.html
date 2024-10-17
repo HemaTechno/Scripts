@@ -96,18 +96,18 @@
         }
 
         .script-info {
-            background-color: #fff;
-            color: #000;
-            border-radius: 10px;
-            padding: 15px;
-            margin-bottom: 10px;
-            text-align: center;
-            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3);
+            background-color: #fff; /* خلفية بيضاء للإطار */
+            color: #000; /* نص أسود */
+            border-radius: 10px; /* زوايا دائرية */
+            padding: 15px; /* حشوة */
+            margin-bottom: 10px; /* مسافة أسفل */
+            text-align: center; /* محاذاة للنص */
+            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3); /* ظل خفيف */
         }
 
         .script-info h3 {
             margin: 10px 0;
-            color: #090913;
+            color: #090913; /* لون العنوان */
         }
 
         .script-info p {
@@ -174,7 +174,7 @@
 
                     // إضافة الصورة
                     scriptDiv.innerHTML = `
-                        <img src="${data.mediaURL || 'https://i.ibb.co/FVr4b2z/20240926-203252.jpg'}" alt="Script Image">
+                        <img src="${data.mediaURL || 'https://i.ibb.co/FVr4b2z/20240926-203252.jpg'}" alt="صورة السكربت">
                         <div class="script-info">
                             <h3>${data.title}</h3>
                             <p>${data.description}</p>
@@ -184,6 +184,8 @@
 
                     scriptsContainer.appendChild(scriptDiv);
                 });
+            }).catch(error => {
+                console.error("خطأ في تحميل السكربتات: ", error);
             });
         }
 
