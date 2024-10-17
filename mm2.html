@@ -81,6 +81,7 @@
 
         .script-card {
             background-color: #090913; /* نفس لون خلفية الصفحة */
+            border: 2px solid #fff; /* إضافة إطار أبيض حول المربع */
             border-radius: 10px;
             margin-bottom: 15px;
             width: calc(50% - 20px); /* عرض 50% مع مسافة بين المربعات */
@@ -89,15 +90,17 @@
         }
 
         .script-card img {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
+            width: 100%; /* عرض الصورة بالكامل */
+            height: auto; /* لجعل الصورة مرنة في الارتفاع */
+            object-fit: cover; /* ملء الصورة بدون تشويه */
             border-radius: 10px 10px 0 0; /* زوايا دائرية فقط في الأعلى */
         }
 
         .script-info {
             padding: 15px; /* حشوة */
             text-align: center; /* محاذاة للنص */
+            border: 2px solid #fff; /* إطار أبيض حول العنوان والوصف */
+            border-radius: 0 0 10px 10px; /* زوايا دائرية في الأسفل فقط */
         }
 
         .script-info h3 {
