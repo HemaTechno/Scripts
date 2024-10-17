@@ -165,27 +165,31 @@
             const scriptsContainer = document.getElementById('scriptsContainer');
             scriptsContainer.innerHTML = '';
 
-            db.collection("scripts").where("approved", "==", true).get().then(querySnapshot => {
-                querySnapshot.forEach(doc => {
-                    const data = doc.data();
-                    const scriptDiv = document.createElement('div');
-                    scriptDiv.className = 'script-card';
+            db.collection("scripts")
+    .where("approved", "==", true)
+    .get() // لا نستخدم orderBy هنا
+    .then(querySnapshot => {
+        querySnapshot.forEach(doc => {
+            const data = doc.data();
+            const scriptDiv = document.createElement('div');
+            scriptDiv.className = 'script-card';
 
-                    // إضافة الصورة
-                    scriptDiv.innerHTML = `
-                        <img src="${data.mediaURL || 'https://i.ibb.co/FVr4b2z/20240926-203252.jpg'}" alt="صورة السكربت">
-                        <div class="script-info">
-                            <h3>${data.title}</h3>
-                            <p>${data.description}</p>
-                            <button onclick="openScriptPage('${doc.id}')">Get</button>
-                        </div>
-                    `;
+            // إضافة الصورة
+            scriptDiv.innerHTML = `
+                <img src="${data.mediaURL || 'https://i.ibb.co/FVr4b2z/20240926-203252.jpg'}" alt="صورة السكربت">
+                <div class="script-info">
+                    <h3>${data.title}</h3>
+                    <p>${data.description}</p>
+                    <button onclick="openScriptPage('${doc.id}')">Get</button>
+                </div>
+            `;
 
-                    scriptsContainer.appendChild(scriptDiv);
-                });
-            }).catch(error => {
-                console.error("خطأ في تحميل السكربتات: ", error);
-            });
+            scriptsContainer.appendChild(scriptDiv);
+        });
+    }).catch(error => {
+        console.error("خطأ في تحميل السكربتات: ", error);
+    });
+
         }
 
         function openScriptPage(id) {
