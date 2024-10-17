@@ -1,11 +1,9 @@
 <!DOCTYPE html>
 <html lang="ar">
 <head>
-    <script src="https://alwingulla.com/88/tag.min.js" data-zone="104407" async data-cfasync="false"></script>
-    
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>H-Scripts</title>
+    <title>تفاصيل السكربت</title>
     <style>
         * {
             margin: 0;
@@ -13,99 +11,36 @@
             box-sizing: border-box;
         }
         html, body {
-            overflow-x: hidden;
             width: 100%;
             height: 100%;
             font-family: 'Cairo', sans-serif;
-            background-color: #090913; /* خلفية الصفحة */
+            background-color: #090913;
             color: #fff;
-            direction: rtl;
-            text-align: right;
-        }
-        .logo-name {
-            position: absolute;
-            top: 10px;
-            left: 10px;
-        }
-        .logo-name h1 {
-            font-size: 1.5em; /* حجم الخط */
-            margin-left: 10px; /* للمسافة بين الشعار والاسم */
-            color: #948DFF; /* لون الاسم */
-        }
-        .sidebar {
-            height: 100%; 
-            width: 250px;
-            position: fixed;
-            z-index: 1;
-            top: 0;
-            right: -250px; /* تبدأ خارج الشاشة */
-            background-color: rgba(0, 0, 0, 0.95); /* خلفية سوداء غير شفافة */
-            overflow-x: hidden;
-            padding-top: 60px;
-            transition: 0.5s; /* انتقال سلس عند الفتح والإغلاق */
-        }
-        .sidebar a {
-            padding: 10px;
-            text-decoration: none;
-            font-size: 20px;
-            color: #fff;
-            display: block;
             text-align: center;
-            transition: 0.3s;
-            border: 2px solid rgba(255, 255, 255, 0.5); /* إطار أبيض شفاف */
-            border-radius: 5px;
-            margin: 10px auto;
-            width: 80%;
-        }
-        .sidebar a:hover {
-            color: #f1f1f1;
-            background-color: rgba(255, 255, 255, 0.1);
-        }
-        .menu-btn {
-            font-size: 30px;
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            cursor: pointer;
-            color: white;
-            z-index: 2;
-        }
-
-        #scriptsContainer {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 20px;
             padding: 20px;
-            justify-content: space-around;
         }
-        .script-card {
-            background-color: #1e1e1e;
+        .script-details {
+            background-color: #fff;
+            color: #000;
+            padding: 20px;
             border-radius: 10px;
-            padding: 15px;
-            margin-bottom: 15px;
             box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3);
-            text-align: center;
-            width: calc(50% - 20px); /* عرض 50% مع مسافة بين المربعات */
+            max-width: 600px;
+            margin: 20px auto;
         }
-
-        .script-card img {
+        .script-details img {
             width: 100%;
             height: 200px;
             object-fit: cover;
             border-radius: 10px;
-            margin-bottom: 10px;
+            margin-bottom: 20px;
         }
-
-        .script-card h3 {
-            color: #948DFF;
+        .script-details h3 {
+            color: #090913;
+        }
+        .script-details p {
             margin: 10px 0;
         }
-
-        .script-card p {
-            color: #fff;
-            margin-bottom: 10px;
-        }
-
         button {
             background-color: #948DFF;
             color: white;
@@ -113,49 +48,29 @@
             cursor: pointer;
             padding: 10px 15px;
             border-radius: 5px;
-            margin-top: 10px;
         }
         button:hover {
             background-color: #7b79e8;
         }
-
-        .get-button {
-            margin-top: 15px;
-            padding: 10px 20px;
-            font-size: 16px;
-            background-color: #FFD700; /* لون زر Get */
-            color: black;
-            border: none;
+        pre {
+            background-color: #f4f4f4;
+            color: #000;
+            padding: 10px;
             border-radius: 5px;
-            cursor: pointer;
+            overflow: auto;
+            text-align: left;
+            margin-top: 20px;
         }
-        .get-button:hover {
-            background-color: #FFC107; /* لون عند المرور فوق الزر */
-        }
-
     </style>
-    <script src="https://www.gstatic.com/firebasejs/10.7.2/firebase-app-compat.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/10.7.2/firebase-firestore-compat.js"></script>
 </head>
 <body>
 
-    <div class="logo-name">
-        <h1>H-Scripts</h1>
-    </div>
-
-    <div id="mySidebar" class="sidebar">
-        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
-        <a href="public-scripts">scripts</a>
-        <a href="Scripts.html">YouTube Scripts</a>
-        <a href="Hack.html">exploits</a>
-        <a href="https://youtube.com/@hema_tech1?si=It1Tn77jTgsUZDWJ">Partner</a>
-    </div>
-
-    <span class="menu-btn" onclick="openNav()">&#9776;</span>
-
-    <div id="scriptsContainer"></div>
+    <div id="scriptDetailsContainer" class="script-details"></div>
 
     <script>
+        const urlParams = new URLSearchParams(window.location.search);
+        const scriptId = urlParams.get('id');
+
         const firebaseConfig = {
             apiKey: "AIzaSyBF-sE1rBlblyLGpN1m08VnQA-bvfmLvtk",
             authDomain: "public-fcf30.firebaseapp.com",
@@ -168,58 +83,42 @@
         firebase.initializeApp(firebaseConfig);
         const db = firebase.firestore();
 
-        function loadApprovedScripts() {
-            const scriptsContainer = document.getElementById('scriptsContainer');
-            scriptsContainer.innerHTML = '';
-
-            db.collection("scripts").where("approved", "==", true).get().then(querySnapshot => {
-                querySnapshot.forEach(doc => {
+        // تحميل تفاصيل السكربت
+        function loadScriptDetails() {
+            db.collection("scripts").doc(scriptId).get().then(doc => {
+                if (doc.exists) {
                     const data = doc.data();
-                    const scriptId = doc.id; // الحصول على معرّف السكربت
-                    const scriptDiv = document.createElement('div');
-                    scriptDiv.className = 'script-card';
+                    const scriptDetailsContainer = document.getElementById('scriptDetailsContainer');
                     
-                    // إضافة الصورة فوق العنوان
-                    scriptDiv.innerHTML = `
-                        <img src="${data.mediaURL || 'https://i.ibb.co/FVr4b2z/20240926-203252.jpg'}" alt="Script Image" style="height: 200px; object-fit: cover;">
+                    scriptDetailsContainer.innerHTML = `
+                        <img src="${data.mediaURL || 'https://i.ibb.co/FVr4b2z/20240926-203252.jpg'}" alt="صورة السكربت">
                         <h3>${data.title}</h3>
-                        <p><strong>Description:</strong> ${data.description}</p>
-                        <p><strong>YouTube Link:</strong> <a href="${data.youtubeLink}" target="_blank">Watch on YouTube</a></p>
-                        <p><strong>Script Code:</strong> <br> ${data.scriptText}</p>
+                        <p>${data.description}</p>
+                        <pre>${data.scriptText}</pre>
+                        <button onclick="copyScript()">نسخ السكربت</button>
                     `;
-
-                    // التحقق من نوع الوسائط
-                    if (data.mediaType === 'video' && data.mediaURL) {
-                        // عرض الفيديو إذا كان mediaURL موجود
-                        scriptDiv.innerHTML += `<video src="${data.mediaURL}" controls style="width: 100%; height: auto;"></video>`;
-                    } else {
-                        // عرض رسالة إذا لم توجد وسائط
-                        scriptDiv.innerHTML += `<p>No media available for this script.</p>`;
-                    }
-                    
-                    // إضافة زر Get مع توجيه إلى صفحة التفاصيل
-                    scriptDiv.innerHTML += `<button class="get-button" onclick="goToDetails('${scriptId}')">Get</button>`;
-
-                    scriptsContainer.appendChild(scriptDiv);
-                });
+                } else {
+                    document.getElementById('scriptDetailsContainer').innerHTML = '<p>لا توجد تفاصيل لهذا السكربت.</p>';
+                }
+            }).catch(error => {
+                console.error("خطأ في تحميل بيانات السكربت: ", error);
             });
         }
 
-        function goToDetails(id) {
-            window.location.href = `script-details.html?id=${id}`;
+        function copyScript() {
+            const scriptText = document.querySelector('pre').textContent;
+            navigator.clipboard.writeText(scriptText).then(() => {
+                alert('تم نسخ السكربت!');
+            }).catch(err => {
+                console.error('خطأ في النسخ: ', err);
+            });
         }
 
-        function openNav() {
-            document.getElementById("mySidebar").style.right = "0";
-        }
-
-        function closeNav() {
-            document.getElementById("mySidebar").style.right = "-250px";
-        }
-
+        // استدعاء دالة تحميل تفاصيل السكربت عند تحميل الصفحة
         window.onload = function() {
-            loadApprovedScripts();
+            loadScriptDetails();
         };
     </script>
+
 </body>
 </html>
