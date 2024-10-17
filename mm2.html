@@ -78,31 +78,39 @@
             padding: 20px;
             justify-content: space-around;
         }
+
         .script-card {
-            background-color: #1e1e1e;
+            background-color: transparent;
             border-radius: 10px;
-            padding: 15px;
             margin-bottom: 15px;
-            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3);
-            text-align: center;
             width: calc(50% - 20px); /* عرض 50% مع مسافة بين المربعات */
+            text-align: center;
         }
 
-        .script-card h3 {
-            color: #948DFF;
-            margin: 10px 0;
-        }
-
-        .script-card p {
-            color: #fff;
-            margin-bottom: 10px;
-        }
-
-        .script-card img, .script-card video {
+        .script-card img {
             width: 100%;
             height: 200px;
             object-fit: cover;
             border-radius: 10px;
+            margin-bottom: 10px;
+        }
+
+        .script-info {
+            background-color: #fff;
+            color: #000;
+            border-radius: 10px;
+            padding: 15px;
+            margin-bottom: 10px;
+            text-align: center;
+            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3);
+        }
+
+        .script-info h3 {
+            margin: 10px 0;
+            color: #090913;
+        }
+
+        .script-info p {
             margin-bottom: 10px;
         }
 
@@ -163,36 +171,24 @@
                     const data = doc.data();
                     const scriptDiv = document.createElement('div');
                     scriptDiv.className = 'script-card';
-                    scriptDiv.innerHTML = `
-                        <h3>${data.title}</h3>
-                        <p><strong>الوصف:</strong> ${data.description}</p>
-                        <p><strong>رابط يوتيوب:</strong> <a href="${data.youtubeLink}" target="_blank">شاهد على يوتيوب</a></p>
-                        <p><strong>كود السكربت:</strong> <br> ${data.scriptText}</p>
-                    `;
 
-                    // التحقق من نوع الوسائط
-                    if (data.mediaType === 'image') {
-                        // عرض الصورة إذا كانت موجودة، وإلا عرض صورة افتراضية
-                        scriptDiv.innerHTML += `<img src="${data.mediaURL || 'https://i.ibb.co/FVr4b2z/20240926-203252.jpg'}" alt="صورة السكربت">`;
-                    } else if (data.mediaType === 'video' && data.mediaURL) {
-                        // عرض الفيديو إذا كان mediaURL موجود
-                        scriptDiv.innerHTML += `<video src="${data.mediaURL}" controls></video>`;
-                    } else {
-                        // عرض رسالة إذا لم توجد وسائط
-                        scriptDiv.innerHTML += `<p>لا توجد وسائط متاحة لهذا السكربت.</p>`;
-                    }
+                    // إضافة الصورة
+                    scriptDiv.innerHTML = `
+                        <img src="${data.mediaURL || 'https://i.ibb.co/FVr4b2z/20240926-203252.jpg'}" alt="Script Image">
+                        <div class="script-info">
+                            <h3>${data.title}</h3>
+                            <p>${data.description}</p>
+                        </div>
+                        <button onclick="openScriptPage('${doc.id}')">Get</button>
+                    `;
 
                     scriptsContainer.appendChild(scriptDiv);
                 });
             });
         }
 
-        function openNav() {
-            document.getElementById("mySidebar").style.right = "0";
-        }
-
-        function closeNav() {
-            document.getElementById("mySidebar").style.right = "-250px";
+        function openScriptPage(id) {
+            window.location.href = `script-details.html?id=${id}`;
         }
 
         window.onload = function() {
