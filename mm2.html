@@ -98,7 +98,7 @@
             margin-bottom: 10px;
         }
 
-        .script-card img {
+        .script-card img, .script-card video {
             width: 100%;
             height: 200px;
             object-fit: cover;
@@ -164,11 +164,24 @@
                     const scriptDiv = document.createElement('div');
                     scriptDiv.className = 'script-card';
                     scriptDiv.innerHTML = `
-                        <img src="${data.imageURL || 'https://i.ibb.co/FVr4b2z/20240926-203252.jpg'}" alt="Script Image">
                         <h3>${data.title}</h3>
-                        <p>${data.description}</p>
-                        <button onclick="openScriptPage('${doc.id}')">Get</button>
+                        <p><strong>Description:</strong> ${data.description}</p>
+                        <p><strong>YouTube Link:</strong> <a href="${data.youtubeLink}" target="_blank">Watch on YouTube</a></p>
+                        <p><strong>Script Code:</strong> <br> ${data.scriptText}</p>
                     `;
+
+                    // التحقق من نوع الوسائط
+                    if (data.mediaType === 'image') {
+                        // عرض الصورة إذا كانت موجودة، وإلا عرض صورة افتراضية
+                        scriptDiv.innerHTML += `<img src="${data.mediaURL || 'https://i.ibb.co/FVr4b2z/20240926-203252.jpg'}" alt="Script Image">`;
+                    } else if (data.mediaType === 'video' && data.mediaURL) {
+                        // عرض الفيديو إذا كان mediaURL موجود
+                        scriptDiv.innerHTML += `<video src="${data.mediaURL}" controls></video>`;
+                    } else {
+                        // عرض رسالة إذا لم توجد وسائط
+                        scriptDiv.innerHTML += `<p>No media available for this script.</p>`;
+                    }
+
                     scriptsContainer.appendChild(scriptDiv);
                 });
             });
