@@ -1,69 +1,168 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ar">
 <head>
+
+<script src="https://alwingulla.com/88/tag.min.js" data-zone="104407" async data-cfasync="false"></script>
+    
+
+<!-- وصف الموقع -->
+    <meta name="description" content="أفضل موقع لمشاركة السكربتات و الهاكات الخاصة بأنظمة التشغيل المختلفة.">
+
+    <!-- وسم Open Graph الخاص بالفيسبوك ومنصات أخرى -->
+    <meta property="og:title" content="H-Scripts - أفضل موقع للسكربتات">
+    <meta property="og:description" content="افضل موقع سكربتات و هاكات روبلوكس و تقدر اسكربت الان">
+    <meta property="og:image" content="https://i.ibb.co/FVr4b2z/20240926-203252.jpg">
+    <meta property="og:url" content="https://h-scripts.site">
+    <meta property="og:type" content="website">
+
+    <!-- وسم Twitter Card الخاص بتويتر -->
+    <meta name="twitter:card" content="https://i.ibb.co/FVr4b2z/20240926-203252.jpg">
+    <meta name="twitter:title" content="H-Scripts - أفضل موقع للسكربتات">
+    <meta name="twitter:description" content="شارك أفضل السكربتات مع الآخرين وتعلم المزيد حول الهاكات.">
+    <meta name="twitter:image" content="https://i.ibb.co/FVr4b2z/20240926-203252.jpg">
+
+    <!-- أيقونة الموقع -->
+    <link rel="icon" href="https://i.ibb.co/FVr4b2z/20240926-203252.jpg" type="image/x-icon">
+    
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>View Scripts</title>
+    <title>H-Scripts</title>
     <style>
-        body {
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        html, body {
+            overflow-x: hidden;
+            width: 100%;
+            height: 100%;
             font-family: 'Cairo', sans-serif;
-            background-color: #121212;
+            background-color: #090913; /* خلفية الصفحة */
             color: #fff;
-            text-align: center;
-            padding: 20px;
+            direction: rtl;
+            text-align: right;
         }
-        h1 {
-            color: #ffa726; /* Title color */
-            font-size: 36px;
-            margin-bottom: 20px;
-            text-shadow: 3px 3px 10px rgba(0, 0, 0, 0.5);
+        .logo-name {
+            position: absolute;
+            top: 10px;
+            left: 10px;
         }
-        .script-container {
-            background: linear-gradient(145deg, #1e1e1e, #2a2a2a);
-            margin: 20px auto;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 10px 10px 30px rgba(0, 0, 0, 0.5);
-            max-width: 600px;
-            text-align: left;
+        .logo-name h1 {
+            font-size: 1.5em; /* حجم الخط */
+            margin-left: 10px; /* للمسافة بين الشعار والاسم */
+            color: #948DFF; /* لون الاسم */
         }
-        h3 {
-            color: #ffb74d; /* Script title color */
-            font-size: 24px;
-            margin-bottom: 10px;
+        /* القائمة الجانبية */
+        .sidebar {
+            height: 100%; 
+            width: 250px;
+            position: fixed;
+            z-index: 1;
+            top: 0;
+            right: -250px; /* تبدأ خارج الشاشة */
+            background-color: rgba(0, 0, 0, 0.95); /* خلفية سوداء غير شفافة */
+            overflow-x: hidden;
+            padding-top: 60px;
+            transition: 0.5s; /* انتقال سلس عند الفتح والإغلاق */
         }
-        p, a {
-            font-size: 16px;
-            margin-bottom: 10px;
-            line-height: 1.6;
-            color: #e0e0e0;
-        }
-        a {
-            color: #29b6f6;
+        .sidebar a {
+            padding: 10px;
             text-decoration: none;
+            font-size: 20px;
+            color: #fff;
+            display: block;
+            text-align: center;
+            transition: 0.3s;
+            border: 2px solid rgba(255, 255, 255, 0.5); /* إطار أبيض شفاف */
+            border-radius: 5px;
+            margin: 10px auto;
+            width: 80%;
         }
-        a:hover {
-            text-decoration: underline;
+        .sidebar a:hover {
+            color: #f1f1f1;
+            background-color: rgba(255, 255, 255, 0.1);
         }
-        img, video {
-            max-width: 100%;
+        /* زر القائمة (الهامبرغر) */
+        .menu-btn {
+            font-size: 30px;
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            cursor: pointer;
+            color: white;
+            z-index: 2;
+        }
+        
+        /* تنسيق عرض السكربتات */
+        #scriptsContainer {
+            margin-top: 20px;
+            padding: 20px;
+        }
+        .script-card {
+            background-color: #1e1e1e;
             border-radius: 10px;
-            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+            padding: 15px;
+            margin-bottom: 15px;
+            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3);
+            text-align: center;
+        }
+
+        .script-card h3 {
+            color: #948DFF;
+            margin: 10px 0;
+        }
+
+        .script-card p {
+            color: #fff;
+            margin-bottom: 10px;
+        }
+
+        .script-card img {
+            width: 100%;
+            border-radius: 10px;
+            margin-bottom: 10px;
+        }
+
+        button {
+            background-color: #948DFF;
+            color: white;
+            border: none;
+            cursor: pointer;
+            padding: 10px 15px;
+            border-radius: 5px;
             margin-top: 10px;
         }
-        video {
-            controls: true;
+        button:hover {
+            background-color: #7b79e8;
         }
+
     </style>
     <script src="https://www.gstatic.com/firebasejs/10.7.2/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/10.7.2/firebase-firestore-compat.js"></script>
 </head>
 <body>
 
-    <h1>Scripts Gallery</h1>
+    <div class="logo-name">
+        <h1>H-Scripts</h1>
+    </div>
+
+    <!-- القائمة الجانبية -->
+    <div id="mySidebar" class="sidebar">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
+        <a href="public-scripts">scripts</a>
+        <a href="Scripts.html">YouTube Scripts</a>
+        <a href="Hack.html">exploits</a>
+        <a href="https://youtube.com/@hema_tech1?si=It1Tn77jTgsUZDWJ">Partner</a>
+    </div>
+
+    <span class="menu-btn" onclick="openNav()">&#9776;</span>
+
+    
     <div id="scriptsContainer"></div>
 
     <script>
+        // إعداد Firebase
         const firebaseConfig = {
             apiKey: "AIzaSyBF-sE1rBlblyLGpN1m08VnQA-bvfmLvtk",
             authDomain: "public-fcf30.firebaseapp.com",
@@ -73,39 +172,50 @@
             appId: "1:4481826675:web:1663b07dcfc06fec130f06"
         };
 
+        // تهيئة Firebase
         firebase.initializeApp(firebaseConfig);
         const db = firebase.firestore();
 
-        function loadScripts() {
+        // تحميل السكربتات المعتمدة
+        function loadApprovedScripts() {
             const scriptsContainer = document.getElementById('scriptsContainer');
-            scriptsContainer.innerHTML = '';
+            scriptsContainer.innerHTML = ''; // مسح المحتوى الحالي
 
-            db.collection("scripts").get().then(querySnapshot => {
+            db.collection("scripts").where("approved", "==", true).get().then(querySnapshot => {
                 querySnapshot.forEach(doc => {
                     const data = doc.data();
                     const scriptDiv = document.createElement('div');
-                    scriptDiv.className = 'script-container';
-
+                    scriptDiv.className = 'script-card';
                     scriptDiv.innerHTML = `
+                        <img src="${data.imageURL}" alt="Script Image">
                         <h3>${data.title}</h3>
-                        <p><strong>Description:</strong> ${data.description}</p>
-                        <p><strong>YouTube Link:</strong> <a href="${data.youtubeLink}" target="_blank">Watch on YouTube</a></p>
-                        <p><strong>Script Code:</strong> <br> ${data.scriptText}</p>
+                        <p>${data.description}</p>
+                        <button onclick="openScriptPage('${doc.id}')">Get</button>
                     `;
-
-                    if (data.mediaType === 'image') {
-                        scriptDiv.innerHTML += `<img src="${data.mediaURL}" alt="Script Image">`;
-                    } else if (data.mediaType === 'video') {
-                        scriptDiv.innerHTML += `<video src="${data.mediaURL}" controls></video>`;
-                    }
-
                     scriptsContainer.appendChild(scriptDiv);
                 });
             });
         }
 
-        loadScripts();
-    </script>
+        // دالة فتح صفحة السكربت
+        function openScriptPage(id) {
+            window.location.href = `script-details.html?id=${id}`;
+        }
 
+        // دالة فتح القائمة الجانبية
+        function openNav() {
+            document.getElementById("mySidebar").style.right = "0"; // إظهار القائمة
+        }
+
+        // دالة إغلاق القائمة الجانبية
+        function closeNav() {
+            document.getElementById("mySidebar").style.right = "-250px"; // إخفاء القائمة
+        }
+
+        // استدعاء دالة التحميل عند تحميل الصفحة
+        window.onload = function() {
+            loadApprovedScripts();
+        };
+    </script>
 </body>
 </html>
