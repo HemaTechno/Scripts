@@ -194,6 +194,13 @@
         window.onload = function() {
             loadApprovedScripts();
         };
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'PrintScreen') {
+                alert("أخذ لقطة شاشة غير مسموح به.");
+                event.preventDefault(); // لمنع الإجراء الافتراضي
+            }
+        });
+
     </script>
 </body>
 </html>
