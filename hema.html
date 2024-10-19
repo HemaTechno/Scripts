@@ -124,9 +124,9 @@
                 // Handling image or no-image case
                 let imageElement;
                 if (item.imageUrl) {
-                    imageElement = `<img src="${item.imageUrl}" alt="${item.title}" onclick="copyScript('${item.scriptText}', '${item.title}')">`;
+                    imageElement = `<img src="${item.imageUrl}" alt="${item.title}" onerror="this.onerror=null; this.src='fallback-image.jpg';">`;
                 } else {
-                    imageElement = `<div class="no-image" onclick="copyScript('${item.scriptText}', '${item.title}')">No Image Available</div>`;
+                    imageElement = `<div class="no-image">No Image Available</div>`;
                 }
 
                 // Creating card content
