@@ -42,6 +42,21 @@
         .hidden {
             display: none;
         }
+        /* تنسيق إضافي للأزرار */
+        .checkbox-label {
+            display: block;
+            margin-top: 20px;
+            font-size: 18px;
+            cursor: pointer;
+        }
+        #uploadImageCheckbox, #autoApproveCheckbox {
+            margin-right: 10px;
+            transform: scale(1.2);
+            cursor: pointer;
+        }
+        #partnerPassword {
+            margin-top: 10px;
+        }
     </style>
     <script src="https://www.gstatic.com/firebasejs/10.7.2/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/10.7.2/firebase-firestore-compat.js"></script>
@@ -53,17 +68,18 @@
     <form id="scriptForm">
         <input type="text" id="title" placeholder="Script Title" required>
         <textarea id="description" placeholder="Script Description" required></textarea>
-        <input type="text" id="youtubeLink" placeholder="YouTube Link" required>
+        <!-- جعل اليوتيوب اختياري -->
+        <input type="text" id="youtubeLink" placeholder="YouTube Link (اختياري)">
         <textarea id="scriptText" placeholder="Script Code" required></textarea>
 
         <!-- اختيار رفع صورة -->
-        <label>
+        <label class="checkbox-label">
             <input type="checkbox" id="uploadImageCheckbox"> هل ترغب في رفع صورة؟
         </label>
         <input type="file" id="imageUpload" class="hidden" accept="image/*">
         
         <!-- اختيار الموافقة التلقائية للشركاء -->
-        <label>
+        <label class="checkbox-label">
             <input type="checkbox" id="autoApproveCheckbox"> أنا شريك وأوافق على الشروط
         </label>
         <input type="password" id="partnerPassword" class="hidden" placeholder="أدخل كلمة المرور">
