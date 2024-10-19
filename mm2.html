@@ -64,17 +64,17 @@
 
     <h1>إضافة سكربت</h1>
     <form id="scriptForm">
-        <input type="text" id="title" placeholder="عنوان السكربت" required>
-        <textarea id="description" placeholder="وصف السكربت" required></textarea>
-        <textarea id="scriptText" placeholder="الكود" required></textarea>
+        <input type="text" id="title" placeholder="Titel" required>
+        <textarea id="description" placeholder="Description" required></textarea>
+        <textarea id="scriptText" placeholder="scripts" required></textarea>
 
         <!-- اختيار الموافقة التلقائية للشركاء -->
         <label class="checkbox-label">
-            <input type="checkbox" id="autoApproveCheckbox"> أنا شريك وأوافق على الشروط
+            <input type="checkbox" id="autoApproveCheckbox"> Partner !?
         </label>
-        <input type="password" id="partnerPassword" class="hidden" placeholder="أدخل كلمة المرور">
+        <input type="password" id="partnerPassword" class="hidden" placeholder="write password">
 
-        <button type="submit">حفظ السكربت</button>
+        <button type="submit">Add This Script</button>
     </form>
 
     <script>
@@ -132,7 +132,7 @@
                 scriptText: scriptText,
                 approved: approved
             }).then((docRef) => {
-                const scriptLink = `https://h-scripts.site/public-scripts/${docRef.id}`;
+                const scriptLink = `https://h-scripts.site/public-scripts?id=${docRef.id}`;
                 navigator.clipboard.writeText(scriptLink).then(() => {
                     alert(`تم حفظ السكربت بنجاح. تم نسخ الرابط: ${scriptLink}`);
                 }).catch((err) => {
