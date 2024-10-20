@@ -3,149 +3,54 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Add Script</title>
+    <title>أهلاً بك في الاستور الخاص بنا</title>
     <style>
+        /* استيراد الخط من جوجل */
+        @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap');
+
+        /* تنسيق الصفحة */
         body {
             font-family: 'Cairo', sans-serif;
-            background-color: #121212;
+            background-color: #080C15;
             color: #fff;
             text-align: center;
-            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
         }
+
+        /* تنسيق النص */
         h1 {
+            font-size: 3em;
             margin-bottom: 20px;
-            color: #ffa726; /* لون العنوان */
         }
-        input, textarea, button {
-            margin: 10px 0;
-            padding: 12px;
-            width: 80%;
-            border-radius: 5px;
+
+        /* تنسيق الزر */
+        .shop-btn {
+            padding: 15px 40px;
+            background-color: #A755F7;
+            color: #fff;
             border: none;
-            background-color: #2e2e2e; /* خلفية الحقول */
-            color: #fff; /* لون النص */
-            font-size: 16px;
-        }
-        input::placeholder, textarea::placeholder {
-            color: #aaa; /* لون النص التوضيحي */
-        }
-        button {
-            background-color: #4CAF50; /* خلفية الزر */
-            color: white;
+            border-radius: 8px;
+            font-size: 1.2em;
             cursor: pointer;
-            transition: background-color 0.3s;
-            font-size: 16px;
+            transition: background-color 0.3s ease;
+            text-decoration: none;
         }
-        button:hover {
-            background-color: #45a049; /* لون الزر عند التمرير */
-        }
-        .checkbox-label {
-            display: block;
-            margin-top: 20px;
-            font-size: 18px;
-            cursor: pointer;
-        }
-        #autoApproveCheckbox {
-            margin-right: 10px;
-            transform: scale(1.2);
-            cursor: pointer;
-        }
-        #partnerPassword {
-            margin-top: 10px;
-        }
-        .hidden {
-            display: none;
+
+        .shop-btn:hover {
+            background-color: #9448d8;
         }
     </style>
-    <script src="https://www.gstatic.com/firebasejs/10.7.2/firebase-app-compat.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/10.7.2/firebase-firestore-compat.js"></script>
 </head>
 <body>
 
-    <h1> Add Script</h1>
-    <form id="scriptForm">
-        <input type="text" id="title" placeholder="Titel" required>
-        <textarea id="description" placeholder="Description" required></textarea>
-        <textarea id="scriptText" placeholder="scripts" required></textarea>
-
-        <!-- اختيار الموافقة التلقائية للشركاء -->
-        <label class="checkbox-label">
-            <input type="checkbox" id="autoApproveCheckbox"> Partner !?
-        </label>
-        <input type="password" id="partnerPassword" class="hidden" placeholder="write password">
-
-        <button type="submit">Add This Script</button>
-    </form>
-
-    <script>
-        const firebaseConfig = {
-            apiKey: "AIzaSyBF-sE1rBlblyLGpN1m08VnQA-bvfmLvtk",
-            authDomain: "public-fcf30.firebaseapp.com",
-            projectId: "public-fcf30",
-            storageBucket: "public-fcf30.appspot.com",
-            messagingSenderId: "4481826675",
-            appId: "1:4481826675:web:1663b07dcfc06fec130f06"
-        };
-
-        firebase.initializeApp(firebaseConfig);
-        const db = firebase.firestore();
-
-        const autoApproveCheckbox = document.getElementById('autoApproveCheckbox');
-        const partnerPassword = document.getElementById('partnerPassword');
-
-        // إظهار أو إخفاء حقل كلمة المرور بناءً على اختيار المستخدم
-        autoApproveCheckbox.addEventListener('change', function() {
-            if (this.checked) {
-                partnerPassword.classList.remove('hidden');
-            } else {
-                partnerPassword.classList.add('hidden');
-            }
-        });
-
-        document.getElementById('scriptForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-
-            const title = document.getElementById('title').value;
-            const description = document.getElementById('description').value;
-            const scriptText = document.getElementById('scriptText').value;
-            let approved = false; // الافتراضي أن السكربت غير موافق عليه
-
-            // تحقق من إدخال كلمة المرور إذا تم اختيار الموافقة التلقائية
-            if (autoApproveCheckbox.checked) {
-                const password = partnerPassword.value;
-                if (password === "Hema_partner") { // افتراض كلمة المرور "partner123"
-                    approved = true; // الموافقة التلقائية
-                } else {
-                    alert("كلمة المرور غير صحيحة.");
-                    return;
-                }
-            }
-
-            // حفظ السكربت
-            saveScript(title, description, scriptText, approved);
-        });
-
-        function saveScript(title, description, scriptText, approved) {
-            db.collection("scripts").add({
-                title: title,
-                description: description,
-                scriptText: scriptText,
-                approved: approved
-            }).then((docRef) => {
-                const scriptLink = `https://h-scripts.site/public-scripts?id=${docRef.id}`;
-                navigator.clipboard.writeText(scriptLink).then(() => {
-                    alert(`تم حفظ السكربت بنجاح. تم نسخ الرابط: ${scriptLink}`);
-                }).catch((err) => {
-                    console.error("حدث خطأ أثناء نسخ الرابط:", err);
-                });
-                
-                document.getElementById('scriptForm').reset();
-                partnerPassword.classList.add('hidden');
-            }).catch(error => {
-                console.error("حدث خطأ أثناء إضافة السكربت:", error);
-            });
-        }
-    </script>
+    <div>
+        <h1>أهلاً بك في الاستور الخاص بنا</h1>
+        <a href="shop.html" class="shop-btn">يلا نتسوق</a>
+    </div>
 
 </body>
 </html>
