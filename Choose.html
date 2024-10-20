@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>أقسام المتجر</title>
+    <style>
+        /* استيراد الخط من جوجل */
+        @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap');
+
+        /* تنسيق الصفحة */
+        body {
+            font-family: 'Cairo', sans-serif;
+            background-color: #080C15;
+            color: #fff;
+            text-align: center;
+            padding: 20px;
+            margin: 0;
+        }
+
+        h1 {
+            font-size: 3em;
+            margin-bottom: 30px;
+        }
+
+        /* تنسيق المربعات */
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+        }
+
+        .category {
+            background-color: #1a1f27;
+            padding: 20px;
+            border-radius: 10px;
+            width: 250px;
+            text-align: center;
+            box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.5);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .category:hover {
+            transform: translateY(-5px);
+            box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.7);
+        }
+
+        .category h2 {
+            font-size: 1.5em;
+            margin-bottom: 20px;
+        }
+
+        .shop-btn {
+            padding: 10px 20px;
+            background-color: #A755F7;
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1em;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            text-decoration: none;
+        }
+
+        .shop-btn:hover {
+            background-color: #9448d8;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>أقسام المتجر</h1>
+
+    <div class="container">
+        <!-- قسم التيشرتات -->
+        <div class="category">
+            <h2>تيشرتات</h2>
+            <a href="tshirts.html" class="shop-btn">يلا نكمل</a>
+        </div>
+
+        <!-- قسم البناطيل -->
+        <div class="category">
+            <h2>بناطيل</h2>
+            <a href="pants.html" class="shop-btn">يلا نكمل</a>
+        </div>
+
+        <!-- قسم الجواكت -->
+        <div class="category">
+            <h2>جواكت</h2>
+            <a href="jackets.html" class="shop-btn">يلا نكمل</a>
+        </div>
+
+        <!-- يمكنك إضافة المزيد من الأقسام حسب الحاجة -->
+        <div class="category">
+            <h2>أحذية</h2>
+            <a href="shoes.html" class="shop-btn">يلا نكمل</a>
+        </div>
+
+        <div class="category">
+            <h2>إكسسوارات</h2>
+            <a href="accessories.html" class="shop-btn">يلا نكمل</a>
+        </div>
+    </div>
+
+</body>
+</html>
