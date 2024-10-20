@@ -224,7 +224,7 @@
 
             // هنا نضيف روابط الصور إلى نص الرسالة
             const imageLinks = tshirt.imageUrls.join('%0A');
-            const message = `مرحبًا، أود الاستفسار عن التيشرت ${tshirt.name} بسعر ${tshirt.price} جنية.%0Aالمقاسات المتوفرة: ${tshirt.sizes}%0Aالألوان المتوفرة: ${tshirt.colors}%0Aروابط الصور:%0A${imageLinks}`;
+            const message = `مرحبًا، أود الاستفسار عن التيشرت ${tshirt.name} بسعر ${tshirt.price} جنية.%0Aالمقاسات المتوفرة: ${tshirt.sizes}%0Aالألوان المتوفرة: ${tshirt.colors}%0A`;
             
             contactBtn.href = `https://wa.me/20${tshirt.contact}?text=${message}`;
             contactBtn.target = '_blank'; // فتح واتساب في نافذة جديدة
