@@ -212,7 +212,7 @@
 
             const price = document.createElement('div');
             price.className = 'price';
-            price.innerText = `${tshirt.price} جنية;
+            price.innerText = `${tshirt.price} جنية`;
             tshirtDetails.appendChild(price);
 
             tshirtCard.appendChild(tshirtDetails);
@@ -221,7 +221,12 @@
             const contactBtn = document.createElement('a');
             contactBtn.className = 'contact-btn';
             contactBtn.innerText = 'التواصل مع التاجر';
-            contactBtn.href = `https://wa.me/20${tshirt.contact}?text=مرحبًا، أود الاستفسار عن التيشرت ${tshirt.name} بسعر ${tshirt.price} دولار.`;
+
+            // هنا نضيف روابط الصور إلى نص الرسالة
+            const imageLinks = tshirt.imageUrls.join('%0A');
+            const message = `مرحبًا، أود الاستفسار عن التيشرت ${tshirt.name} بسعر ${tshirt.price} جنية.%0Aالمقاسات المتوفرة: ${tshirt.sizes}%0Aالألوان المتوفرة: ${tshirt.colors}%0Aروابط الصور:%0A${imageLinks}`;
+            
+            contactBtn.href = `https://wa.me/20${tshirt.contact}?text=${message}`;
             contactBtn.target = '_blank'; // فتح واتساب في نافذة جديدة
             tshirtCard.appendChild(contactBtn);
 
