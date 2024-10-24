@@ -56,7 +56,7 @@
             width: 60px;
             height: 60px;
         }
-        .script-link, .share-button {
+        .script-link {
             display: inline-block;
             margin-top: 15px;
             text-decoration: none;
@@ -69,7 +69,7 @@
             width: 100%;
             text-align: center;
         }
-        .script-link:hover, .share-button:hover {
+        .script-link:hover {
             background-color: #7b79e8;
         }
     </style>
@@ -124,29 +124,28 @@
                         <img src="${getPlatformImage(scriptData.platform)}" alt="${scriptData.platform}" class="platform-image">
                     </div>
                     <a href="${scriptData.downloadLink}" class="script-link" target="_blank">رابط التحميل</a>
-                    <button class="share-button" onclick="shareLink('${doc.id}')">مشاركة</button>
                 `;
                 scriptsContainer.appendChild(scriptBox);
-
-                // إضافة الإعلان بعد كل سكربت
-                const adBox = document.createElement("div");
-                adBox.innerHTML = `
-                    <script type="text/javascript">
-                        atOptions = {
-                            'key': 'f2f1c0dd694672cbb78d5cbbf7fd578c',
-                            'format': 'iframe',
-                            'height': 250,
-                            'width': 300,
-                            'params': {}
-                        };
-                    </script>
-                    <script type="text/javascript" src="//dreadfullyemulateconservation.com/f2f1c0dd694672cbb78d5cbbf7fd578c/invoke.js"></script>
-                `;
-                scriptsContainer.appendChild(adBox);
             });
-        });
 
-    
+            // إضافة الإعلان بعد عرض السكربتات
+            const adBox = document.createElement("div");
+            adBox.innerHTML = `
+                <script type="text/javascript">
+                    atOptions = {
+                        'key': 'f2f1c0dd694672cbb78d5cbbf7fd578c',
+                        'format': 'iframe',
+                        'height': 250,
+                        'width': 300,
+                        'params': {}
+                    };
+                </script>
+                <script type="text/javascript" src="//dreadfullyemulateconservation.com/f2f1c0dd694672cbb78d5cbbf7fd578c/invoke.js"></script>
+            `;
+            scriptsContainer.appendChild(adBox);
+        }).catch(error => {
+            console.error("خطأ في جلب البيانات:", error);
+        });
     </script>
 
 </body>
