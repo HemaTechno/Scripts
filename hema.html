@@ -36,24 +36,21 @@
         }
 
         body::before {
-    content: "";
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: url(https://i.ibb.co/9rqpKSV/coding.gif) repeat;
-    opacity: 0.1; /* Adjust this value for transparency */
-    z-index: -1; /* Keep background behind content */
-}
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url(https://i.ibb.co/9rqpKSV/coding.gif) repeat;
+            opacity: 0.1;
+            z-index: -1;
+        }
 
-
-.container, .partners-section, .sidebar {
-    position: relative;
-    z-index: 1; /* Ensure these elements are above the background */
-}
-
-
+        .container, .partners-section, .sidebar {
+            position: relative;
+            z-index: 1; /* Ensure these elements are above the background */
+        }
 
         /* Neon Text Effect */
         h1, h2 {
@@ -74,6 +71,7 @@
             font-size: 2rem;
             cursor: pointer;
             color: #0f0;
+            z-index: 2; /* Ensure button is above other content */
         }
 
         .sidebar {
@@ -86,6 +84,7 @@
             transition: left 0.5s ease;
             padding-top: 60px;
             box-shadow: 3px 0 15px rgba(0, 255, 0, 0.5);
+            z-index: 3; /* Ensure sidebar is above other content */
         }
 
         .sidebar a {
@@ -142,7 +141,6 @@
 
         /* Partners Section */
         .partners-section {
-            background-color: #111;
             padding: 40px 20px;
             text-align: center;
             margin-top: 50px;
@@ -156,7 +154,6 @@
         }
 
         .partner {
-            background-color: #222;
             padding: 10px;
             border-radius: 10px;
             width: 150px;
@@ -170,6 +167,10 @@
             height: auto;
             border-radius: 10px;
             margin-bottom: 10px;
+        }
+
+        .partner p {
+            color: #0f0; /* Change partner text color to green */
         }
 
         .partner:hover {
