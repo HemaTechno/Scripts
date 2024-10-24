@@ -1,13 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <!-- Import Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&family=Cairo:wght@400;700&display=swap" rel="stylesheet">
-    
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>H-SCRIPTS - Neon Hack Style</title>
+    <meta name="description" content="Best site for sharing scripts and hacks for different operating systems.">
+    <title>H-SCRIPTS - Neon Hacker Style</title>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&family=Press+Start+2P&display=swap" rel="stylesheet">
+
+    <!-- Favicon -->
+    <link rel="icon" href="https://i.ibb.co/FVr4b2z/20240926-203252.jpg" type="image/x-icon">
+
     <style>
+        /* Reset */
         * {
             margin: 0;
             padding: 0;
@@ -15,119 +22,120 @@
         }
 
         body {
-            font-family: 'Roboto Mono', monospace;
-            background-color: #000; /* Black background */
-            color: #00ff00; /* Neon Green text */
-            height: 100vh;
-            overflow: hidden;
+            font-family: 'Press Start 2P', 'Cairo', sans-serif;
+            background: black;
+            color: white;
+            overflow-x: hidden;
         }
 
-        h1, h2 {
-            text-shadow: 0 0 10px #00ff00, 0 0 20px #00ff00;
+        /* Animated background */
+        @keyframes flicker {
+            0% { opacity: 1; }
+            50% { opacity: 0.8; }
+            100% { opacity: 1; }
         }
 
-        /* Sidebar */
-        .sidebar {
-            height: 100%;
-            width: 0;
+        body::before {
+            content: "";
             position: fixed;
             top: 0;
-            right: 0;
-            background-color: #111;
-            box-shadow: 0 0 15px #00ff00;
-            overflow-x: hidden;
-            transition: 0.5s;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url(https://i.ibb.co/4d2vtsg/code-bg.gif) repeat;
+            opacity: 0.05;
+            animation: flicker 1.5s infinite alternate;
+        }
+
+        /* Neon Text Effect */
+        h1, h2 {
+            text-align: center;
+            color: #0f0;
+            text-shadow: 0 0 5px #0f0, 0 0 10px #0f0, 0 0 15px #00ff00, 0 0 20px #00ff00, 0 0 25px #00ff00;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+        }
+
+        /* Sidebar Styling */
+        .menu-btn {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            font-size: 2rem;
+            cursor: pointer;
+            color: #0f0;
+        }
+
+        .sidebar {
+            position: fixed;
+            top: 0;
+            left: -300px;
+            width: 300px;
+            height: 100%;
+            background-color: #000;
+            transition: left 0.5s ease;
             padding-top: 60px;
+            box-shadow: 3px 0 15px rgba(0, 255, 0, 0.5);
         }
 
         .sidebar a {
-            padding: 10px 15px;
-            text-decoration: none;
-            font-size: 1.5em;
-            color: #00ff00;
             display: block;
-            transition: 0.3s;
-            border-bottom: 1px solid rgba(0, 255, 0, 0.2);
+            padding: 20px;
+            text-decoration: none;
+            color: white;
+            font-size: 1.2rem;
+            transition: background 0.3s ease;
+            border-bottom: 1px solid #0f0;
         }
 
         .sidebar a:hover {
-            color: #fff;
-            background-color: rgba(0, 255, 0, 0.1);
-            box-shadow: 0px 0px 10px #00ff00;
+            background-color: #0f0;
+            color: black;
         }
 
-        .menu-btn {
-            font-size: 30px;
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            cursor: pointer;
-            color: #00ff00;
-            z-index: 2;
-        }
-
-        .closebtn {
-            position: absolute;
-            top: 0;
-            right: 25px;
-            font-size: 36px;
-            margin-right: 10px;
-            color: #00ff00;
-        }
-
-        /* Neon Button */
-        .neon-btn {
+        .social-btn {
             display: inline-block;
             padding: 10px 20px;
-            font-size: 1.2em;
-            color: #00ff00;
+            color: #0f0;
+            border: 2px solid #0f0;
+            background: transparent;
             text-decoration: none;
-            text-shadow: 0 0 10px #00ff00, 0 0 20px #00ff00;
-            border: 2px solid #00ff00;
+            text-transform: uppercase;
+            font-size: 0.8rem;
             border-radius: 5px;
-            background-color: rgba(0, 0, 0, 0.5);
-            transition: all 0.3s ease;
+            transition: 0.4s;
         }
 
-        .neon-btn:hover {
-            color: #fff;
-            background-color: #00ff00;
-            text-shadow: 0 0 10px #fff, 0 0 20px #fff;
-            box-shadow: 0 0 20px #00ff00, inset 0 0 10px #00ff00;
+        .social-btn:hover {
+            background-color: #0f0;
+            color: black;
         }
 
+        /* Container and box styling */
         .container {
-            text-align: center;
-            margin-top: 100px;
+            margin-top: 120px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
 
-        /* Boxes */
         .box {
-            background-color: rgba(0, 0, 0, 0.8);
-            border: 1px solid #00ff00;
+            background-color: rgba(0, 255, 0, 0.1);
             padding: 20px;
-            margin: 20px auto;
+            margin-bottom: 20px;
+            border-radius: 10px;
             width: 80%;
             max-width: 400px;
-            text-align: left;
-            box-shadow: 0 0 15px #00ff00;
-        }
-
-        .box h2 {
-            font-size: 1.5em;
-            margin-bottom: 10px;
-        }
-
-        .box ul {
-            list-style-type: none;
-        }
-
-        .box ul li {
-            margin-bottom: 10px;
+            text-align: center;
+            box-shadow: 0 0 10px rgba(0, 255, 0, 0.5);
         }
 
         /* Partners Section */
         .partners-section {
+            background-color: #111;
+            padding: 40px 20px;
             text-align: center;
             margin-top: 50px;
         }
@@ -140,90 +148,92 @@
         }
 
         .partner {
-            background-color: rgba(0, 0, 0, 0.8);
+            background-color: #222;
             padding: 10px;
-            border: 1px solid #00ff00;
             border-radius: 10px;
             width: 150px;
             text-align: center;
-            box-shadow: 0px 0px 15px #00ff00;
+            box-shadow: 0px 4px 6px rgba(0, 255, 0, 0.3);
+            transition: transform 0.3s ease;
         }
 
         .partner img {
             width: 100%;
-            border-radius: 5px;
+            height: auto;
+            border-radius: 10px;
+            margin-bottom: 10px;
         }
 
-        .partner p {
-            margin-top: 10px;
+        .partner:hover {
+            transform: translateY(-10px);
         }
     </style>
-</head>
-<body>
 
+    <script>
+        function openNav() {
+            document.getElementById("mySidebar").style.left = "0";
+        }
+
+        function closeNav() {
+            document.getElementById("mySidebar").style.left = "-300px";
+        }
+    </script>
+</head>
+
+<body>
     <!-- Menu Button -->
     <span class="menu-btn" onclick="openNav()">☰</span>
 
     <!-- Sidebar -->
     <div id="mySidebar" class="sidebar">
-        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
+        <a href="javascript:void(0)" onclick="closeNav()">×</a>
         <a href="public-scripts.html">Scripts</a>
-        <a href="Scripts.html">YouTube Scripts</a>
-        <a href="Hack.html">Exploits</a>
-        <a href="https://youtube.com/@hema_tech1">Partner</a>
+        <a href="youtube-scripts.html">YouTube Scripts</a>
+        <a href="hack-exploits.html">Exploits</a>
+        <a href="https://youtube.com/@hema_tech1" target="_blank">Partner</a>
     </div>
 
+    <!-- Main Content -->
     <div class="container">
-        <h1>Welcome to H-Scripts</h1>
-        <p>All your scripts and exploits in one place.</p>
-        <a href="#" class="neon-btn">Explore Now</a>
-
-        <!-- Info Boxes -->
+        <h1>H-Scripts</h1>
         <div class="box">
-            <h2>About H-Scripts</h2>
-            <ul>
-                <li>Welcome to the ultimate script-sharing platform.</li>
-                <li>Find the best hacks and scripts in one place.</li>
-            </ul>
+            <h2>Welcome</h2>
+            <p>Welcome to H-Scripts, your go-to site for scripts and hacks. Explore everything in one place!</p>
         </div>
 
         <div class="box">
             <h2>Information</h2>
-            <ul>
-                <li>Developer: Ibrahim Mansour</li>
-                <li>CEO: Hema_tech1 | Crazy_Script1</li>
-            </ul>
+            <p>Developer: Ibrahim Mansour</p>
+            <p>CEO: Hema_Tech1 | Crazy_Script1</p>
         </div>
 
-        <!-- Partners Section -->
-        <div class="partners-section">
-            <h2>Our Partners</h2>
-            <div class="partners-container">
-                <div class="partner">
-                    <a href="https://youtube.com/@hema_tech1">
-                        <img src="https://i.ibb.co/FVr4b2z/20240926-203252.jpg" alt="Hema Tech">
-                        <p>Hema Tech</p>
-                    </a>
-                </div>
-                <div class="partner">
-                    <a href="https://youtube.com/@tpc_tuberblx">
-                        <img src="https://i.ibb.co/4Krm3dp/IMG-20241024-WA0021-removebg-preview.png" alt="Tpc_TubeRblx">
-                        <p>Tpc_TubeRblx</p>
-                    </a>
-                </div>
-            </div>
+        <div class="social-buttons">
+            <a href="#" class="social-btn discord-btn">Discord</a>
+            <a href="#" class="social-btn youtube-btn">YouTube</a>
+            <a href="#" class="social-btn telegram-btn">Telegram</a>
         </div>
     </div>
 
-    <script>
-        function openNav() {
-            document.getElementById("mySidebar").style.width = "250px";
-        }
-
-        function closeNav() {
-            document.getElementById("mySidebar").style.width = "0";
-        }
-    </script>
-
+    <!-- Partners Section -->
+    <div class="partners-section">
+        <h2>Our Partners</h2>
+        <div class="partners-container">
+            <!-- Partner 1 -->
+            <div class="partner">
+                <a href="https://youtube.com/@hema_tech1" target="_blank">
+                    <img src="https://i.ibb.co/FVr4b2z/20240926-203252.jpg" alt="Hema Tech">
+                    <p>Hema Tech</p>
+                </a>
+            </div>
+            <!-- Partner 2 -->
+            <div class="partner">
+                <a href="https://youtube.com/@tpc_tuberblx" target="_blank">
+                    <img src="https://i.ibb.co/4Krm3dp/IMG-20241024-WA0021-removebg-preview.png" alt="Tpc_TubeRblx">
+                    <p>Tpc_TubeRblx</p>
+                </a>
+            </div>
+        </div>
+    </div>
 </body>
+
 </html>
