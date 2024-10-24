@@ -3,101 +3,69 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Your Page Title</title>
-  <link rel="stylesheet" href="styles.css">
+  <title>Delta - Android</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="/assets/favicon.ico" sizes="any">
 </head>
 <body>
   <header>
-    <nav>
-      <a href="#">Home</a>
-      <a href="#">Windows</a>
-      <a href="#">Android</a>
-      <a href="#">iOS</a>
-      <a href="#">Shop</a>
-      <a href="#">Discord</a>
-      <button>Download</button>
+    <nav class="navbar">
+      <div class="logo"><a href="/">Delta</a></div>
+      <ul class="nav-links">
+        <li><a href="/windows">Windows</a></li>
+        <li><a href="/android">Android</a></li>
+        <li><a href="/ios">iOS</a></li>
+        <li><a href="/shop">Shop</a></li>
+        <li><a href="/discord">Discord</a></li>
+      </ul>
+      <div class="download-btn">
+        <button>Download</button>
+      </div>
     </nav>
   </header>
 
   <main>
     <section class="hero">
       <div class="content">
-        <h1>Download for Android</h1>
-        <p>Delta is a revolutionary way to experience scripting with extensive features.</p>
-        <button>Download for Android</button>
+        <h1>Download Delta for Android</h1>
+        <p>Delta is a revolutionary new way to experience scripting with its extensive features, making your life easier.</p>
+        <button class="download-button">Download for Android</button>
       </div>
-      <img src="android-image.png" alt="Android Image">
+      <div class="image">
+        <img src="/assets/android.webp" alt="Delta for Android">
+      </div>
     </section>
 
-    <section class="video-section">
-      <h2>Install Delta with Ease</h2>
-      <p>Watch this video to learn how to install Delta seamlessly.</p>
-      <div class="video-placeholder">Video Placeholder</div>
+    <section class="install-section">
+      <h2>How to Install Delta</h2>
+      <p>Watch this short video to learn how to install Delta easily and start scripting right away.</p>
+      <div class="video-container">
+        <div class="video-facade">
+          <svg width="100" height="100" viewbox="0 0 100 100">
+            <!-- Play button SVG -->
+          </svg>
+        </div>
+      </div>
     </section>
 
-    <section class="features">
-      <h2>Supercharge Your Scripting</h2>
-      <p>Delta offers amazing features for an enhanced scripting experience.</p>
-      <div class="feature-item">
-        <h3>Fast Key System</h3>
-        <p>Get your key in just 15 seconds with minimal ads.</p>
+    <section class="features-section">
+      <h2>Supercharge the way you script</h2>
+      <p>Delta is packed with features that make scripting effortless and fun.</p>
+      <div class="feature-cards">
+        <div class="feature-card">
+          <h3>Fast Key System</h3>
+          <p>Delta’s key system is the fastest on the market, with minimal ads and a 15-second wait time.</p>
+        </div>
+        <div class="feature-card">
+          <h3>One-up the Competition</h3>
+          <p>Stand out with Delta's unique features and stunning visuals that enhance your scripting experience.</p>
+        </div>
       </div>
     </section>
   </main>
 
   <footer>
-    <p>&copy; 2024 Your Company Name</p>
+    <p>&copy; 2024 Delta Exploits</p>
   </footer>
-
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 0;
-      background-color: #111;
-      color: #fff;
-    }
-    header {
-      background: #333;
-      padding: 20px;
-      text-align: center;
-    }
-    nav a {
-      color: #fff;
-      margin: 0 10px;
-      text-decoration: none;
-    }
-    nav button {
-      background-color: #4CAF50;
-      border: none;
-      padding: 10px 20px;
-      color: white;
-      cursor: pointer;
-    }
-    .hero {
-      text-align: center;
-      padding: 50px;
-    }
-    .hero .content {
-      display: inline-block;
-      max-width: 600px;
-    }
-    .video-section, .features {
-      padding: 50px;
-      text-align: center;
-    }
-    .video-placeholder {
-      background-color: #333;
-      width: 100%;
-      height: 200px;
-      display: inline-block;
-      margin-top: 20px;
-    }
-    footer {
-      background: #222;
-      text-align: center;
-      padding: 20px;
-    }
-  </style>
 </body>
 </html>
