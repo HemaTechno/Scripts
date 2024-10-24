@@ -146,15 +146,7 @@
             });
         });
 
-        // دالة مشاركة الرابط
-        function shareLink(id) {
-            const link = `https://h-scripts.site/hack?id=${id}`;
-            navigator.clipboard.writeText(link).then(() => {
-                alert("تم نسخ الرابط للمشاركة!");
-            }).catch(err => {
-                console.error('خطأ في النسخ:', err);
-            });
-        }
+    
     </script>
 
 </body>
