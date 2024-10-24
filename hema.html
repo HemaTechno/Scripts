@@ -126,25 +126,23 @@
                     <a href="${scriptData.downloadLink}" class="script-link" target="_blank">رابط التحميل</a>
                 `;
                 scriptsContainer.appendChild(scriptBox);
-            });
 
-            // إضافة الإعلان بعد عرض السكربتات
-            const adBox = document.createElement("div");
-            adBox.innerHTML = `
-                <script type="text/javascript">
-                    atOptions = {
-                        'key': 'f2f1c0dd694672cbb78d5cbbf7fd578c',
-                        'format': 'iframe',
-                        'height': 250,
-                        'width': 300,
-                        'params': {}
-                    };
-                </script>
-                <script type="text/javascript" src="//dreadfullyemulateconservation.com/f2f1c0dd694672cbb78d5cbbf7fd578c/invoke.js"></script>
-            `;
-            scriptsContainer.appendChild(adBox);
-        }).catch(error => {
-            console.error("خطأ في جلب البيانات:", error);
+                // إضافة الإعلان بعد كل سكربت
+                const adBox = document.createElement("div");
+                adBox.innerHTML = `
+                    <script type="text/javascript">
+                        atOptions = {
+                            'key': 'f2f1c0dd694672cbb78d5cbbf7fd578c',
+                            'format': 'iframe',
+                            'height': 250,
+                            'width': 300,
+                            'params': {}
+                        };
+                    </script>
+                    <script type="text/javascript" src="//dreadfullyemulateconservation.com/f2f1c0dd694672cbb78d5cbbf7fd578c/invoke.js"></script>
+                `;
+                scriptsContainer.appendChild(adBox);
+            });
         });
     </script>
 
