@@ -134,47 +134,48 @@
         }
 
         // جلب السكربتات من Firestore
-        db.collection("scripts").get().then((querySnapshot) => {
-            const scriptsContainer = document.getElementById("scriptsContainer");
-            querySnapshot.forEach((doc) => {
-                const scriptData = doc.data();
-                const scriptBox = document.createElement("div");
-                scriptBox.classList.add("script-box");
+        document.addEventListener("DOMContentLoaded", () => {
+    const scriptsContainer = document.getElementById("scriptsContainer");
+    
+    // جلب السكربتات من Firestore
+    db.collection("scripts").get().then((querySnapshot) => {
+        querySnapshot.forEach((doc) => {
+            const scriptData = doc.data();
+            const scriptBox = document.createElement("div");
+            scriptBox.classList.add("script-box");
 
-                scriptBox.innerHTML = `
-                    <div class="script-title">${scriptData.title}</div>
-                    <div class="script-description">${scriptData.description}</div>
-                    <div class="script-platform">
-                        <img src="${getPlatformImage(scriptData.platform)}" alt="${scriptData.platform}" class="platform-image">
-                    </div>
-                    <a href="${scriptData.downloadLink}" class="script-link" target="_blank">رابط التحميل</a>
-                `;
-                scriptsContainer.appendChild(scriptBox);
+            scriptBox.innerHTML = `
+                <div class="script-title">${scriptData.title}</div>
+                <div class="script-description">${scriptData.description}</div>
+                <div class="script-platform">
+                    <img src="${getPlatformImage(scriptData.platform)}" alt="${scriptData.platform}" class="platform-image">
+                </div>
+                <a href="${scriptData.downloadLink}" class="script-link" target="_blank">رابط التحميل</a>
+            `;
+            scriptsContainer.appendChild(scriptBox);
 
-                // إضافة الإعلان بعد كل سكربت
-                // إضافة الإعلان بعد كل سكربت
-const adBox = document.createElement("div");
-adBox.classList.add("ad-box");
-adBox.innerHTML = `
-    <script type="text/javascript">
-        atOptions = {
-            'key' : 'f2f1c0dd694672cbb78d5cbbf7fd578c',
-            'format' : 'iframe',
-            'height' : 250,
-            'width' : 300,
-            'params' : {}
-        };
-    </script>
-`;
-scriptsContainer.appendChild(adBox);
-
-// إضافة السكربت الخارجي بعد إضافة الإعلان
-const script = document.createElement("script");
-script.src = "//dreadfullyemulateconservation.com/f2f1c0dd694672cbb78d5cbbf7fd578c/invoke.js";
-document.body.appendChild(script);
-
-            });
+            // إضافة الإعلان بعد كل سكربت
+            const adBox = document.createElement("div");
+            adBox.classList.add("ad-box");
+            adBox.innerHTML = `
+                <div>
+                    <script type="text/javascript">
+                        atOptions = {
+                            'key' : 'f2f1c0dd694672cbb78d5cbbf7fd578c',
+                            'format' : 'iframe',
+                            'height' : 250,
+                            'width' : 300,
+                            'params' : {}
+                        };
+                    </script>
+                    <script type="text/javascript" src="//dreadfullyemulateconservation.com/f2f1c0dd694672cbb78d5cbbf7fd578c/invoke.js"></script>
+                </div>
+            `;
+            scriptsContainer.appendChild(adBox);
         });
+    });
+});
+
     </script>
     </body>
 </html>
