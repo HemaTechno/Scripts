@@ -2,134 +2,96 @@
 <html lang="ar">
 <head>
     <!-- وصف الموقع -->
-    <meta name="description" content="أفضل موقع لمشاركة السكربتات و الهاكات الخاصة بأنظمة التشغيل المختلفة.">
+    <meta name="description" content="أفضل موقع لمشاركة السكربتات والهاكات الخاصة بأنظمة التشغيل المختلفة.">
+
     <!-- أيقونة الموقع -->
     <link rel="icon" href="https://i.ibb.co/FVr4b2z/20240926-203252.jpg" type="image/x-icon">
-    <!-- استيراد الخطوط -->
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
+
+    <!-- استيراد خطوط عربية وإنجليزية -->
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&family=Roboto+Mono:wght@400;700&display=swap" rel="stylesheet">
+    
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>H-SCRIPTS</title>
+    <title>H-SCRIPTS - Neon Style</title>
+
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-        :root {
-            --var-font: 'Cairo', sans-serif;
-        }
         body {
-            font-family: var(--var-font), Arial, sans-serif;
-            background-color: #090913;
-            color: #fff;
+            font-family: 'Cairo', sans-serif; /* الخط العربي */
+            background-color: #000; /* خلفية سوداء */
+            color: #00ff00; /* نص أخضر */
             direction: rtl;
             text-align: right;
-            width: 100%;
             height: 100vh;
             display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
         }
+        h1, h2 {
+            font-family: 'Roboto Mono', monospace; /* الخط الإنجليزي */
+            text-shadow: 0 0 10px #00ff00, 0 0 20px #00ff00; /* تأثير النيون */
+        }
         .container {
-            width: 900px;
-            background-color: #ffffff10;
-            backdrop-filter: blur(30px);
-            padding: 2rem 1rem;
-            border-radius: 30px;
-            border: 2px solid #ccc;
-            height: 550px;
-            font-family: var(--var-font);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-        .container .up, .container .down {
-            width: 100%;
-        }
-        .container .up {
-            display: flex;
-            justify-content: flex-end;
-            gap: 15px;
-        }
-        .container .down {
-            display: flex;
-            gap: 15px;
-            flex-wrap: wrap;
-            align-items: flex-start;
-            overflow-y: auto;
-        }
-        .container .down .card {
-            background-color: #0000001c;
-            padding: 1rem;
+            width: 90%;
+            max-width: 900px;
+            background-color: rgba(0, 0, 0, 0.8);
+            border: 2px solid #00ff00;
+            padding: 20px;
+            border-radius: 15px;
             text-align: center;
-            border-radius: 6px;
-            border: 1px solid #ccc;
-            width: 150px;
         }
-        .card img {
-            width: 65px;
-            height: 65px;
-            border-radius: 50%;
+        .box {
+            background-color: #111;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 12px;
+            box-shadow: 0 0 20px #00ff00;
         }
-        .card p {
-            font-size: 14px;
-            color: #ccc;
+        a {
+            color: #00ff00;
+            text-decoration: none;
+            transition: color 0.3s;
         }
-        .card a {
-            color: #024ca0;
+        a:hover {
+            color: #ffffff;
         }
-        .logo-name h1 {
-            font-size: 1.5em;
-            color: #948DFF;
-        }
-        .sidebar a {
-            color: #fff;
-            border-radius: 5px;
-            border: 2px solid rgba(255, 255, 255, 0.5);
-            margin: 10px auto;
-            width: 80%;
-        }
-        .social-btn {
+        .social-buttons button {
+            background-color: transparent;
+            border: 2px solid #00ff00;
+            color: #00ff00;
             padding: 10px;
             border-radius: 30px;
+            cursor: pointer;
+            transition: background-color 0.3s, color 0.3s;
         }
-        /* كود تنسيق محتوى السكربت */
-        pre {
-            background-color: #252b39;
-            color: #fff;
-            padding: 15px;
-            border-radius: 10px;
-            overflow-x: auto;
-            margin: 15px 0;
-            max-width: 100%;
-            word-wrap: break-word;
+        .social-buttons button:hover {
+            background-color: #00ff00;
+            color: #000;
         }
     </style>
 </head>
 <body>
+
+    <!-- الاسم -->
     <div class="container">
-        <div class="logo-name">
-            <h1>H-Scripts</h1>
-        </div>
+        <h1>H-Scripts - Neon Hacker Style</h1>
+        
         <div class="box">
-            <h2 style="color: #948DFF;">سكربت مثال</h2>
-            <pre>
-// هذا كود بسيط كمثال
-let message = "مرحباً بك في H-Scripts!";
-console.log(message);
-            </pre>
+            <h2>مرحباً بكم في موقع H-Scripts</h2>
+            <p>هنا ستجد أفضل السكربتات والهاكات الخاصة بالألعاب.</p>
+        </div>
+
+        <div class="social-buttons">
+            <button>Discord</button>
+            <button>YouTube</button>
+            <button>Telegram</button>
         </div>
     </div>
 
-    <script>
-        function openNav() {
-            document.getElementById("mySidebar").style.display = "block";
-        }
-
-        function closeNav() {
-            document.getElementById("mySidebar").style.display = "none";
-        }
-    </script>
 </body>
 </html>
