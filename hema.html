@@ -1,31 +1,32 @@
 <!DOCTYPE html>
-<html lang="ar">
+<html lang="en">
 <head>
-    <!-- استيراد الخطوط -->
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&family=Roboto+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <!-- Import Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&family=Cairo:wght@400;700&display=swap" rel="stylesheet">
+    
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>H-SCRIPTS - Neon Style</title>
+    <title>H-SCRIPTS - Neon Hack Style</title>
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
+
         body {
-            font-family: 'Cairo', sans-serif;
-            background-color: #000; /* خلفية سوداء */
-            color: #00ff00; /* نص أخضر */
-            direction: rtl;
+            font-family: 'Roboto Mono', monospace;
+            background-color: #000; /* Black background */
+            color: #00ff00; /* Neon Green text */
             height: 100vh;
             overflow: hidden;
         }
+
         h1, h2 {
-            font-family: 'Roboto Mono', monospace;
             text-shadow: 0 0 10px #00ff00, 0 0 20px #00ff00;
         }
 
-        /* القائمة الجانبية */
+        /* Sidebar */
         .sidebar {
             height: 100%;
             width: 0;
@@ -33,10 +34,10 @@
             top: 0;
             right: 0;
             background-color: #111;
+            box-shadow: 0 0 15px #00ff00;
             overflow-x: hidden;
             transition: 0.5s;
             padding-top: 60px;
-            box-shadow: 0 0 15px #00ff00;
         }
 
         .sidebar a {
@@ -52,6 +53,7 @@
         .sidebar a:hover {
             color: #fff;
             background-color: rgba(0, 255, 0, 0.1);
+            box-shadow: 0px 0px 10px #00ff00;
         }
 
         .menu-btn {
@@ -70,9 +72,10 @@
             right: 25px;
             font-size: 36px;
             margin-right: 10px;
+            color: #00ff00;
         }
 
-        /* تأثير نيون على الأزرار */
+        /* Neon Button */
         .neon-btn {
             display: inline-block;
             padding: 10px 20px;
@@ -90,6 +93,7 @@
             color: #fff;
             background-color: #00ff00;
             text-shadow: 0 0 10px #fff, 0 0 20px #fff;
+            box-shadow: 0 0 20px #00ff00, inset 0 0 10px #00ff00;
         }
 
         .container {
@@ -101,10 +105,10 @@
 </head>
 <body>
 
-    <!-- زر القائمة -->
+    <!-- Menu Button -->
     <span class="menu-btn" onclick="openNav()">☰</span>
 
-    <!-- القائمة الجانبية -->
+    <!-- Sidebar -->
     <div id="mySidebar" class="sidebar">
         <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
         <a href="public-scripts.html">Scripts</a>
@@ -114,8 +118,8 @@
     </div>
 
     <div class="container">
-        <h1>مرحبًا بكم في H-Scripts</h1>
-        <p>كل السكربتات و الهاكات في مكان واحد.</p>
+        <h1>Welcome to H-Scripts</h1>
+        <p>All your scripts and exploits in one place.</p>
         <a href="#" class="neon-btn">Explore Now</a>
     </div>
 
