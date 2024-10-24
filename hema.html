@@ -1,266 +1,249 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
+    <script type='text/javascript' src='//dreadfullyemulateconservation.com/c8/67/c2/c867c21ca6f549c59064f55534db0add.js'></script>
+    <meta name="description" content="The best website for sharing scripts and hacks for various operating systems.">
+    <meta property="og:title" content="H-Scripts - The Best Website for Scripts">
+    <meta property="og:description" content="The best site for Roblox scripts and hacks. Get your script now.">
+    <meta property="og:image" content="https://i.ibb.co/FVr4b2z/20240926-203252.jpg">
+    <meta property="og:url" content="https://h-scripts.site">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="https://i.ibb.co/FVr4b2z/20240926-203252.jpg">
+    <meta name="twitter:title" content="H-Scripts - The Best Website for Scripts">
+    <meta name="twitter:description" content="Share the best scripts with others and learn more about hacks.">
+    <meta name="twitter:image" content="https://i.ibb.co/FVr4b2z/20240926-203252.jpg">
+    <link rel="icon" href="https://i.ibb.co/FVr4b2z/20240926-203252.jpg" type="image/x-icon">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Best site for sharing scripts and hacks for different operating systems.">
-    <title>Home</title>
-
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&family=Press+Start+2P&display=swap" rel="stylesheet">
-
-    <!-- Favicon -->
-    <link rel="icon" href="https://i.ibb.co/FVr4b2z/20240926-203252.jpg" type="image/x-icon">
-
+    <meta name="description" content="The best site for Roblox scripts, hacks, and tutorials.">
+    <meta name="keywords" content="Hema Tech, Roblox, tutorials, scripts, hacks">
+    <meta name="author" content="Hema_Tech1">
+    <title>YouTube Scripts</title>
     <style>
-        /* Reset */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-
-        body {
-            font-family: 'Press Start 2P', 'Cairo', sans-serif;
-            background: black;
-            color: white;
+        html, body {
             overflow-x: hidden;
-        }
-
-        /* Animated background */
-        @keyframes flicker {
-            0% { opacity: 1; }
-            50% { opacity: 0.8; }
-            100% { opacity: 1; }
-        }
-
-        body::before {
-            content: "";
-            position: fixed;
-            top: 0;
-            left: 0;
             width: 100%;
             height: 100%;
-            background: url(https://i.ibb.co/9rqpKSV/coding.gif) repeat;
-            opacity: 0.1;
-            z-index: -1;
+            font-family: 'Cairo', sans-serif;
+            background-color: #090913;
+            color: #fff;
+            direction: rtl;
+            text-align: right;
         }
-
-        .container, .partners-section, .sidebar {
-            position: relative;
-            z-index: 1; /* Ensure these elements are above the background */
-        }
-
-        /* Neon Text Effect */
-        h1, h2 {
-            text-align: center;
-            color: #0f0;
-            text-shadow: 0 0 5px #0f0, 0 0 10px #0f0, 0 0 15px #00ff00, 0 0 20px #00ff00, 0 0 25px #00ff00;
-            margin-bottom: 20px; /* Add margin for spacing */
-        }
-        
         h1 {
-    font-size: 2.5rem;
-    border: 2px solid black; /* Black border around the heading */
-    padding: 10px; /* Padding inside the border */
-    border-radius: 5px; /* Rounded corners */
-    display: inline-block; /* Makes the border wrap tightly around the text */
-    margin: 20px 0; /* Margin above and below */
-}
-
-
-        /* Sidebar Styling */
+            font-size: 2.5rem;
+            border: 2px solid black;
+            padding: 10px;
+            border-radius: 5px;
+            display: inline-block;
+            margin: 20px 0;
+        }
+        h2 {
+            font-size: 2em;
+            font-weight: bold;
+            color: #ffffff;
+            margin-bottom: 20px;
+            text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
+        }
+        .logo-name {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+        }
+        .logo-name h1 {
+            font-size: 1.5em;
+            margin-left: 10px;
+            color: #948DFF;
+        }
+        .sidebar {
+            height: 100%;
+            width: 250px;
+            position: fixed;
+            z-index: 1;
+            top: 0;
+            right: -250px;
+            background-color: rgba(0, 0, 0, 0.95);
+            overflow-x: hidden;
+            padding-top: 60px;
+            transition: 0.5s;
+        }
+        .sidebar a {
+            padding: 10px;
+            text-decoration: none;
+            font-size: 20px;
+            color: #fff;
+            display: block;
+            text-align: center;
+            transition: 0.3s;
+            border: 2px solid rgba(255, 255, 255, 0.5);
+            border-radius: 5px;
+            margin: 10px auto;
+            width: 80%;
+        }
+        .sidebar a:hover {
+            color: #f1f1f1;
+            background-color: rgba(255, 255, 255, 0.1);
+        }
         .menu-btn {
+            font-size: 30px;
             position: fixed;
             top: 20px;
-            left: 20px;
-            font-size: 2rem;
+            right: 20px;
             cursor: pointer;
-            color: #0f0;
-            z-index: 2; /* Ensure button is above other content */
-        }
-
-        .sidebar {
-            position: fixed;
-            top: 0;
-            left: -300px;
-            width: 300px;
-            height: 100%;
-            background-color: #000;
-            transition: left 0.5s ease;
-            padding-top: 60px;
-            box-shadow: 3px 0 15px rgba(0, 255, 0, 0.5);
-            z-index: 3; /* Ensure sidebar is above other content */
-        }
-h2 {
-        background-color: rgba(0, 255, 0, 0.2); /* Light green background */
-        padding: 10px; /* Padding around text */
-        border-radius: 5px; /* Rounded corners */
-        margin-bottom: 15px; /* Space below the heading */
-}
-
-
-        .sidebar a {
-            display: block;
-            padding: 20px;
-            text-decoration: none;
             color: white;
-            font-size: 1.2rem;
-            transition: background 0.3s ease;
-            border-bottom: 1px solid #0f0;
+            z-index: 2;
         }
-
-        .sidebar a:hover {
-            background-color: #0f0;
-            color: black;
-        }
-
-        .social-btn {
-            display: inline-block;
-            padding: 10px 20px;
-            color: #0f0;
-            border: 2px solid #0f0;
-            background: transparent;
-            text-decoration: none;
-            text-transform: uppercase;
-            font-size: 0.8rem;
-            border-radius: 5px;
-            transition: 0.4s;
-        }
-
-        .social-btn:hover {
-            background-color: #0f0;
-            color: black;
-        }
-
-        /* Container and box styling */
-        .container {
-            margin-top: 120px;
+        #boxContainer {
             display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
-        
-
-    /* Container and box styling */
-    .box {
-        background-color: rgba(0, 255, 0, 0.1);
-        padding: 20px;
-        margin: 20px 0; /* Increased margin for more separation */
-        border-radius: 10px;
-        width: 80%;
-        max-width: 400px;
-        text-align: center;
-        box-shadow: 0 0 10px rgba(0, 255, 0, 0.5);
-        min-height: 100px; /* Minimum height to ensure visibility */
-    }
-
-        /* Partners Section */
-        .partners-section {
-            padding: 40px 20px;
-            text-align: center;
-            margin-top: 50px;
-        }
-
-        .partners-container {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
             flex-wrap: wrap;
+            gap: 30px;
+            justify-content: center;
+            margin-top: 80px;
+            padding: 20px;
         }
-
-        .partner {
-            padding: 10px;
-            border-radius: 10px;
-            width: 150px;
-            text-align: center;
-            box-shadow: 0px 4px 6px rgba(0, 255, 0, 0.3);
-            transition: transform 0.3s ease;
+        .card {
+            background-color: #2c3140;
+            border-radius: 12px;
+            width: 340px;
+            box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.4);
+            overflow: hidden;
+            transition: transform 0.3s, box-shadow 0.3s;
+            min-height: 250px;
+            flex-grow: 1;
         }
-
-        .partner img {
+        .card img {
             width: 100%;
-            height: auto;
-            border-radius: 10px;
+            height: 200px;
+            object-fit: cover;
+            cursor: pointer;
+        }
+        .card-content {
+            padding: 20px;
+            text-align: center;
+        }
+        .card-content .meta {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.9em;
+            color: #b3b3b3;
             margin-bottom: 10px;
         }
-
-        .partner p {
-            color: #0f0; /* Change partner text color to green */
+        .card-content h1 {
+            font-size: 1.5em;
+            margin: 10px 0;
+            color: #f1f1f1;
         }
-
-        .partner:hover {
-            transform: translateY(-10px);
+        .card-content p {
+            font-size: 1.1em;
+            color: #d4d4d4;
+            margin: 20px 0;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.6);
+        }
+        .card-content .author {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 10px;
+            font-size: 0.9em;
+            color: #b3b3b3;
+        }
+        .card-content .author img {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
         }
     </style>
+    <script src="https://www.gstatic.com/firebasejs/10.7.2/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.2/firebase-firestore-compat.js"></script>
+</head>
+<body>
+
+    <div class="logo-name">
+        <h1>H-Scripts</h1>
+    </div>
+
+    <div id="mySidebar" class="sidebar">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
+        <a href="public-scripts.html">Scripts</a>
+        <a href="Scripts.html">YouTube Scripts</a>
+        <a href="Hack.html">Exploits</a>
+        <a href="https://youtube.com/@hema_tech1?si=It1Tn77jTgsUZDWJ">Partner</a>
+    </div>
+
+    <span class="menu-btn" onclick="openNav()">&#9776;</span>
+
+    <div id="boxContainer"></div>
 
     <script>
+        const firebaseConfig = {
+            apiKey: "AIzaSyCJ6erh48TqECEM-OfZPQO0voOaTu7f_Og",
+            authDomain: "scripts-b35e3.firebaseapp.com",
+            projectId: "scripts-b35e3",
+            storageBucket: "scripts-b35e3.appspot.com",
+            messagingSenderId: "536349347913",
+            appId: "1:536349347913:web:7c4266a79eefc76e212f98"
+        };
+
+        firebase.initializeApp(firebaseConfig);
+        const db = firebase.firestore();
+
+        db.collection("scripts").get().then((querySnapshot) => {
+            const data = [];
+            querySnapshot.forEach((doc) => {
+                data.push(doc.data());
+            });
+            createBoxes(data);
+        }).catch((error) => {
+            console.error("Error getting documents: ", error);
+        });
+
+        function createBoxes(data) {
+            const boxContainer = document.getElementById('boxContainer');
+
+            data.forEach(item => {
+                const card = document.createElement('div');
+                card.classList.add('card');
+
+                card.innerHTML = `
+                    <a href="page.html?id=${item.id}">
+                        <img src="${item.imageUrl}" alt="${item.title}">
+                    </a>
+                    <div class="card-content">
+                        <div class="meta">
+                            <span>${item.category}</span>
+                            <span>${item.date}</span>
+                        </div>
+                        <h1>${item.title}</h1>
+                        <p>${item.description}</p>
+                        <div class="author">
+                            <img src="${item.authorImage}" alt="author">
+                            <span>${item.author}</span>
+                        </div>
+                    </div>
+                `;
+               Here is the continuation of the code in English, incorporating Firebase, sidebar, and all styling adjustments:
+
+```html
+                    `;
+                boxContainer.appendChild(card);
+            });
+        }
+
         function openNav() {
-            document.getElementById("mySidebar").style.left = "0";
+            document.getElementById("mySidebar").style.right = "0";
         }
 
         function closeNav() {
-            document.getElementById("mySidebar").style.left = "-300px";
+            document.getElementById("mySidebar").style.right = "-250px";
         }
     </script>
-</head>
-
-<body>
-    <!-- Menu Button -->
-    <span class="menu-btn" onclick="openNav()">☰</span>
-
-    <!-- Sidebar -->
-    <div id="mySidebar" class="sidebar">
-        <a href="javascript:void(0)" onclick="closeNav()">×</a>
-        <a href="public-scripts.html">Scripts</a>
-        <a href="youtube-scripts.html">YouTube Scripts</a>
-        <a href="hack-exploits.html">Exploits</a>
-        <a href="https://youtube.com/@hema_tech1" target="_blank">Partner</a>
-    </div>
-
-    <!-- Main Content -->
-    <div class="container">
-        <h1>H-Scripts</h1>
-        <div class="box">
-            <h2>Welcome</h2>
-            <p>Welcome to H-Scripts, your go-to site for scripts and hacks. Explore everything in one place!</p>
-        </div>
-
-        <div class="box">
-            <h2>Information</h2>
-            <p>Developer: Ibrahim Mansour</p>
-            <p>CEO: Hema_Tech1 | Crazy_Script1</p>
-        </div>
-
-        <div class="social-buttons">
-            <a href="#" class="social-btn discord-btn">Discord</a>
-            <a href="#" class="social-btn youtube-btn">YouTube</a>
-            <a href="#" class="social-btn telegram-btn">Telegram</a>
-        </div>
-    </div>
-
-    <!-- Partners Section -->
-    <div class="partners-section">
-        <h2>Our Partners</h2>
-        <div class="partners-container">
-            <!-- Partner 1 -->
-            <div class="partner">
-                <a href="https://youtube.com/@hema_tech1" target="_blank">
-                    <img src="https://i.ibb.co/FVr4b2z/20240926-203252.jpg" alt="Hema Tech">
-                    <p>Hema Tech</p>
-                </a>
-            </div>
-            <!-- Partner 2 -->
-            <div class="partner">
-                <a href="https://youtube.com/@tpc_tuberblx" target="_blank">
-                    <img src="https://i.ibb.co/4Krm3dp/IMG-20241024-WA0021-removebg-preview.png" alt="Tpc_TubeRblx">
-                    <p>TubeRblx</p>
-                </a>
-            </div>
-        </div>
-    </div>
 </body>
-
 </html>
