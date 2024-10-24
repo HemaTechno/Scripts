@@ -153,7 +153,6 @@
                     const adBox = document.createElement("div");
                     adBox.classList.add("ad-box");
 
-                    // إنشاء العناصر داخل adBox بدلاً من استخدام innerHTML
                     const adScript = document.createElement("script");
                     adScript.type = "text/javascript";
                     adScript.text = `
@@ -170,11 +169,10 @@
                     adInvokeScript.type = "text/javascript";
                     adInvokeScript.src = "//dreadfullyemulateconservation.com/f2f1c0dd694672cbb78d5cbbf7fd578c/invoke.js";
 
-                    // إضافة السكربتات إلى adBox
                     adBox.appendChild(adScript);
                     adBox.appendChild(adInvokeScript);
 
-                    // ثم إضافته إلى scriptsContainer
+                    // إضافة adBox إلى scriptsContainer بعد كل سكربت
                     scriptsContainer.appendChild(adBox);
                 });
             });
