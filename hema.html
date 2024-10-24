@@ -23,7 +23,7 @@
             margin-bottom: 30px;
             font-size: 2.5em;
         }
-        .script-box {
+        .script-box, .ad-box {
             background: #1e1e1e;
             border-radius: 10px;
             padding: 20px;
@@ -32,17 +32,6 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-        }
-        .ad-box {
-            width: 100%;
-            height: 250px;
-            margin: 15px 0;
-            background: #333;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #fff;
-            font-size: 20px;
         }
     </style>
     <script src="https://www.gstatic.com/firebasejs/10.7.2/firebase-app-compat.js"></script>
@@ -89,7 +78,7 @@
                 `;
                 scriptsContainer.appendChild(scriptBox);
 
-                // إنشاء صندوق الإعلان
+                // إنشاء صندوق الإعلان بعد كل سكربت
                 const adBox = document.createElement("div");
                 adBox.classList.add("ad-box");
 
@@ -112,7 +101,7 @@
                 adBox.appendChild(adScript);
                 adBox.appendChild(adInvokeScript);
 
-                // إضافة adBox إلى scriptsContainer بعد كل سكربت
+                // إضافة الإعلان بعد كل سكربت
                 scriptsContainer.appendChild(adBox);
             });
         });
