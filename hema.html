@@ -1,253 +1,103 @@
 <!DOCTYPE html>
-<html lang="ar">
+<html lang="en">
 <head>
-    <!-- وصف الموقع -->
-    <meta name="description" content="أفضل موقع لمشاركة السكربتات و الهاكات الخاصة بأنظمة التشغيل المختلفة.">
-
-    <!-- وسم Open Graph الخاص بالفيسبوك ومنصات أخرى -->
-    <meta property="og:title" content="H-Scripts - أفضل موقع للسكربتات">
-    <meta property="og:description" content="افضل موقع سكربتات و هاكات روبلوكس و تقدر اسكربت الان">
-    <meta property="og:image" content="https://i.ibb.co/FVr4b2z/20240926-203252.jpg">
-    <meta property="og:url" content="https://h-scripts.site">
-    <meta property="og:type" content="website">
-
-    <!-- وسم Twitter Card الخاص بتويتر -->
-    <meta name="twitter:card" content="https://i.ibb.co/FVr4b2z/20240926-203252.jpg">
-    <meta name="twitter:title" content="H-Scripts - أفضل موقع للسكربتات">
-    <meta name="twitter:description" content="شارك أفضل السكربتات مع الآخرين وتعلم المزيد حول الهاكات.">
-    <meta name="twitter:image" content="https://i.ibb.co/FVr4b2z/20240926-203252.jpg">
-
-    <!-- أيقونة الموقع -->
-    <link rel="icon" href="https://i.ibb.co/FVr4b2z/20240926-203252.jpg" type="image/x-icon">
-    
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>H-Scripts</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        html, body {
-            overflow-x: hidden;
-            width: 100%;
-            height: 100%;
-            font-family: 'Cairo', sans-serif;
-            background-color: #090913; /* خلفية الصفحة */
-            color: #fff;
-            direction: rtl;
-            text-align: right;
-            scroll-behavior: smooth; /* تحسين تجربة التمرير */
-        }
-        .logo-name {
-            position: absolute;
-            top: 10px;
-            left: 10px;
-        }
-        .logo-name h1 {
-            font-size: 1.5em; /* حجم الخط */
-            margin-left: 10px; /* للمسافة بين الشعار والاسم */
-            color: #948DFF; /* لون الاسم */
-        }
-        /* القائمة الجانبية */
-        .sidebar {
-            height: 100%; 
-            width: 250px;
-            position: fixed;
-            z-index: 1;
-            top: 0;
-            right: -250px; /* تبدأ خارج الشاشة */
-            background-color: rgba(0, 0, 0, 0.95); /* خلفية سوداء غير شفافة */
-            overflow-x: hidden;
-            padding-top: 60px;
-            transition: 0.5s; /* انتقال سلس عند الفتح والإغلاق */
-        }
-        .sidebar a {
-            padding: 10px;
-            text-decoration: none;
-            font-size: 20px;
-            color: #fff;
-            display: block;
-            text-align: center;
-            transition: 0.3s;
-            border: 2px solid rgba(255, 255, 255, 0.5); /* إطار أبيض شفاف */
-            border-radius: 5px;
-            margin: 10px auto;
-            width: 80%;
-        }
-        .sidebar a:hover {
-            color: #f1f1f1;
-            background-color: rgba(255, 255, 255, 0.1);
-        }
-        /* زر القائمة (الهامبرغر) */
-        .menu-btn {
-            font-size: 30px;
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            cursor: pointer;
-            color: white;
-            z-index: 2;
-        }
-        
-        /* تنسيق عرض السكربتات */
-        #scriptsContainer {
-            margin-top: 20px;
-            padding: 20px;
-        }
-        .script-card {
-            background-color: #1e1e1e;
-            border-radius: 10px;
-            padding: 15px;
-            margin-bottom: 15px;
-            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3);
-        }
-
-        .script-card h3 {
-            color: #948DFF;
-            margin: 10px 0;
-            text-align: center;
-        }
-
-        .script-card p {
-            color: #fff;
-            margin-bottom: 10px;
-        }
-
-        .script-frame {
-            border: 2px solid #948DFF;
-            border-radius: 10px;
-            padding: 10px;
-            background-color: #252b39;
-            margin: 10px 0;
-            cursor: pointer;
-        }
-
-        pre {
-            white-space: pre-wrap;
-            word-wrap: break-word;
-            color: #fff;
-            margin: 0;
-        }
-
-        .button-container {
-            display: flex;
-            justify-content: space-between;
-            margin-top: 10px;
-        }
-
-        button {
-            background-color: #948DFF;
-            color: white;
-            border: none;
-            cursor: pointer;
-            padding: 10px 15px;
-            border-radius: 5px;
-            flex: 1;
-            margin: 0 5px;
-        }
-        button:hover {
-            background-color: #7b79e8;
-        }
-
-    </style>
-    <script src="https://www.gstatic.com/firebasejs/10.7.2/firebase-app-compat.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/10.7.2/firebase-firestore-compat.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Your Page Title</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+  <header>
+    <nav>
+      <a href="#">Home</a>
+      <a href="#">Windows</a>
+      <a href="#">Android</a>
+      <a href="#">iOS</a>
+      <a href="#">Shop</a>
+      <a href="#">Discord</a>
+      <button>Download</button>
+    </nav>
+  </header>
 
-    <div class="logo-name">
-        <h1>H-Scripts</h1>
-    </div>
+  <main>
+    <section class="hero">
+      <div class="content">
+        <h1>Download for Android</h1>
+        <p>Delta is a revolutionary way to experience scripting with extensive features.</p>
+        <button>Download for Android</button>
+      </div>
+      <img src="android-image.png" alt="Android Image">
+    </section>
 
-    <!-- القائمة الجانبية -->
-    <div id="mySidebar" class="sidebar">
-        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
-        <a href="public-scripts">scripts</a>
-        <a href="Scripts.html">YouTube Scripts</a>
-        <a href="Hack.html">exploits</a>
-        <a href="https://youtube.com/@hema_tech1?si=It1Tn77jTgsUZDWJ">Partner</a>
-    </div>
+    <section class="video-section">
+      <h2>Install Delta with Ease</h2>
+      <p>Watch this video to learn how to install Delta seamlessly.</p>
+      <div class="video-placeholder">Video Placeholder</div>
+    </section>
 
-    <span class="menu-btn" onclick="openNav()">&#9776;</span>
+    <section class="features">
+      <h2>Supercharge Your Scripting</h2>
+      <p>Delta offers amazing features for an enhanced scripting experience.</p>
+      <div class="feature-item">
+        <h3>Fast Key System</h3>
+        <p>Get your key in just 15 seconds with minimal ads.</p>
+      </div>
+    </section>
+  </main>
 
-    <div id="scriptsContainer"></div>
+  <footer>
+    <p>&copy; 2024 Your Company Name</p>
+  </footer>
 
-    <script>
-        // إعداد Firebase
-        const firebaseConfig = {
-            apiKey: "AIzaSyBF-sE1rBlblyLGpN1m08VnQA-bvfmLvtk",
-            authDomain: "public-fcf30.firebaseapp.com",
-            projectId: "public-fcf30",
-            storageBucket: "public-fcf30.appspot.com",
-            messagingSenderId: "4481826675",
-            appId: "1:4481826675:web:1663b07dcfc06fec130f06"
-        };
-
-        // تهيئة Firebase
-        firebase.initializeApp(firebaseConfig);
-        const db = firebase.firestore();
-
-        // تحميل السكربتات المعتمدة
-        function loadApprovedScripts() {
-            const scriptsContainer = document.getElementById('scriptsContainer');
-            scriptsContainer.innerHTML = ''; // مسح المحتوى الحالي
-
-            db.collection("scripts").where("approved", "==", true).get().then(querySnapshot => {
-                querySnapshot.forEach(doc => {
-                    const data = doc.data();
-                    const scriptDiv = document.createElement('div');
-                    scriptDiv.className = 'script-card';
-                    scriptDiv.innerHTML = `
-                        <h3>${data.title}</h3>
-                        <p>${data.description}</p>
-                        <div class="script-frame" onclick="copyScriptText('${data.scriptText}')">
-                            <pre>${data.scriptText}</pre>
-                        </div>
-                        <div class="button-container">
-                            <button onclick="shareLink('${doc.id}')">مشاركة</button>
-                            <button onclick="copyScriptText('${data.scriptText}')">نسخ السكربت</button>
-                        </div>
-                    `;
-                    scriptsContainer.appendChild(scriptDiv);
-                });
-            });
-        }
-
-        // دالة فتح القائمة الجانبية
-        function openNav() {
-            document.getElementById("mySidebar").style.right = "0"; // إظهار القائمة
-        }
-
-        // دالة إغلاق القائمة الجانبية
-        function closeNav() {
-            document.getElementById("mySidebar").style.right = "-250px"; // إخفاء القائمة
-        }
-
-        // دالة نسخ النص عند الضغط على الإطار
-        function copyScriptText(scriptText) {
-            // استبدال علامات الاقتباس
-            const cleanedScript = scriptText.replace(/"/g, '\\"'); // استبدال علامات الاقتباس
-            navigator.clipboard.writeText(cleanedScript).then(() => {
-                alert("تم نسخ النص داخل الإطار!");
-            }).catch(err => {
-                console.error('خطأ في النسخ:', err);
-            });
-        }
-
-        // دالة مشاركة الرابط
-        function shareLink(docId) {
-            const url = `https://h-scripts.site/${docId}`;
-            navigator.clipboard.writeText(url).then(() => {
-                alert("تم نسخ الرابط للمشاركة!");
-            }).catch(err => {
-                console.error('خطأ في النسخ:', err);
-            });
-        }
-
-        // تحميل السكربتات عند تحميل الصفحة
-        window.onload = loadApprovedScripts;
-    </script>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #111;
+      color: #fff;
+    }
+    header {
+      background: #333;
+      padding: 20px;
+      text-align: center;
+    }
+    nav a {
+      color: #fff;
+      margin: 0 10px;
+      text-decoration: none;
+    }
+    nav button {
+      background-color: #4CAF50;
+      border: none;
+      padding: 10px 20px;
+      color: white;
+      cursor: pointer;
+    }
+    .hero {
+      text-align: center;
+      padding: 50px;
+    }
+    .hero .content {
+      display: inline-block;
+      max-width: 600px;
+    }
+    .video-section, .features {
+      padding: 50px;
+      text-align: center;
+    }
+    .video-placeholder {
+      background-color: #333;
+      width: 100%;
+      height: 200px;
+      display: inline-block;
+      margin-top: 20px;
+    }
+    footer {
+      background: #222;
+      text-align: center;
+      padding: 20px;
+    }
+  </style>
 </body>
 </html>
