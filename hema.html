@@ -101,6 +101,62 @@
             margin-top: 100px;
         }
 
+        /* Boxes */
+        .box {
+            background-color: rgba(0, 0, 0, 0.8);
+            border: 1px solid #00ff00;
+            padding: 20px;
+            margin: 20px auto;
+            width: 80%;
+            max-width: 400px;
+            text-align: left;
+            box-shadow: 0 0 15px #00ff00;
+        }
+
+        .box h2 {
+            font-size: 1.5em;
+            margin-bottom: 10px;
+        }
+
+        .box ul {
+            list-style-type: none;
+        }
+
+        .box ul li {
+            margin-bottom: 10px;
+        }
+
+        /* Partners Section */
+        .partners-section {
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        .partners-container {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .partner {
+            background-color: rgba(0, 0, 0, 0.8);
+            padding: 10px;
+            border: 1px solid #00ff00;
+            border-radius: 10px;
+            width: 150px;
+            text-align: center;
+            box-shadow: 0px 0px 15px #00ff00;
+        }
+
+        .partner img {
+            width: 100%;
+            border-radius: 5px;
+        }
+
+        .partner p {
+            margin-top: 10px;
+        }
     </style>
 </head>
 <body>
@@ -121,6 +177,42 @@
         <h1>Welcome to H-Scripts</h1>
         <p>All your scripts and exploits in one place.</p>
         <a href="#" class="neon-btn">Explore Now</a>
+
+        <!-- Info Boxes -->
+        <div class="box">
+            <h2>About H-Scripts</h2>
+            <ul>
+                <li>Welcome to the ultimate script-sharing platform.</li>
+                <li>Find the best hacks and scripts in one place.</li>
+            </ul>
+        </div>
+
+        <div class="box">
+            <h2>Information</h2>
+            <ul>
+                <li>Developer: Ibrahim Mansour</li>
+                <li>CEO: Hema_tech1 | Crazy_Script1</li>
+            </ul>
+        </div>
+
+        <!-- Partners Section -->
+        <div class="partners-section">
+            <h2>Our Partners</h2>
+            <div class="partners-container">
+                <div class="partner">
+                    <a href="https://youtube.com/@hema_tech1">
+                        <img src="https://i.ibb.co/FVr4b2z/20240926-203252.jpg" alt="Hema Tech">
+                        <p>Hema Tech</p>
+                    </a>
+                </div>
+                <div class="partner">
+                    <a href="https://youtube.com/@tpc_tuberblx">
+                        <img src="https://i.ibb.co/4Krm3dp/IMG-20241024-WA0021-removebg-preview.png" alt="Tpc_TubeRblx">
+                        <p>Tpc_TubeRblx</p>
+                    </a>
+                </div>
+            </div>
+        </div>
     </div>
 
     <script>
