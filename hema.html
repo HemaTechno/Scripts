@@ -1,19 +1,11 @@
 <!DOCTYPE html>
 <html lang="ar">
 <head>
-    <!-- وصف الموقع -->
-    <meta name="description" content="أفضل موقع لمشاركة السكربتات والهاكات الخاصة بأنظمة التشغيل المختلفة.">
-
-    <!-- أيقونة الموقع -->
-    <link rel="icon" href="https://i.ibb.co/FVr4b2z/20240926-203252.jpg" type="image/x-icon">
-
-    <!-- استيراد خطوط عربية وإنجليزية -->
+    <!-- استيراد الخطوط -->
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&family=Roboto+Mono:wght@400;700&display=swap" rel="stylesheet">
-    
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>H-SCRIPTS - Neon Style</title>
-
     <style>
         * {
             margin: 0;
@@ -21,77 +13,121 @@
             box-sizing: border-box;
         }
         body {
-            font-family: 'Cairo', sans-serif; /* الخط العربي */
+            font-family: 'Cairo', sans-serif;
             background-color: #000; /* خلفية سوداء */
             color: #00ff00; /* نص أخضر */
             direction: rtl;
-            text-align: right;
             height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
+            overflow: hidden;
         }
         h1, h2 {
-            font-family: 'Roboto Mono', monospace; /* الخط الإنجليزي */
-            text-shadow: 0 0 10px #00ff00, 0 0 20px #00ff00; /* تأثير النيون */
+            font-family: 'Roboto Mono', monospace;
+            text-shadow: 0 0 10px #00ff00, 0 0 20px #00ff00;
         }
-        .container {
-            width: 90%;
-            max-width: 900px;
-            background-color: rgba(0, 0, 0, 0.8);
-            border: 2px solid #00ff00;
-            padding: 20px;
-            border-radius: 15px;
-            text-align: center;
-        }
-        .box {
+
+        /* القائمة الجانبية */
+        .sidebar {
+            height: 100%;
+            width: 0;
+            position: fixed;
+            top: 0;
+            right: 0;
             background-color: #111;
-            padding: 20px;
-            margin-bottom: 20px;
-            border-radius: 12px;
-            box-shadow: 0 0 20px #00ff00;
+            overflow-x: hidden;
+            transition: 0.5s;
+            padding-top: 60px;
+            box-shadow: 0 0 15px #00ff00;
         }
-        a {
+
+        .sidebar a {
+            padding: 10px 15px;
+            text-decoration: none;
+            font-size: 1.5em;
+            color: #00ff00;
+            display: block;
+            transition: 0.3s;
+            border-bottom: 1px solid rgba(0, 255, 0, 0.2);
+        }
+
+        .sidebar a:hover {
+            color: #fff;
+            background-color: rgba(0, 255, 0, 0.1);
+        }
+
+        .menu-btn {
+            font-size: 30px;
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            cursor: pointer;
+            color: #00ff00;
+            z-index: 2;
+        }
+
+        .closebtn {
+            position: absolute;
+            top: 0;
+            right: 25px;
+            font-size: 36px;
+            margin-right: 10px;
+        }
+
+        /* تأثير نيون على الأزرار */
+        .neon-btn {
+            display: inline-block;
+            padding: 10px 20px;
+            font-size: 1.2em;
             color: #00ff00;
             text-decoration: none;
-            transition: color 0.3s;
-        }
-        a:hover {
-            color: #ffffff;
-        }
-        .social-buttons button {
-            background-color: transparent;
+            text-shadow: 0 0 10px #00ff00, 0 0 20px #00ff00;
             border: 2px solid #00ff00;
-            color: #00ff00;
-            padding: 10px;
-            border-radius: 30px;
-            cursor: pointer;
-            transition: background-color 0.3s, color 0.3s;
+            border-radius: 5px;
+            background-color: rgba(0, 0, 0, 0.5);
+            transition: all 0.3s ease;
         }
-        .social-buttons button:hover {
+
+        .neon-btn:hover {
+            color: #fff;
             background-color: #00ff00;
-            color: #000;
+            text-shadow: 0 0 10px #fff, 0 0 20px #fff;
         }
+
+        .container {
+            text-align: center;
+            margin-top: 100px;
+        }
+
     </style>
 </head>
 <body>
 
-    <!-- الاسم -->
-    <div class="container">
-        <h1>H-Scripts - Neon Hacker Style</h1>
-        
-        <div class="box">
-            <h2>مرحباً بكم في موقع H-Scripts</h2>
-            <p>هنا ستجد أفضل السكربتات والهاكات الخاصة بالألعاب.</p>
-        </div>
+    <!-- زر القائمة -->
+    <span class="menu-btn" onclick="openNav()">☰</span>
 
-        <div class="social-buttons">
-            <button>Discord</button>
-            <button>YouTube</button>
-            <button>Telegram</button>
-        </div>
+    <!-- القائمة الجانبية -->
+    <div id="mySidebar" class="sidebar">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
+        <a href="public-scripts.html">Scripts</a>
+        <a href="Scripts.html">YouTube Scripts</a>
+        <a href="Hack.html">Exploits</a>
+        <a href="https://youtube.com/@hema_tech1">Partner</a>
     </div>
+
+    <div class="container">
+        <h1>مرحبًا بكم في H-Scripts</h1>
+        <p>كل السكربتات و الهاكات في مكان واحد.</p>
+        <a href="#" class="neon-btn">Explore Now</a>
+    </div>
+
+    <script>
+        function openNav() {
+            document.getElementById("mySidebar").style.width = "250px";
+        }
+
+        function closeNav() {
+            document.getElementById("mySidebar").style.width = "0";
+        }
+    </script>
 
 </body>
 </html>
