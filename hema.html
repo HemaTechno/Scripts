@@ -84,10 +84,7 @@
             font-size: 20px;
         }
     </style>
-
-
-
-        <!-- روابط Firebase -->
+    <!-- روابط Firebase -->
     <script src="https://www.gstatic.com/firebasejs/10.7.2/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/10.7.2/firebase-firestore-compat.js"></script>
 </head>
@@ -121,7 +118,6 @@
         firebase.initializeApp(firebaseConfig);
         const db = firebase.firestore();
 
-
         // دالة لجلب صورة المنصة
         function getPlatformImage(platform) {
             const images = {
@@ -135,31 +131,32 @@
 
         // جلب السكربتات من Firestore
         document.addEventListener("DOMContentLoaded", () => {
-    const scriptsContainer = document.getElementById("scriptsContainer");
-    
-    // جلب السكربتات من Firestore
-    db.collection("scripts").get().then((querySnapshot) => {
-        querySnapshot.forEach((doc) => {
-            const scriptData = doc.data();
-            const scriptBox = document.createElement("div");
-            scriptBox.classList.add("script-box");
+            const scriptsContainer = document.getElementById("scriptsContainer");
 
-            scriptBox.innerHTML = `
-                <div class="script-title">${scriptData.title}</div>
-                <div class="script-description">${scriptData.description}</div>
-                <div class="script-platform">
-                    <img src="${getPlatformImage(scriptData.platform)}" alt="${scriptData.platform}" class="platform-image">
-                </div>
-                <a href="${scriptData.downloadLink}" class="script-link" target="_blank">رابط التحميل</a>
-            `;
-            scriptsContainer.appendChild(scriptBox);
+            db.collection("scripts").get().then((querySnapshot) => {
+                querySnapshot.forEach((doc) => {
+                    const scriptData = doc.data();
+                    const scriptBox = document.createElement("div");
+                    scriptBox.classList.add("script-box");
 
-            // إضافة الإعلان بعد كل سكربت
-            const adBox = document.createElement("div");
-            adBox.classList.add("ad-box");
-            adBox.innerHTML = `
-                <div>
-                    <script type="text/javascript">
+                    scriptBox.innerHTML = `
+                        <div class="script-title">${scriptData.title}</div>
+                        <div class="script-description">${scriptData.description}</div>
+                        <div class="script-platform">
+                            <img src="${getPlatformImage(scriptData.platform)}" alt="${scriptData.platform}" class="platform-image">
+                        </div>
+                        <a href="${scriptData.downloadLink}" class="script-link" target="_blank">رابط التحميل</a>
+                    `;
+                    scriptsContainer.appendChild(scriptBox);
+
+                    // إضافة الإعلان بعد كل سكربت
+                    const adBox = document.createElement("div");
+                    adBox.classList.add("ad-box");
+
+                    // إنشاء العناصر داخل adBox بدلاً من استخدام innerHTML
+                    const adScript = document.createElement("script");
+                    adScript.type = "text/javascript";
+                    adScript.text = `
                         atOptions = {
                             'key' : 'f2f1c0dd694672cbb78d5cbbf7fd578c',
                             'format' : 'iframe',
@@ -167,15 +164,21 @@
                             'width' : 300,
                             'params' : {}
                         };
-                    </script>
-                    <script type="text/javascript" src="//dreadfullyemulateconservation.com/f2f1c0dd694672cbb78d5cbbf7fd578c/invoke.js"></script>
-                </div>
-            `;
-            scriptsContainer.appendChild(adBox);
-        });
-    });
-});
+                    `;
 
+                    const adInvokeScript = document.createElement("script");
+                    adInvokeScript.type = "text/javascript";
+                    adInvokeScript.src = "//dreadfullyemulateconservation.com/f2f1c0dd694672cbb78d5cbbf7fd578c/invoke.js";
+
+                    // إضافة السكربتات إلى adBox
+                    adBox.appendChild(adScript);
+                    adBox.appendChild(adInvokeScript);
+
+                    // ثم إضافته إلى scriptsContainer
+                    scriptsContainer.appendChild(adBox);
+                });
+            });
+        });
     </script>
-    </body>
+</body>
 </html>
