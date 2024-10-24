@@ -72,10 +72,18 @@
         .script-link:hover {
             background-color: #7b79e8;
         }
+        .ad-box {
+            width: 300px;
+            height: 250px;
+            margin: 15px auto;
+            background: #333; /* لون خلفية الإعلان */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-size: 20px;
+        }
     </style>
-    <!-- روابط Firebase -->
-    <script src="https://www.gstatic.com/firebasejs/10.7.2/firebase-app-compat.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/10.7.2/firebase-firestore-compat.js"></script>
 </head>
 <body>
 
@@ -129,22 +137,21 @@
 
                 // إضافة الإعلان بعد كل سكربت
                 const adBox = document.createElement("div");
-                adBox.innerHTML = `
-                    <script type="text/javascript">
-                        atOptions = {
-                            'key': 'f2f1c0dd694672cbb78d5cbbf7fd578c',
-                            'format': 'iframe',
-                            'height': 250,
-                            'width': 300,
-                            'params': {}
-                        };
-                    </script>
-                    <script type="text/javascript" src="//dreadfullyemulateconservation.com/f2f1c0dd694672cbb78d5cbbf7fd578c/invoke.js"></script>
-                `;
-                
+                adBox.classList.add("ad-box");
+                adBox.innerHTML = "<script type="text/javascript">
+	atOptions = {
+		'key' : 'f2f1c0dd694672cbb78d5cbbf7fd578c',
+		'format' : 'iframe',
+		'height' : 250,
+		'width' : 300,
+		'params' : {}
+	};
+";
+                scriptsContainer.appendChild(adBox);
             });
         });
     </script>
-
+</script>
+<script type="text/javascript" src="//dreadfullyemulateconservation.com/f2f1c0dd694672cbb78d5cbbf7fd578c/invoke.js"></script>
 </body>
 </html>
