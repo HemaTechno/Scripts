@@ -34,157 +34,184 @@
     <meta name="author" content="Hema_Tech1">
     <title>YouTube Scripts</title>
 <style>
-
+    /* Reset */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
-html, body {
+
+body {
+    font-family: 'Press Start 2P', 'Cairo', sans-serif;
+    background: black;
+    color: white;
     overflow-x: hidden;
+}
+
+/* Animated background */
+@keyframes flicker {
+    0% { opacity: 1; }
+    50% { opacity: 0.8; }
+    100% { opacity: 1; }
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
     width: 100%;
     height: 100%;
-    font-family: 'Courier New', monospace; /* Hacker-style font */
-    background-color: #000; /* Pure black background */
-    color: #00ff00; /* Green text to mimic code style */
-    direction: rtl;
-    text-align: right;
+    background: url(https://i.ibb.co/9rqpKSV/coding.gif) repeat;
+    opacity: 0.1;
+    z-index: -1;
 }
 
-/* Glitch effect for title */
-.logo-name h1 {
-    font-size: 2em;
-    color: #00ff00;
-    text-shadow: 2px 2px 5px rgba(0, 255, 0, 0.8);
+/* Container, Partners, Sidebar */
+.container, .partners-section, .sidebar {
     position: relative;
-    animation: glitch 1.5s infinite;
-}
-@keyframes glitch {
-    0% { text-shadow: 2px 0 red; }
-    20% { text-shadow: -2px 0 cyan; }
-    40% { text-shadow: 2px 0 blue; }
-    60% { text-shadow: -2px 0 yellow; }
-    80% { text-shadow: 2px 0 magenta; }
-    100% { text-shadow: -2px 0 green; }
+    z-index: 1; /* Ensures elements are above background */
 }
 
-/* Sidebar */
-.sidebar {
-    height: 100%; 
-    width: 250px;
-    position: fixed;
-    z-index: 1;
-    top: 0;
-    right: -250px; /* Starts off-screen */
-    background-color: rgba(0, 0, 0, 0.85); /* Dark black background */
-    overflow-x: hidden;
-    padding-top: 60px;
-    transition: 0.5s; /* Smooth opening/closing transition */
-}
-.sidebar a {
-    padding: 10px;
-    text-decoration: none;
-    font-size: 20px;
-    color: #00ff00;
-    display: block;
+/* Neon Text Effect */
+h1, h2 {
     text-align: center;
-    transition: 0.3s;
-    border: 2px solid rgba(0, 255, 0, 0.5); /* Green transparent border */
-    border-radius: 5px;
-    margin: 10px auto;
-    width: 80%;
-}
-.sidebar a:hover {
-    color: #f1f1f1;
-    background-color: rgba(0, 255, 0, 0.1);
+    color: #0f0;
+    text-shadow: 0 0 5px #0f0, 0 0 10px #0f0, 0 0 15px #00ff00, 0 0 20px #00ff00, 0 0 25px #00ff00;
+    margin-bottom: 20px;
 }
 
-/* Menu button (hamburger) */
+h1 {
+    font-size: 2.5rem;
+    border: 2px solid black;
+    padding: 10px;
+    border-radius: 5px;
+    display: inline-block;
+    margin: 20px 0;
+}
+
+/* Sidebar Styling */
 .menu-btn {
-    font-size: 30px;
     position: fixed;
     top: 20px;
-    right: 20px;
+    left: 20px;
+    font-size: 2rem;
     cursor: pointer;
-    color: white;
+    color: #0f0;
     z-index: 2;
 }
 
-/* Container for cards */
-#boxContainer {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 30px;
-    justify-content: center;
-    margin-top: 80px;
-    padding: 20px;
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: -300px;
+    width: 300px;
+    height: 100%;
+    background-color: #000;
+    transition: left 0.5s ease;
+    padding-top: 60px;
+    box-shadow: 3px 0 15px rgba(0, 255, 0, 0.5);
+    z-index: 3;
 }
 
-/* Card styling */
-.card {
-    background-color: #111; /* Dark card background */
-    border-radius: 12px;
-    width: 340px;
-    box-shadow: 0px 6px 12px rgba(0, 255, 0, 0.4);
-    overflow: hidden;
-    transition: transform 0.3s, box-shadow 0.3s;
+h2 {
+    background-color: rgba(0, 255, 0, 0.2);
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 15px;
 }
-.card img {
-    width: 100%;
-    height: 200px;
-    object-fit: cover;
-    opacity: 0.8;
-    transition: opacity 0.3s;
-    cursor: pointer;
-}
-.card img:hover {
-    opacity: 1;
-}
-.card-content {
+
+.sidebar a {
+    display: block;
     padding: 20px;
-    text-align: center;
+    text-decoration: none;
+    color: white;
+    font-size: 1.2rem;
+    transition: background 0.3s ease;
+    border-bottom: 1px solid #0f0;
 }
-.card-content .meta {
+
+.sidebar a:hover {
+    background-color: #0f0;
+    color: black;
+}
+
+.social-btn {
+    display: inline-block;
+    padding: 10px 20px;
+    color: #0f0;
+    border: 2px solid #0f0;
+    background: transparent;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    border-radius: 5px;
+    transition: 0.4s;
+}
+
+.social-btn:hover {
+    background-color: #0f0;
+    color: black;
+}
+
+/* Container and box styling */
+.container {
+    margin-top: 120px;
     display: flex;
-    justify-content: space-between;
-    font-size: 0.9em;
-    color: #b3b3b3;
+    flex-direction: column;
+    align-items: center;
+}
+
+.box {
+    background-color: rgba(0, 255, 0, 0.1);
+    padding: 20px;
+    margin: 20px 0;
+    border-radius: 10px;
+    width: 80%;
+    max-width: 400px;
+    text-align: center;
+    box-shadow: 0 0 10px rgba(0, 255, 0, 0.5);
+    min-height: 100px;
+}
+
+/* Partners Section */
+.partners-section {
+    padding: 40px 20px;
+    text-align: center;
+    margin-top: 50px;
+}
+
+.partners-container {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.partner {
+    padding: 10px;
+    border-radius: 10px;
+    width: 150px;
+    text-align: center;
+    box-shadow: 0px 4px 6px rgba(0, 255, 0, 0.3);
+    transition: transform 0.3s ease;
+}
+
+.partner img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
     margin-bottom: 10px;
 }
-.card-content h1 {
-    font-size: 1.5em;
-    margin: 10px 0;
-    color: #00ff00;
-    text-shadow: 0px 0px 5px #00ff00;
-    transition: color 0.3s;
-}
-.card-content h1:hover {
-    color: #fff;
-}
-.card-content p {
-    font-size: 1.1em;
-    color: #d4d4d4;
-    margin: 10px 0;
-}
-.card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0px 8px 20px rgba(0, 255, 0, 0.6);
+
+.partner p {
+    color: #0f0;
 }
 
-/* Author section */
-.card-content .author {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    margin-top: 10px;
-    font-size: 0.9em;
-    color: #b3b3b3;
+.partner:hover {
+    transform: translateY(-10px);
 }
-.card-content .author img {
-    width: 30px;
-    height: 30px;
-    border-radius: 50%;
-}
+
 </style>
 
     
