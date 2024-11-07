@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="أفضل موقع يقدم شروحات و سكربتات و هاكات روبلوكس.">
+    <meta name="keywords" content="هيما تيك, روبلوكس, شروحات, سكربتات, هاكات">
+    <meta name="author" content="Hema_Tech1">
+    <title>YouTube Scripts</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Amiri', serif;
+        }
+        body {
+            -webkit-user-select: none; /* منع تحديد النصوص في Safari */
+            -moz-user-select: none; /* منع تحديد النصوص في Firefox */
+            -ms-user-select: none; /* منع تحديد النصوص في Internet Explorer/Edge */
+            user-select: none; /* منع تحديد النصوص في المتصفحات الحديثة */
+          
+            background-color: #1a1a1a;
+            color: #ffffff;
+            direction: rtl;
+        }
+        
+        /* الشريط العلوي */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+            background-color: #333333;
+        }
+        .logo {
+            font-size: 1.8rem;
+            color: #ffffff;
+            font-family: 'Poppins', sans-serif;
+        }
+        .navbar nav a {
+            color: #ffffff;
+            margin: 0 1rem;
+            text-decoration: none;
+            font-family: 'Poppins', sans-serif;
+        }
+        .navbar nav a:hover {
+            text-decoration: underline;
+        }
+        .login-btn {
+            padding: 0.5rem 1rem;
+            background-color: #555555;
+            color: #ffffff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        #boxContainer {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            justify-content: center;
+            padding: 20px;
+            margin-top: 20px;
+        }
+        .card {
+            background-color: #333;
+            border-radius: 12px;
+            width: 340px;
+            box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.4);
+            overflow: hidden;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .card iframe {
+            width: 100%;
+            height: 200px;
+            border: none;
+        }
+        .card-content {
+            padding: 20px;
+            text-align: center;
+            position: relative;
+        }
+        .card-content .meta {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.9em;
+            color: #b3b3b3;
+            margin-bottom: 10px;
+        }
+        .card-content h1 {
+            font-size: 1.5em;
+            margin: 10px 0;
+            color: #f1f1f1;
+        }
+        .card-content p {
+            font-size: 1.1em;
+            color: #d4d4d4;
+            margin: 10px 0;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.6);
+        }
+        .card-content .author {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 10px;
+            font-size: 0.9em;
+            color: #b3b3b3;
+        }
+        .card-content .author img {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+        }
+        /* زر Get */
+        .get-btn {
+            display: inline-block;
+            margin-top: 15px;
+            padding: 10px 20px;
+            background-color: #008CBA;
+            color: #ffffff;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 1em;
+            transition: background-color 0.3s;
+        }
+        .get-btn:hover {
+            background-color: #0056b3;
+        }
+    </style>
+    <script src="https://www.gstatic.com/firebasejs/10.7.2/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.2/firebase-firestore-compat.js"></script>
+</head>
+<body>
+
+    <!-- الشريط العلوي -->
+    <header>
+        <div class="navbar">
+            <div class="logo">H-Scripts</div>
+            <nav>
+                <a href="All-scripts.html">الاسكربتات</a>
+                <a href="Hack.html">الهاكات</a>
+                <a href="youtube-scripts.html">يوتيوبرز</a>
+                <a href="admin/add-public">انشر سكربتك</a>
+            </nav>
+            <button class="login-btn" onclick="window.location.href='https://t.me/hscripts'">الدعم الفني</button>
+        </div>
+    </header>
+
+    <div id="boxContainer"></div>
+
+    <script>
+        const firebaseConfig = {
+            apiKey: "AIzaSyCJ6erh48TqECEM-OfZPQO0voOaTu7f_Og",
+            authDomain: "scripts-b35e3.firebaseapp.com",
+            projectId: "scripts-b35e3",
+            storageBucket: "scripts-b35e3.appspot.com",
+            messagingSenderId: "536349347913",
+            appId: "1:536349347913:web:7c4266a79eefc76e212f98"
+        };
+
+        firebase.initializeApp(firebaseConfig);
+        const db = firebase.firestore();
+
+        db.collection("scripts").get().then((querySnapshot) => {
+            const data = [];
+            querySnapshot.forEach((doc) => {
+                data.push(doc.data());
+            });
+            createBoxes(data);
+        }).catch((error) => {
+            console.error("Error getting documents: ", error);
+        });
+
+        function createBoxes(data) {
+            const boxContainer = document.getElementById('boxContainer');
+
+            data.forEach(item => {
+                const card = document.createElement('div');
+                card.classList.add('card');
+
+                const videoId = item.videoUrl.includes("watch?v=") ? 
+                    item.videoUrl.split("watch?v=")[1].split("&")[0] : 
+                    item.videoUrl.split("/").pop();
+
+                card.innerHTML = `
+                    <a href="page.html?id=${item.id}">
+                        <iframe src="https://www.youtube.com/embed/${videoId}" allowfullscreen></iframe>
+                    </a>
+                    <div class="card-content">
+                        <div class="meta">
+                            <span>${item.category}</span>
+                            <span>${item.date}</span>
+                        </div>
+                        <h1>${item.title}</h1>
+                        <p>${item.description}</p>
+                        <div class="author">
+                            <img src="${item.authorImage}" alt="${item.author}">
+                            <span>${item.author}</span>
+                        </div>
+                        <!-- زر Get -->
+                        <a href="page.html?id=${item.id}" class="get-btn">Get</a>
+                    </div>
+                `;
+
+                boxContainer.appendChild(card);
+            });
+        }
+    </script>
+
+<script src="https://www.gstatic.com/firebasejs/10.7.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.7.2/firebase-firestore-compat.js"></script>
+
+<script>
+    const myFirebaseConfig = {
+        apiKey: "AIzaSyDoK427q44Fj87JhgZh2vKeUnACkjl8HDc",
+        authDomain: "treng-c6027.firebaseapp.com",
+        projectId: "treng-c6027",
+        storageBucket: "treng-c6027.appspot.com",
+        messagingSenderId: "305527546716",
+        appId: "1:305527546716:web:fd072a58200f31bb42d799",
+        measurementId: "G-3JFKFT2LT0"
+    };
+
+    firebase.initializeApp(myFirebaseConfig);
+    const myDb = firebase.firestore();
+
+    // دالة التحقق من حالة الصيانة
+    async function checkMaintenanceStatus() {
+        const doc = await myDb.collection("settings").doc("maintenance").get();
+        if (doc.exists && doc.data().isActive) {
+            document.body.innerHTML = `
+                <div style="display: flex; flex-direction: column; align-items: center; text-align: center; margin-top: 10%; font-family: Arial, sans-serif;">
+                    <img src="https://i.ibb.co/W077gdL/images-1-removebg-preview.png" alt="صورة الصيانة" style="max-width: 200px; border-radius: 10px; margin-bottom: 20px;">
+                    <h1 style="font-size: 32px; color: #333; margin-bottom: 10px;">الموقع تحت الصيانة</h1>
+                    <p style="font-size: 18px; color: #666; margin-bottom: 20px;">
+                        نحن نعمل حاليًا على تحسين تجربة المستخدم. يرجى التحقق مرة أخرى لاحقًا.
+                    </p>
+                    <a href="https://t.me/hscripts" style="display: inline-block; padding: 12px 24px; background-color: #007bff; color: #fff; font-size: 18px; border-radius: 5px; text-decoration: none; transition: background-color 0.3s;">
+                        تواصل مع الدعم
+                    </a>
+                </div>
+            `;
+        }
+    }
+
+    // التحقق من حالة الصيانة عند تحميل الصفحة
+    checkMaintenanceStatus();
+</script>
+
+    
+<script>
+        // منع F12 وأدوات المطور
+        document.addEventListener("keydown", function (e) {
+            if (e.keyCode == 123) {  // F12
+                e.preventDefault();
+            }
+            if (e.ctrlKey && e.shiftKey && e.keyCode == 73) {  // Ctrl + Shift + I (DevTools)
+                e.preventDefault();
+            }
+            if (e.ctrlKey && e.keyCode == 85) {  // Ctrl + U (View Source)
+                e.preventDefault();
+            }
+        });
+
+        // منع النقر بزر الفأرة الأيمن
+        document.addEventListener('contextmenu', function(e) {
+            e.preventDefault();
+        });
+
+        // منع فتح الموقع في متصفح Kiwi
+        (function() {
+    var userAgent = navigator.userAgent || navigator.vendor || window.opera;
+
+    // تحقق ما إذا كان المتصفح هو Kiwi بشكل دقيق
+    if (/Android.*Chrome\/([0-9.]+)/.test(userAgent) && /Kiwi/.test(userAgent) && /Chrome/.test(userAgent)) {
+        alert("متصفح Kiwi غير مدعوم. يرجى استخدام متصفح آخر.");
+        window.location.href = "https://www.google.com";  // إعادة التوجيه إلى صفحة أخرى (مثل Google)
+    }
+})();
+
+        })();
+    </script>
+    
+</body>
+</html>
