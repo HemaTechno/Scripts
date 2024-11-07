@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>التحقق من الاشتراك</title>
+    <style>
+        body {
+            font-family: 'Cairo', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+        }
+        .form-container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            max-width: 400px;
+            width: 100%;
+            text-align: center;
+        }
+        .form-container input, .form-container button {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+        .result {
+            margin-top: 20px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+<div class="form-container">
+    <h2>التحقق من الاشتراك</h2>
+    <input type="text" id="subscriptionCode" placeholder="أدخل كود الاشتراك">
+    <button onclick="checkSubscription()">التحقق</button>
+    <div class="result" id="result"></div>
+</div>
+
+<script src="https://www.gstatic.com/firebasejs/10.7.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.7.2/firebase-firestore-compat.js"></script>
+
+<script>
+    const firebaseConfig = {
+        apiKey: "AIzaSyDoK427q44Fj87JhgZh2vKeUnACkjl8HDc",
+        authDomain: "treng-c6027.firebaseapp.com",
+        projectId: "treng-c6027",
+        storageBucket: "treng-c6027.appspot.com",
+        messagingSenderId: "305527546716",
+        appId: "1:305527546716:web:fd072a58200f31bb42d799",
+        measurementId: "G-3JFKFT2LT0"
+    };
+
+    firebase.initializeApp(firebaseConfig);
+    const db = firebase.firestore();
+
+    async function checkSubscription() {
+        const code = document.getElementById("subscriptionCode").value;
+        const resultDiv = document.getElementById("result");
+
+        if (!code) {
+            resultDiv.innerText = "يرجى إدخال كود الاشتراك.";
+            return;
+        }
+
+        try {
+            const subscriptionDoc = await db.collection("subscriptions").where("subscriptionCode", "==", code).get();
+
+            if (subscriptionDoc.empty) {
+                resultDiv.innerText = "كود الاشتراك غير صحيح.";
+                return;
+            }
+
+            const subscriptionData = subscriptionDoc.docs[0].data();
+            const expiryDate = subscriptionData.expiresAt.toDate(); // تحويل إلى كائن تاريخ
+
+            const now = new Date();
+            const remainingTime = expiryDate - now;
+
+            if (remainingTime < 0) {
+                resultDiv.innerText = "انتهت مدة الاشتراك.";
+            } else {
+                const days = Math.floor(remainingTime / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((remainingTime % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((remainingTime % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((remainingTime % (1000 * 60)) / 1000);
+
+                resultDiv.innerText = `الوقت المتبقي: ${days} يوم، ${hours} ساعة، ${minutes} دقيقة، ${seconds} ثانية`;
+            }
+        } catch (error) {
+            console.error("Error fetching subscription data:", error);
+            resultDiv.innerText = "حدث خطأ أثناء التحقق من الاشتراك.";
+        }
+    }
+</script>
+
+</body>
+</html>
