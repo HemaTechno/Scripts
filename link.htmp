@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>عرض معلومات السكربت</title>
+       <style>
+        body {
+            font-family: 'Cairo', sans-serif;
+            background-color: #f8f9fa;
+            color: #343a40;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            padding: 0;
+        }
+        .form-container {
+            background-color: #fff;
+            border-radius: 12px;
+            padding: 40px;
+            width: 100%;
+            max-width: 600px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .form-container:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.25);
+        }
+        .header h1 {
+            font-size: 24px;
+            color: #007bff;
+            margin-bottom: 30px;
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 10px;
+        }
+        .form-group {
+            margin-bottom: 20px;
+            text-align: left;
+        }
+        .form-group label {
+            display: block;
+            font-size: 16px;
+            color: #495057;
+            margin-bottom: 5px;
+        }
+        .form-group input, .form-group select, .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            font-size: 16px;
+            color: #495057;
+            border: 1px solid #ced4da;
+            border-radius: 6px;
+            transition: border-color 0.3s;
+        }
+        .form-group input:focus, .form-group textarea:focus, .form-group select:focus {
+            border-color: #007bff;
+            outline: none;
+        }
+        .submit-button, .confirm-button {
+            padding: 12px 0;
+            width: 100%;
+            font-size: 18px;
+            color: #fff;
+            background-color: #007bff;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.2s;
+            margin-top: 10px;
+        }
+        .submit-button:hover, .confirm-button:hover {
+            background-color: #0056b3;
+            transform: translateY(-2px);
+        }
+        .task-list {
+            margin: 10px 0;
+            font-size: 14px;
+            color: #666;
+        }
+        .task-item {
+            margin-bottom: 5px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="form-container">
+    <h1>عرض معلومات السكربت</h1>
+    <div id="scriptInfo"></div>
+</div>
+
+<script src="https://www.gstatic.com/firebasejs/10.7.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.7.2/firebase-firestore-compat.js"></script>
+<script>
+   const firebaseConfig = {
+            apiKey: "AIzaSyDN6hj_5iKkC76RWGXax4f5DQOj8E4syTQ",
+            authDomain: "hema-fcf76.firebaseapp.com",
+            projectId: "hema-fcf76",
+            storageBucket: "hema-fcf76.appspot.com",
+            messagingSenderId: "76044728790",
+            appId: "1:76044728790:web:776cd44b329beee03ccc77",
+            measurementId: "G-MB5N3JM8M8"
+        };
+
+     
+
+    firebase.initializeApp(firebaseConfig);
+    const db = firebase.firestore();
+
+    async function loadScriptData() {
+        const urlParams = new URLSearchParams(window.location.search);
+        const id = urlParams.get('id');
+        
+        if (id) {
+            try {
+                const doc = await db.collection("scripts").doc(id).get();
+                if (doc.exists) {
+                    const data = doc.data();
+                    const scriptInfoDiv = document.getElementById("scriptInfo");
+                    scriptInfoDiv.innerHTML = `
+                        <p><strong>كود التحقق:</strong> ${data.verifyCode}</p>
+                        <p><strong>رابط التخطي:</strong> <a href="${data.bypassLink}" target="_blank">${data.bypassLink}</a></p>
+                        <p><strong>اسم الفيديو:</strong> ${data.videoName}</p>
+                        <p><strong>المهام:</strong></p>
+                        <ul>
+                            ${data.tasks.map(task => `<li>${task.platform} - <a href="${task.link}" target="_blank">${task.link}</a></li>`).join('')}
+                        </ul>
+                        <p><strong>التاريخ:</strong> ${data.addedDate}</p>
+                        <img src="${data.imageUrl}" alt="صورة السكربت" style="max-width: 100%; border-radius: 10px;">
+                    `;
+                } else {
+                    alert("السكربت غير موجود.");
+                }
+            } catch (error) {
+                console.error("حدث خطأ في استرجاع البيانات:", error);
+                alert("حدث خطأ في استرجاع البيانات.");
+            }
+        } else {
+            alert("معرف غير صالح.");
+        }
+    }
+
+    loadScriptData();
+</script>
+
+</body>
+</html>
