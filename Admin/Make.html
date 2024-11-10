@@ -82,29 +82,32 @@
 
         // Add new step
         document.getElementById('addStepButton').addEventListener('click', function() {
-            const stepsContainer = document.getElementById('stepsContainer');
-            const stepDiv = document.createElement('div');
-            stepDiv.classList.add('step');
-            stepDiv.innerHTML = `
-                <input type="text" class="stepTitle" placeholder="Task Title" required>
-                <select>
-                    <option value="youtube">YouTube</option>
-                    <option value="facebook">Facebook</option>
-                    <option value="instagram">Instagram</option>
-                    <option value="discord">Discord</option>
-                    <option value="telegram">Telegram</option>
-                    <option value="link">Link</option>
-                </select>
-                <input type="text" placeholder="Enter link here" required>
-                <button type="button" class="removeStep">Remove</button>
-            `;
-            stepsContainer.appendChild(stepDiv);
+        // Add new step
+    document.getElementById('addStepButton').addEventListener('click', function() {
+        const stepsContainer = document.getElementById('stepsContainer');
+        const stepDiv = document.createElement('div');
+        stepDiv.classList.add('step');
+        stepDiv.innerHTML = `
+            <input type="text" class="stepTitle" placeholder="Task Title" required>
+            <select>
+                <option value="youtube">YouTube</option>
+                <option value="facebook">Facebook</option>
+                <option value="instagram">Instagram</option>
+                <option value="discord">Discord</option>
+                <option value="telegram">Telegram</option>
+                <option value="link">Link</option>
+            </select>
+            <input type="text" placeholder="Enter link here" required>
+            <button type="button" class="removeStep">Remove</button>
+        `;
+        stepsContainer.appendChild(stepDiv);
 
-            // Add remove step functionality
-            stepDiv.querySelector('.removeStep').addEventListener('click', function() {
-                stepsContainer.removeChild(stepDiv);
-            });
+        // Add remove step functionality
+        stepDiv.querySelector('.removeStep').addEventListener('click', function() {
+            stepsContainer.removeChild(stepDiv);
         });
+    });
+
 
         // Handle form submission
         document.getElementById('contentForm').addEventListener('submit', function(event) {
