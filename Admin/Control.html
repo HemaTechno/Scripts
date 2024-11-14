@@ -22,9 +22,60 @@
         .maintenance-button.active {
             background-color: #dc3545;
         }
+        .notification {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 300px;
+            background-color: #00bcd4;
+            color: #333;
+            border-radius: 10px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+            padding: 15px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            font-size: 1.1em;
+        }
+        .notification h2 {
+            margin: 0;
+            font-size: 1.2em;
+            color: #000;
+        }
+        .notification p {
+            margin: 10px 0;
+            color: #222;
+        }
+        .notification .buttons {
+            display: flex;
+            gap: 10px;
+        }
+        .notification button {
+            padding: 8px 12px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .buy-button {
+            background-color: #ffeb3b;
+            color: #333;
+        }
+        .close-button {
+            background-color: #333;
+            color: #fff;
+        }
     </style>
 </head>
 <body>
+    <div id="notification" class="notification">
+    <h2>وحشتونا قد كده</h2>
+    <p>شكراً ليك عشان موجود في حياتنا يا طالب يا ممثلحي يا رايق</p>
+    <div class="buttons">
+        <button class="buy-button" onclick="openTelegram()">شراء</button>
+        <button class="close-button" onclick="closeNotification()">غير مهتم</button>
+    </div>
+</div>
+
 
 <h1>لوحة التحكم</h1>
 <button id="maintenanceButton" class="maintenance-button">جاري التحميل...</button>
@@ -73,6 +124,16 @@
         const currentStatus = await getMaintenanceStatus();
         toggleMaintenanceStatus(currentStatus);
     });
+</script>
+<script>
+    function openTelegram() {
+        // ضع هنا رابط تيليجرام الخاص بك
+        window.location.href = "https://t.me/YourTelegramLink";
+    }
+
+    function closeNotification() {
+        document.getElementById("notification").style.display = "none";
+    }
 </script>
 
 </body>
