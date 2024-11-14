@@ -33,6 +33,20 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+           <div id="notification" class="notification">
+    <h2>وحشتنا من اخر مرة دخلت فيها موقع</h2>
+    <p>متوفر روبكس بي ارخص الأسعار 💪
+
+تخيل كدا 1000 روبكس مش صافين بي 240 جنية مصري 
+
+و تخيل ان البريميوم مع 450 روبكس بي 310 جنية 😉😇 
+
+</p>
+    <div class="buttons">
+        <button class="buy-button" onclick="openTelegram()">شراء</button>
+        <button class="close-button" onclick="closeNotification()">غير مهتم</button>
+    </div>
+           </div>
     <!-- الشريط العلوي -->
     <header>
         <div class="navbar">
@@ -138,9 +152,15 @@
     }
 
     // التحقق من حالة الصيانة عند تحميل الصفحة
-    checkMaintenanceStatus();
-</script>
+    <script>
+    function openTelegram() {
+        // ضع هنا رابط تيليجرام الخاص بك
+        window.location.href = "https://t.me/Hema_tech1";
+    }
 
-    
+    function closeNotification() {
+        document.getElementById("notification").style.display = "none";
+    }
+</script>
 </body>
 </html>
