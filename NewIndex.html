@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>H-Scripts</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;600&display=swap');
+
+        body {
+            font-family: 'Cairo', sans-serif;
+            margin: 0;
+            padding: 0;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        /* Head */
+        header {
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: background-color 0.3s;
+        }
+        header img {
+            height: 50px;
+        }
+        header button {
+            background-color: #11BAF1;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            cursor: pointer;
+            font-size: 14px;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+        header button:hover {
+            background-color: #0e96d3;
+        }
+
+        /* Main content */
+        .main-content {
+            text-align: center;
+            margin: 20px;
+        }
+        .title {
+            color: #11BAF1;
+            font-size: 32px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+        .description {
+            background-color: white;
+            padding: 20px;
+            margin: 20px auto;
+            color: #333;
+            font-size: 18px;
+            border-radius: 10px;
+            max-width: 600px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .main-button, .second-button {
+            color: white;
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            cursor: pointer;
+            margin: 10px;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+        .main-button {
+            background-color: #11BAF1;
+        }
+        .main-button:hover {
+            background-color: #0e96d3;
+        }
+        .second-button {
+            background-color: #A755F7;
+        }
+        .second-button:hover {
+            background-color: #8b3bd5;
+        }
+
+        .image-gallery {
+            margin: 20px auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+        .image-gallery img {
+            width: 80%;
+            max-width: 600px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Footer */
+        footer {
+            background-color: #111;
+            color: white;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        footer a {
+            color: #11BAF1;
+            margin: 0 10px;
+            text-decoration: none;
+        }
+        footer .social-links a {
+            margin-right: 10px;
+        }
+        footer img {
+            height: 40px;
+        }
+    </style>
+</head>
+<body>
+    <header id="page-header">
+        <img src="logo.png" alt="H-Scripts Logo">
+        <div class="toggle-buttons">
+            <button class="mode-button" onclick="toggleMode()">وضع نهار/ليلي</button>
+            <button onclick="toggleLanguage()">تغيير اللغة</button>
+        </div>
+    </header>
+
+    <div class="main-content">
+        <h1 class="title">H-script.site</h1>
+        <div class="description">
+            <p>وصف الموقع هنا</p>
+        </div>
+        <button class="main-button" onclick="window.location.href='https://example.com'">زر إلى الموقع</button>
+        <button class="second-button" onclick="window.location.href='https://example2.com'">زر آخر</button>
+
+        <div class="image-gallery">
+            <img src="https://via.placeholder.com/600x338" alt="Image 1">
+            <img src="https://via.placeholder.com/600x338" alt="Image 2">
+            <img src="https://via.placeholder.com/600x338" alt="Image 3">
+        </div>
+    </div>
+
+    <footer>
+        <div class="social-links">
+            <a href="https://t.me" target="_blank">تليجرام</a>
+            <a href="https://discord.com" target="_blank">ديسكورد</a>
+        </div>
+        <img src="logo.png" alt="H-Scripts Logo">
+        <div class="privacy-policy">
+            <a href="privacy-policy.html" target="_blank">سياسية الخصوصية</a>
+            <a href="contact-us.html" target="_blank">التواصل معنا</a>
+        </div>
+    </footer>
+
+    <script>
+        let isDarkMode = false;
+        let isEnglish = false;
+
+        function toggleMode() {
+            isDarkMode = !isDarkMode;
+            const body = document.body;
+            const header = document.getElementById('page-header');
+
+            if (isDarkMode) {
+                body.style.backgroundColor = '#080C15';
+                body.style.color = 'white';
+                header.style.backgroundColor = '#080C15';
+            } else {
+                body.style.backgroundColor = 'white';
+                body.style.color = '#333';
+                header.style.backgroundColor = 'white';
+            }
+        }
+
+        function toggleLanguage() {
+            isEnglish = !isEnglish;
+            if (isEnglish) {
+                document.documentElement.lang = 'en';
+                document.querySelector('.title').textContent = 'H-script.site';
+                document.querySelector('.description p').textContent = 'Description of the site here';
+                document.querySelector('.main-button').textContent = 'Go to site';
+                document.querySelector('.second-button').textContent = 'Another button';
+                document.querySelector('.mode-button').textContent = 'Day/Night Mode';
+            } else {
+                document.documentElement.lang = 'ar';
+                document.querySelector('.title').textContent = 'H-script.site';
+                document.querySelector('.description p').textContent = 'وصف الموقع هنا';
+                document.querySelector('.main-button').textContent = 'زر إلى الموقع';
+                document.querySelector('.second-button').textContent = 'زر آخر';
+                document.querySelector('.mode-button').textContent = 'وضع نهار/ليلي';
+            }
+        }
+    </script>
+</body>
+</html>
