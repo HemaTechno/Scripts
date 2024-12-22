@@ -111,22 +111,6 @@
             margin-bottom: 20px;
         }
 
-        .description {
-            background-color: white;
-            padding: 20px;
-            margin: 20px auto;
-            color: #333;
-            font-size: 18px;
-            border-radius: 0;
-            max-width: 600px;
-            box-shadow: none;
-        }
-
-        body.dark-mode .description {
-            background-color: white;
-            color: black;
-        }
-
         .main-button,
         .second-button {
             color: white;
@@ -179,9 +163,7 @@
             justify-content: space-between;
             align-items: center;
             flex-wrap: wrap;
-            position: fixed;
-            bottom: 0;
-            width: 100%;
+            margin-top: auto;
         }
 
         footer a {
@@ -210,9 +192,6 @@
 
     <div class="main-content" style="display: none;">
         <h1 class="title">H-script.site</h1>
-        <div class="description">
-            <p>وصف الموقع هنا</p>
-        </div>
         <button class="main-button" onclick="window.location.href='https://example.com'">زر إلى الموقع</button>
         <button class="second-button" onclick="window.location.href='https://example2.com'">زر آخر</button>
 
@@ -254,21 +233,19 @@
 
         // Placeholder for language toggle
         function toggleLanguage() {
-            isEnglish = !isEnglish;
+            const isEnglish = document.documentElement.lang === 'en';
             if (isEnglish) {
-                document.documentElement.lang = 'en';
-                document.querySelector('.title').textContent = 'H-script.site';
-                document.querySelector('.description p').textContent = 'Description of the site here';
-                document.querySelector('.main-button').textContent = 'Go to site';
-                document.querySelector('.second-button').textContent = 'Another button';
-                document.querySelector('.mode-button').textContent = 'Day/Night Mode';
-            } else {
                 document.documentElement.lang = 'ar';
                 document.querySelector('.title').textContent = 'H-script.site';
-                document.querySelector('.description p').textContent = 'وصف الموقع هنا';
                 document.querySelector('.main-button').textContent = 'زر إلى الموقع';
                 document.querySelector('.second-button').textContent = 'زر آخر';
                 document.querySelector('.mode-button').textContent = 'وضع نهار/ليلي';
+            } else {
+                document.documentElement.lang = 'en';
+                document.querySelector('.title').textContent = 'H-script.site';
+                document.querySelector('.main-button').textContent = 'Go to site';
+                document.querySelector('.second-button').textContent = 'Another button';
+                document.querySelector('.mode-button').textContent = 'Day/Night Mode';
             }
         }
     </script>
