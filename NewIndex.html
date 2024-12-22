@@ -248,8 +248,24 @@
 
         // Placeholder for language toggle
         function toggleLanguage() {
-            alert('تغيير اللغة قيد التنفيذ');
-        }
+            isEnglish = !isEnglish;
+            if (isEnglish) {
+                document.documentElement.lang = 'en';
+                document.querySelector('.title').textContent = 'H-script.site';
+                document.querySelector('.description p').textContent = 'Description of the site here';
+                document.querySelector('.main-button').textContent = 'Go to site';
+                document.querySelector('.second-button').textContent = 'Another button';
+                document.querySelector('.mode-button').textContent = 'Day/Night Mode';
+            } else {
+                document.documentElement.lang = 'ar';
+                document.querySelector('.title').textContent = 'H-script.site';
+                document.querySelector('.description p').textContent = 'وصف الموقع هنا';
+                document.querySelector('.main-button').textContent = 'زر إلى الموقع';
+                document.querySelector('.second-button').textContent = 'زر آخر';
+                document.querySelector('.mode-button').textContent = 'وضع نهار/ليلي';
+            }
+            }
+        
     </script>
 </body>
 </html>
