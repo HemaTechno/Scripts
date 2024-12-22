@@ -16,6 +16,17 @@
             flex-direction: column;
         }
 
+        /* النهاري والليلي */
+        body.light-mode {
+            background-color: white;
+            color: black;
+        }
+
+        body.dark-mode {
+            background-color: #080C15;
+            color: white;
+        }
+
         /* Loader */
         .loader-container {
             display: flex;
@@ -178,7 +189,7 @@
         }
     </style>
 </head>
-<body>
+<body class="light-mode">
     <div class="loader-container" id="loader-container">
         <div class="loader"></div>
     </div>
@@ -228,6 +239,17 @@
                 document.querySelector('footer').style.display = 'flex';
             }, 3000);
         });
+
+        // Toggle mode
+        function toggleMode() {
+            document.body.classList.toggle('dark-mode');
+            document.body.classList.toggle('light-mode');
+        }
+
+        // Placeholder for language toggle
+        function toggleLanguage() {
+            alert('تغيير اللغة قيد التنفيذ');
+        }
     </script>
 </body>
 </html>
