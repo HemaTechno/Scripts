@@ -4,14 +4,58 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>H-Scripts</title>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;600&display=swap');
-
         body {
-            font-family: 'Cairo', sans-serif;
+            font-family: 'Tajawal', sans-serif;
             margin: 0;
             padding: 0;
             transition: background-color 0.3s, color 0.3s;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Loader */
+        .loader-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: white;
+        }
+
+        .loader {
+            --height-of-loader: 4px;
+            --loader-color: #0071e2;
+            width: 130px;
+            height: var(--height-of-loader);
+            border-radius: 30px;
+            background-color: rgba(0, 0, 0, 0.2);
+            position: relative;
+        }
+
+        .loader::before {
+            content: "";
+            position: absolute;
+            background: var(--loader-color);
+            top: 0;
+            left: 0;
+            width: 0%;
+            height: 100%;
+            border-radius: 30px;
+            animation: moving 1s ease-in-out infinite;
+        }
+
+        @keyframes moving {
+            50% {
+                width: 100%;
+            }
+            100% {
+                width: 0;
+                right: 0;
+                left: unset;
+            }
         }
 
         /* Head */
@@ -22,9 +66,11 @@
             align-items: center;
             transition: background-color 0.3s;
         }
+
         header img {
             height: 50px;
         }
+
         header button {
             background-color: #11BAF1;
             color: white;
@@ -35,6 +81,7 @@
             border-radius: 5px;
             transition: background-color 0.3s;
         }
+
         header button:hover {
             background-color: #0e96d3;
         }
@@ -43,13 +90,16 @@
         .main-content {
             text-align: center;
             margin: 20px;
+            flex-grow: 1;
         }
+
         .title {
             color: #11BAF1;
             font-size: 32px;
             font-weight: bold;
             margin-bottom: 20px;
         }
+
         .description {
             background-color: white;
             padding: 20px;
@@ -60,7 +110,9 @@
             max-width: 600px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
-        .main-button, .second-button {
+
+        .main-button,
+        .second-button {
             color: white;
             padding: 10px 20px;
             font-size: 16px;
@@ -70,15 +122,19 @@
             border-radius: 5px;
             transition: background-color 0.3s;
         }
+
         .main-button {
             background-color: #11BAF1;
         }
+
         .main-button:hover {
             background-color: #0e96d3;
         }
+
         .second-button {
             background-color: #A755F7;
         }
+
         .second-button:hover {
             background-color: #8b3bd5;
         }
@@ -90,6 +146,7 @@
             align-items: center;
             gap: 20px;
         }
+
         .image-gallery img {
             width: 80%;
             max-width: 600px;
@@ -106,22 +163,27 @@
             justify-content: space-between;
             align-items: center;
             flex-wrap: wrap;
+            position: sticky;
+            bottom: 0;
         }
+
         footer a {
             color: #11BAF1;
             margin: 0 10px;
             text-decoration: none;
         }
-        footer .social-links a {
-            margin-right: 10px;
-        }
+
         footer img {
             height: 40px;
         }
     </style>
 </head>
 <body>
-    <header id="page-header">
+    <div class="loader-container" id="loader-container">
+        <div class="loader"></div>
+    </div>
+
+    <header id="page-header" style="display: none;">
         <img src="logo.png" alt="H-Scripts Logo">
         <div class="toggle-buttons">
             <button class="mode-button" onclick="toggleMode()">وضع نهار/ليلي</button>
@@ -129,7 +191,7 @@
         </div>
     </header>
 
-    <div class="main-content">
+    <div class="main-content" style="display: none;">
         <h1 class="title">H-script.site</h1>
         <div class="description">
             <p>وصف الموقع هنا</p>
@@ -144,7 +206,7 @@
         </div>
     </div>
 
-    <footer>
+    <footer style="display: none;">
         <div class="social-links">
             <a href="https://t.me" target="_blank">تليجرام</a>
             <a href="https://discord.com" target="_blank">ديسكورد</a>
@@ -157,43 +219,15 @@
     </footer>
 
     <script>
-        let isDarkMode = false;
-        let isEnglish = false;
-
-        function toggleMode() {
-            isDarkMode = !isDarkMode;
-            const body = document.body;
-            const header = document.getElementById('page-header');
-
-            if (isDarkMode) {
-                body.style.backgroundColor = '#080C15';
-                body.style.color = 'white';
-                header.style.backgroundColor = '#080C15';
-            } else {
-                body.style.backgroundColor = 'white';
-                body.style.color = '#333';
-                header.style.backgroundColor = 'white';
-            }
-        }
-
-        function toggleLanguage() {
-            isEnglish = !isEnglish;
-            if (isEnglish) {
-                document.documentElement.lang = 'en';
-                document.querySelector('.title').textContent = 'H-script.site';
-                document.querySelector('.description p').textContent = 'Description of the site here';
-                document.querySelector('.main-button').textContent = 'Go to site';
-                document.querySelector('.second-button').textContent = 'Another button';
-                document.querySelector('.mode-button').textContent = 'Day/Night Mode';
-            } else {
-                document.documentElement.lang = 'ar';
-                document.querySelector('.title').textContent = 'H-script.site';
-                document.querySelector('.description p').textContent = 'وصف الموقع هنا';
-                document.querySelector('.main-button').textContent = 'زر إلى الموقع';
-                document.querySelector('.second-button').textContent = 'زر آخر';
-                document.querySelector('.mode-button').textContent = 'وضع نهار/ليلي';
-            }
-        }
+        // Loader functionality
+        window.addEventListener('load', function () {
+            setTimeout(() => {
+                document.getElementById('loader-container').style.display = 'none';
+                document.getElementById('page-header').style.display = 'flex';
+                document.querySelector('.main-content').style.display = 'block';
+                document.querySelector('footer').style.display = 'flex';
+            }, 3000);
+        });
     </script>
 </body>
 </html>
