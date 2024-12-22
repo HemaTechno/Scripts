@@ -79,7 +79,7 @@
         }
 
         header img {
-            height: 50px;
+            height: 80px; /* تكبير الشعار */
         }
 
         header button {
@@ -174,8 +174,9 @@
             justify-content: space-between;
             align-items: center;
             flex-wrap: wrap;
-            position: sticky;
+            position: fixed; /* تثبيت الفوتر */
             bottom: 0;
+            width: 100%;
         }
 
         footer a {
@@ -198,7 +199,7 @@
         <img src="https://i.ibb.co/ysFJZ4T/20241223-000929.png" alt="H-Scripts Logo">
         <div class="toggle-buttons">
             <button class="mode-button" onclick="toggleMode()">وضع نهار/ليلي</button>
-            <button onclick="toggleLanguage"()">تغيير اللغة</button>
+            <button onclick="toggleLanguage()">تغيير اللغة</button>
         </div>
     </header>
 
@@ -246,7 +247,8 @@
             document.body.classList.toggle('light-mode');
         }
 
-        // Placeholder for language toggle
+        // Toggle language functionality
+        let isEnglish = false;
         function toggleLanguage() {
             isEnglish = !isEnglish;
             if (isEnglish) {
@@ -265,7 +267,6 @@
                 document.querySelector('.mode-button').textContent = 'وضع نهار/ليلي';
             }
         }
-        
     </script>
 </body>
 </html>
