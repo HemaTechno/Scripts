@@ -13,67 +13,133 @@
     <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&display=swap" rel="stylesheet">
     <title>Public Scripts</title>
     <style>
-        /* هنا توضع الأكواد الخاصة بالتصميم */
         body {
             font-family: 'Tajawal', sans-serif;
             margin: 0;
             padding: 0;
             min-height: 100vh;
-        }
-
-        .light-mode {
-            background-color: white;
-            color: black;
-        }
-
-        .dark-mode {
             background-color: #080C15;
             color: white;
         }
 
         header {
             display: flex;
-            justify-content: space-between;
+            justify-content: center;
+            align-items: center;
             padding: 20px;
         }
 
+        .button {
+            position: relative;
+            font-size: 2em;
+            font-family: "Arial";
+            text-transform: uppercase;
+            color: transparent;
+            -webkit-text-stroke: 1px rgba(255, 255, 255, 0.6);
+            cursor: pointer;
+            background: none;
+            border: none;
+            padding: 0;
+        }
+
+        .button .hover-text {
+            position: absolute;
+            color: #37FF8B;
+            left: 0;
+            width: 0;
+            overflow: hidden;
+            border-right: 6px solid #37FF8B;
+            white-space: nowrap;
+            transition: width 0.5s;
+            -webkit-text-stroke: 1px #37FF8B;
+        }
+
+        .button:hover .hover-text {
+            width: 100%;
+            filter: drop-shadow(0 0 23px #37FF8B);
+        }
+
+        .button .actual-text {
+            color: transparent;
+            -webkit-text-stroke: 1px rgba(255, 255, 255, 0.6);
+        }
+        
+
+        /* قسم العنوان */
+        .hero {
+            text-align: center;
+            padding: 2rem;
+        }
+
+        /* قسم السكربتات */
         .scripts-container {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
             gap: 20px;
-            padding: 20px;
+            padding: 2rem;
         }
 
         .script-card {
-            padding: 15px;
             background-color: #333;
             border-radius: 10px;
-            color: white;
+            padding: 1rem;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
         }
 
-        .get-button {
-            display: block;
-            text-align: center;
-            padding: 10px;
-            margin-top: 10px;
-            background-color: #008CBA;
-            color: white;
-            text-decoration: none;
+        .script-card img {
+            width: 100%;
+            height: auto;
             border-radius: 5px;
         }
 
-        .footer {
+        .script-info {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            font-size: 0.9rem;
+            color: #bbbbbb;
+            margin-top: 10px;
+        }
+
+        .script-title {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #4caf50;
+            margin: 10px 0;
+        }
+
+        .script-description {
+            font-size: 1rem;
+            color: #dddddd;
+            margin-bottom: 10px;
             text-align: center;
-            padding: 10px;
-            background-color: #333;
+        }
+
+        .get-button {
+            background-color: #008CBA;
             color: white;
+            padding: 0.5rem 1rem;
+            border: none;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
+
+        .get-button:hover {
+            background-color: #45a049;
         }
     </style>
 </head>
-<body class="light-mode">
+<body>
     <header>
-        <h1>H-Scripts</h1>
-        <button id="toggleMode">تبديل الوضع</button>
+        <button class="button">
+            <span class="actual-text">H-Scripts</span>
+            <span class="hover-text">H-Scripts</span>
+        </button>
     </header>
 
     <div class="scripts-container" id="scriptsContainer">
@@ -124,11 +190,6 @@
         }
 
         loadScripts();
-
-        document.getElementById("toggleMode").addEventListener("click", () => {
-            document.body.classList.toggle("dark-mode");
-            document.body.classList.toggle("light-mode");
-        });
     </script>
 </body>
 </html>
