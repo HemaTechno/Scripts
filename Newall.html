@@ -1,199 +1,92 @@
 <!DOCTYPE html>
 <html lang="ar">
 <head>
-    <!-- وصف الموقع -->
-    <meta name="description" content="أفضل موقع لمشاركة السكربتات و الهاكات الخاصة بأنظمة التشغيل المختلفة.">
-    <!-- وسم Open Graph الخاص بالفيسبوك ومنصات أخرى -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="أفضل موقع لمشاركة السكربتات والهاكات الخاصة بأنظمة التشغيل المختلفة.">
     <meta property="og:title" content="H-Scripts - أفضل موقع للسكربتات">
     <meta property="og:description" content="افضل موقع سكربتات و هاكات روبلوكس و تقدر اسكربت الان">
     <meta property="og:image" content="https://i.ibb.co/FVr4b2z/20240926-203252.jpg">
     <meta property="og:url" content="https://h-scripts.site">
     <meta property="og:type" content="website">
-    <!-- وسم Twitter Card الخاص بتويتر -->
-    <meta name="twitter:card" content="https://i.ibb.co/FVr4b2z/20240926-203252.jpg">
-    <meta name="twitter:title" content="H-Scripts - أفضل موقع للسكربتات">
-    <meta name="twitter:description" content="شارك أفضل السكربتات مع الآخرين وتعلم المزيد حول الهاكات.">
-    <meta name="twitter:image" content="https://i.ibb.co/FVr4b2z/20240926-203252.jpg">
-    <!-- أيقونة الموقع -->
     <link rel="icon" href="https://i.ibb.co/FVr4b2z/20240926-203252.jpg" type="image/x-icon">
-
-    <!-- خطوط -->
     <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&display=swap" rel="stylesheet">
-
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Public Scripts</title>
     <style>
+        /* هنا توضع الأكواد الخاصة بالتصميم */
         body {
             font-family: 'Tajawal', sans-serif;
             margin: 0;
             padding: 0;
-            transition: background-color 0.3s, color 0.3s;
             min-height: 100vh;
-            display: flex;
-            flex-direction: column;
         }
 
-        /* الوضع النهاري والليلي */
-        body.light-mode {
+        .light-mode {
             background-color: white;
             color: black;
         }
 
-        body.dark-mode {
+        .dark-mode {
             background-color: #080C15;
             color: white;
         }
 
-        /* Head */
         header {
-            padding: 20px;
             display: flex;
             justify-content: space-between;
-            align-items: center;
-            transition: background-color 0.3s;
+            padding: 20px;
         }
 
-        header img {
-            height: 50px;
-        }
-
-        header button {
-            background-color: #11BAF1;
-            color: white;
-            border: none;
-            padding: 10px 15px;
-            cursor: pointer;
-            font-size: 14px;
-            border-radius: 5px;
-            transition: background-color 0.3s;
-        }
-
-        header button:hover {
-            background-color: #0e96d3;
-        }
-
-        /* قسم العنوان */
-        .hero {
-            text-align: center;
-            padding: 2rem;
-        }
-
-        /* قسم السكربتات */
         .scripts-container {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
             gap: 20px;
-            padding: 2rem;
+            padding: 20px;
         }
 
         .script-card {
+            padding: 15px;
             background-color: #333;
             border-radius: 10px;
-            padding: 1rem;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: space-between;
-        }
-
-        .script-card img {
-            width: 100%;
-            height: auto;
-            border-radius: 5px;
-        }
-
-        .script-info {
-            display: flex;
-            justify-content: space-between;
-            width: 100%;
-            font-size: 0.9rem;
-            color: #bbbbbb;
-            margin-top: 10px;
-        }
-
-        .script-title {
-            font-size: 1.2rem;
-            font-weight: bold;
-            color: #4caf50;
-            margin: 10px 0;
-        }
-
-        .script-description {
-            font-size: 1rem;
-            color: #dddddd;
-            margin-bottom: 10px;
-            text-align: center;
+            color: white;
         }
 
         .get-button {
-            background-color: #008CBA;
-            color: white;
-            padding: 0.5rem 1rem;
-            border: none;
-            border-radius: 5px;
-            text-decoration: none;
-            transition: background-color 0.3s;
-        }
-
-        .get-button:hover {
-            background-color: #45a049;
-        }
-
-        /* Footer */
-        .footer {
-            background-color: #333333;
-            color: white;
+            display: block;
             text-align: center;
             padding: 10px;
-            font-size: 0.9rem;
-        }
-
-        .footer a {
-            color: #ffffff;
+            margin-top: 10px;
+            background-color: #008CBA;
+            color: white;
             text-decoration: none;
+            border-radius: 5px;
         }
 
-        .footer a:hover {
-            color: #c0c0c0;
+        .footer {
+            text-align: center;
+            padding: 10px;
+            background-color: #333;
+            color: white;
         }
     </style>
 </head>
 <body class="light-mode">
-    <div class="loader-container" id="loader-container">
-        <div class="loader"></div>
-    </div>
-
-    <header id="page-header" style="display: none;">
-        <img src="https://i.ibb.co/ysFJZ4T/20241223-000929.png" alt="H-Scripts Logo">
-        <div class="toggle-buttons">
-            <button class="mode-button" onclick="toggleMode()">❄️</button>
-            <button onclick="toggleLanguage()">🇺🇸</button>
-        </div>
+    <header>
+        <h1>H-Scripts</h1>
+        <button id="toggleMode">تبديل الوضع</button>
     </header>
 
-    <!-- قسم العنوان -->
-    <section class="hero">
-        <h1>جميع السكربتات</h1>
-    </section>
-
-    <!-- قسم السكربتات -->
     <div class="scripts-container" id="scriptsContainer">
         <!-- سيتم تحميل السكربتات هنا -->
     </div>
 
-    <!-- Footer -->
     <div class="footer">
-        <p>© جميع الحقوق محفوظة <a href="https://example.com" target="_blank">إبراهيم منصور</a></p>
+        <p>© جميع الحقوق محفوظة <a href="#">إبراهيم منصور</a></p>
     </div>
 
-    <!-- Firebase SDK -->
     <script src="https://www.gstatic.com/firebasejs/10.7.2/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/10.7.2/firebase-firestore-compat.js"></script>
-
     <script>
-        // Firebase Configuration
         const firebaseConfig = {
             apiKey: "AIzaSyDoK427q44Fj87JhgZh2vKeUnACkjl8HDc",
             authDomain: "treng-c6027.firebaseapp.com",
@@ -212,24 +105,18 @@
             scriptsContainer.innerHTML = "";
 
             const querySnapshot = await db.collection("scripts").get();
-
             if (querySnapshot.empty) {
                 scriptsContainer.innerHTML = "<p>لا توجد سكربتات متاحة.</p>";
                 return;
             }
 
-            querySnapshot.forEach((doc) => {
+            querySnapshot.forEach(doc => {
                 const script = doc.data();
                 const scriptCard = document.createElement("div");
                 scriptCard.className = "script-card";
                 scriptCard.innerHTML = `
-                    <img src="${script.imageUrl}" alt="${script.title}">
-                    <div class="script-info">
-                        <span>تاريخ الإضافة: ${script.addedDate}</span>
-                        <span>اسم اللعبة: ${script.mapName}</span>
-                    </div>
-                    <div class="script-title">${script.title}</div>
-                    <p class="script-description">${script.description}</p>
+                    <h3>${script.title}</h3>
+                    <p>${script.description}</p>
                     <a href="view.html?id=${doc.id}" class="get-button">Get</a>
                 `;
                 scriptsContainer.appendChild(scriptCard);
@@ -238,9 +125,7 @@
 
         loadScripts();
 
-        // Toggle mode
-        const toggleMode = document.getElementById("toggleMode");
-        toggleMode.addEventListener("click", () => {
+        document.getElementById("toggleMode").addEventListener("click", () => {
             document.body.classList.toggle("dark-mode");
             document.body.classList.toggle("light-mode");
         });
