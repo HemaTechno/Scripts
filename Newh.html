@@ -131,50 +131,7 @@
             transform: translateY(-2px);
         }
 
-        /* الإشعار */
-        .notification {
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 300px;
-            background-color: #00bcd4;
-            color: #333;
-            border-radius: 10px;
-            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
-            padding: 15px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            font-size: 1.1em;
-        }
-        .notification h2 {
-            margin: 0;
-            font-size: 1.2em;
-            color: #000;
-        }
-        .notification p {
-            margin: 10px 0;
-            color: #222;
-        }
-        .notification .buttons {
-            display: flex;
-            gap: 10px;
-        }
-        .notification button {
-            padding: 8px 12px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-        .buy-button {
-            background-color: #ffeb3b;
-            color: #333;
-        }
-        .close-button {
-            background-color: #333;
-            color: #fff;
-        }
+        
 
         /* الهيدر */
         .header {
@@ -235,6 +192,7 @@
         }
 
     </style>
+    
 </head>
 <body>
 
@@ -245,21 +203,6 @@
    pop_tag.onerror = function() {pop_tag = document.createElement('script');pop_tag.src='//cdn2.popcash.net/show.js';document.body.appendChild(pop_tag)};
 </script>
 
-<div id="notification" class="notification">
-    <h2>وحشتنا من اخر مرة دخلت فيها موقع</h2>
-    <p>متوفر روبكس بي ارخص الأسعار 💪
-
-تخيل كدا 1000 روبكس مش صافين بي 240 جنية مصري 
-
-و تخيل ان البريميوم مع 450 روبكس بي 310 جنية 😉😇 
-
-</p>
-    <div class="buttons">
-        <button class="buy-button" onclick="openTelegram()">شراء</button>
-        <button class="close-button" onclick="closeNotification()">غير مهتم</button>
-    </div>
-</div>
-
 <header class="header">
     <div class="logo">H-Scripts</div>
     <button class="login-btn" onclick="window.location.href='https://t.me/hscripts'">الدعم الفني</button>
@@ -267,6 +210,8 @@
 
 <h1>All Hack</h1>
 <div id="scriptsContainer"></div>
+<script src="https://www.gstatic.com/firebasejs/10.7.2/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.2/firebase-firestore-compat.js"></script>
 
 <script>
     // تكوين Firebase
