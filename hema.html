@@ -49,16 +49,20 @@
 
     /* إعدادات البنرات */
     .banner-container {
+.banner-container {
         position: relative;
         overflow: hidden;
-        height: 300px; /* ارتفاع الصورة المرفقة */
+        height: 300px; /* ارتفاع البانر */
         background-color: #000;
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
 
     .banner-container img {
         width: 100%;
-        height: 648px; /* ارتفاع الصورة المرفقة */
-        object-fit: cover;
+        height: 100%;
+        object-fit: contain; /* عرض الصورة بالكامل */
         position: absolute;
         top: 0;
         left: 0;
@@ -69,7 +73,6 @@
     .banner-container img.active {
         opacity: 1;
     }
-
 
         /* من نحن */
         .about {
