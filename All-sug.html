@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>عرض الاقتراحات</title>
+    <style>
+        body {
+            font-family: 'Cairo', sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+            padding: 20px;
+        }
+        h1 {
+            text-align: center;
+            color: #5A5A5A;
+        }
+        .suggestions-list {
+            margin-top: 40px;
+        }
+        .suggestion-item {
+            background-color: white;
+            padding: 15px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+        }
+        .no-suggestions {
+            text-align: center;
+            color: #888;
+        }
+    </style>
+    <!-- Firebase Links -->
+    <script src="https://www.gstatic.com/firebasejs/10.7.2/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.2/firebase-firestore-compat.js"></script>
+</head>
+<body>
+
+    <h1>عرض الاقتراحات</h1>
+    <div class="suggestions-list" id="suggestionsList">
+        <h2>الاقتراحات</h2>
+    </div>
+
+    <script>
+        // Firebase Configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyBespCtavesyrdzKcB3LRr4vXd_U6XhfO4",
+            authDomain: "token-9ae6a.firebaseapp.com",
+            projectId: "token-9ae6a",
+            storageBucket: "token-9ae6a.appspot.com",
+            messagingSenderId: "434290198239",
+            appId: "1:434290198239:web:a56983c6f74da146830b6a",
+            measurementId: "G-FMB4BZ07DR"
+        };
+
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+        const db = firebase.firestore();
+
+        // Load suggestions from Firestore and display them
+        function loadSuggestions() {
+            const suggestionsList = document.getElementById('suggestionsList');
+            db.collection("suggestions").orderBy("timestamp", "desc").get().then((querySnapshot) => {
+                if (querySnapshot.empty) {
+                    suggestionsList.innerHTML = "<p class='no-suggestions'>لا توجد اقتراحات حالياً.</p>";
+                } else {
+                    suggestionsList.innerHTML = "<h2>الاقتراحات</h2>"; // Clear the existing list
+                    querySnapshot.forEach((doc) => {
+                        const suggestionData = doc.data();
+                        const suggestionItem = document.createElement('div');
+                        suggestionItem.classList.add('suggestion-item');
+                        suggestionItem.innerHTML = `
+                            <strong>الاقتراح:</strong> ${suggestionData.suggestion} <br>
+                            <strong>التفاصيل:</strong> ${suggestionData.details} <br>
+                            <strong>الاسم:</strong> ${suggestionData.name} <br>
+                            <hr>
+                        `;
+                        suggestionsList.appendChild(suggestionItem);
+                    });
+                }
+            }).catch((error) => {
+                console.error("Error getting suggestions: ", error);
+            });
+        }
+
+        // Load suggestions on page load
+        window.onload = loadSuggestions;
+    </script>
+
+</body>
+</html>
