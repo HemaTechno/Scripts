@@ -47,27 +47,29 @@
             background-color: #e0e0e0;
         }
 
-        /* البنرات */
-        .banner-container {
-            position: relative;
-            overflow: hidden;
-            height: 100px;
-        }
+    /* إعدادات البنرات */
+    .banner-container {
+        position: relative;
+        overflow: hidden;
+        height: 648px; /* ارتفاع الصورة المرفقة */
+        background-color: #000;
+    }
 
-        .banner-container img {
-            width: 100%;
-            height: 400px;
-            object-fit: cover;
-            position: absolute;
-            top: 0;
-            left: 0;
-            opacity: 0;
-            transition: opacity 1s ease-in-out;
-        }
+    .banner-container img {
+        width: 100%;
+        height: 648px; /* ارتفاع الصورة المرفقة */
+        object-fit: cover;
+        position: absolute;
+        top: 0;
+        left: 0;
+        opacity: 0;
+        transition: opacity 1s ease-in-out;
+    }
 
-        .banner-container img.active {
-            opacity: 1;
-        }
+    .banner-container img.active {
+        opacity: 1;
+    }
+
 
         /* من نحن */
         .about {
