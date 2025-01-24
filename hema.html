@@ -3,15 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>صفحة ديناميكية</title>
+    <title>صفحة مميزة</title>
     <style>
         /* إعدادات الصفحة */
+        @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap');
         body {
-            font-family: 'Arial', sans-serif;
+            font-family: 'Cairo', sans-serif;
             margin: 0;
             padding: 0;
             background-color: #05080F;
-            color: white;
+            color: #FFFFFF;
         }
 
         /* الهيدر */
@@ -19,75 +20,74 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 10px 20px;
+            padding: 20px;
             background-color: #5865F2;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
         }
 
         .header .logo {
-            font-size: 24px;
+            font-size: 26px;
             font-weight: bold;
+            color: #FFFFFF;
         }
 
         .header button {
-            background-color: white;
+            background-color: #FFFFFF;
             color: #5865F2;
             border: none;
-            padding: 5px 10px;
+            padding: 8px 15px;
             border-radius: 5px;
-            font-size: 14px;
+            font-size: 16px;
+            font-weight: bold;
             cursor: pointer;
+            transition: 0.3s;
         }
 
         .header button:hover {
             background-color: #e0e0e0;
         }
 
-        /* لوحة البنرات */
-        .banner {
-            display: flex;
-            overflow: hidden;
+        /* البنرات */
+        .banner-container {
             position: relative;
-            height: 300px;
+            overflow: hidden;
+            height: 400px;
         }
 
-        .banner img {
+        .banner-container img {
             width: 100%;
-            height: 300px;
+            height: 400px;
             object-fit: cover;
-            animation: slide 10s infinite;
+            position: absolute;
+            top: 0;
+            left: 0;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
         }
 
-        @keyframes slide {
-            0% { transform: translateX(0); }
-            25% { transform: translateX(-100%); }
-            50% { transform: translateX(-200%); }
-            75% { transform: translateX(-300%); }
-            100% { transform: translateX(0); }
+        .banner-container img.active {
+            opacity: 1;
         }
 
         /* من نحن */
         .about {
             text-align: center;
-            margin: 20px 0;
+            padding: 40px 20px;
         }
 
         .about h2 {
-            margin-bottom: 10px;
-            font-size: 24px;
+            margin-bottom: 20px;
+            font-size: 28px;
+            font-weight: bold;
             color: #5865F2;
         }
 
-        .about .gallery {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-        }
-
         .about .gallery img {
-            width: 360px;
-            height: 202px;
+            width: 90%;
+            margin: 20px auto;
+            display: block;
             border-radius: 10px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
         }
 
         /* شريط التنقل */
@@ -95,36 +95,54 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 10px 20px;
-            background-color: #5865F2;
+            padding: 15px 20px;
+            background-color: #FFFFFF;
             position: sticky;
-            top: 0;
+            bottom: 0;
             z-index: 1000;
+            box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.2);
         }
 
         .navbar .nav-item {
-            color: white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            font-size: 14px;
+            font-weight: bold;
+            color: #05080F;
             text-decoration: none;
-            font-size: 16px;
-            padding: 5px 10px;
             transition: 0.3s;
         }
 
+        .navbar .nav-item img {
+            width: 28px;
+            height: 28px;
+            margin-bottom: 5px;
+        }
+
         .navbar .nav-item:hover {
-            color: #e0e0e0;
+            color: #5865F2;
         }
 
         .navbar .center {
             position: relative;
-            top: -10px;
+            background-color: #FFFFFF;
+            border: 2px solid #5865F2;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            top: -20px;
         }
 
         /* الفوتر */
         .footer {
             text-align: center;
-            padding: 20px;
+            padding: 30px 20px;
             background-color: #5865F2;
-            color: white;
+            color: #FFFFFF;
         }
 
         .footer .logo {
@@ -135,13 +153,13 @@
 
         .footer .links {
             font-size: 14px;
-            color: white;
         }
 
         .footer .links a {
-            color: white;
+            color: #FFFFFF;
             text-decoration: none;
-            margin: 0 10px;
+            margin: 0 15px;
+            transition: 0.3s;
         }
 
         .footer .links a:hover {
@@ -157,11 +175,10 @@
     </header>
 
     <!-- البنرات -->
-    <div class="banner">
-        <img src="https://via.placeholder.com/1200x300/FF5733/FFFFFF?text=Banner+1" alt="Banner 1">
-        <img src="https://via.placeholder.com/1200x300/33FF57/FFFFFF?text=Banner+2" alt="Banner 2">
-        <img src="https://via.placeholder.com/1200x300/3357FF/FFFFFF?text=Banner+3" alt="Banner 3">
-        <img src="https://via.placeholder.com/1200x300/FF33A6/FFFFFF?text=Banner+4" alt="Banner 4">
+    <div class="banner-container">
+        <img src="https://via.placeholder.com/1200x400/FF5733/FFFFFF?text=Banner+1" alt="Banner 1" class="active">
+        <img src="https://via.placeholder.com/1200x400/33FF57/FFFFFF?text=Banner+2" alt="Banner 2">
+        <img src="https://via.placeholder.com/1200x400/3357FF/FFFFFF?text=Banner+3" alt="Banner 3">
     </div>
 
     <!-- من نحن -->
@@ -176,11 +193,25 @@
 
     <!-- شريط التنقل -->
     <nav class="navbar">
-        <a href="#" class="nav-item">الرئيسية</a>
-        <a href="#" class="nav-item">الخدمات</a>
-        <a href="#" class="nav-item center">الأقسام</a>
-        <a href="#" class="nav-item">اتصل بنا</a>
-        <a href="#" class="nav-item">سياسة الخصوصية</a>
+        <a href="#" class="nav-item">
+            <img src="https://via.placeholder.com/28" alt="Icon 1">
+            الرئيسية
+        </a>
+        <a href="#" class="nav-item">
+            <img src="https://via.placeholder.com/28" alt="Icon 2">
+            الرسائل
+        </a>
+        <div class="center">
+            <img src="https://via.placeholder.com/36" alt="User Icon">
+        </div>
+        <a href="#" class="nav-item">
+            <img src="https://via.placeholder.com/28" alt="Icon 3">
+            عروض
+        </a>
+        <a href="#" class="nav-item">
+            <img src="https://via.placeholder.com/28" alt="Icon 4">
+            المزيد
+        </a>
     </nav>
 
     <!-- الفوتر -->
@@ -194,24 +225,25 @@
     </footer>
 
     <script>
+        // تبديل الصور في البنرات
+        let currentIndex = 0;
+        const images = document.querySelectorAll('.banner-container img');
+        setInterval(() => {
+            images[currentIndex].classList.remove('active');
+            currentIndex = (currentIndex + 1) % images.length;
+            images[currentIndex].classList.add('active');
+        }, 3000);
+
         // تبديل اللغة
         function toggleLanguage() {
             const currentLang = document.documentElement.lang;
             if (currentLang === "ar") {
                 document.documentElement.lang = "en";
                 document.documentElement.dir = "ltr";
-                document.querySelector(".header button").innerText = "Change Language";
-                document.querySelector(".header .logo").innerText = "Website Logo";
-                document.querySelector(".about h2").innerText = "About Us";
-                document.querySelectorAll(".navbar .nav-item")[0].innerText = "Home";
-                document.querySelectorAll(".navbar .nav-item")[1].innerText = "Services";
-                document.querySelectorAll(".navbar .nav-item")[2].innerText = "Sections";
-                document.querySelectorAll(".navbar .nav-item")[3].innerText = "Contact Us";
-                document.querySelectorAll(".navbar .nav-item")[4].innerText = "Privacy Policy";
-                document.querySelector(".footer .links a:nth-child(1)").innerText = "Privacy Policy";
-                document.querySelector(".footer .links a:nth-child(2)").innerText = "Contact Us";
-                document.querySelector(".footer .links a:nth-child(3)").innerText = "Partners";
+                location.reload();
             } else {
+                document.documentElement.lang = "ar";
+                document.documentElement.dir = "rtl";
                 location.reload();
             }
         }
