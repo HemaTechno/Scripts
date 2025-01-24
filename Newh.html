@@ -191,6 +191,32 @@
             text-decoration: underline;
         }
 
+    /* إعدادات البنرات */
+    
+.banner-container {
+        position: relative;
+        overflow: hidden;
+        height: 100px; /* ارتفاع البانر */
+        background-color: #05080F;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .banner-container img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain; /* عرض الصورة بالكامل */
+        position: absolute;
+        top: 0;
+        left: 0;
+        opacity: 0;
+        transition: opacity 1s ease-in-out;
+    }
+
+    .banner-container img.active {
+        opacity: 1;
+    }
     </style>
     
 </head>
@@ -204,9 +230,16 @@
 </script>
 
 <header class="header">
-    <div class="logo">H-Scripts</div>
-    <button class="login-btn" onclick="window.location.href='https://t.me/hscripts'">الدعم الفني</button>
-</header>
+        <img src="https://i.ibb.co/LnhWf28/image.png" alt="شعار الموقع">
+        <button onclick="toggleLanguage()">تغيير اللغة</button>
+    </header>
+
+    <!-- البنرات -->
+    <div class="banner-container">
+        <img src="https://i.ibb.co/wz93wpQ/image.jpg" alt="Banner 1" class="active">
+        <img src="https://i.ibb.co/Q8GR5qL/image.jpg" alt="Banner 2">
+        <img src="https://i.ibb.co/dcpwkMP/image.jpg" alt="Banner 3">
+    </div>
 
 <h1>All Hack</h1>
 <div id="scriptsContainer"></div>
@@ -275,6 +308,30 @@
         window.open('https://t.me/hscripts', '_blank');
     }
 </script>
+    <script>
+        // تبديل الصور في البنرات
+        let currentIndex = 0;
+        const images = document.querySelectorAll('.banner-container img');
+        setInterval(() => {
+            images[currentIndex].classList.remove('active');
+            currentIndex = (currentIndex + 1) % images.length;
+            images[currentIndex].classList.add('active');
+        }, 3000);
+
+        // تبديل اللغة
+        function toggleLanguage() {
+            const currentLang = document.documentElement.lang;
+            if (currentLang === "ar") {
+                document.documentElement.lang = "en";
+                document.documentElement.dir = "ltr";
+                location.reload();
+            } else {
+                document.documentElement.lang = "ar";
+                document.documentElement.dir = "rtl";
+                location.reload();
+            }
+        }
+    </script>
 
 </body>
 </html>
