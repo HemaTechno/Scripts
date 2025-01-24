@@ -258,15 +258,14 @@
     }
 
     function getPlatformImage(platform) {
-        switch(platform.toLowerCase()) {
-            case "roblox":
-                return "https://upload.wikimedia.org/wikipedia/commons/c/c5/Roblox_Logo.png";
-            case "discord":
-                return "https://upload.wikimedia.org/wikipedia/commons/5/53/Discord_logo.svg";
-            default:
-                return "https://via.placeholder.com/60";
+            const images = {
+                "android": "20241106_182915.png",
+                "ios": "20241106_182935.png",
+                "windows": "20241106_182953.png",
+                "linux": "https://i.ibb.co/XVqYwdS/unnamed.png"
+            };
+            return images[platform.toLowerCase()] || "default.png";
         }
-    }
 
     function closeNotification() {
         document.getElementById('notification').style.display = 'none';
