@@ -1,349 +1,220 @@
 <!DOCTYPE html>
-<html lang="ar">
+<html lang="ar" dir="rtl">
 <head>
-
-
-    <script type='text/javascript' src='//dreadfullyemulateconservation.com/c8/67/c2/c867c21ca6f549c59064f55534db0add.js'></script>
-
-<!-- وصف الموقع -->
-    <meta name="description" content="أفضل موقع لمشاركة السكربتات و الهاكات الخاصة بأنظمة التشغيل المختلفة.">
-
-    <!-- وسم Open Graph الخاص بالفيسبوك ومنصات أخرى -->
-    <meta property="og:title" content="H-Scripts - أفضل موقع للسكربتات">
-    <meta property="og:description" content="افضل موقع سكربتات و هاكات روبلوكس و تقدر اسكربت الان">
-    <meta property="og:image" content="https://i.ibb.co/FVr4b2z/20240926-203252.jpg">
-    <meta property="og:url" content="https://h-scripts.site">
-    <meta property="og:type" content="website">
-
-    <!-- وسم Twitter Card الخاص بتويتر -->
-    <meta name="twitter:card" content="https://i.ibb.co/FVr4b2z/20240926-203252.jpg">
-    <meta name="twitter:title" content="H-Scripts - أفضل موقع للسكربتات">
-    <meta name="twitter:description" content="شارك أفضل السكربتات مع الآخرين وتعلم المزيد حول الهاكات.">
-    <meta name="twitter:image" content="https://i.ibb.co/FVr4b2z/20240926-203252.jpg">
-
-    <!-- أيقونة الموقع -->
-    <link rel="icon" href="https://i.ibb.co/FVr4b2z/20240926-203252.jpg" type="image/x-icon">
-
-
-    
-    
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="أفضل موقع يقدم شروحات و سكربتات و هاكات روبلوكس.">
-    <meta name="keywords" content="هيما تيك, روبلوكس, شروحات, سكربتات, هاكات">
-    <meta name="author" content="Hema_Tech1">
-    <title>YouTube Scripts</title>
-<style>
-    /* Reset */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+    <title>صفحة ديناميكية</title>
+    <style>
+        /* إعدادات الصفحة */
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #05080F;
+            color: white;
+        }
 
-body {
-    font-family: 'Press Start 2P', 'Cairo', sans-serif;
-    background: black;
-    color: white;
-    overflow-x: hidden;
-}
+        /* الهيدر */
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            background-color: #5865F2;
+        }
 
-/* Animated background */
-@keyframes flicker {
-    0% { opacity: 1; }
-    50% { opacity: 0.8; }
-    100% { opacity: 1; }
-}
+        .header .logo {
+            font-size: 24px;
+            font-weight: bold;
+        }
 
-body::before {
-    content: "";
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: url(https://i.ibb.co/9rqpKSV/coding.gif) repeat;
-    opacity: 0.1;
-    z-index: -1;
-}
+        .header button {
+            background-color: white;
+            color: #5865F2;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 14px;
+            cursor: pointer;
+        }
 
-/* Container, Partners, Sidebar */
-.container, .partners-section, .sidebar {
-    position: relative;
-    z-index: 1; /* Ensures elements are above background */
-}
+        .header button:hover {
+            background-color: #e0e0e0;
+        }
 
-/* Neon Text Effect */
-h1, h2 {
-    text-align: center;
-    color: #0f0;
-    text-shadow: 0 0 5px #0f0, 0 0 10px #0f0, 0 0 15px #00ff00, 0 0 20px #00ff00, 0 0 25px #00ff00;
-    margin-bottom: 20px;
-}
+        /* لوحة البنرات */
+        .banner {
+            display: flex;
+            overflow: hidden;
+            position: relative;
+            height: 300px;
+        }
 
-h1 {
-    font-size: 2.5rem;
-    border: 2px solid black;
-    padding: 10px;
-    border-radius: 5px;
-    display: inline-block;
-    margin: 20px 0;
-}
+        .banner img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            animation: slide 10s infinite;
+        }
 
-/* Sidebar Styling */
-.menu-btn {
-    position: fixed;
-    top: 20px;
-    left: 20px;
-    font-size: 2rem;
-    cursor: pointer;
-    color: #0f0;
-    z-index: 2;
-}
+        @keyframes slide {
+            0% { transform: translateX(0); }
+            25% { transform: translateX(-100%); }
+            50% { transform: translateX(-200%); }
+            75% { transform: translateX(-300%); }
+            100% { transform: translateX(0); }
+        }
 
-.sidebar {
-    position: fixed;
-    top: 0;
-    left: -300px;
-    width: 300px;
-    height: 100%;
-    background-color: #000;
-    transition: left 0.5s ease;
-    padding-top: 60px;
-    box-shadow: 3px 0 15px rgba(0, 255, 0, 0.5);
-    z-index: 3;
-}
+        /* من نحن */
+        .about {
+            text-align: center;
+            margin: 20px 0;
+        }
 
-h2 {
-    background-color: rgba(0, 255, 0, 0.2);
-    padding: 10px;
-    border-radius: 5px;
-    margin-bottom: 15px;
-}
+        .about h2 {
+            margin-bottom: 10px;
+            font-size: 24px;
+            color: #5865F2;
+        }
 
-.sidebar a {
-    display: block;
-    padding: 20px;
-    text-decoration: none;
-    color: white;
-    font-size: 1.2rem;
-    transition: background 0.3s ease;
-    border-bottom: 1px solid #0f0;
-}
+        .about .gallery {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
 
-.sidebar a:hover {
-    background-color: #0f0;
-    color: black;
-}
+        .about .gallery img {
+            width: 360px;
+            height: 202px;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+        }
 
-.social-btn {
-    display: inline-block;
-    padding: 10px 20px;
-    color: #0f0;
-    border: 2px solid #0f0;
-    background: transparent;
-    text-decoration: none;
-    text-transform: uppercase;
-    font-size: 0.8rem;
-    border-radius: 5px;
-    transition: 0.4s;
-}
+        /* شريط التنقل */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            background-color: #5865F2;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
 
-.social-btn:hover {
-    background-color: #0f0;
-    color: black;
-}
+        .navbar .nav-item {
+            color: white;
+            text-decoration: none;
+            font-size: 16px;
+            padding: 5px 10px;
+            transition: 0.3s;
+        }
 
-/* Container and box styling */
-.container {
-    margin-top: 120px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
+        .navbar .nav-item:hover {
+            color: #e0e0e0;
+        }
 
-.box {
-    background-color: rgba(0, 255, 0, 0.1);
-    padding: 20px;
-    margin: 20px 0;
-    border-radius: 10px;
-    width: 80%;
-    max-width: 400px;
-    text-align: center;
-    box-shadow: 0 0 10px rgba(0, 255, 0, 0.5);
-    min-height: 100px;
-}
+        .navbar .center {
+            position: relative;
+            top: -10px;
+        }
 
-/* Partners Section */
-.partners-section {
-    padding: 40px 20px;
-    text-align: center;
-    margin-top: 50px;
-}
+        /* الفوتر */
+        .footer {
+            text-align: center;
+            padding: 20px;
+            background-color: #5865F2;
+            color: white;
+        }
 
-.partners-container {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-    flex-wrap: wrap;
-}
+        .footer .logo {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
 
-.partner {
-    padding: 10px;
-    border-radius: 10px;
-    width: 150px;
-    text-align: center;
-    box-shadow: 0px 4px 6px rgba(0, 255, 0, 0.3);
-    transition: transform 0.3s ease;
-}
+        .footer .links {
+            font-size: 14px;
+            color: white;
+        }
 
-.partner img {
-    width: 100%;
-    height: auto;
-    border-radius: 10px;
-    margin-bottom: 10px;
-}
+        .footer .links a {
+            color: white;
+            text-decoration: none;
+            margin: 0 10px;
+        }
 
-.partner p {
-    color: #0f0;
-}
-
-.partner:hover {
-    transform: translateY(-10px);
-}
-
-</style>
-
-    
-    <!-- روابط Firebase -->
-    <script src="https://www.gstatic.com/firebasejs/10.7.2/firebase-app-compat.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/10.7.2/firebase-firestore-compat.js"></script>
+        .footer .links a:hover {
+            text-decoration: underline;
+        }
+    </style>
 </head>
 <body>
+    <!-- الهيدر -->
+    <header class="header">
+        <div class="logo">شعار الموقع</div>
+        <button onclick="toggleLanguage()">تغيير اللغة</button>
+    </header>
 
-    <div class="logo-name">
-        <h1>H-Scripts</h1>
+    <!-- البنرات -->
+    <div class="banner">
+        <img src="https://via.placeholder.com/1200x300/FF5733/FFFFFF?text=Banner+1" alt="Banner 1">
+        <img src="https://via.placeholder.com/1200x300/33FF57/FFFFFF?text=Banner+2" alt="Banner 2">
+        <img src="https://via.placeholder.com/1200x300/3357FF/FFFFFF?text=Banner+3" alt="Banner 3">
+        <img src="https://via.placeholder.com/1200x300/FF33A6/FFFFFF?text=Banner+4" alt="Banner 4">
     </div>
 
-    <!-- القائمة الجانبية -->
-    <div id="mySidebar" class="sidebar">
-        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
-        <a href="public-scripts.html">scripts</a>
-        <a href="Scripts.html">YouTube Scripts</a>
-        <a href="Hack.html">exploits</a>
-        <a href="https://youtube.com/@hema_tech1?si=It1Tn77jTgsUZDWJ">Partner</a>
-    </div>
+    <!-- من نحن -->
+    <section class="about">
+        <h2>من نحن</h2>
+        <div class="gallery">
+            <img src="https://via.placeholder.com/360x202" alt="Image 1">
+            <img src="https://via.placeholder.com/360x202" alt="Image 2">
+            <img src="https://via.placeholder.com/360x202" alt="Image 3">
+        </div>
+    </section>
 
-    <span class="menu-btn" onclick="openNav()">&#9776;</span>
+    <!-- شريط التنقل -->
+    <nav class="navbar">
+        <a href="#" class="nav-item">الرئيسية</a>
+        <a href="#" class="nav-item">الخدمات</a>
+        <a href="#" class="nav-item center">الأقسام</a>
+        <a href="#" class="nav-item">اتصل بنا</a>
+        <a href="#" class="nav-item">سياسة الخصوصية</a>
+    </nav>
 
-    <div id="boxContainer"></div>
+    <!-- الفوتر -->
+    <footer class="footer">
+        <div class="logo">شعار الموقع</div>
+        <div class="links">
+            <a href="#">سياسة الخصوصية</a> |
+            <a href="#">التواصل معنا</a> |
+            <a href="#">الشركاء</a>
+        </div>
+    </footer>
 
     <script>
-        // تكوين Firebase
-        const firebaseConfig = {
-            apiKey: "AIzaSyCJ6erh48TqECEM-OfZPQO0voOaTu7f_Og",
-            authDomain: "scripts-b35e3.firebaseapp.com",
-            projectId: "scripts-b35e3",
-            storageBucket: "scripts-b35e3.appspot.com",
-            messagingSenderId: "536349347913",
-            appId: "1:536349347913:web:7c4266a79eefc76e212f98"
-        };
-
-        // تهيئة Firebase
-        firebase.initializeApp(firebaseConfig);
-        const db = firebase.firestore();
-
-        // جلب البيانات من Firestore
-        db.collection("scripts").get().then((querySnapshot) => {
-            const data = [];
-            querySnapshot.forEach((doc) => {
-                data.push(doc.data());
-            });
-            createBoxes(data);
-        }).catch((error) => {
-            console.error("Error getting documents: ", error);
-        });
-
-        // وظيفة إنشاء البطاقات استناداً إلى البيانات
-        function createBoxes(data) {
-            const boxContainer = document.getElementById('boxContainer');
-
-            data.forEach(item => {
-                const card = document.createElement('div');
-                card.classList.add('card');
-
-                // إنشاء العنصر المرئي للبطاقة
-                card.innerHTML = `
-                    <a href="page.html?id=${item.id}">
-                        <img src="${item.imageUrl}" alt="${item.title}">
-                    </a>
-                    <div class="card-content">
-                        <div class="meta">
-                            <span>${item.category}</span>
-                            <span>${item.date}</span>
-                        </div>
-                        <h1>${item.title}</h1>
-                        <p>${item.description}</p>
-                        <div class="author">
-                            <img src="${item.authorImage}" alt="${item.author}">
-                            <span>${item.author}</span>
-                        </div>
-                    </div>
-                `;
-
-                boxContainer.appendChild(card);
-            });
-        }
-
-        // دالة فتح القائمة الجانبية
-        function openNav() {
-            document.getElementById("mySidebar").style.right = "0"; // إظهار القائمة
-        }
-
-        // دالة إغلاق القائمة الجانبية
-        function closeNav() {
-            document.getElementById("mySidebar").style.right = "-250px"; // إخفاء القائمة
-        }
-
-        // دالة التحقق من معرف السكربت في URL
-        function checkForScriptId() {
-            const urlParams = new URLSearchParams(window.location.search);
-            const scriptId = urlParams.get('id');
-            if (scriptId) {
-                db.collection("scripts").doc(scriptId).get().then(doc => {
-                    if (doc.exists) {
-                        const data = doc.data();
-                        const scriptDiv = document.createElement('div');
-                        scriptDiv.className = 'script-card';
-                        scriptDiv.innerHTML = `
-                            <h3>${data.title}</h3>
-                            <p>${data.description}</p>
-                            <div class="script-frame" onclick="copyScriptText('${data.scriptText}')">
-                                <pre>${data.scriptText}</pre>
-                            </div>
-                        `;
-                        document.body.appendChild(scriptDiv);
-                    } else {
-                        console.log("No such document!");
-                    }
-                }).catch(error => {
-                    console.log("Error getting document:", error);
-                });
+        // تبديل اللغة
+        function toggleLanguage() {
+            const currentLang = document.documentElement.lang;
+            if (currentLang === "ar") {
+                document.documentElement.lang = "en";
+                document.documentElement.dir = "ltr";
+                document.querySelector(".header button").innerText = "Change Language";
+                document.querySelector(".header .logo").innerText = "Website Logo";
+                document.querySelector(".about h2").innerText = "About Us";
+                document.querySelectorAll(".navbar .nav-item")[0].innerText = "Home";
+                document.querySelectorAll(".navbar .nav-item")[1].innerText = "Services";
+                document.querySelectorAll(".navbar .nav-item")[2].innerText = "Sections";
+                document.querySelectorAll(".navbar .nav-item")[3].innerText = "Contact Us";
+                document.querySelectorAll(".navbar .nav-item")[4].innerText = "Privacy Policy";
+                document.querySelector(".footer .links a:nth-child(1)").innerText = "Privacy Policy";
+                document.querySelector(".footer .links a:nth-child(2)").innerText = "Contact Us";
+                document.querySelector(".footer .links a:nth-child(3)").innerText = "Partners";
+            } else {
+                location.reload();
             }
         }
-
-        // دالة لنسخ نص السكربت
-        function copyScriptText(text) {
-            navigator.clipboard.writeText(text).then(() => {
-                alert("تم نسخ السكربت إلى الحافظة!");
-            }, (err) => {
-                console.error('Could not copy text: ', err);
-            });
-        }
-
-        // استدعاء التحقق من معرف السكربت عند تحميل الصفحة
-        window.onload = checkForScriptId;
-
     </script>
 </body>
 </html>
