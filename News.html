@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+
+   <!-- وصف الموقع -->
+    <meta name="description" content="أفضل موقع لمشاركة السكربتات و الهاكات الخاصة بأنظمة التشغيل المختلفة.">
+    <!-- وسم Open Graph الخاص بالفيسبوك ومنصات أخرى -->
+    <meta property="og:title" content="H-Scripts - أفضل موقع للسكربتات">
+    <meta property="og:description" content="افضل موقع سكربتات و هاكات روبلوكس و تقدر اسكربت الان">
+    <meta property="og:image" content="https://i.ibb.co/FVr4b2z/20240926-203252.jpg">
+    <meta property="og:url" content="https://h-scripts.site">
+    <meta property="og:type" content="website">
+    <!-- وسم Twitter Card الخاص بتويتر -->
+    <meta name="twitter:card" content="https://i.ibb.co/FVr4b2z/20240926-203252.jpg">
+    <meta name="twitter:title" content="H-Scripts - أفضل موقع للسكربتات">
+    <meta name="twitter:description" content="شارك أفضل السكربتات مع الآخرين وتعلم المزيد حول الهاكات.">
+    <meta name="twitter:image" content="https://i.ibb.co/FVr4b2z/20240926-203252.jpg">
+    <!-- أيقونة الموقع -->
+    <link rel="icon" href="https://i.ibb.co/FVr4b2z/20240926-203252.jpg" type="image/x-icon">
+    
+    
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Public Scripts</title>
+    <style>
+        /* تنسيقات عامة */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Amiri', serif;
+        }
+
+
+        body {
+            background-color: #1a1a1a;
+            color: #ffffff;
+        }
+
+                /* الهيدر */
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            background-color: #05080F;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .header .logo {
+            font-size: 26px;
+            font-weight: bold;
+            color: #FFFFFF;
+        }
+.header img {
+            height: 50px; /* تعديل حجم الصورة */
+}
+        .header button {
+            background-color: #FFFFFF;
+            color: #5865F2;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 5px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .header button:hover {
+            background-color: #e0e0e0;
+        }
+
+    /* إعدادات البنرات */
+    
+.banner-container {
+        position: relative;
+        overflow: hidden;
+        height: 100px; /* ارتفاع البانر */
+        background-color: #05080F;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .banner-container img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain; /* عرض الصورة بالكامل */
+        position: absolute;
+        top: 0;
+        left: 0;
+        opacity: 0;
+        transition: opacity 1s ease-in-out;
+    }
+
+    .banner-container img.active {
+        opacity: 1;
+    }
+        /* قسم العنوان */
+        .hero {
+            text-align: center;
+            padding: 2rem;
+        }
+
+        /* قسم السكربتات */
+        .scripts-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+            padding: 2rem;
+        }
+
+        .script-card {
+            background-color: #333;
+            border-radius: 10px;
+            padding: 1rem;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .script-card img {
+            width: 100%;
+            height: auto;
+            border-radius: 5px;
+        }
+
+        .script-info {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            font-size: 0.9rem;
+            color: #bbbbbb;
+            margin-top: 10px;
+        }
+
+        .script-title {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #4caf50;
+            margin: 10px 0;
+        }
+
+        .script-description {
+            font-size: 1rem;
+            color: #dddddd;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+
+        .get-button {
+            background-color: #008CBA;
+            color: white;
+            padding: 0.5rem 1rem;
+            border: none;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
+
+        .get-button:hover {
+            background-color: #45a049;
+        }
+
+        /* شريط التنقل */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+            background-color: #FFFFFF;
+            position: sticky;
+            bottom: 0;
+            z-index: 1000;
+            box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .navbar .nav-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            font-size: 14px;
+            font-weight: bold;
+            color: #05080F;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        .navbar .nav-item img {
+            width: 28px;
+            height: 28px;
+            margin-bottom: 5px;
+        }
+
+        .navbar .nav-item:hover {
+            color: #5865F2;
+        }
+
+        .navbar .center {
+            position: relative;
+            background-color: #FFFFFF;
+            border: 2px solid #5865F2;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            top: -20px;
+        }
+.footer img {
+            height: 50px; /* تعديل حجم الصورة */
+}
+        /* الفوتر */
+        .footer {
+            text-align: center;
+            padding: 30px 20px;
+            background-color: #5865F2;
+            color: #FFFFFF;
+        }
+
+        .footer .logo {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .footer .links {
+            font-size: 14px;
+        }
+
+        .footer .links a {
+            color: #FFFFFF;
+            text-decoration: none;
+            margin: 0 15px;
+            transition: 0.3s;
+        }
+
+        .footer .links a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- الشريط العلوي -->
+    <!-- الهيدر -->
+    <header class="header">
+        <img src="https://i.ibb.co/LnhWf28/image.png" alt="شعار الموقع">
+        <button onclick="toggleLanguage()">تغيير اللغة</button>
+    </header>
+
+    <!-- البنرات -->
+    <div class="banner-container">
+        <img src="https://i.ibb.co/wz93wpQ/image.jpg" alt="Banner 1" class="active">
+        <img src="https://i.ibb.co/Q8GR5qL/image.jpg" alt="Banner 2">
+        <img src="https://i.ibb.co/dcpwkMP/image.jpg" alt="Banner 3">
+    </div>
+
+    <!-- قسم العنوان -->
+    <section class="hero">
+        <h1>جميع السكربتات</h1>
+    </section>
+
+    <!-- قسم السكربتات -->
+    <div class="scripts-container" id="scriptsContainer">
+        <!-- سيتم تحميل السكربتات هنا -->
+    </div>
+
+    <!-- شريط التنقل -->
+    <nav class="navbar">
+        <a href="index.html" class="nav-item">
+            <img src="https://i.ibb.co/vXyvDJd/image.png" alt="Icon 1">
+            الرئيسية
+        </a>
+        <a href="Suggst.html" class="nav-item">
+            <img src="https://i.ibb.co/5X3qthn/image.png" alt="Icon 2">
+            الإقتراحات
+        </a>
+        <a href="https://t.me/hscripts" class="nav-item">
+            <img src="https://i.ibb.co/pjHG0n8/image.png" alt="Icon 3">
+            الدعم
+        </a>
+        <a href="#" class="nav-item">
+            <img src="https://i.ibb.co/sy6DDPZ/image.png" alt="Icon 3">
+            الهاكات
+        </a>
+        <a href="#" class="nav-item">
+            <img src="https://i.ibb.co/nr5Znsr/image.png" alt="Icon 4">
+            الاسكربتات
+        </a>
+    </nav>
+
+    <!-- الفوتر -->
+    <footer class="footer">
+        <img src="https://i.ibb.co/LnhWf28/image.png" alt="شعار الموقع">
+        <div class="links">
+            <a href="#">سياسة الخصوصية</a> |
+            <a href="#">التواصل معنا</a> |
+            <a href="#">الشركاء</a>
+        </div>
+    </footer>
+
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/10.7.2/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.2/firebase-firestore-compat.js"></script>
+
+    <script>
+        const firebaseConfig = {
+            apiKey: "AIzaSyDoK427q44Fj87JhgZh2vKeUnACkjl8HDc",
+            authDomain: "treng-c6027.firebaseapp.com",
+            projectId: "treng-c6027",
+            storageBucket: "treng-c6027.appspot.com",
+            messagingSenderId: "305527546716",
+            appId: "1:305527546716:web:fd072a58200f31bb42d799",
+            measurementId: "G-3JFKFT2LT0"
+        };
+
+        firebase.initializeApp(firebaseConfig);
+        const db = firebase.firestore();
+
+        async function loadScripts() {
+            const scriptsContainer = document.getElementById("scriptsContainer");
+            scriptsContainer.innerHTML = "";
+
+            const querySnapshot = await db.collection("scripts").get();
+
+            if (querySnapshot.empty) {
+                scriptsContainer.innerHTML = "<p>لا توجد سكربتات متاحة.</p>";
+                return;
+            }
+
+            querySnapshot.forEach((doc) => {
+                const script = doc.data();
+                const scriptCard = document.createElement("div");
+                scriptCard.className = "script-card";
+                scriptCard.innerHTML = `
+                    <img src="${script.imageUrl}" alt="${script.title}">
+                    <div class="script-info">
+                        <span>تاريخ الإضافة: ${script.addedDate}</span>
+                        <span>اسم اللعبة: ${script.mapName}</span>
+                    </div>
+                    <div class="script-title">${script.title}</div>
+                    <p class="script-description">${script.description}</p>
+                    <a href="view.html?id=${doc.id}" class="get-button">Get</a>
+                `;
+                scriptsContainer.appendChild(scriptCard);
+            });
+        }
+
+        loadScripts();
+    </script>
+
+    <script>
+        // كود لإضافة تأثير عند النقر على الشاشة
+        document.addEventListener('click', function(e) {
+            const effect = document.createElement('div');
+            effect.className = 'click-effect';
+            effect.style.left = `${e.pageX - 10}px`;
+            effect.style.top = `${e.pageY - 10}px`;
+            document.body.appendChild(effect);
+
+            setTimeout(() => {
+                effect.remove();
+            }, 500);
+        });
+    </script>
+
+<script src="https://www.gstatic.com/firebasejs/10.7.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.7.2/firebase-firestore-compat.js"></script>
+
+<script>
+    const myFirebaseConfig = {
+        apiKey: "AIzaSyDoK427q44Fj87JhgZh2vKeUnACkjl8HDc",
+        authDomain: "treng-c6027.firebaseapp.com",
+        projectId: "treng-c6027",
+        storageBucket: "treng-c6027.appspot.com",
+        messagingSenderId: "305527546716",
+        appId: "1:305527546716:web:fd072a58200f31bb42d799",
+        measurementId: "G-3JFKFT2LT0"
+    };
+
+    firebase.initializeApp(myFirebaseConfig);
+    const myDb = firebase.firestore();
+
+    // دالة التحقق من حالة الصيانة
+    async function checkMaintenanceStatus() {
+        const doc = await myDb.collection("settings").doc("maintenance").get();
+        if (doc.exists && doc.data().isActive) {
+            document.body.innerHTML = `
+                <div style="display: flex; flex-direction: column; align-items: center; text-align: center; margin-top: 10%; font-family: Arial, sans-serif;">
+                    <img src="https://i.ibb.co/W077gdL/images-1-removebg-preview.png" alt="صورة الصيانة" style="max-width: 200px; border-radius: 10px; margin-bottom: 20px;">
+                    <h1 style="font-size: 32px; color: #333; margin-bottom: 10px;">الموقع تحت الصيانة</h1>
+                    <p style="font-size: 18px; color: #666; margin-bottom: 20px;">
+                        نحن نعمل حاليًا على تحسين تجربة المستخدم. يرجى التحقق مرة أخرى لاحقًا.
+                    </p>
+                    <a href="https://t.me/hscripts" style="display: inline-block; padding: 12px 24px; background-color: #007bff; color: #fff; font-size: 18px; border-radius: 5px; text-decoration: none; transition: background-color 0.3s;">
+                        تواصل مع الدعم
+                    </a>
+                </div>
+            `;
+        }
+    }
+
+    // التحقق من حالة الصيانة عند تحميل الصفحة
+    checkMaintenanceStatus();
+</script>
+
+    <script>
+    function openTelegram() {
+        // ضع هنا رابط تيليجرام الخاص بك
+        window.location.href = "https://t.me/Hema_tech1";
+    }
+
+    function closeNotification() {
+        document.getElementById("notification").style.display = "none";
+    }
+    </script>
+<script type="text/javascript">
+    aclib.runAutoTag({
+        zoneId: 'zknpgw6khk',
+    });
+</script>
+        <script>
+        // تبديل الصور في البنرات
+        let currentIndex = 0;
+        const images = document.querySelectorAll('.banner-container img');
+        setInterval(() => {
+            images[currentIndex].classList.remove('active');
+            currentIndex = (currentIndex + 1) % images.length;
+            images[currentIndex].classList.add('active');
+        }, 3000);
+
+        // تبديل اللغة
+        function toggleLanguage() {
+            const currentLang = document.documentElement.lang;
+            if (currentLang === "ar") {
+                document.documentElement.lang = "en";
+                document.documentElement.dir = "ltr";
+                location.reload();
+            } else {
+                document.documentElement.lang = "ar";
+                document.documentElement.dir = "rtl";
+                location.reload();
+            }
+        }
+    </script>
+    
+</body>
+</html>
