@@ -1,46 +1,34 @@
 <!DOCTYPE html>
 <html lang="ar">
 <head> 
-
-    <script>(function(s,u,z,p){s.src=u,s.setAttribute('data-zone',z),p.appendChild(s);})(document.createElement('script'),'https://shebudriftaiter.net/tag.min.js',8469034,document.body||document.documentElement)</script>
-  
-
     
     <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
 
-    <!-- وصف الموقع -->
     <meta name="description" content="أفضل موقع لمشاركة السكربتات و الهاكات الخاصة بأنظمة التشغيل المختلفة.">
-    <!-- وسم Open Graph الخاص بالفيسبوك ومنصات أخرى -->
     <meta property="og:title" content="H-Scripts - أفضل موقع للسكربتات">
     <meta property="og:description" content="افضل موقع سكربتات و هاكات روبلوكس و تقدر اسكربت الان">
     <meta property="og:image" content="https://i.ibb.co/FVr4b2z/20240926-203252.jpg">
     <meta property="og:url" content="https://h-scripts.site">
     <meta property="og:type" content="website">
-    <!-- وسم Twitter Card الخاص بتويتر -->
     <meta name="twitter:card" content="https://i.ibb.co/FVr4b2z/20240926-203252.jpg">
     <meta name="twitter:title" content="H-Scripts - أفضل موقع للسكربتات">
     <meta name="twitter:description" content="شارك أفضل السكربتات مع الآخرين وتعلم المزيد حول الهاكات.">
     <meta name="twitter:image" content="https://i.ibb.co/FVr4b2z/20240926-203252.jpg">
-    <!-- أيقونة الموقع -->
     <link rel="icon" href="https://i.ibb.co/FVr4b2z/20240926-203252.jpg" type="image/x-icon">
     
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>عرض السكربتات</title>
+    <title>عرض الهاكات</title>
     <style>
-        /* تطبيق الخط الأنيق */
-                * {
+        /* إعدادات الصفحة */
+        @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap');
+        body {
+            font-family: 'Cairo', sans-serif;
             margin: 0;
             padding: 0;
-            box-sizing: border-box;
-            font-family: 'Amiri', serif;
-        }
-
-
-
-        body {
-            background-color: #1a1a1a;
-            color: #ffffff;
+            background-color: #05080F;
+            color: #FFFFFF;
             overflow-y: auto;
             position: relative;
             padding: 20px;
@@ -48,7 +36,7 @@
         }
 
         /* الشريط العلوي */
-             .navbar {
+        .navbar {
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -71,7 +59,6 @@
         .navbar nav a:hover {
             text-decoration: underline;
         }
-
         .login-btn {
             padding: 0.5rem 1rem;
             background-color: #555555;
@@ -80,7 +67,7 @@
             border-radius: 5px;
             cursor: pointer;
         }
-        
+
         /* إعدادات العناوين والصناديق */
         h1 {
             color: #ffffff;
@@ -89,7 +76,7 @@
             text-align: center;
         }
         .script-box {
-            background: #333333;
+            background: #1B1E49;
             border-radius: 8px;
             padding: 20px;
             margin: 15px 0;
@@ -111,7 +98,7 @@
         }
         .script-description {
             font-size: 1.2rem;
-            color: #bbbbbb;
+            color: #ffffff;
             margin-bottom: 10px;
             text-align: center;
         }
@@ -120,7 +107,7 @@
             text-align: center;
         }
         .platform-image {
-            border: 1px solid #4CAF50;
+            border: 1px solid #ffffff;
             border-radius: 8px;
             padding: 3px;
             width: 60px;
@@ -131,7 +118,7 @@
             margin-top: 10px;
             text-decoration: none;
             color: #ffffff;
-            background-color: #008CBA;
+            background-color: #5865F2;
             padding: 10px 20px;
             border-radius: 5px;
             font-size: 1rem;
@@ -141,57 +128,176 @@
             width: 100%;
         }
         .script-link:hover, .share-button:hover {
-            background-color: #555555;
+            background-color: #4D588E;
             transform: translateY(-2px);
         }
-        .notification {
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 300px;
-            background-color: #00bcd4;
-            color: #333;
-            border-radius: 10px;
-            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
-            padding: 15px;
+
+        
+
+        /* الهيدر */
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            background-color: #05080F;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+        }
+        .header .logo {
+            font-size: 26px;
+            font-weight: bold;
+            color: #FFFFFF;
+        }
+        .header img {
+            height: 50px;
+        }
+        .header button {
+            background-color: #FFFFFF;
+            color: #5865F2;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 5px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .header button:hover {
+            background-color: #e0e0e0;
+        }
+
+        /* الفوتر */
+        .footer {
+            text-align: center;
+            padding: 30px 20px;
+            background-color: #5865F2;
+            color: #FFFFFF;
+        }
+
+        .footer .logo {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        .footer .links {
+            font-size: 14px;
+        }
+        .footer .links a {
+            color: #FFFFFF;
+            text-decoration: none;
+            margin: 0 15px;
+            transition: 0.3s;
+        }
+        .footer .links a:hover {
+            text-decoration: underline;
+        }
+
+    /* إعدادات البنرات */
+    
+.banner-container {
+        position: relative;
+        overflow: hidden;
+        height: 100px; /* ارتفاع البانر */
+        background-color: #05080F;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .banner-container img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain; /* عرض الصورة بالكامل */
+        position: absolute;
+        top: 0;
+        left: 0;
+        opacity: 0;
+        transition: opacity 1s ease-in-out;
+    }
+
+    .banner-container img.active {
+        opacity: 1;
+    }
+        
+        /* شريط التنقل */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+            background-color: #FFFFFF;
+            position: sticky;
+            bottom: 0;
+            z-index: 1000;
+            box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .navbar .nav-item {
             display: flex;
             flex-direction: column;
             align-items: center;
-            font-size: 1.1em;
+            font-size: 14px;
+            font-weight: bold;
+            color: #05080F;
+            text-decoration: none;
+            transition: 0.3s;
         }
-        .notification h2 {
-            margin: 0;
-            font-size: 1.2em;
-            color: #000;
+
+        .navbar .nav-item img {
+            width: 28px;
+            height: 28px;
+            margin-bottom: 5px;
         }
-        .notification p {
-            margin: 10px 0;
-            color: #222;
+
+        .navbar .nav-item:hover {
+            color: #5865F2;
         }
-        .notification .buttons {
+
+        .navbar .center {
+            position: relative;
+            background-color: #FFFFFF;
+            border: 2px solid #5865F2;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
             display: flex;
-            gap: 10px;
+            align-items: center;
+            justify-content: center;
+            top: -20px;
         }
-        .notification button {
-            padding: 8px 12px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
+.footer img {
+            height: 50px; /* تعديل حجم الصورة */
+}
+        /* الفوتر */
+        .footer {
+            text-align: center;
+            padding: 30px 20px;
+            background-color: #5865F2;
+            color: #FFFFFF;
         }
-        .buy-button {
-            background-color: #ffeb3b;
-            color: #333;
+
+        .footer .logo {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 10px;
         }
-        .close-button {
-            background-color: #333;
-            color: #fff;
+
+        .footer .links {
+            font-size: 14px;
+        }
+
+        .footer .links a {
+            color: #FFFFFF;
+            text-decoration: none;
+            margin: 0 15px;
+            transition: 0.3s;
+        }
+
+        .footer .links a:hover {
+            text-decoration: underline;
         }
     </style>
     
-    <!-- روابط Firebase -->
-    <script src="https://www.gstatic.com/firebasejs/10.7.2/firebase-app-compat.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/10.7.2/firebase-firestore-compat.js"></script>
 </head>
 <body>
 
@@ -202,89 +308,102 @@
    pop_tag.onerror = function() {pop_tag = document.createElement('script');pop_tag.src='//cdn2.popcash.net/show.js';document.body.appendChild(pop_tag)};
 </script>
 
-
-
-    
-    <div id="notification" class="notification">
-    <h2>وحشتنا من اخر مرة دخلت فيها موقع</h2>
-    <p>متوفر روبكس بي ارخص الأسعار 💪
-
-تخيل كدا 1000 روبكس مش صافين بي 240 جنية مصري 
-
-و تخيل ان البريميوم مع 450 روبكس بي 310 جنية 😉😇 
-
-</p>
-    <div class="buttons">
-        <button class="buy-button" onclick="openTelegram()">شراء</button>
-        <button class="close-button" onclick="closeNotification()">غير مهتم</button>
-    </div>
-    </div>
-    <!-- الشريط العلوي -->
-    <header>
-        <div class="navbar">
-            <div class="logo">H-Scripts</div>
-            <nav>
-                <a href="All-scripts.html">الاسكربتات</a>
-                <a href="Hack.html">الهاكات</a>
-                <a href="youtube-scripts.html">يوتيوبرز</a>
-                <a href="admin/add-public">انشر سكربتك</a>
-            </nav>
-            <button class="login-btn" onclick="window.location.href='https://t.me/hscripts'">الدعم الفني</button>
-        </div>
+<header class="header">
+        <img src="https://i.ibb.co/LnhWf28/image.png" alt="شعار الموقع">
+        <button onclick="toggleLanguage()">تغيير اللغة</button>
     </header>
 
-    <h1>All Hack</h1>
-    <div id="scriptsContainer"></div>
+    <!-- البنرات -->
+    <div class="banner-container">
+        <img src="https://i.ibb.co/wz93wpQ/image.jpg" alt="Banner 1" class="active">
+        <img src="https://i.ibb.co/Q8GR5qL/image.jpg" alt="Banner 2">
+        <img src="https://i.ibb.co/dcpwkMP/image.jpg" alt="Banner 3">
+    </div>
 
-    <script>
-        // تكوين Firebase
-        const firebaseConfig = {
-            apiKey: "AIzaSyBespCtavesyrdzKcB3LRr4vXd_U6XhfO4",
-            authDomain: "token-9ae6a.firebaseapp.com",
-            projectId: "token-9ae6a",
-            storageBucket: "token-9ae6a.appspot.com",
-            messagingSenderId: "434290198239",
-            appId: "1:434290198239:web:a56983c6f74da146830b6a",
-            measurementId: "G-FMB4BZ07DR"
-        };
+<h1>All Hack</h1>
+<div id="scriptsContainer"></div>
+    
+    <!-- شريط التنقل -->
+    <nav class="navbar">
+        <a href="index.html" class="nav-item">
+            <img src="https://i.ibb.co/vXyvDJd/image.png" alt="Icon 1">
+            الرئيسية
+        </a>
+        <a href="Suggst.html" class="nav-item">
+            <img src="https://i.ibb.co/5X3qthn/image.png" alt="Icon 2">
+            الإقتراحات
+        </a>
+        <a href="https://t.me/hscripts" class="nav-item">
+            <img src="https://i.ibb.co/pjHG0n8/image.png" alt="Icon 3">
+            الدعم
+        </a>
+        <a href="Hack.html" class="nav-item">
+            <img src="https://i.ibb.co/sy6DDPZ/image.png" alt="Icon 3">
+            الهاكات
+        </a>
+        <a href="all-scripts" class="nav-item">
+            <img src="https://i.ibb.co/nr5Znsr/image.png" alt="Icon 4">
+            الاسكربتات
+        </a>
+    </nav>
 
-        // تهيئة Firebase
-        firebase.initializeApp(firebaseConfig);
-        const db = firebase.firestore();
+    <!-- الفوتر -->
+    <footer class="footer">
+        <img src="https://i.ibb.co/LnhWf28/image.png" alt="شعار الموقع">
+        <div class="links">
+            <a href="pruivt.html">سياسة الخصوصية</a> |
+            <a href="contents.html">التواصل معنا</a> |
+            <a href="partner.html">الشركاء</a>
+        </div>
+    </footer>
+<script src="https://www.gstatic.com/firebasejs/10.7.2/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.2/firebase-firestore-compat.js"></script>
 
-        // جلب السكربتات من Firestore
-        db.collection("scripts").get().then((querySnapshot) => {
-            const scriptsContainer = document.getElementById("scriptsContainer");
-            querySnapshot.forEach((doc) => {
-                const scriptData = doc.data();
-                const scriptBox = document.createElement("div");
-                scriptBox.classList.add("script-box");
-
-                scriptBox.innerHTML = `
-                    <div class="script-title">${scriptData.title}</div>
-                    <div class="script-description">${scriptData.description}</div>
-                    <div class="script-platform">
-                        <img src="${getPlatformImage(scriptData.platform)}" alt="${scriptData.platform}" class="platform-image">
-                    </div>
-                    <a href="${scriptData.downloadLink}" class="script-link" target="_blank">رابط التحميل</a>
-                    <button class="share-button" onclick="shareLink('${doc.id}')">مشاركة</button>
-                `;
-                scriptsContainer.appendChild(scriptBox);
-            });
+<script>
+    // تكوين Firebase
+    const firebaseConfig = {
+        apiKey: "AIzaSyBespCtavesyrdzKcB3LRr4vXd_U6XhfO4",
+        authDomain: "token-9ae6a.firebaseapp.com",
+        projectId: "token-9ae6a",
+        storageBucket: "token-9ae6a.appspot.com",
+        messagingSenderId: "434290198239",
+        appId: "1:434290198239:web:a56983c6f74da146830b6a",
+        measurementId: "G-FMB4BZ07DR"
+    };
+    
+    firebase.initializeApp(firebaseConfig);
+    const db = firebase.firestore();
+    
+    db.collection("scripts").get().then((querySnapshot) => {
+        const scriptsContainer = document.getElementById("scriptsContainer");
+        querySnapshot.forEach((doc) => {
+            const scriptData = doc.data();
+            const scriptBox = document.createElement("div");
+            scriptBox.classList.add("script-box");
+    
+            scriptBox.innerHTML = `
+                <div class="script-title">${scriptData.title}</div>
+                <div class="script-description">${scriptData.description}</div>
+                <div class="script-platform">
+                    <img src="${getPlatformImage(scriptData.platform)}" alt="${scriptData.platform}" class="platform-image">
+                </div>
+                <a href="${scriptData.downloadLink}" class="script-link" target="_blank">رابط التحميل</a>
+                <button class="share-button" onclick="shareLink('${doc.id}')">مشاركة</button>
+            `;
+            scriptsContainer.appendChild(scriptBox);
         });
+    });
 
-        // دالة مشاركة الرابط
-        function shareLink(id) {
-            const link = `https://h-scripts.site/hack?id=${id}`;
-            navigator.clipboard.writeText(link).then(() => {
-                alert("تم نسخ الرابط للمشاركة!");
-            }).catch(err => {
-                console.error('خطأ في النسخ:', err);
-            });
-        }
+    function shareLink(id) {
+        const link = `https://h-scripts.site/hack?id=${id}`;
+        navigator.clipboard.writeText(link).then(() => {
+            alert("تم نسخ الرابط للمشاركة!");
+        }).catch(err => {
+            console.error('خطأ في النسخ: ', err);
+        });
+    }
 
-        // دالة لجلب صورة المنصة
-        function getPlatformImage(platform) {
+    function getPlatformImage(platform) {
             const images = {
                 "android": "20241106_182915.png",
                 "ios": "20241106_182935.png",
@@ -293,63 +412,39 @@
             };
             return images[platform.toLowerCase()] || "default.png";
         }
-    </script>
-<script src="https://www.gstatic.com/firebasejs/10.7.2/firebase-app-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/10.7.2/firebase-firestore-compat.js"></script>
-
-<script>
-    const myFirebaseConfig = {
-        apiKey: "AIzaSyDoK427q44Fj87JhgZh2vKeUnACkjl8HDc",
-        authDomain: "treng-c6027.firebaseapp.com",
-        projectId: "treng-c6027",
-        storageBucket: "treng-c6027.appspot.com",
-        messagingSenderId: "305527546716",
-        appId: "1:305527546716:web:fd072a58200f31bb42d799",
-        measurementId: "G-3JFKFT2LT0"
-    };
-
-    firebase.initializeApp(myFirebaseConfig);
-    const myDb = firebase.firestore();
-
-    // دالة التحقق من حالة الصيانة
-    async function checkMaintenanceStatus() {
-        const doc = await myDb.collection("settings").doc("maintenance").get();
-        if (doc.exists && doc.data().isActive) {
-            document.body.innerHTML = `
-                <div style="display: flex; flex-direction: column; align-items: center; text-align: center; margin-top: 10%; font-family: Arial, sans-serif;">
-                    <img src="https://i.ibb.co/W077gdL/images-1-removebg-preview.png" alt="صورة الصيانة" style="max-width: 200px; border-radius: 10px; margin-bottom: 20px;">
-                    <h1 style="font-size: 32px; color: #333; margin-bottom: 10px;">الموقع تحت الصيانة</h1>
-                    <p style="font-size: 18px; color: #666; margin-bottom: 20px;">
-                        نحن نعمل حاليًا على تحسين تجربة المستخدم. يرجى التحقق مرة أخرى لاحقًا.
-                    </p>
-                    <a href="https://t.me/hscripts" style="display: inline-block; padding: 12px 24px; background-color: #007bff; color: #fff; font-size: 18px; border-radius: 5px; text-decoration: none; transition: background-color 0.3s;">
-                        تواصل مع الدعم
-                    </a>
-                </div>
-            `;
-        }
-    }
-
-    // التحقق من حالة الصيانة عند تحميل الصفحة
-    checkMaintenanceStatus();
-</script>
-<script>
-    function openTelegram() {
-        // ضع هنا رابط تيليجرام الخاص بك
-        window.location.href = "https://t.me/Hema_tech1";
-    }
 
     function closeNotification() {
-        document.getElementById("notification").style.display = "none";
+        document.getElementById('notification').style.display = 'none';
+    }
+
+    function openTelegram() {
+        window.open('https://t.me/hscripts', '_blank');
     }
 </script>
+    <script>
+        // تبديل الصور في البنرات
+        let currentIndex = 0;
+        const images = document.querySelectorAll('.banner-container img');
+        setInterval(() => {
+            images[currentIndex].classList.remove('active');
+            currentIndex = (currentIndex + 1) % images.length;
+            images[currentIndex].classList.add('active');
+        }, 3000);
 
-<script type="text/javascript">
-    aclib.runAutoTag({
-        zoneId: 'zknpgw6khk',
-    });
-</script>
+        // تبديل اللغة
+        function toggleLanguage() {
+            const currentLang = document.documentElement.lang;
+            if (currentLang === "ar") {
+                document.documentElement.lang = "en";
+                document.documentElement.dir = "ltr";
+                location.reload();
+            } else {
+                document.documentElement.lang = "ar";
+                document.documentElement.dir = "rtl";
+                location.reload();
+            }
+        }
+    </script>
 
-    
 </body>
 </html>
