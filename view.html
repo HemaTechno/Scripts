@@ -1,9 +1,26 @@
 <!DOCTYPE html>
 <html lang="ar">
 <head>
-       <script>(function(s,u,z,p){s.src=u,s.setAttribute('data-zone',z),p.appendChild(s);})(document.createElement('script'),'https://shebudriftaiter.net/tag.min.js',8469034,document.body||document.documentElement)</script>
+   <script>(function(s,u,z,p){s.src=u,s.setAttribute('data-zone',z),p.appendChild(s);})(document.createElement('script'),'https://shebudriftaiter.net/tag.min.js',8469034,document.body||document.documentElement)</script>
   
-       <!-- وصف الموقع -->
+     <!-- وصف الموقع -->
+    <meta name="description" content="أفضل موقع لمشاركة السكربتات و الهاكات الخاصة بأنظمة التشغيل المختلفة.">
+    <!-- وسم Open Graph الخاص بالفيسبوك ومنصات أخرى -->
+    <meta property="og:title" content="H-Scripts - أفضل موقع للسكربتات">
+    <meta property="og:description" content="افضل موقع سكربتات و هاكات روبلوكس و تقدر اسكربت الان">
+    <meta property="og:image" content="https://i.ibb.co/FVr4b2z/20240926-203252.jpg">
+    <meta property="og:url" content="https://h-scripts.site">
+    <meta property="og:type" content="website">
+    <!-- وسم Twitter Card الخاص بتويتر -->
+    <meta name="twitter:card" content="https://i.ibb.co/FVr4b2z/20240926-203252.jpg">
+    <meta name="twitter:title" content="H-Scripts - أفضل موقع للسكربتات">
+    <meta name="twitter:description" content="شارك أفضل السكربتات مع الآخرين وتعلم المزيد حول الهاكات.">
+    <meta name="twitter:image" content="https://i.ibb.co/FVr4b2z/20240926-203252.jpg">
+    <!-- أيقونة الموقع -->
+    <link rel="icon" href="https://i.ibb.co/FVr4b2z/20240926-203252.jpg" type="image/x-icon">
+    
+
+              <!-- وصف الموقع -->
     <meta name="description" content="أفضل موقع لمشاركة السكربتات و الهاكات الخاصة بأنظمة التشغيل المختلفة.">
     <!-- وسم Open Graph الخاص بالفيسبوك ومنصات أخرى -->
     <meta property="og:title" content="H-Scripts - أفضل موقع للسكربتات">
@@ -25,58 +42,134 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>تفاصيل السكربت</title>
     <style>
-        /* تنسيقات عامة */
-        * {
+
+        /* إعدادات الصفحة */
+        @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap');
+        body {
+            font-family: 'Cairo', sans-serif;
             margin: 0;
             padding: 0;
-            box-sizing: border-box;
-            font-family: 'Amiri', serif;
+            background-color: #05080F;
+            color: #FFFFFF;
         }
 
-
-        body {
-            background-color: #1a1a1a;
-            color: #ffffff;
-        }
-
-        /* الشريط العلوي */
-        .navbar {
+        /* الهيدر */
+        .header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 1rem 2rem;
-            background-color: #333333;
+            padding: 20px;
+            background-color: #05080F;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
         }
 
-        .logo {
-            font-size: 1.8rem;
-            color: #ffffff;
+        .header .logo {
+            font-size: 26px;
+            font-weight: bold;
+            color: #FFFFFF;
         }
-
-        .navbar nav a {
-            color: #ffffff;
-            margin: 0 1rem;
-            text-decoration: none;
-        }
-
-        .navbar nav a:hover {
-            text-decoration: underline;
-        }
-
-        .login-btn {
-            padding: 0.5rem 1rem;
-            background-color: #555555;
-            color: #ffffff;
+.header img {
+            height: 50px; /* تعديل حجم الصورة */
+}
+        .header button {
+            background-color: #FFFFFF;
+            color: #5865F2;
             border: none;
+            padding: 8px 15px;
             border-radius: 5px;
+            font-size: 16px;
+            font-weight: bold;
             cursor: pointer;
+            transition: 0.3s;
         }
 
+        .header button:hover {
+            background-color: #e0e0e0;
+        }
+
+    /* إعدادات البنرات */
+    
+.banner-container {
+        position: relative;
+        overflow: hidden;
+        height: 100px; /* ارتفاع البانر */
+        background-color: #05080F;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .banner-container img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain; /* عرض الصورة بالكامل */
+        position: absolute;
+        top: 0;
+        left: 0;
+        opacity: 0;
+        transition: opacity 1s ease-in-out;
+    }
+
+    .banner-container img.active {
+        opacity: 1;
+    }
+.how-to-use {
+        margin: 3rem auto;
+        padding: 2rem;
+        background-color: #1A1E48;
+        border-radius: 10px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        color: #ffffff;
+        max-width: 800px;
+    }
+
+    .how-to-title {
+        font-size: 1.8rem;
+        font-weight: bold;
+        text-align: center;
+        margin-bottom: 2rem;
+        color: #FF9800;
+    }
+
+    .steps-container {
+        display: grid;
+        gap: 1.5rem;
+    }
+
+    .step {
+        padding: 1rem;
+        background-color: #5865F2;
+        border-radius: 8px;
+        color: #ffffff;
+    }
+
+    .step h4 {
+        margin: 0;
+        font-size: 1.2rem;
+        margin-bottom: 0.5rem;
+    }
+
+    .step p {
+        margin: 0;
+        font-size: 1rem;
+    }
+
+    .video-container {
+        margin-top: 2rem;
+        text-align: center;
+    }
+
+    .video-container iframe {
+        width: 100%;
+        max-width: 560px;
+        height: 315px;
+        border-radius: 10px;
+    }
         /* صندوق السكربت */
         .script-container {
             max-width: 800px;
             margin: 2rem auto;
-            background-color: #333;
+            background-color: #1A1E48;
             padding: 2rem;
             border-radius: 10px;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
@@ -85,7 +178,7 @@
         .script-title {
             font-size: 1.5rem;
             font-weight: bold;
-            color: #4caf50;
+            color: #ffffff;
             text-align: center;
             margin-bottom: 15px;
         }
@@ -98,12 +191,12 @@
         .script-description {
             margin: 20px 0;
             font-size: 1rem;
-            color: #dddddd;
+            color: #ffffff;
             text-align: center;
         }
 
         .code-editor {
-            background-color: #444;
+            background-color: #4D588F;
             padding: 1rem;
             border-radius: 10px;
             font-family: monospace;
@@ -127,118 +220,103 @@
         }
 
         .copy-button { background-color: #4caf50; color: #fff; }
-        .download-button { background-color: #ff9800; color: #fff; }
+        .download-button { background-color: #4D588F; color: #fff; }
         .share-button { background-color: #2196f3; color: #fff; }
 
-        /* Footer */
-        .footer {
-            background-color: #333333;
-            color: white;
-            text-align: center;
-            padding: 10px;
-            font-size: 0.9rem;
+        /* شريط التنقل */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+            background-color: #FFFFFF;
+            position: sticky;
+            bottom: 0;
+            z-index: 1000;
+            box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.2);
         }
 
-        .footer a {
-            color: #ffffff;
-            text-decoration: none;
-        }
-
-        .footer a:hover {
-            color: #c0c0c0;
-        }
-        .click-effect {
-    position: absolute;
-    width: 20px;
-    height: 20px;
-    background-color: rgba(0, 191, 255, 0.5);
-    border-radius: 50%;
-    pointer-events: none;
-    animation: clickEffect 0.5s ease-out;
-        }
-        @keyframes clickEffect {
-    from {
-        transform: scale(1);
-        opacity: 1;
-    }
-    to {
-        transform: scale(5);
-        opacity: 0;
-    }
-}
-        .notification {
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 300px;
-            background-color: #00bcd4;
-            color: #333;
-            border-radius: 10px;
-            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
-            padding: 15px;
+        .navbar .nav-item {
             display: flex;
             flex-direction: column;
             align-items: center;
-            font-size: 1.1em;
+            font-size: 14px;
+            font-weight: bold;
+            color: #05080F;
+            text-decoration: none;
+            transition: 0.3s;
         }
-        .notification h2 {
-            margin: 0;
-            font-size: 1.2em;
-            color: #000;
+
+        .navbar .nav-item img {
+            width: 28px;
+            height: 28px;
+            margin-bottom: 5px;
         }
-        .notification p {
-            margin: 10px 0;
-            color: #222;
+
+        .navbar .nav-item:hover {
+            color: #5865F2;
         }
-        .notification .buttons {
+
+        .navbar .center {
+            position: relative;
+            background-color: #FFFFFF;
+            border: 2px solid #5865F2;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
             display: flex;
-            gap: 10px;
+            align-items: center;
+            justify-content: center;
+            top: -20px;
         }
-        .notification button {
-            padding: 8px 12px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
+.footer img {
+            height: 50px; /* تعديل حجم الصورة */
+}
+        /* الفوتر */
+        .footer {
+            text-align: center;
+            padding: 30px 20px;
+            background-color: #5865F2;
+            color: #FFFFFF;
         }
-        .buy-button {
-            background-color: #ffeb3b;
-            color: #333;
+
+        .footer .logo {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 10px;
         }
-        .close-button {
-            background-color: #333;
-            color: #fff;
+
+        .footer .links {
+            font-size: 14px;
+        }
+
+        .footer .links a {
+            color: #FFFFFF;
+            text-decoration: none;
+            margin: 0 15px;
+            transition: 0.3s;
+        }
+
+        .footer .links a:hover {
+            text-decoration: underline;
         }
     </style>
 </head>
 <body>
-    <div id="notification" class="notification">
-    <h2>وحشتنا من اخر مرة دخلت فيها موقع</h2>
-    <p>متوفر روبكس بي ارخص الأسعار 💪
 
-تخيل كدا 1000 روبكس مش صافين بي 240 جنية مصري 
 
-و تخيل ان البريميوم مع 450 روبكس بي 310 جنية 😉😇 
-
-</p>
-    <div class="buttons">
-        <button class="buy-button" onclick="openTelegram()">شراء</button>
-        <button class="close-button" onclick="closeNotification()">غير مهتم</button>
-    </div>
-    </div>
     <!-- الشريط العلوي -->
-    <header>
-        <div class="navbar">
-            <div class="logo">H-Scripts</div>
-            <nav>
-                <a href="All-scripts.html">الاسكربتات</a>
-                <a href="Hack.html">الهاكات</a>
-                <a href="youtube-scripts.html">يوتيوبرز</a>
-                <a href="admin/add-public">انشر سكربتك</a>
-            </nav>
-            <button class="login-btn" onclick="window.location.href='https://t.me/hscripts'">الدعم الفني</button>
-        </div>
+     <header class="header">
+        <img src="https://i.ibb.co/LnhWf28/image.png" alt="شعار الموقع">
+        <button onclick="toggleLanguage()">تغيير اللغة</button>
     </header>
+
+    <!-- البنرات -->
+    <div class="banner-container">
+        <img src="https://i.ibb.co/wz93wpQ/image.jpg" alt="Banner 1" class="active">
+        <img src="https://i.ibb.co/Q8GR5qL/image.jpg" alt="Banner 2">
+        <img src="https://i.ibb.co/dcpwkMP/image.jpg" alt="Banner 3">
+    </div>
 
     <!-- قسم تفاصيل السكربت -->
     <div class="script-container">
@@ -251,16 +329,41 @@
         </div>
 
         <div class="action-buttons">
-            <button class="copy-button" onclick="copyCode()">نسخ الاسكربت</button>
-            <button class="download-button" onclick="downloadScript()">تحميل السكربت</button>
-            <button class="share-button" onclick="sharePage()">مشاركة</button>
-        </div>
+            <button class="download-button" onclick="downloadScript()">
+    <img src="https://i.ibb.co/CnGk9R4/image.png" alt="تحميل" style="width: 30px; height: 30px;">
+</button> </div>
     </div>
 
-    <!-- Footer -->
-    <div class="footer">
-        <p>© جميع الحقوق محفوظة <a href="privacy.html">سياسة الخصوصية</a> | <a href="contact.html">التواصل</a></p>
+
+<!-- قسم How Use Script -->
+<div id="howToUse" class="how-to-use">
+    <h3 class="how-to-title">كيفية استخدام السكربت</h3>
+    <div class="steps-container">
+        <div class="step">
+            <h4>الخطوة 1</h4>
+            <p>افتح اللعبة التي تريد استخدام السكربت فيها.</p>
+        </div>
+        <div class="step">
+            <h4>الخطوة 2</h4>
+            <p>انسخ الكود من المربع أعلاه واضغط على "نسخ".</p>
+        </div>
+        <div class="step">
+            <h4>الخطوة 3</h4>
+            <p>افتح أداة التنفيذ الخاصة بالسكربتات والصق الكود هناك.</p>
+        </div>
+        <div class="step">
+            <h4>الخطوة 4</h4>
+            <p>اضغط على زر التنفيذ واستمتع باللعبة.</p>
+        </div>
     </div>
+    <div class="video-container">
+        <iframe id="tutorialVideo" src="https://www.youtube.com/embed/VIDEO_ID" title="شرح كيفية استخدام السكربت" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div>
+</div>
+
+
+
+
 
     <!-- Firebase SDK -->
     <script src="https://www.gstatic.com/firebasejs/10.7.2/firebase-app-compat.js"></script>
@@ -351,6 +454,68 @@
         document.getElementById("notification").style.display = "none";
     }
 </script>
+    <script>
+        // تبديل الصور في البنرات
+        let currentIndex = 0;
+        const images = document.querySelectorAll('.banner-container img');
+        setInterval(() => {
+            images[currentIndex].classList.remove('active');
+            currentIndex = (currentIndex + 1) % images.length;
+            images[currentIndex].classList.add('active');
+        }, 3000);
 
+        // تبديل اللغة
+        function toggleLanguage() {
+            const currentLang = document.documentElement.lang;
+            if (currentLang === "ar") {
+                document.documentElement.lang = "en";
+                document.documentElement.dir = "ltr";
+                location.reload();
+            } else {
+                document.documentElement.lang = "ar";
+                document.documentElement.dir = "rtl";
+                location.reload();
+            }
+        }
+      
+    </script>
+
+
+<script>
+    function toggleLanguage() {
+        const currentLang = document.documentElement.lang;
+        const isArabic = currentLang === "ar";
+
+        document.documentElement.lang = isArabic ? "en" : "ar";
+        document.documentElement.dir = isArabic ? "ltr" : "rtl";
+
+        const steps = document.querySelectorAll(".step");
+        const howToTitle = document.querySelector(".how-to-title");
+
+        if (isArabic) {
+            howToTitle.textContent = "How to Use the Script";
+            steps[0].querySelector("h4").textContent = "Step 1";
+            steps[0].querySelector("p").textContent = "Open the game where you want to use the script.";
+            steps[1].querySelector("h4").textContent = "Step 2";
+            steps[1].querySelector("p").textContent = "Copy the code from the editor above and press 'Copy'.";
+            steps[2].querySelector("h4").textContent = "Step 3";
+            steps[2].querySelector("p").textContent = "Open the script executor and paste the code there.";
+            steps[3].querySelector("h4").textContent = "Step 4";
+            steps[3].querySelector("p").textContent = "Press execute and enjoy the game.";
+        } else {
+            howToTitle.textContent = "كيفية استخدام السكربت";
+            steps[0].querySelector("h4").textContent = "الخطوة 1";
+            steps[0].querySelector("p").textContent = "افتح اللعبة التي تريد استخدام السكربت فيها.";
+            steps[1].querySelector("h4").textContent = "الخطوة 2";
+            steps[1].querySelector("p").textContent = "انسخ الكود من المربع أعلاه واضغط على 'نسخ'.";
+            steps[2].querySelector("h4").textContent = "الخطوة 3";
+            steps[2].querySelector("p").textContent = "افتح أداة التنفيذ الخاصة بالسكربتات والصق الكود هناك.";
+            steps[3].querySelector("h4").textContent = "الخطوة 4";
+            steps[3].querySelector("p").textContent = "اضغط على زر التنفيذ واستمتع باللعبة.";
+        }
+    }
+</script>
+
+  
 </body>
 </html>
