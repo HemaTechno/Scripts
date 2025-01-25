@@ -1,8 +1,7 @@
 <!DOCTYPE html>
-<html lang="ar">
+<html lang="ar" dir="rtl">
 <head>
- <!-- اعلان AdCash -->
- <script>(function(s,u,z,p){s.src=u,s.setAttribute('data-zone',z),p.appendChild(s);})(document.createElement('script'),'https://shebudriftaiter.net/tag.min.js',8469034,document.body||document.documentElement)</script>
+  <script>(function(s,u,z,p){s.src=u,s.setAttribute('data-zone',z),p.appendChild(s);})(document.createElement('script'),'https://shebudriftaiter.net/tag.min.js',8469034,document.body||document.documentElement)</script>
   
      <!-- وصف الموقع -->
     <meta name="description" content="أفضل موقع لمشاركة السكربتات و الهاكات الخاصة بأنظمة التشغيل المختلفة.">
@@ -21,140 +20,262 @@
     <link rel="icon" href="https://i.ibb.co/FVr4b2z/20240926-203252.jpg" type="image/x-icon">
     
 
-
-
-       
-    
-    <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home</title>
-    <link rel="stylesheet" href="style.css">
+    <title>الصفحة الرئيسية</title>
+    <style>
+        /* إعدادات الصفحة */
+        @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap');
+        body {
+            font-family: 'Cairo', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #05080F;
+            color: #FFFFFF;
+        }
+
+        /* الهيدر */
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            background-color: #05080F;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .header .logo {
+            font-size: 26px;
+            font-weight: bold;
+            color: #FFFFFF;
+        }
+.header img {
+            height: 50px; /* تعديل حجم الصورة */
+}
+        .header button {
+            background-color: #FFFFFF;
+            color: #5865F2;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 5px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .header button:hover {
+            background-color: #e0e0e0;
+        }
+
+    /* إعدادات البنرات */
+    
+.banner-container {
+        position: relative;
+        overflow: hidden;
+        height: 100px; /* ارتفاع البانر */
+        background-color: #05080F;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .banner-container img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain; /* عرض الصورة بالكامل */
+        position: absolute;
+        top: 0;
+        left: 0;
+        opacity: 0;
+        transition: opacity 1s ease-in-out;
+    }
+
+    .banner-container img.active {
+        opacity: 1;
+    }
+
+        /* من نحن */
+        .about {
+            text-align: center;
+            padding: 40px 20px;
+        }
+
+        .about h2 {
+            margin-bottom: 20px;
+            font-size: 28px;
+            font-weight: bold;
+            color: #5865F2;
+        }
+
+        .about .gallery img {
+            width: 90%;
+            margin: 20px auto;
+            display: block;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+        }
+
+        /* شريط التنقل */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+            background-color: #FFFFFF;
+            position: sticky;
+            bottom: 0;
+            z-index: 1000;
+            box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .navbar .nav-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            font-size: 14px;
+            font-weight: bold;
+            color: #05080F;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        .navbar .nav-item img {
+            width: 28px;
+            height: 28px;
+            margin-bottom: 5px;
+        }
+
+        .navbar .nav-item:hover {
+            color: #5865F2;
+        }
+
+        .navbar .center {
+            position: relative;
+            background-color: #FFFFFF;
+            border: 2px solid #5865F2;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            top: -20px;
+        }
+.footer img {
+            height: 50px; /* تعديل حجم الصورة */
+}
+        /* الفوتر */
+        .footer {
+            text-align: center;
+            padding: 30px 20px;
+            background-color: #5865F2;
+            color: #FFFFFF;
+        }
+
+        .footer .logo {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .footer .links {
+            font-size: 14px;
+        }
+
+        .footer .links a {
+            color: #FFFFFF;
+            text-decoration: none;
+            margin: 0 15px;
+            transition: 0.3s;
+        }
+
+        .footer .links a:hover {
+            text-decoration: underline;
+        }
+    </style>
 </head>
 <body>
-           
-    <!-- الشريط العلوي -->
-    <header>
-        <div class="navbar">
-            <div class="logo">H-Scripts</div>
-            <nav>
-                <a href="All-scripts.html">الاسكربتات</a>
-                <a href="Hack.html">الهاكات</a>
-                <a href="youtube-scripts.html">يوتيوبرز</a>
-                <a href="admin/add-public.html">انشر سكربتك</a>
-            </nav>
-            <button class="login-btn" onclick="window.location.href='https://t.me/hscripts'">الدعم الفني</button>
-        </div>
+    <!-- الهيدر -->
+    <header class="header">
+        <img src="https://i.ibb.co/LnhWf28/image.png" alt="شعار الموقع">
+        <button onclick="toggleLanguage()">تغيير اللغة</button>
     </header>
-    <!-- قسم الوصف والأزرار -->
-    <section class="hero">
-        <h1>H-Scripts.site</h1>
-        <p>اهلا بك في موقعنا هذا هو الموقع الاول باللغة العربية و المصمم خصيصا للعرب و ننشر فيه سكربتات و هاكات روبلوكس مع اقوي تيم دعم فني علي مدار يوم</p>
-        <div class="hero-buttons">
-            <button onclick="window.location.href='All-scripts.html'">استكشاف الاسكربتات</button>
-            <button onclick="window.location.href='https://t.me/hscripts'">انضم كشريك</button>
-        </div>
-        <div class="user-stats">
-            <span>المستخدمون الآن:</span>
-            <span>المسجلون: <strong>59</strong></span>
-            <span>الضيوف: <strong>1000000</strong></span>
-        </div>
-    </section>
 
-    <!-- قسم الشركاء -->
-    <section class="partners">
-        <h2>الشركاء</h2>
-        <div class="partner-list">
-            <div class="partner">
-                <img src="hema.jpg" alt="شريك 1">
-                <p>HemaTech</p>
-            </div>
-            <div class="partner">
-                <img src="channels4_profile.jpg" alt="TPC_TubeRblx">
-                <p>TPC_TubeRblx</p>
-            </div>
-                 <div class="partner">
-                <img src="IMG-20240903-WA0142.jpg
-" alt="MX_SASUKE">
-                <p>MX_SASUKE</p>
-                 </div>
-        </div>
-           <div class="partner">
-                <img src="IMG_20241110_222411_560.jpg
-" alt="MXSASUKE">
-                <p>رويدا | RS </p>
-                 </div>
+    <!-- البنرات -->
+    <div class="banner-container">
+        <img src="https://i.ibb.co/wz93wpQ/image.jpg" alt="Banner 1" class="active">
+        <img src="https://i.ibb.co/Q8GR5qL/image.jpg" alt="Banner 2">
+        <img src="https://i.ibb.co/dcpwkMP/image.jpg" alt="Banner 3">
     </div>
+
+    <!-- من نحن -->
+    <section class="about">
+        <h2>من نحن</h2>
+        <div class="gallery">
+            <img src="https://i.ibb.co/hVj5zqx/image.png" alt="Image 1">
+             <img src="https://i.ibb.co/X7tp8cM/image.png" alt="Image 1">
+             
+        </div>
     </section>
 
+    <!-- شريط التنقل -->
+    <nav class="navbar">
+        <a href="index.html" class="nav-item">
+            <img src="https://i.ibb.co/vXyvDJd/image.png" alt="Icon 1">
+            الرئيسية
+        </a>
+        <a href="Suggst.html" class="nav-item">
+            <img src="https://i.ibb.co/5X3qthn/image.png" alt="Icon 2">
+            الإقتراحات
+        </a>
+        <a href="https://t.me/hscripts" class="nav-item">
+            <img src="https://i.ibb.co/pjHG0n8/image.png" alt="Icon 3">
+            الدعم
+        </a>
+        <a href="Hack.html" class="nav-item">
+            <img src="https://i.ibb.co/sy6DDPZ/image.png" alt="Icon 3">
+            الهاكات
+        </a>
+        <a href="all-scripts" class="nav-item">
+            <img src="https://i.ibb.co/nr5Znsr/image.png" alt="Icon 4">
+            الاسكربتات
+        </a>
+    </nav>
+
+    <!-- الفوتر -->
+    <footer class="footer">
+        <img src="https://i.ibb.co/LnhWf28/image.png" alt="شعار الموقع">
+        <div class="links">
+            <a href="pruivt.html">سياسة الخصوصية</a> |
+            <a href="contents.html">التواصل معنا</a> |
+            <a href="partner.html">الشركاء</a>
+        </div>
+    </footer>
+
     <script>
-        // كود لإضافة تأثير عند النقر على الشاشة
-        document.addEventListener('click', function(e) {
-            const effect = document.createElement('div');
-            effect.className = 'click-effect';
-            effect.style.left = `${e.pageX - 10}px`;
-            effect.style.top = `${e.pageY - 10}px`;
-            document.body.appendChild(effect);
+        // تبديل الصور في البنرات
+        let currentIndex = 0;
+        const images = document.querySelectorAll('.banner-container img');
+        setInterval(() => {
+            images[currentIndex].classList.remove('active');
+            currentIndex = (currentIndex + 1) % images.length;
+            images[currentIndex].classList.add('active');
+        }, 3000);
 
-            setTimeout(() => {
-                effect.remove();
-            }, 500);
-        });
-    </script>
-<script src="https://www.gstatic.com/firebasejs/10.7.2/firebase-app-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/10.7.2/firebase-firestore-compat.js"></script>
-
-<script>
-    const myFirebaseConfig = {
-        apiKey: "AIzaSyDoK427q44Fj87JhgZh2vKeUnACkjl8HDc",
-        authDomain: "treng-c6027.firebaseapp.com",
-        projectId: "treng-c6027",
-        storageBucket: "treng-c6027.appspot.com",
-        messagingSenderId: "305527546716",
-        appId: "1:305527546716:web:fd072a58200f31bb42d799",
-        measurementId: "G-3JFKFT2LT0"
-    };
-
-    firebase.initializeApp(myFirebaseConfig);
-    const myDb = firebase.firestore();
-
-    // دالة التحقق من حالة الصيانة
-    async function checkMaintenanceStatus() {
-        const doc = await myDb.collection("settings").doc("maintenance").get();
-        if (doc.exists && doc.data().isActive) {
-            document.body.innerHTML = `
-                <div style="display: flex; flex-direction: column; align-items: center; text-align: center; margin-top: 10%; font-family: Arial, sans-serif;">
-                    <img src="https://i.ibb.co/W077gdL/images-1-removebg-preview.png" alt="صورة الصيانة" style="max-width: 200px; border-radius: 10px; margin-bottom: 20px;">
-                    <h1 style="font-size: 32px; color: #333; margin-bottom: 10px;">الموقع تحت الصيانة</h1>
-                    <p style="font-size: 18px; color: #666; margin-bottom: 20px;">
-                        نحن نعمل حاليًا على تحسين تجربة المستخدم. يرجى التحقق مرة أخرى لاحقًا.
-                    </p>
-                    <a href="https://t.me/hscripts" style="display: inline-block; padding: 12px 24px; background-color: #007bff; color: #fff; font-size: 18px; border-radius: 5px; text-decoration: none; transition: background-color 0.3s;">
-                        تواصل مع الدعم
-                    </a>
-                </div>
-            `;
+        // تبديل اللغة
+        function toggleLanguage() {
+            const currentLang = document.documentElement.lang;
+            if (currentLang === "ar") {
+                document.documentElement.lang = "en";
+                document.documentElement.dir = "ltr";
+                location.reload();
+            } else {
+                document.documentElement.lang = "ar";
+                document.documentElement.dir = "rtl";
+                location.reload();
+            }
         }
-    }
-
-    // التحقق من حالة الصيانة عند تحميل الصفحة
-    <script>
-    function openTelegram() {
-        // ضع هنا رابط تيليجرام الخاص بك
-        window.location.href = "https://t.me/Hema_tech1";
-    }
-
-    function closeNotification() {
-        document.getElementById("notification").style.display = "none";
-    }
-
-
-<script type="text/javascript">
-    aclib.runAutoTag({
-        zoneId: 'zknpgw6khk',
-    });
-</script>
-
-</script>
+    </script>
 </body>
 </html>
