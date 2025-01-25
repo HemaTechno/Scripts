@@ -94,7 +94,58 @@
     .banner-container img.active {
         opacity: 1;
     }
+.how-to-use {
+        margin: 3rem auto;
+        padding: 2rem;
+        background-color: #1A1E48;
+        border-radius: 10px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        color: #ffffff;
+        max-width: 800px;
+    }
 
+    .how-to-title {
+        font-size: 1.8rem;
+        font-weight: bold;
+        text-align: center;
+        margin-bottom: 2rem;
+        color: #FF9800;
+    }
+
+    .steps-container {
+        display: grid;
+        gap: 1.5rem;
+    }
+
+    .step {
+        padding: 1rem;
+        background-color: #5865F2;
+        border-radius: 8px;
+        color: #ffffff;
+    }
+
+    .step h4 {
+        margin: 0;
+        font-size: 1.2rem;
+        margin-bottom: 0.5rem;
+    }
+
+    .step p {
+        margin: 0;
+        font-size: 1rem;
+    }
+
+    .video-container {
+        margin-top: 2rem;
+        text-align: center;
+    }
+
+    .video-container iframe {
+        width: 100%;
+        max-width: 560px;
+        height: 315px;
+        border-radius: 10px;
+    }
         /* صندوق السكربت */
         .script-container {
             max-width: 800px;
@@ -288,6 +339,39 @@
         </a>
     </nav>
 
+
+<!-- قسم How Use Script -->
+<div id="howToUse" class="how-to-use">
+    <h3 class="how-to-title">كيفية استخدام السكربت</h3>
+    <div class="steps-container">
+        <div class="step">
+            <h4>الخطوة 1</h4>
+            <p>افتح اللعبة التي تريد استخدام السكربت فيها.</p>
+        </div>
+        <div class="step">
+            <h4>الخطوة 2</h4>
+            <p>انسخ الكود من المربع أعلاه واضغط على "نسخ".</p>
+        </div>
+        <div class="step">
+            <h4>الخطوة 3</h4>
+            <p>افتح أداة التنفيذ الخاصة بالسكربتات والصق الكود هناك.</p>
+        </div>
+        <div class="step">
+            <h4>الخطوة 4</h4>
+            <p>اضغط على زر التنفيذ واستمتع باللعبة.</p>
+        </div>
+    </div>
+    <div class="video-container">
+        <iframe id="tutorialVideo" src="https://www.youtube.com/embed/VIDEO_ID" title="شرح كيفية استخدام السكربت" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div>
+</div>
+
+
+
+
+
+
+  
     <!-- الفوتر -->
     <footer class="footer">
         <img src="https://i.ibb.co/LnhWf28/image.png" alt="شعار الموقع">
@@ -410,6 +494,45 @@
                 location.reload();
             }
         }
+      
     </script>
+
+
+<script>
+    function toggleLanguage() {
+        const currentLang = document.documentElement.lang;
+        const isArabic = currentLang === "ar";
+
+        document.documentElement.lang = isArabic ? "en" : "ar";
+        document.documentElement.dir = isArabic ? "ltr" : "rtl";
+
+        const steps = document.querySelectorAll(".step");
+        const howToTitle = document.querySelector(".how-to-title");
+
+        if (isArabic) {
+            howToTitle.textContent = "How to Use the Script";
+            steps[0].querySelector("h4").textContent = "Step 1";
+            steps[0].querySelector("p").textContent = "Open the game where you want to use the script.";
+            steps[1].querySelector("h4").textContent = "Step 2";
+            steps[1].querySelector("p").textContent = "Copy the code from the editor above and press 'Copy'.";
+            steps[2].querySelector("h4").textContent = "Step 3";
+            steps[2].querySelector("p").textContent = "Open the script executor and paste the code there.";
+            steps[3].querySelector("h4").textContent = "Step 4";
+            steps[3].querySelector("p").textContent = "Press execute and enjoy the game.";
+        } else {
+            howToTitle.textContent = "كيفية استخدام السكربت";
+            steps[0].querySelector("h4").textContent = "الخطوة 1";
+            steps[0].querySelector("p").textContent = "افتح اللعبة التي تريد استخدام السكربت فيها.";
+            steps[1].querySelector("h4").textContent = "الخطوة 2";
+            steps[1].querySelector("p").textContent = "انسخ الكود من المربع أعلاه واضغط على 'نسخ'.";
+            steps[2].querySelector("h4").textContent = "الخطوة 3";
+            steps[2].querySelector("p").textContent = "افتح أداة التنفيذ الخاصة بالسكربتات والصق الكود هناك.";
+            steps[3].querySelector("h4").textContent = "الخطوة 4";
+            steps[3].querySelector("p").textContent = "اضغط على زر التنفيذ واستمتع باللعبة.";
+        }
+    }
+</script>
+
+  
 </body>
 </html>
