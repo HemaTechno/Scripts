@@ -52,6 +52,9 @@
         button:hover {
             background: #6a1b9a;
         }
+        .hidden {
+            display: none;
+        }
     </style>
 </head>
 <body>
@@ -65,19 +68,23 @@
         <label for="price">السعر (ريال)</label>
         <input type="text" id="price" readonly>
 
-        <label for="link">رابط التيشيرت أو قيم باس</label>
-        <input type="url" id="link" placeholder="أدخل الرابط">
+        <button type="button" onclick="showAdditionalFields()">إكمال</button>
 
-        <label for="senderNumber">الرقم المرسل منه</label>
-        <input type="text" id="senderNumber" placeholder="أدخل رقم الهاتف المرسل منه">
+        <div id="additionalFields" class="hidden">
+            <label for="link">رابط التيشيرت أو قيم باس</label>
+            <input type="url" id="link" placeholder="أدخل الرابط">
 
-        <label for="whatsappNumber">رقم واتس للتواصل</label>
-        <input type="text" id="whatsappNumber" placeholder="أدخل رقم الواتس">
+            <label for="senderNumber">الرقم المرسل منه</label>
+            <input type="text" id="senderNumber" placeholder="أدخل رقم الهاتف المرسل منه">
 
-        <label for="proof">دليل التحويل (رفع صورة)</label>
-        <input type="file" id="proof" accept="image/*">
+            <label for="whatsappNumber">رقم واتس للتواصل</label>
+            <input type="text" id="whatsappNumber" placeholder="أدخل رقم الواتس">
 
-        <button type="button" onclick="submitInvoice()">إكمال</button>
+            <label for="proof">دليل التحويل (رفع صورة)</label>
+            <input type="file" id="proof" accept="image/*">
+
+            <button type="button" onclick="submitInvoice()">إرسال للمراجعة</button>
+        </div>
     </form>
 </div>
 
@@ -85,7 +92,7 @@
 <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore.js"></script>
 <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-storage.js"></script>
 <script>
-    const myFirebaseConfig = {
+    const firebaseConfig = {
         apiKey: "AIzaSyDoK427q44Fj87JhgZh2vKeUnACkjl8HDc",
         authDomain: "treng-c6027.firebaseapp.com",
         projectId: "treng-c6027",
@@ -102,6 +109,10 @@
         const quantity = document.getElementById('quantity').value;
         const price = quantity * 0.25; // سعر الألف روبوكس = 250 ريال
         document.getElementById('price').value = price.toFixed(2) + ' ريال';
+    }
+
+    function showAdditionalFields() {
+        document.getElementById('additionalFields').classList.remove('hidden');
     }
 
     async function submitInvoice() {
@@ -132,6 +143,7 @@
             createdAt: firebase.firestore.FieldValue.serverTimestamp()
         });
 
+        alert('تم إرسال الفاتورة بنجاح. رقم الفاتورة: ' + invoiceRef.id);
         window.location.href = 'invoice-status.html?id=' + invoiceRef.id;
     }
 </script>
