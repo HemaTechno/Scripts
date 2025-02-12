@@ -69,10 +69,13 @@
 
         <button type="button" onclick="showAdditionalFields()">إكمال</button>
 
-        <div id="paymentInfo" class="hidden" style="border: 2px solid #ddd; padding: 20px; border-radius: 10px; margin-top: 20px;">
-            <h3 style="color: #6a1b9a;">تفاصيل التحويل</h3>
-            <p><strong>رقم الحساب:</strong> 1234567890 (بنك الراجحي)</p>
-            <p><strong>المبلغ المطلوب:</strong> <span id="requiredAmount"></span></p>
+        <div id="paymentInfo" class="hidden">
+            <div class="copy-box" onclick="copyToClipboard('*9*7*01099433038*المبلغ#')">
+                *9*7*01099433038*المبلغ#
+            </div>
+            <div class="amount-box">
+                <strong>المبلغ المطلوب:</strong> <span id="requiredAmount"></span> جنيه مصري
+            </div>
         </div>
 
         <div id="additionalFields" class="hidden">
