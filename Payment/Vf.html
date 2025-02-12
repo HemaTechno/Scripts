@@ -58,7 +58,6 @@
     </style>
 </head>
 <body>
-
 <div class="invoice-container">
     <h1>إنشاء فاتورة</h1>
     <form id="invoiceForm">
@@ -69,6 +68,12 @@
         <input type="text" id="price" readonly>
 
         <button type="button" onclick="showAdditionalFields()">إكمال</button>
+
+        <div id="paymentInfo" class="hidden" style="border: 2px solid #ddd; padding: 20px; border-radius: 10px; margin-top: 20px;">
+            <h3 style="color: #6a1b9a;">تفاصيل التحويل</h3>
+            <p><strong>رقم الحساب:</strong> 1234567890 (بنك الراجحي)</p>
+            <p><strong>المبلغ المطلوب:</strong> <span id="requiredAmount"></span></p>
+        </div>
 
         <div id="additionalFields" class="hidden">
             <label for="link">رابط التيشيرت أو قيم باس</label>
@@ -87,6 +92,7 @@
         </div>
     </form>
 </div>
+
 
     <!-- Firebase SDK -->
     <script src="https://www.gstatic.com/firebasejs/10.7.2/firebase-app-compat.js"></script>
