@@ -103,7 +103,8 @@
     };
     firebase.initializeApp(firebaseConfig);
     const db = firebase.firestore();
-    
+    const storage = firebase.storage().ref();
+
     function calculatePrice() {
         const quantity = document.getElementById('quantity').value;
         const price = quantity * 0.25; // سعر الألف روبوكس = 250 ريال
@@ -127,7 +128,7 @@
             return;
         }
 
-        const proofRef = storage.ref(`proofs/${Date.now()}_${proof.name}`);
+        const proofRef = storage.child(`proofs/${Date.now()}_${proof.name}`);
         await proofRef.put(proof);
         const proofURL = await proofRef.getDownloadURL();
 
