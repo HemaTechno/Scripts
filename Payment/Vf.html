@@ -31,13 +31,16 @@
             margin: 10px 0 5px;
             font-weight: bold;
         }
-        input, textarea, button {
+        input, button {
             width: 100%;
             padding: 10px;
             margin-bottom: 20px;
             border: 2px solid #ddd;
             border-radius: 10px;
             font-size: 16px;
+        }
+        input[readonly] {
+            background-color: #f3f3f3;
         }
         button {
             background: #8e24aa;
@@ -57,9 +60,12 @@
     <h1>إنشاء فاتورة</h1>
     <form id="invoiceForm">
         <label for="quantity">الكمية</label>
-        <input type="number" id="quantity" min="1" placeholder="أدخل الكمية" required>
+        <input type="number" id="quantity" min="1" placeholder="أدخل الكمية" oninput="calculatePrice()" required>
 
-        <label for="link">رابط التيشرت أو قيم باس</label>
+        <label for="price">السعر (ريال)</label>
+        <input type="text" id="price" readonly>
+
+        <label for="link">رابط التيشيرت أو قيم باس</label>
         <input type="url" id="link" placeholder="أدخل الرابط">
 
         <label for="senderNumber">الرقم المرسل منه</label>
@@ -71,7 +77,7 @@
         <label for="proof">دليل التحويل (رفع صورة)</label>
         <input type="file" id="proof" accept="image/*">
 
-        <button type="button" onclick="submitInvoice()">إرسال للمراجعة</button>
+        <button type="button" onclick="submitInvoice()">إكمال</button>
     </form>
 </div>
 
@@ -91,8 +97,15 @@
     const db = firebase.firestore();
     const storage = firebase.storage();
 
+    function calculatePrice() {
+        const quantity = document.getElementById('quantity').value;
+        const price = quantity * 0.25; // سعر الألف روبوكس = 250 ريال
+        document.getElementById('price').value = price.toFixed(2) + ' ريال';
+    }
+
     async function submitInvoice() {
         const quantity = document.getElementById('quantity').value;
+        const price = document.getElementById('price').value;
         const link = document.getElementById('link').value;
         const senderNumber = document.getElementById('senderNumber').value;
         const whatsappNumber = document.getElementById('whatsappNumber').value;
@@ -109,6 +122,7 @@
 
         const invoiceRef = await db.collection('invoices').add({
             quantity: parseInt(quantity),
+            price,
             link,
             senderNumber,
             whatsappNumber,
@@ -117,7 +131,6 @@
             createdAt: firebase.firestore.FieldValue.serverTimestamp()
         });
 
-        alert('تم إرسال الفاتورة للمراجعة. رقم الفاتورة: ' + invoiceRef.id);
         window.location.href = 'invoice-status.html?id=' + invoiceRef.id;
     }
 </script>
