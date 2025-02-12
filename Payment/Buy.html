@@ -70,10 +70,7 @@
             <img src="https://i.ibb.co/qLnzmKP3/Vodafone-Cash-Logo-150x150.png" alt="Vodafone Cash">
             <p>الدفع بواسطة فودافون كاش</p>
         </div>
-        <div class="payment-option" onclick="selectPayment('paypal')">
-            <img src="https://i.ibb.co/cc5K6Ns7/ei-1739361958740-removebg-preview.png" alt="PayPal">
-            <p>الدفع بواسطة باي بال</p>
-        </div>
+        
         <input type="hidden" id="paymentMethod" name="paymentMethod" value="">
         <button type="button" class="submit-btn" onclick="submitPayment()">تأكيد الدفع</button>
     </form>
@@ -101,7 +98,7 @@
 
         if (selectedPayment === 'vodafone') {
             alert('تم اختيار الدفع بواسطة فودافون كاش. سيتم توجيهك إلى خطوات الدفع.');
-          window.location.href = 'https://www.paypal.com'; // يمكنك استبدال هذا الرابط برابط صفحة الدفع الحقيقية
+          window.location.href = 'https://h-scripts.site/payment/vf'; // يمكنك استبدال هذا الرابط برابط صفحة الدفع الحقيقية
         
             // يمكنك إضافة توجيه لصفحة الدفع أو تنفيذ أي إجراء
         } else if (selectedPayment === 'paypal') {
