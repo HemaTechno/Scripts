@@ -130,7 +130,7 @@
 
     function showPaymentInfo() {
         const quantity = document.getElementById('quantity').value;
-        if (quantity > 0) {
+        if (quantity > 500) {
             const price = quantity * 0.25;
             document.getElementById('requiredAmount').innerText = price.toFixed(2);
             document.getElementById('paymentInfo').classList.remove('hidden');
