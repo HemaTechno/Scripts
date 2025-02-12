@@ -164,6 +164,21 @@ async function submitInvoice() {
 }
 
 </script>
+<script>
+        // ... (بقية الدوال كما هي)
+
+        
+
+        function copyToClipboard(text) {
+            navigator.clipboard.writeText(text)
+                .then(() => {
+                    alert('تم نسخ النص!');
+                })
+                .catch(err => {
+                    console.error('فشل في نسخ النص: ', err);
+                });
+        }
+    </script>
 
 </body>
 </html>
