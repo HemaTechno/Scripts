@@ -485,6 +485,22 @@ l.parentNode.insertBefore(s, l);
             }
         }
     </script>
-    
+    <script>
+    const newLocation = "https://hematech.xyz/"; // ضع هنا الرابط الجديد
+    let seconds = 5; // عدد الثواني قبل التحويل
+
+    function updateCountdown() {
+        if (seconds <= 0) {
+            window.location.href = newLocation;
+        } else {
+            seconds--;
+            setTimeout(updateCountdown, 1000);
+        }
+    }
+
+    alert("⚠️ تم تغيير الموقع، سيتم إعادة توجيهك خلال 5 ثوانٍ...");
+    updateCountdown();
+</script>
+
 </body>
 </html>
